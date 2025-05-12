@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+@import url( './theme.scss' );
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Poppins", Roboto, "Helvetica Neue", sans-serif;
+}
+
+main{
+  padding-inline: 3rem;
+}
+
+:root{
+  --font-size-line-height: 20pt;
+}
+
+mat-icon {
+  font-family: 'Material Symbols Rounded';
+  font-size: var(--font-size-line-height);
+  line-height: var(--font-size-line-height);
+}
+
+header, footer{
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+
+  h2{
+    color: whitesmoke;
+  }
+}

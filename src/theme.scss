@@ -1,0 +1,48 @@
+@use '@angular/material' as mat;
+
+$app-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$orange-palette,
+      tertiary: mat.$violet-palette,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+:root {
+  /* Styling all the standalone components with the app theme */
+  @include mat.all-component-themes($app-theme);
+
+  /* Styling the components that are not standalone, work with cdk and appear as a dissmisable modal */
+  @include mat.snack-bar-overrides((
+    supporting-text-font: 'Poppins',
+    supporting-text-size: 14pt,
+    supporting-text-line-height: 24pt,
+    container-shape: 15px,
+  ));
+
+  @include mat.tooltip-overrides((
+    container-color: #a66a00,
+    supporting-text-color: whitesmoke,
+  ));
+}
+
+.snackbar-bought {
+  @include mat.snack-bar-overrides((
+    container-color: #00b85f,
+    supporting-text-color: whitesmoke,
+    button-color: gold,
+  ));
+}
+
+.snackbar-wishlist {
+  @include mat.snack-bar-overrides((
+    container-color: #a66a00,
+    supporting-text-color: whitesmoke,
+    button-color: yellow,
+  ));
+}
