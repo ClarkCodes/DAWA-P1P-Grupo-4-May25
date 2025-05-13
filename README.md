@@ -2,6 +2,8 @@
 
 Aqui va a estar el Readme cuando el proyecto este terminado, por ahora esta este readme por defecto, pero sera reemplazado cuando se haya terminado el proyecto y se lo pueda documentar apropiadamente segun lo que se haya realizado.
 
+Hola, este es un cambio.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
 
 ## Development server
