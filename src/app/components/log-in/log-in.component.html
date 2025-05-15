@@ -1,1 +1,27 @@
-<p>log-in works!</p>
+<div class="login-container">
+  <form class="login-form" (submit)="$event.preventDefault()">
+    <h2>Iniciar sesión</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input matInput type="email" (cdkAutofill)="email = $event.isAutofilled">
+      @if (email) {
+        <mat-hint>Autofilled!</mat-hint>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" (cdkAutofill)="password = $event.isAutofilled">
+      @if (password) {
+        <mat-hint>Autofilled!</mat-hint>
+      }
+    </mat-form-field>
+
+    <div class="actions">
+      <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <button mat-raised-button color="primary" class="submit-btn">Iniciar sesión</button>
+  </form>
+</div>
