@@ -1,0 +1,56 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  background: linear-gradient(90deg, #22427e, #4686f5);
+  color: white;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  box-shadow: 0 4px 6px rgb(0, 0, 0);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Espaciador para empujar los botones al extremo derecho */
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* Estilo general de los botones */
+button[mat-button] {
+  background: transparent;
+  color: white;
+  border: none;
+  margin: 0 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+/* Efecto hover */
+button[mat-button]:hover {
+  background-color: rgba(5, 29, 109, 0.808);
+  transform: scale(1.05);
+}
+
+/* Quitar márgenes de los <p> internos */
+button[mat-button] p {
+  margin: 0;
+}
+
+/* Personalización adicional por botón */
+.home-button {
+  font-weight: bold;
+}
+
+.signin-button {
+  background-color: #ffffff22;
+}
+
+.login-button {
+  background-color: #ffffff11;
+}
