@@ -4,7 +4,7 @@ $app-theme: mat.define-theme(
   (
     color: (
       theme-type: light,
-      primary: mat.$orange-palette,
+      primary: mat.$blue-palette,
       tertiary: mat.$violet-palette,
     ),
     density: (
@@ -15,6 +15,7 @@ $app-theme: mat.define-theme(
 
 :root {
   /* Styling all the standalone components with the app theme */
+
   @include mat.all-component-themes($app-theme);
 
   /* Styling the components that are not standalone, work with cdk and appear as a dissmisable modal */
@@ -26,7 +27,7 @@ $app-theme: mat.define-theme(
   ));
 
   @include mat.tooltip-overrides((
-    container-color: #a66a00,
+    container-color: #086ee4,
     supporting-text-color: whitesmoke,
   ));
 }

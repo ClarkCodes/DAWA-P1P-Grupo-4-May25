@@ -1,35 +1,371 @@
-<mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'500ms'">
+<!-- index.html -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<h1>REGISTRO</h1>
+<mat-tab-group class="custom-tabs">
+  <mat-tab>
+  <ng-template mat-tab-label>
+    <span class="bold-label">Estudiantes</span>
+  </ng-template>
+  
+  <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'500ms'">
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
+      <ng-template matStepLabel><strong>Primer Nombre</strong></ng-template>
       <mat-form-field>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
+  <mat-label>Ej. Juan </mat-label>
+  <input matInput>
+</mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext>Siguiente</button>
       </div>
     </form>
   </mat-step>
   
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <ng-template matStepLabel><strong>Primer Apellido</strong></ng-template>
+        <mat-form-field>
+  <mat-label>Ej. Pérez</mat-label>
+  <input matInput>
+</mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
       </div>
     </form>
   </mat-step>
   
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel><strong>Segundo Apellido</strong></ng-template>
+      <mat-form-field>
+  <mat-label>Ej. Ayala</mat-label>
+  <input matInput>
+</mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
   </mat-step>
+
+   <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel><strong>E-mail</strong></ng-template>
+      <mat-form-field>
+    <mat-label>Ingresa tu e-mail</mat-label>
+    <input
+      matInput
+      placeholder="pat@example.com"
+      [formControl]="email"
+      (blur)="updateErrorMessage()"
+      required
+    />
+    @if (email.invalid) {
+      <mat-error>{{errorMessage()}}</mat-error>
+    }
+  </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="fifthFormGroup">
+    <form [formGroup]="fifthFormGroup">
+      <ng-template matStepLabel><strong>Contraseña</strong></ng-template>
+       <div class="password-container">
+  <mat-form-field>
+    <mat-label>Ingresa tu Contraseña</mat-label>
+    <input matInput [type]="hide() ? 'password' : 'text'" />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="clickEvent($event)"
+      [attr.aria-pressed]="hide()"
+    >
+      <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="sixthFormGroup">
+    <form [formGroup]="sixthFormGroup">
+      <ng-template matStepLabel><strong>Sexo</strong></ng-template>
+       <mat-radio-group aria-label="Select an option">
+  <mat-radio-button value="1">Masculino</mat-radio-button>
+  <mat-radio-button value="2">Femenino</mat-radio-button>
+</mat-radio-group>
+
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="seventhFormGroup">
+    <form [formGroup]="seventhFormGroup">
+      <ng-template matStepLabel><strong>Facultad</strong></ng-template>
+      <!-- <mat-form-field>
+    <mat-option>--</mat-option>
+    @for (facultad of facultades; track facultad) {
+      <mat-option [value]="facultad">{{facultad.name}}</mat-option>
+    }
+  </mat-select>
+  @if (facultadControl.hasError('required')) {
+    <mat-error>Por favor, selecione una facultad</mat-error>
+  }
+  <mat-hint>{{facultadControl.value?.sound}}</mat-hint>
+    </mat-form-field>-->
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
 </mat-vertical-stepper>
+  </mat-tab>
+
+   <mat-tab>
+  <ng-template mat-tab-label>
+    <span class="bold-label">Club Estudiantil</span>
+  </ng-template>
+   <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'500ms'">
+    <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel><strong>Nombre</strong></ng-template>
+      <mat-form-field>
+  <mat-label>Ej. Club de Ping Pong </mat-label>
+  <input matInput>
+</mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+    <mat-step [stepControl]="seventhFormGroup">
+    <form [formGroup]="seventhFormGroup">
+      <ng-template matStepLabel><strong>Facultad</strong></ng-template>
+      <!-- <mat-form-field>
+    <mat-option>--</mat-option>
+    @for (facultad of facultades; track facultad) {
+      <mat-option [value]="facultad">{{facultad.name}}</mat-option>
+    }
+  </mat-select>
+  @if (facultadControl.hasError('required')) {
+    <mat-error>Por favor, selecione una facultad</mat-error>
+  }
+  <mat-hint>{{facultadControl.value?.sound}}</mat-hint>
+    </mat-form-field>-->
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  
+   <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel><strong>E-mail</strong></ng-template>
+      <mat-form-field>
+    <mat-label>Ingresa tu e-mail</mat-label>
+    <input
+      matInput
+      placeholder="pat@example.com"
+      [formControl]="email"
+      (blur)="updateErrorMessage()"
+      required
+    />
+    @if (email.invalid) {
+      <mat-error>{{errorMessage()}}</mat-error>
+    }
+  </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="fifthFormGroup">
+    <form [formGroup]="fifthFormGroup">
+      <ng-template matStepLabel><strong>Contraseña</strong></ng-template>
+       <div class="password-container">
+  <mat-form-field>
+    <mat-label>Ingresa tu Contraseña</mat-label>
+    <input matInput [type]="hide() ? 'password' : 'text'" />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="clickEvent($event)"
+      [attr.aria-pressed]="hide()"
+    >
+      <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="seventhFormGroup">
+    <form [formGroup]="seventhFormGroup">
+      <ng-template matStepLabel><strong>Categoría</strong></ng-template>
+      <!-- <mat-form-field>
+    <mat-option>--</mat-option>
+    @for (facultad of facultades; track facultad) {
+      <mat-option [value]="facultad">{{facultad.name}}</mat-option>
+    }
+  </mat-select>
+  @if (facultadControl.hasError('required')) {
+    <mat-error>Por favor, selecione una facultad</mat-error>
+  }
+  <mat-hint>{{facultadControl.value?.sound}}</mat-hint>
+    </mat-form-field>-->
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="sixthFormGroup">
+    <form [formGroup]="sixthFormGroup">
+      <ng-template matStepLabel><strong>Club Activo?</strong></ng-template>
+       <mat-radio-group aria-label="Select an option">
+  <mat-radio-button value="1">Activo</mat-radio-button>
+  <mat-radio-button value="2">No Activo</mat-radio-button>
+</mat-radio-group>
+
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+</mat-vertical-stepper>
+  </mat-tab>
+
+
+   <mat-tab>
+  <ng-template mat-tab-label>
+    <span class="bold-label">Facultad</span>
+  </ng-template>
+  <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'500ms'">
+
+    <mat-step [stepControl]="seventhFormGroup">
+    <form [formGroup]="seventhFormGroup">
+      <ng-template matStepLabel><strong>Facultad</strong></ng-template>
+      <!-- <mat-form-field>
+    <mat-option>--</mat-option>
+    @for (facultad of facultades; track facultad) {
+      <mat-option [value]="facultad">{{facultad.name}}</mat-option>
+    }
+  </mat-select>
+  @if (facultadControl.hasError('required')) {
+    <mat-error>Por favor, selecione una facultad</mat-error>
+  }
+  <mat-hint>{{facultadControl.value?.sound}}</mat-hint>
+    </mat-form-field>-->
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel><strong>Siglas</strong></ng-template>
+        <mat-form-field>
+  <mat-label>Ej. FIQ, FASN</mat-label>
+  <input matInput>
+</mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+   <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel><strong>E-mail</strong></ng-template>
+      <mat-form-field>
+    <mat-label>Ingresa tu e-mail</mat-label>
+    <input
+      matInput
+      placeholder="pat@example.com"
+      [formControl]="email"
+      (blur)="updateErrorMessage()"
+      required
+    />
+    @if (email.invalid) {
+      <mat-error>{{errorMessage()}}</mat-error>
+    }
+  </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="fifthFormGroup">
+    <form [formGroup]="fifthFormGroup">
+      <ng-template matStepLabel><strong>Contraseña</strong></ng-template>
+       <div class="password-container">
+  <mat-form-field>
+    <mat-label>Ingresa tu Contraseña</mat-label>
+    <input matInput [type]="hide() ? 'password' : 'text'" />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="clickEvent($event)"
+      [attr.aria-pressed]="hide()"
+    >
+      <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="sixthFormGroup">
+    <form [formGroup]="sixthFormGroup">
+      <ng-template matStepLabel><strong>Modalidad</strong></ng-template>
+       <mat-radio-group aria-label="Select an option">
+  <mat-radio-button value="1">Presencial</mat-radio-button>
+  <mat-radio-button value="2">Virtual</mat-radio-button>
+    <mat-radio-button value="2">Híbrido</mat-radio-button>
+</mat-radio-group>
+
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+</mat-vertical-stepper>
+   </mat-tab>
+</mat-tab-group>
+
