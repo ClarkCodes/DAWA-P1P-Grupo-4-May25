@@ -43,8 +43,69 @@
       "telefono": "042281148"
     }
   ],
-
-  "estudianteCuentas": [
+  "clubes":[
+  {
+    "id": 1,
+    "titulo": "Torneo de Ajedrez Universitario",
+    "descripcion": "Participa en el torneo anual de ajedrez organizado por el Club de Ajedrez.",
+    "categoria": "Concurso",
+    "fecha": "2025-06-10",
+    "esGratuito": true,
+    "costo": 0,
+    "cupoMaximo": 50,
+    "lugar": "Sala de Conferencias - Edificio B",
+    "nombreClub": "Club de Ajedrez",
+    "enlaceInscripcion": "https://forms.gle/ajedrez2025",
+    "aficheUrl": "https://universidad.edu.pe/imgs/ajedrez2025.jpg",
+    "etiquetas": ["ajedrez", "competencia", "estrategia"]
+  },
+  {
+    "id": 2,
+    "titulo": "Taller de Robótica",
+    "descripcion": "Aprende a construir tu primer robot con Arduino.",
+    "categoria": "Taller",
+    "fecha": "2025-06-18",
+    "esGratuito": false,
+    "costo": 15.00,
+    "cupoMaximo": 30,
+    "lugar": "Laboratorio de Electrónica - Edificio D",
+    "nombreClub": "Club de Robótica",
+    "enlaceInscripcion": "https://forms.gle/robotica2025",
+    "aficheUrl": "https://universidad.edu.pe/imgs/robotica2025.png",
+    "etiquetas": ["robotica", "arduino", "ingenieria"]
+  },
+  {
+    "id": 3,
+    "titulo": "Cine Foro: El impacto del cambio climático",
+    "descripcion": "Proyección de documental y discusión guiada con expertos.",
+    "categoria": "Charla",
+    "fecha": "2025-06-22",
+    "esGratuito": true,
+    "costo": 0,
+    "cupoMaximo": 100,
+    "lugar": "Auditorio Central",
+    "nombreClub": "Club de Ecología",
+    "enlaceInscripcion": "https://forms.gle/cineclima2025",
+    "aficheUrl": "https://universidad.edu.pe/imgs/cineclima.jpg",
+    "etiquetas": ["medio ambiente", "cine", "conciencia"]
+  },
+  {
+    "id": 4,
+    "titulo": "Feria de Proyectos Tecnológicos",
+    "descripcion": "Exposición de proyectos realizados por estudiantes de ingeniería y tecnología.",
+    "categoria": "Exposición",
+    "fecha": "2025-07-01",
+    "esGratuito": true,
+    "costo": 0,
+    "cupoMaximo": 300,
+    "lugar": "Plaza Tech - Campus Principal",
+    "nombreClub": "Club de Innovación",
+    "enlaceInscripcion": "https://forms.gle/feriaproyectos2025",
+    "aficheUrl": "https://universidad.edu.pe/imgs/feria-tech.jpg",
+    "etiquetas": ["tecnología", "innovación", "proyectos"]
+  }
+],
+"estudianteCuentas": [
     {
       "id": 1,
       "primerNombre": "Juan",
@@ -96,7 +157,6 @@
       "facultadDatos": "CIENCIAS ECONOMICAS"
     }
   ],
-
   "facultadCuentas": [
     {
       "id": 1,
@@ -139,8 +199,6 @@
       "modalidad": "presencial"
     }
   ],
-
-
   "clubCuentas": [
     {
       "id": 1,
@@ -151,7 +209,6 @@
       "categoria": "Tecnología e Innovación",
       "clubActivo": "Activo"
     },
-
     {
       "id": 2,
       "nombre": "Círculo Literario",
@@ -189,9 +246,7 @@
       "clubActivo": "No Activo"
     }
   ],
-
   "facultadDatos": [
-    
     {"nombre":"ARQUITECTURA Y URBANISMO"},
     {"nombre":"CIENCIAS ADMINISTRATIVAS"},
     {"nombre":"CIENCIAS AGRARIAS"},
@@ -210,7 +265,6 @@
     {"nombre":"MEDICINA VETERINARIA Y ZOOTECNIA"},
     {"nombre":"ODONTOLOGIA"}
   ], 
-
   "categoriaDatos": [
     {"nombre":"Medio Ambiente"},
     {"nombre":"Formación Ciudadana"},
@@ -220,5 +274,4 @@
     {"nombre":"Arte y Cultura"},
     {"nombre":"Desarrollo Social"}
   ]
-
 }
