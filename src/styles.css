@@ -63,25 +63,3 @@ mat-icon {
   font-size: var(--font-size-line-height);
   line-height: var(--font-size-line-height);
 }
-<<<<<<< HEAD
-
-header, footer{
-  height: 200px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: orange;
-
-  h2{
-    color: whitesmoke;
-  }
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-=======
->>>>>>> 91653194aa92133e7bd008be117c44235acc4264
