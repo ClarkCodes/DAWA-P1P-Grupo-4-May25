@@ -240,9 +240,9 @@ $app-theme: mat.define-theme(
     ),
   ));
 
-  /* Color css variables to apply on elements that are not components such divs and alike to properly apply a correct theme color to maintain consistency */
-
-  --primary: #323380;
+ 
+ &  /* Color css variables to apply on elements that are not components such divs and alike to properly apply a correct theme color to maintain consistency */
+  {--primary: #323380;
   --on-primary: #ffffff;
   --primary-container: #e1dfff;
   --on-primary-container: #0d0a5f;
@@ -296,7 +296,7 @@ $app-theme: mat.define-theme(
   --neutral-variant: #747879;
   --neutral-variant20: #2d3132;
   --inverse-secondary: #4dd6fc;
-  --inverse-tertiary: #a1c9ff;
+  --inverse-tertiary: #a1c9ff;}
 
 
   /* Styling the components that are not standalone, work with cdk and appear as a dissmisable modal and so on */
