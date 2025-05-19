@@ -1,0 +1,46 @@
+{
+  "facultades":[
+    {
+      "id": 1,
+      "nombre": "Ciencias Matemáticas y Físicas",
+      "direccion": "Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
+      "horarioAtencion": [
+        {
+          "diaDesde": "lunes",
+          "diaHasta": "viernes",
+          "horaDesde": "7:00",
+          "horaHasta": "23:00"
+        },
+        {
+          "diaDesde": "sabado",
+          "diaHasta": "sabado",
+          "horaDesde": "6:30",
+          "horaHasta": "17:00"
+        }
+      ],
+      "sitioWeb": "http://fcmf.ug.edu.ec/",
+      "telefono": "042396881"
+    },
+    {
+      "id": 2,
+      "nombre": "Ciencias Médicas",
+      "direccion": "Av. Kennedy y Av. Delta, Universidad de Guayaquil - Ciudadela Universitaria",
+      "horarioAtencion": [
+        {
+          "diaDesde": "lunes",
+          "diaHasta": "viernes",
+          "horaDesde": "7:00",
+          "horaHasta": "21:00"
+        },
+        {
+          "diaDesde": "sabado",
+          "diaHasta": "sabado",
+          "horaDesde": "7:00",
+          "horaHasta": "17:00"
+        }
+      ],
+      "sitioWeb": "http://fcm.ug.edu.ec/",
+      "telefono": "042281148"
+    }
+  ]
+}
