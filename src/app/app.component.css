@@ -42,7 +42,6 @@ a[mat-button] {
   margin: 0 8px;
   padding: 8px 16px;
   font-family: 'Poppins';
-  font-size: large !important;
   background-color: transparent;
   color: white;
   border: none;
@@ -53,7 +52,8 @@ a[mat-button] {
   cursor: pointer;
 
   .HeaderLinkButtonText{
-    font-size: 13pt;
+    font-size: 13.5pt;
+    letter-spacing: .3pt;
   }
 }
 

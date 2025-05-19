@@ -14,9 +14,8 @@ export const routes: Routes = [
   { path: 'signin', component: SignInComponent },
   { path: 'crud-signin-login', component: CrudSigninLoginComponent },
   { path: 'crud-facultades', component: CrudFacultadesComponent },
-    { path: 'crud-eventos-clubes', component: EventosComponent }, 
+  { path: 'crud-eventos-clubes', component: EventosComponent },
   { path: '404', component: PaginaNoEncontradaComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "**", redirectTo:"404" },
-
 ];
