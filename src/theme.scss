@@ -308,7 +308,7 @@ $app-theme: mat.define-theme(
   ));
 
   @include mat.tooltip-overrides((
-    container-color: #a66a00,
+    container-color: #086ee4,
     supporting-text-color: whitesmoke,
   ));
 
@@ -317,5 +317,3 @@ $app-theme: mat.define-theme(
     container-text-color: orange,
   ));
 }
-
-
