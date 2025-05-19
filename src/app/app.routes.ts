@@ -2,10 +2,15 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { PaginaNoEncontradaComponent } from './components/pagina-no-encontrada/pagina-no-encontrada.component';
+import { CrudFacultadesComponent } from './components/crud-facultades/crud-facultades.component';
 
 export const routes: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
-    {path: 'login', component: LogInComponent},
-    {path: 'signin', component: SignInComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LogInComponent },
+  { path: 'signin', component: SignInComponent },
+  { path: 'crud-facultades', component: CrudFacultadesComponent },
+  { path: '404', component: PaginaNoEncontradaComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: "**", redirectTo:"404" },
 ];
