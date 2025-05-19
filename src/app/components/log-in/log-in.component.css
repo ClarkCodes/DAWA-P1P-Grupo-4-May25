@@ -1,8 +1,10 @@
-body, html {
+body {
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle, #ffffff 0%, #bee0ff 20%, #fffbfb 100%);
+
 }
 
 .login-container {
@@ -12,6 +14,7 @@ body, html {
   justify-content: center;
   -webkit-backdrop-filter: blur( 4px );
   backdrop-filter: blur( 4px );
+
 }
 
 .login-form {

@@ -268,7 +268,7 @@
 
     <mat-step [stepControl]="seventhFormGroup">
     <form [formGroup]="seventhFormGroup">
-      <ng-template matStepLabel><strong>Facultad</strong></ng-template>
+      <ng-template matStepLabel><strong>Nombre</strong></ng-template>
       <!-- <mat-form-field>
     <mat-option>--</mat-option>
     @for (facultad of facultades; track facultad) {
@@ -281,7 +281,6 @@
   <mat-hint>{{facultadControl.value?.sound}}</mat-hint>
     </mat-form-field>-->
       <div>
-        <button mat-button matStepperPrevious type="button">Atrás</button>
         <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
