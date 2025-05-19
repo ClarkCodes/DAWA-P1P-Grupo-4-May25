@@ -86,6 +86,7 @@
     "facultad-datos": "COMUNICACION SOCIAL"
   },
   {
+    "id": 5,
     "primer_nombre": "Alex",
     "primer_apellido": "Fernández",
     "segundo_apellido": "Ruiz",
@@ -98,6 +99,7 @@
 
 "faculdad-cuentas":[
   {
+    "id": 1,
     "facultad-datos": "CIENCIAS QUIMICAS",
     "siglas": "FIQ",
     "email": "FIQ@ug.edu.ec",
@@ -105,6 +107,7 @@
     "modalidad": "presencial"
   },
   {
+    "id":2,
     "facultad-datos": "ARQUITECTURA Y URBANISMO",
     "siglas": "FAU",
     "email": "FAU@ug.edu.ec",
@@ -112,6 +115,7 @@
     "modalidad": "virtual"
   },
   {
+    "id":3,
     "facultad-datos": "CIENCIAS NATURALES",
     "siglas": "FCN",
     "email": "FCN@ug.edu.ec",
@@ -119,6 +123,7 @@
     "modalidad": "presencial"
   },
   {
+    "id":4,
     "facultad-datos": "CIENCIAS MATEMATICAS Y FISICAS",
     "siglas": "FCMF",
     "email": "FCMF@ug.edu.ec",
@@ -126,6 +131,7 @@
     "modalidad": "virtual"
   },
   {
+    "id":5,
     "facultad-datos": "CIENCIAS PSICOLOGICAS",
     "siglas": "FCPS",
     "email": "FCPS@ug.edu.ec",
@@ -136,6 +142,7 @@
 
 "club-cuentas":[
   {
+    "id": 1,
     "Nombre": "Club de IA",
     "facultad-datos": "CIENCIAS MATEMATICAS Y FISICAS",
     "E-mail": "roboticaia@ug.edu.ec",
@@ -144,6 +151,7 @@
     "Club Activo?": "Activo"
   },
   {
+    "id": 2,
     "Nombre": "Círculo Literario",
     "facultad-datos": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
     "E-mail": "literatura@ug.edu.ec",
@@ -152,6 +160,7 @@
     "Club Activo?": "Activo"
   },
   {
+    "id": 3,
     "Nombre": "EcoUG",
     "facultad-datos": "CIENCIAS NATURALES",
     "E-mail": "ecoug@ug.edu.ec",
@@ -160,6 +169,7 @@
     "Club Activo?": "No Activo"
   },
   {
+    "id": 4,
     "Nombre": "UG Emprende",
     "facultad-datos": "CIENCIAS ADMINISTRATIVAS",
     "E-mail": "emprendedores@ug.edu.ec",
@@ -168,6 +178,7 @@
     "Club Activo?": "Activo"
   },
   {
+    "id": 5,
     "Nombre": "Club de Debate",
     "facultad-datos": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
     "E-mail": "debateug@ug.edu.ec",
