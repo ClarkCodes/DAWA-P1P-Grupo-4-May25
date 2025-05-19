@@ -1,0 +1,54 @@
+.SearchContainer{
+  margin-top: 40px;
+  margin-bottom: 70px;
+}
+
+mat-form-field, input{
+    width: 15rem;
+    border-radius: 25px;
+}
+
+.ActionsCellClass{
+  display: flex;
+  height: 60px;
+  justify-content: center;
+
+  button{
+    background-color: transparent;
+    border: none;
+    color: var( --tertiary );
+    cursor: pointer;
+  }
+
+  .EditButtonClass{
+    padding-right: 15px;
+  }
+}
+
+.ActionsContainerClass{
+  width: fit-content;
+}
+
+#actionsHeaderId{
+  text-align: center;
+}
+
+.FacultadesSearchForm{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  mat-form-field{
+    transition: width .35s ease-in-out;
+
+    &:focus-within{
+      width: 70%;
+      transition: width .27s ease-out;
+    }
+
+    input{
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

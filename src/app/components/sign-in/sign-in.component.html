@@ -1,12 +1,11 @@
 <!-- index.html -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <h1>REGISTRO</h1>
 <mat-tab-group class="custom-tabs">
   <mat-tab>
   <ng-template mat-tab-label>
     <span class="bold-label">Estudiantes</span>
   </ng-template>
-  
+
   <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'500ms'">
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
@@ -16,11 +15,11 @@
   <input matInput>
 </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
-  
+
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel><strong>Primer Apellido</strong></ng-template>
@@ -29,12 +28,12 @@
   <input matInput>
 </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
-  
+
   <mat-step [stepControl]="thirdFormGroup">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel><strong>Segundo Apellido</strong></ng-template>
@@ -43,8 +42,8 @@
   <input matInput>
 </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -66,8 +65,8 @@
     }
   </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -90,8 +89,8 @@
   </mat-form-field>
 </div>
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -105,8 +104,8 @@
 </mat-radio-group>
 
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -126,8 +125,8 @@
   <mat-hint>{{facultadControl.value?.sound}}</mat-hint>
     </mat-form-field>-->
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -148,7 +147,7 @@
   <input matInput>
 </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -168,12 +167,12 @@
   <mat-hint>{{facultadControl.value?.sound}}</mat-hint>
     </mat-form-field>-->
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
-  
+
    <mat-step [stepControl]="fourthFormGroup">
     <form [formGroup]="fourthFormGroup">
       <ng-template matStepLabel><strong>E-mail</strong></ng-template>
@@ -191,8 +190,8 @@
     }
   </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -215,8 +214,8 @@
   </mat-form-field>
 </div>
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -236,8 +235,8 @@
   <mat-hint>{{facultadControl.value?.sound}}</mat-hint>
     </mat-form-field>-->
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -251,8 +250,8 @@
 </mat-radio-group>
 
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -282,12 +281,12 @@
   <mat-hint>{{facultadControl.value?.sound}}</mat-hint>
     </mat-form-field>-->
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
-  
+
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel><strong>Siglas</strong></ng-template>
@@ -296,8 +295,8 @@
   <input matInput>
 </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -319,8 +318,8 @@
     }
   </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -343,8 +342,8 @@
   </mat-form-field>
 </div>
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -359,8 +358,8 @@
 </mat-radio-group>
 
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious type="button">Atrás</button>
+        <button mat-button matStepperNext type="button">Siguiente</button>
       </div>
     </form>
   </mat-step>

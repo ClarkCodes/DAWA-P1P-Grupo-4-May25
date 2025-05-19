@@ -1,56 +1,364 @@
-.example-spacer {
-  flex: 1 1 auto;
-}
-
-mat-toolbar {
-  background: linear-gradient(90deg, #22427e, #4686f5);
-  color: white;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  height: 64px;
-  box-shadow: 0 4px 6px rgb(0, 0, 0);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 /* Espaciador para empujar los botones al extremo derecho */
 .example-spacer {
   flex: 1 1 auto;
 }
 
-/* Estilo general de los botones */
-button[mat-button] {
-  background: transparent;
+header {
+  z-index: 2;
+}
+
+app-home {
+  height: 100%;
+}
+
+mat-toolbar {
+  background: linear-gradient( 90deg, var( --primary ), #3a7ff5 );
   color: white;
-  border: none;
+  padding: 0 3.7rem;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  box-shadow: 0 4px 7px rgba( 0, 0, 0, .45 );
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+
+  a {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+
+    img {
+      opacity: .95;
+      transition: filter 3s ease .05s, opacity 3s ease .05s;
+
+      &:hover{
+        opacity: 1;
+		    filter: drop-shadow( 1px 1px 7px rgb( 241 227 125 / 80% ) ) drop-shadow( 1px 2px 5px rgb(255 165 0 / 70%) );
+        transition: filter .2s ease, opacity .2s ease;
+      }
+    }
+  }
+}
+
+/* Estilo general de los botones */
+a[mat-button] {
   margin: 0 8px;
   padding: 8px 16px;
-  font-size: 16px;
+  font-family: 'Poppins';
+  font-size: large !important;
+  background-color: transparent;
+  color: white;
+  border: none;
   border-radius: 8px;
-  transition: background 0.3s ease, transform 0.2s ease;
+  opacity: .85;
+  transition-property: background-color, transform, opacity;
+  transition: .15s ease;
   cursor: pointer;
+
+  .HeaderLinkButtonText{
+    font-size: 13pt;
+  }
 }
 
 /* Efecto hover */
-button[mat-button]:hover {
-  background-color: rgba(5, 29, 109, 0.808);
-  transform: scale(1.05);
+a[mat-button]:hover {
+  background-color: var( --tertiary );
+  transform: scale( 1.1 );
+  opacity: 1;
+  transition-property: background-color, transform, opacity;
+  transition: .2s ease;
 }
 
-/* Quitar márgenes de los <p> internos */
-button[mat-button] p {
-  margin: 0;
-}
+footer {
+  z-index: 2;
+  height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: top;
+  overflow: hidden;
+  background-color: var( --on-tertiary-container );
+  color: whitesmoke;
+  --text-50: color: rgba( 255, 255, 255, .5 );
+  --text-100: color: rgba( 255, 255, 255, 1 );
 
-/* Personalización adicional por botón */
-.home-button {
-  font-weight: bold;
-}
+  h6{
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 3px;
+  }
 
-.signin-button {
-  background-color: #ffffff22;
-}
+  .TextLinksClass, .TextLinksClass>address {
+    transition: color .1s ease, text-shadow .1s ease-out;
 
-.login-button {
-  background-color: #ffffff11;
+    &:link {
+      text-decoration: none;
+    }
+
+    &:hover {
+      transition: color .1s ease, text-shadow .11s ease;
+      color: white;
+      text-shadow: 3px 3px 20px rgba(255, 255, 65, 0.7);
+    }
+  }
+
+  #pixabayLinkDivId {
+    a {
+      img {
+        opacity: .8;
+        transition: scale .1s ease, opacity .1s ease, filter .2s ease-out;
+      }
+
+      &:hover {
+        img {
+          transition: scale .3s ease, opacity .3s ease, filter .3s ease-in;
+          opacity: 1;
+          scale: 1.5;
+          filter: drop-shadow( 0px 0px 10px whitesmoke );
+        }
+      }
+    }
+  }
+
+
+
+  #mainDivLeftId {
+        width: 33%;
+        height: 100%;
+        padding-right: 0;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        #footerLogoDivId {
+            padding-top: 15px;
+            width: fit-content;
+            height: fit-content;
+
+            @media (min-width: 493px) and (max-width: 1500px) {
+                margin-top: 20px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            #logoImageId {
+                transition: filter 3s ease .2s;
+                opacity: .95;
+
+                &:hover{
+                    filter: drop-shadow( 1px 1px 3px orange )
+                    drop-shadow( 5px 5px 15px rgba( 255, 255, 255, .7 ) );
+                    transition: filter .2s ease;
+                }
+            }
+        }
+
+        #csLogoDivId {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            width: fit-content;
+            height: fit-content;
+
+            @media( max-width: 1500px ) {
+                width: auto;
+                padding: 20px 0;
+                margin-inline: 0;
+                justify-content: center;
+            }
+
+            #CSLogoImgId {
+                height: 58px;
+                filter: whitesmoke drop-shadow( 1px 1px 12px rgba( 255, 255, 255, .85 ) );
+            }
+        }
+    }
+
+    #mainDivRightId {
+        width: 67%;
+        padding-left: 0;
+        display: flex;
+        flex-direction: row;
+
+        #footerMainSectionDivId {
+            padding-inline: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            width: 100%;
+
+            div {
+                flex-direction: column;
+
+            }
+
+            #enlacesUniversitariosDivId {
+              padding-left: 30px;
+
+              address {
+                height: fit-content;
+                font-weight: bold;
+
+                font-style: normal;
+                letter-spacing: 1pt;
+                text-decoration: none;
+
+                a {
+                  font-size: 9pt;
+                  color: white;
+                  opacity: .7;
+                  transition: opacity .15s ease;
+
+                  &:hover {
+                    opacity: 1;
+                    transition: opacity .2s ease;
+                  }
+                }
+              }
+            }
+
+            @media( max-width: 1500px ) {
+                width: 95%;
+                flex-flow: column;
+                justify-content: center;
+                padding-top: 0;
+                height: fit-content;
+            }
+
+            #externalResourcesDivId {
+                width: 345px;
+
+                @media( max-width: 1500px ) {
+                    width: 97%;
+
+                    div {
+                        width: 100%;
+                        margin-inline: 0;
+                        padding-inline: 0;
+                    }
+                }
+
+                #graphicalResourcesDivId {
+                    padding-top: 0;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+
+                    #pixabayLinkDivId {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+
+        #copyrightSectionDivId {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: left;
+            padding: 10px 0;
+            /*width: 97.5%;*/
+
+            @media( max-width: 1500px ) {
+                width: 95%;
+                flex-flow: column;
+                justify-content: center;
+            }
+
+            div {
+                margin-left: 0;
+            }
+
+            #copyrightCenterDivId {
+                padding-top: 0;
+                padding-inline: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                @media( max-width: 1500px ) {
+                    width: 100%;
+                    margin-inline: 0;
+                    padding-inline: 0;
+                }
+
+                #copyrightCenterMainDivId {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    margin-inline: 0;
+                    padding-top: 0;
+
+                    #UGLogoDivId {
+                        width: fit-content;
+                        display: flex;
+                        align-items: center;
+                        margin-inline: 0;
+                        padding-inline: 0;
+
+                        #UGLogoImgId {
+                            margin-top: 0vh;
+                            height: 50px;
+                            align-self: center;
+                        }
+                    }
+
+                    #UniFaTextDivId {
+                        display: flex;
+                        flex-direction: column;
+                        width: fit-content;
+                        height: fit-content;
+                        margin-inline: 0;
+                        padding-inline: 2vw;
+                        line-height: 24pt;
+
+                        strong {
+                            font-size: 11pt;
+                            text-align: center;
+                            justify-content: center;
+                            color: var( --thirdy-accent-color-darkest );
+                        }
+                    }
+
+                    #FacultadLogoDivId {
+                        width: 87.5px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-inline: 0;
+
+                        #FCMFLogoImgId {
+                            margin-left: 0vw;
+                            margin-top: 0vh;
+                            height: 65px;
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }
+
+    #copyrightLegendDivId {
+        height: 30px;
+        width: 100%;
+        padding-top: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-inline: 0;
+        @media( max-width: 1500px ) {
+            width: 75%;
+        }
+        span {
+            font-size: 8pt;
+            color: rgba( 255, 255, 255, .5);
+        }
+    }
 }

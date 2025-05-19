@@ -1,0 +1,34 @@
+#containerDivId {
+  position: relative;
+  z-index: -1;
+  margin-inline: -4rem;
+  width: 100dvw;
+  height: 100%;
+  background-image: url( '/images/book-1920x1080.jpg' );
+  filter: brightness( 75% );
+  background-repeat: no-repeat;
+  background-size: 100% 100dvh;
+  background-position: center;
+}
+
+#textDivId{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: rgba( 255, 255, 255, .95 );
+  }
+
+  h2 {
+    color: rgba( 255, 255, 255, .7 );
+    line-height: 10pt;
+  }
+}
