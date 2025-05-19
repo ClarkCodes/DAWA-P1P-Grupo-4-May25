@@ -13,7 +13,7 @@ export class ServFacultadDatosService {
   constructor( private http: HttpClient ) { // Inyeccion de HTTP Client
   }
 
-   getFacultadDatos(): Observable<FacultadDatos[]> {
+    getFacultadDatos(): Observable<FacultadDatos[]> {
     return this.http.get<FacultadDatos[]>(this.jsonFacultadDatosUrl);
   }
 }
