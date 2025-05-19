@@ -10,8 +10,8 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(4px);
-  background: linear-gradient(90deg, #70b1ca, #b9a1f3);
+  -webkit-backdrop-filter: blur( 4px );
+  backdrop-filter: blur( 4px );
 }
 
 .login-form {
@@ -56,5 +56,16 @@ mat-form-field {
   padding: 0.75rem;
   font-size: 1rem;
   border-radius: 8px;
+  background-color: var( --primary );
+  color: var( --on-primary );
+  transition: background-color .2s ease;
+
+  &:hover{
+    background-color: var( --tertiary );
+  }
+
+  &:active{
+    background-color: var( --on-primary-fixed );
+  }
 }
 
