@@ -1,3 +1,13 @@
 export interface Facultad {
-    nombre: string;
-    }
+  id: number;
+  nombre: string;
+  direccion: string;
+  horarioAtencion: {
+    diaDesde: string;
+    diaHasta: string;
+    horaDesde: string;
+    horaHasta: string;
+  }[];
+  sitioWeb: string;
+  telefono: string;
+}
