@@ -10,6 +10,8 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { FacultadDatos } from '../../models/facultadDatos';
+import { ServFacultadDatosService } from '../../services/SigninLogin/serv-facultad-datos.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -31,6 +33,9 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class SignInComponent {
 
+facultadControl = new FormControl<FacultadDatos | null>(null, Validators.required);
+  facultades: FacultadDatos[] = [];
+
   hide = signal(true);
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
@@ -39,10 +44,13 @@ export class SignInComponent {
 
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   errorMessage = signal('');
-  constructor() {
+
+  constructor(private servicioFacultadDatos: ServFacultadDatosService) {
     merge(this.email.statusChanges, this.email.valueChanges)
     .pipe(takeUntilDestroyed())
     .subscribe(() => this.updateErrorMessage());
+
+    
   }
 
   updateErrorMessage() { 
@@ -64,5 +72,5 @@ export class SignInComponent {
   fifthFormGroup: FormGroup = this._formBuilder.group({fifthCtrl: ['']});
   sixthFormGroup: FormGroup = this._formBuilder.group({sixthCtrl: ['']});
   seventhFormGroup: FormGroup = this._formBuilder.group({seventhCtrl: ['']});
-
-}
+  }
+  

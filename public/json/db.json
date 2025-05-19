@@ -44,177 +44,181 @@
     }
   ],
 
-  "estudiante-cuentas":[
-  {
-    "id": 1,
-    "primer_nombre": "Juan",
-    "primer_apellido": "Pérez",
-    "segundo_apellido": "Gómez",
-    "email": "juan.perezg@gmail.com",
-    "contrasena": "Juan1234!",
-    "sexo": "Masculino",
-    "facultad-datos": "CIENCIAS MATEMATICAS Y FISICAS"
-  },
-  {
-    "id": 2,
-    "primer_nombre": "María",
-    "primer_apellido": "López",
-    "segundo_apellido": "Martínez",
-    "email": "maria.lopezm@ug.edu.ec",
-    "contrasena": "Maria2024*",
-    "sexo": "Femenino",
-    "facultad-datos": "CIENCIAS MATEMATICAS Y FISICAS"
-  },
-  {
-    "id": 3,
-    "primer_nombre": "Carlos",
-    "primer_apellido": "Ramírez",
-    "segundo_apellido": "Sánchez",
-    "email": "c.ramirezs@ug.edu.ec",
-    "contrasena": "CarRam99@",
-    "sexo": "Masculino",
-    "facultad-datos": "CIENCIAS ADMINISTRATIVAS"
-  },
-  {
-    "id": 4,
-    "primer_nombre": "Laura",
-    "primer_apellido": "Torres",
-    "segundo_apellido": "Jiménez",
-    "email": "laura.torresj@example.net",
-    "contrasena": "Laura_1987!",
-    "sexo": "Femenino",
-    "facultad-datos": "COMUNICACION SOCIAL"
-  },
-  {
-    "id": 5,
-    "primer_nombre": "Alex",
-    "primer_apellido": "Fernández",
-    "segundo_apellido": "Ruiz",
-    "email": "alex.fernandezr@ug.edu.ec",
-    "contrasena": "AlxFz!2025",
-    "sexo": "Masculino",
-    "facultad-datos": "CIENCIAS ECONOMICAS"
-  }
-],
+  "estudianteCuentas": [
+    {
+      "id": 1,
+      "primerNombre": "Juan",
+      "primerApellido": "Pérez",
+      "segundoApellido": "Gómez",
+      "email": "juan.perezg@gmail.com",
+      "contrasena": "Juan1234!",
+      "sexo": "Masculino",
+      "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS"
+    },
+    {
+      "id": 2,
+      "primerNombre": "María",
+      "primerApellido": "López",
+      "segundoApellido": "Martínez",
+      "email": "maria.lopezm@ug.edu.ec",
+      "contrasena": "Maria2024*",
+      "sexo": "Femenino",
+      "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS"
+    },
+    {
+      "id": 3,
+      "primerNombre": "Carlos",
+      "primerApellido": "Ramírez",
+      "segundoApellido": "Sánchez",
+      "email": "c.ramirezs@ug.edu.ec",
+      "contrasena": "CarRam99@",
+      "sexo": "Masculino",
+      "facultadDatos": "CIENCIAS ADMINISTRATIVAS"
+    },
+    {
+      "id": 4,
+      "primerNombre": "Laura",
+      "primerApellido": "Torres",
+      "segundoApellido": "Jiménez",
+      "email": "laura.torresj@example.net",
+      "contrasena": "Laura_1987!",
+      "sexo": "Femenino",
+      "facultadDatos": "COMUNICACION SOCIAL"
+    },
+    {
+      "id": 5,
+      "primerNombre": "Alex",
+      "primerApellido": "Fernández",
+      "segundoApellido": "Ruiz",
+      "email": "alex.fernandezr@ug.edu.ec",
+      "contrasena": "AlxFz!2025",
+      "sexo": "Masculino",
+      "facultadDatos": "CIENCIAS ECONOMICAS"
+    }
+  ],
 
-"faculdad-cuentas":[
-  {
-    "id": 1,
-    "facultad-datos": "CIENCIAS QUIMICAS",
-    "siglas": "FIQ",
-    "email": "FIQ@ug.edu.ec",
-    "contraseña": "Contrasena123!",
-    "modalidad": "presencial"
-  },
-  {
-    "id":2,
-    "facultad-datos": "ARQUITECTURA Y URBANISMO",
-    "siglas": "FAU",
-    "email": "FAU@ug.edu.ec",
-    "contraseña": "ArquiUrba2025$",
-    "modalidad": "virtual"
-  },
-  {
-    "id":3,
-    "facultad-datos": "CIENCIAS NATURALES",
-    "siglas": "FCN",
-    "email": "FCN@ug.edu.ec",
-    "contraseña": "Ciencias#123",
-    "modalidad": "presencial"
-  },
-  {
-    "id":4,
-    "facultad-datos": "CIENCIAS MATEMATICAS Y FISICAS",
-    "siglas": "FCMF",
-    "email": "FCMF@ug.edu.ec",
-    "contraseña": "MateFisi_456",
-    "modalidad": "virtual"
-  },
-  {
-    "id":5,
-    "facultad-datos": "CIENCIAS PSICOLOGICAS",
-    "siglas": "FCPS",
-    "email": "FCPS@ug.edu.ec",
-    "contraseña": "Psico$789",
-    "modalidad": "presencial"
-  }
-],
+  "facultadCuentas": [
+    {
+      "id": 1,
+      "facultadDatos": "CIENCIAS QUIMICAS",
+      "siglas": "FIQ",
+      "email": "FIQ@ug.edu.ec",
+      "contrasena": "Contrasena123!",
+      "modalidad": "presencial"
+    },
+    {
+      "id": 2,
+      "facultadDatos": "ARQUITECTURA Y URBANISMO",
+      "siglas": "FAU",
+      "email": "FAU@ug.edu.ec",
+      "contrasena": "ArquiUrba2025$",
+      "modalidad": "virtual"
+    },
+    {
+      "id": 3,
+      "facultadDatos": "CIENCIAS NATURALES",
+      "siglas": "FCN",
+      "email": "FCN@ug.edu.ec",
+      "contrasena": "Ciencias#123",
+      "modalidad": "presencial"
+    },
+    {
+      "id": 4,
+      "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS",
+      "siglas": "FCMF",
+      "email": "FCMF@ug.edu.ec",
+      "contrasena": "MateFisi_456",
+      "modalidad": "virtual"
+    },
+    {
+      "id": 5,
+      "facultadDatos": "CIENCIAS PSICOLOGICAS",
+      "siglas": "FCPS",
+      "email": "FCPS@ug.edu.ec",
+      "contrasena": "Psico$789",
+      "modalidad": "presencial"
+    }
+  ],
 
-"club-cuentas":[
-  {
-    "id": 1,
-    "Nombre": "Club de IA",
-    "facultad-datos": "CIENCIAS MATEMATICAS Y FISICAS",
-    "E-mail": "roboticaia@ug.edu.ec",
-    "Contraseña": "Rob0tic@2025",
-    "categoria": "Tecnología e Innovación",
-    "Club Activo?": "Activo"
-  },
-  {
-    "id": 2,
-    "Nombre": "Círculo Literario",
-    "facultad-datos": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
-    "E-mail": "literatura@ug.edu.ec",
-    "Contraseña": "Letras#123",
-    "categoria": "Arte y Cultura",
-    "Club Activo?": "Activo"
-  },
-  {
-    "id": 3,
-    "Nombre": "EcoUG",
-    "facultad-datos": "CIENCIAS NATURALES",
-    "E-mail": "ecoug@ug.edu.ec",
-    "Contraseña": "Natur@l2025",
-    "categoria": "Medio Ambiente",
-    "Club Activo?": "No Activo"
-  },
-  {
-    "id": 4,
-    "Nombre": "UG Emprende",
-    "facultad-datos": "CIENCIAS ADMINISTRATIVAS",
-    "E-mail": "emprendedores@ug.edu.ec",
-    "Contraseña": "Emprend3#UG",
-    "categoria": "Emprendimiento",
-    "Club Activo?": "Activo"
-  },
-  {
-    "id": 5,
-    "Nombre": "Club de Debate",
-    "facultad-datos": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
-    "E-mail": "debateug@ug.edu.ec",
-    "Contraseña": "Deb@t3UG2025",
-    "categoria": "Formación Ciudadana",
-    "Club Activo?": "No Activo"
-  }
-], 
 
-  "facultad-datos": [
-    "ARQUITECTURA Y URBANISMO",
-    "CIENCIAS ADMINISTRATIVAS",
-    "CIENCIAS AGRARIAS",
-    "CIENCIAS ECONOMICAS",
-    "CIENCIAS MATEMATICAS Y FISICAS",
-    "CIENCIAS MEDICAS",
-    "CIENCIAS NATURALES",
-    "CIENCIAS PSICOLOGICAS",
-    "CIENCIAS QUIMICAS",
-    "COMUNICACION SOCIAL",
-    "CIENCIAS DE LA ACTIVIDAD FÍSICA",
-    "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
-    "INGENIERIA INDUSTRIAL",
-    "INGENIERIA QUIMICA",
-    "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
-    "MEDICINA VETERINARIA Y ZOOTECNIA",
-    "ODONTOLOGIA"
+  "clubCuentas": [
+    {
+      "id": 1,
+      "nombre": "Club de IA",
+      "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS",
+      "email": "roboticaia@ug.edu.ec",
+      "contrasena": "Rob0tic@2025",
+      "categoria": "Tecnología e Innovación",
+      "clubActivo": "Activo"
+    },
+
+    {
+      "id": 2,
+      "nombre": "Círculo Literario",
+      "facultadDatos": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
+      "email": "literatura@ug.edu.ec",
+      "contrasena": "Letras#123",
+      "categoria": "Arte y Cultura",
+      "clubActivo": "Activo"
+    },
+    {
+      "id": 3,
+      "nombre": "EcoUG",
+      "facultadDatos": "CIENCIAS NATURALES",
+      "email": "ecoug@ug.edu.ec",
+      "contrasena": "Natur@l2025",
+      "categoria": "Medio Ambiente",
+      "clubActivo": "No Activo"
+    },
+    {
+      "id": 4,
+      "nombre": "UG Emprende",
+      "facultadDatos": "CIENCIAS ADMINISTRATIVAS",
+      "email": "emprendedores@ug.edu.ec",
+      "contrasena": "Emprend3#UG",
+      "categoria": "Emprendimiento",
+      "clubActivo": "Activo"
+    },
+    {
+      "id": 5,
+      "nombre": "Club de Debate",
+      "facultadDatos": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
+      "email": "debateug@ug.edu.ec",
+      "contrasena": "Deb@t3UG2025",
+      "categoria": "Formación Ciudadana",
+      "clubActivo": "No Activo"
+    }
+  ],
+
+  "facultadDatos": [
+    
+    {"nombre":"ARQUITECTURA Y URBANISMO"},
+    {"nombre":"CIENCIAS ADMINISTRATIVAS"},
+    {"nombre":"CIENCIAS AGRARIAS"},
+    {"nombre":"CIENCIAS ECONOMICAS"},
+    {"nombre":"CIENCIAS MATEMATICAS Y FISICAS"},
+    {"nombre":"CIENCIAS MEDICAS"},
+    {"nombre":"CIENCIAS NATURALES"},
+    {"nombre":"CIENCIAS PSICOLOGICAS"},
+    {"nombre":"CIENCIAS QUIMICAS"},
+    {"nombre":"COMUNICACION SOCIAL"},
+    {"nombre":"CIENCIAS DE LA ACTIVIDAD FÍSICA"},
+    {"nombre":"FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION"},
+    {"nombre":"INGENIERIA INDUSTRIAL"},
+    {"nombre":"INGENIERIA QUIMICA"},
+    {"nombre":"JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS"},
+    {"nombre":"MEDICINA VETERINARIA Y ZOOTECNIA"},
+    {"nombre":"ODONTOLOGIA"}
   ], 
 
-  "categoria": [
-    "Medio Ambiente",
-    "Emprendimiento",
-    "Tecnología e Innovación",
-    "Salud",
-    "Arte y Cultura",
-    "Desarrollo Social"
+  "categoriaDatos": [
+    {"nombre":"Medio Ambiente"},
+    {"nombre":"Formación Ciudadana"},
+    {"nombre":"Emprendimiento"},
+    {"nombre":"Tecnología e Innovación"},
+    {"nombre":"Salud"},
+    {"nombre":"Arte y Cultura"},
+    {"nombre":"Desarrollo Social"}
   ]
 
 }
