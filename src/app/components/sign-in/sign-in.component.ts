@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, OnInit } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, FormControl, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
@@ -12,6 +12,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { FacultadDatos } from '../../models/facultadDatos';
 import { ServFacultadDatosService } from '../../services/SigninLogin/serv-facultad-datos.service';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-sign-in',
@@ -25,13 +26,15 @@ import { ServFacultadDatosService } from '../../services/SigninLogin/serv-facult
     MatStepperModule,
     MatIconModule,
   MatRadioModule,
-  MatSelectModule],
+  MatSelectModule,
+  NgIf,
+  NgFor],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit {
 
 facultadControl = new FormControl<FacultadDatos | null>(null, Validators.required);
   facultades: FacultadDatos[] = [];
@@ -46,11 +49,18 @@ facultadControl = new FormControl<FacultadDatos | null>(null, Validators.require
   errorMessage = signal('');
 
   constructor(private servicioFacultadDatos: ServFacultadDatosService) {
-    merge(this.email.statusChanges, this.email.valueChanges)
-    .pipe(takeUntilDestroyed())
-    .subscribe(() => this.updateErrorMessage());
 
-    
+  }
+
+  ngOnInit(): void {
+    this.servicioFacultadDatos.getFacultadDatos().subscribe({
+      next: (data) => {
+        this.facultades = data;
+      },
+      error: (err) => {
+        console.error('Error al obtener datos de facultades', err);
+      }
+    });
   }
 
   updateErrorMessage() { 
@@ -72,5 +82,8 @@ facultadControl = new FormControl<FacultadDatos | null>(null, Validators.require
   fifthFormGroup: FormGroup = this._formBuilder.group({fifthCtrl: ['']});
   sixthFormGroup: FormGroup = this._formBuilder.group({sixthCtrl: ['']});
   seventhFormGroup: FormGroup = this._formBuilder.group({seventhCtrl: ['']});
+
+
   }
+  
   

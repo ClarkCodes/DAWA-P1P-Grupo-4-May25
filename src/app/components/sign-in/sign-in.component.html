@@ -152,26 +152,30 @@
     </form>
   </mat-step>
 
-    <mat-step [stepControl]="seventhFormGroup">
-    <form [formGroup]="seventhFormGroup">
-      <ng-template matStepLabel><strong>Facultad</strong></ng-template>
-      <!-- <mat-form-field>
-    <mat-option>--</mat-option>
-    @for (facultad of facultades; track facultad) {
-      <mat-option [value]="facultad">{{facultad.name}}</mat-option>
-    }
-  </mat-select>
-  @if (facultadControl.hasError('required')) {
-    <mat-error>Por favor, selecione una facultad</mat-error>
-  }
-  <mat-hint>{{facultadControl.value?.sound}}</mat-hint>
-    </mat-form-field>-->
-      <div>
-        <button mat-button matStepperPrevious type="button">Atrás</button>
-        <button mat-button matStepperNext type="button">Siguiente</button>
-      </div>
-    </form>
-  </mat-step>
+   <mat-step [stepControl]="seventhFormGroup">
+  <form [formGroup]="seventhFormGroup">
+    <ng-template matStepLabel><strong>Facultad</strong></ng-template>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione una facultad</mat-label>
+      <mat-select formControlName="facultadControl" required>
+        <mat-option value="">--</mat-option>
+        <mat-option *ngFor="let facultad of facultades" [value]="facultad">
+          {{ facultad.nombre }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="seventhFormGroup.get('facultadControl')?.hasError('required')">
+        Elija una facultad
+      </mat-error>
+    </mat-form-field>
+
+    <div>
+      <button mat-button matStepperPrevious type="button">Atrás</button>
+      <button mat-button matStepperNext type="submit">Siguiente</button>
+    </div>
+  </form>
+</mat-step>
+
 
    <mat-step [stepControl]="fourthFormGroup">
     <form [formGroup]="fourthFormGroup">
