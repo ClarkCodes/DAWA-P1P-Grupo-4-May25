@@ -1,16 +1,71 @@
-<mat-toolbar>
-  <button mat-button class="home-button">
-    <p>Home</p>
-  </button>
-  <span></span>
-  <span class="example-spacer"></span>
-  <button mat-button class="signin-button">
-    <p>Registrarse</p>
-  </button>
-  <button mat-button class="login-button">
-    <p>Iniciar Sesión</p>
-  </button>
-</mat-toolbar>
+<header>
+  <mat-toolbar>
+    <a routerLink="/home" aria-label="Ir a Inicio">
+      <img src="/images/Logo_UG_EVENTOS_white.webp" alt="UG Eventos Logo" height="50px">
+    </a>
+    <span></span>
+    <span class="example-spacer"></span>
+    <a mat-button routerLink="/signin" aria-label="Registrarse" class="signin-button">
+      <span class="HeaderLinkButtonText">Registrarse</span>
+    </a>
+    <a mat-button routerLink="/login" aria-label="Iniciar Sesión" class="login-button">
+      <span class="HeaderLinkButtonText">Iniciar Sesión</span>
+    </a>
+  </mat-toolbar>
+</header>
 
+<main>
+  <router-outlet />
+</main>
 
-<router-outlet />
+<footer>
+  <div id="mainContainerId">
+    <div id="mainDivLeftId">
+      <div id="footerLogoDivId">
+        <a routerLink="/home" aria-label="Ir a Inicio">
+          <img src="/images/Logo_UG_EVENTOS_white.webp" alt="UG Eventos Logo" height="70px">
+        </a>
+      </div>
+      <div id="csLogoDivId">
+        <img src="/images/CARRERA DE SOFTWARE_LogoTotal_AJUSTADO AL CONTENIDO_400x70.webp" id="CSLogoImgId" alt="Carrera de Software Logo"/>
+      </div>
+    </div>
+    <div id="mainDivRightId">
+      <div id="footerMainSectionDivId">
+        <div id="enlacesUniversitariosDivId">
+          <h6>Enlaces Universitarios</h6>
+          <address><a class="TextLinksClass" href="https://servicioenlinea.ug.edu.ec/siug/Account/Login.aspx" target="_blank" rel="noopener" rel="noreferrer">SIUG</a></address>
+          <address><a class="TextLinksClass" href="https://campusvirtual2.ug.edu.ec/altlogin/index.html" target="_blank" rel="noopener" rel="noreferrer">Plataforma Moodle</a></address>
+          <address><a class="TextLinksClass" href="https://www.ug.edu.ec/" target="_blank" rel="noopener" rel="noreferrer">Universidad de Guayaquil</a></address>
+        </div>
+        <div id="externalResourcesDivId">
+          <div id="graphicalResourcesDivId">
+            <h6>Recursos Gráficos</h6>
+            <div id="pixabayLinkDivId">
+              <a href="https://pixabay.com/" target="_blank" rel="noopener" rel="noreferrer"><img src="/images/pixabay_logotype_light.svg" id="PixabayLogoId" height="30" alt="Pixabay Logo"/></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="copyrightSectionDivId">
+        <div id="copyrightCenterDivId">
+          <div id="copyrightCenterMainDivId">
+            <div id="UGLogoDivId">
+              <img src="/images/UG_LOGO_2023_SOLO_105x60.png" id="UGLogoImgId" alt="Universidad de Guayaquil Imagotipo Logo"/>
+            </div>
+            <div id="UniFaTextDivId">
+              <strong>Facultad de Ciencias Matemáticas y Físicas</strong>
+              <strong>Universidad de Guayaquil</strong>
+            </div>
+            <div id="FacultadLogoDivId">
+              <img src="/images/LOGO_FACULTAD_CIENCIAS_MATEMATICAS_Y_FISICAS_67x70.PNG" id="FCMFLogoImgId" alt="Facultad de Ciencias Matematicas y Fisicas Logo"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="copyrightLegendDivId">
+    <span>© 2025 Desarrollo de Aplicaciones Web Avanzado - GRUPO #4 - Ingeniería de Software - SOF-S-MA-7-2 Ciclo I</span>
+  </div>
+</footer>
