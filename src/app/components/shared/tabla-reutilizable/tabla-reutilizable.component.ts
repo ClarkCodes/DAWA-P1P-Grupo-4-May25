@@ -9,7 +9,7 @@ import { TablaReutilizableDataSource, TablaReutilizableItem } from './tabla-reut
   templateUrl: './tabla-reutilizable.component.html',
   styleUrl: './tabla-reutilizable.component.css',
   imports: [MatTableModule, MatPaginatorModule, MatSortModule],
-  exportAs: 'app-tabla-reutilizable',
+  exportAs: 'appTablaReutilizable',
 })
 export class TablaReutilizableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;

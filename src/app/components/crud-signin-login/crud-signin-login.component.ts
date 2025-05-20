@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { TablaReutilizableComponent } from '../shared/tabla-reutilizable/tabla-reutilizable.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+
 
 
 @Component({
   selector: 'app-crud-signin-login',
   standalone: true,
-  imports: [TablaReutilizableComponent, MatIconModule, MatButtonModule],
+  imports: [TablaReutilizableComponent],
   templateUrl: './crud-signin-login.component.html',
   styleUrl: './crud-signin-login.component.css'
 })
