@@ -1,55 +1,99 @@
  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+  <table mat-table [dataSource]="dataSource">
+    <!-- Nombre Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> NOMBRE </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editingRowId !== element.id; else editNombre">
+          {{ element.nombre }}
+        </ng-container>
+        <ng-template #editNombre>
+          <input matInput [formControl]="editForm.controls['nombre']" />
+        </ng-template>
+      </td>
+    </ng-container>
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> NOMBRE </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-      </ng-container>
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> CORREO </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editingRowId !== element.id; else editEmail">
+          {{ element.email }}
+        </ng-container>
+        <ng-template #editEmail>
+          <input matInput [formControl]="editForm.controls['email']" />
+        </ng-template>
+      </td>
+    </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> CORREO </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-      </ng-container>
+    <!-- Password Column -->
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef> CONTRASEÑA </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editingRowId !== element.id; else editPassword">
+          {{ element.password }}
+        </ng-container>
+        <ng-template #editPassword>
+          <input matInput [formControl]="editForm.controls['password']" type="text" />
+        </ng-template>
+      </td>
+    </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="password">
-        <th mat-header-cell *matHeaderCellDef> CONTRASEÑA </th>
-        <td mat-cell *matCellDef="let element"> {{element.password}} </td>
-      </ng-container>
+    <!-- Facultad Column -->
+    <ng-container matColumnDef="facultad">
+      <th mat-header-cell *matHeaderCellDef> FACULTAD </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editingRowId !== element.id; else editFacultad">
+          {{ element.facultad }}
+        </ng-container>
+        <ng-template #editFacultad>
+          <input matInput [formControl]="editForm.controls['facultad']" />
+        </ng-template>
+      </td>
+    </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="facultad">
-        <th mat-header-cell *matHeaderCellDef> FACULTAD </th>
-        <td mat-cell *matCellDef="let element"> {{element.facultad}} </td>
-      </ng-container>
+    <!-- Rol Column -->
+    <ng-container matColumnDef="rol">
+      <th mat-header-cell *matHeaderCellDef> ROL </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editingRowId !== element.id; else editRol">
+          {{ element.rol }}
+        </ng-container>
+        <ng-template #editRol>
+          <input matInput [formControl]="editForm.controls['rol']" />
+        </ng-template>
+      </td>
+    </ng-container>
 
-      <ng-container matColumnDef="rol">
-        <th mat-header-cell *matHeaderCellDef> ROL </th>
-        <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="actions" class="ActionsContainerClass">
-        <th mat-header-cell *matHeaderCellDef id="actionsHeaderId"> </th>
-        <td mat-cell *matCellDef="let element" class="ActionsCellClass">
-          <button mat-icon-button (click)="edit(element)" aria-label="Boton Editar" class="EditButtonClass">
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" class="ActionsCellClass">
+        <ng-container *ngIf="editingRowId !== element.id; else saveCancelButtons">
+          <button mat-icon-button (click)="startEdit(element)" aria-label="Botón Editar" class="EditButtonClass">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button (click)="delete(element)" aria-label="Boton Eliminar">
+          <button mat-icon-button (click)="delete(element)" aria-label="Botón Eliminar">
             <mat-icon>delete</mat-icon>
           </button>
-        </td>
-      </ng-container>
+        </ng-container>
+        <ng-template #saveCancelButtons>
+          <button mat-icon-button (click)="saveEdit()" aria-label="Botón Guardar">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button (click)="cancelEdit()" aria-label="Botón Cancelar">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </ng-template>
+      </td>
+    </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
-    <mat-paginator [pageSizeOptions]="[10, 15, 20]"
+  <mat-paginator [pageSizeOptions]="[10, 15, 20]"
                  showFirstLastButtons
                  aria-label="Select page of periodic elements">
-    </mat-paginator>
-  </div>
-
-
+  </mat-paginator>
+</div>

@@ -25,8 +25,8 @@
       <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Contraseña requerida</mat-error>
     </mat-form-field>
 
-    <div class="actions">
-      <a routerLink="/signin" class="Signin">Registrarse</a>
+    <div class="mat-button">
+     <a href="/signin" class="button-link">Registrarse</a>
     </div>
 
     <button mat-raised-button color="primary" class="submit-btn" type="submit" [disabled]="loginForm.invalid">
