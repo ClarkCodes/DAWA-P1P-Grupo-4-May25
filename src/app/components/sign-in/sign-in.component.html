@@ -159,18 +159,14 @@
   <form [formGroup]="seventhFormGroup">
     <ng-template matStepLabel><strong>Facultad</strong></ng-template>
 
-    <mat-form-field appearance="fill">
       <mat-label>Seleccione una facultad</mat-label>
-      <mat-select formControlName="facultadControl" required>
         <mat-option value="">--</mat-option>
         <mat-option *ngFor="let facultad of facultades" [value]="facultad">
           {{ facultad.nombre }}
         </mat-option>
-      </mat-select>
       <mat-error *ngIf="seventhFormGroup.get('facultadControl')?.hasError('required')">
         Elija una facultad
       </mat-error>
-    </mat-form-field>
 
     <div>
       <button mat-button matStepperPrevious type="button">Atrás</button>
