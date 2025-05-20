@@ -12,6 +12,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { FacultadDatos } from '../../models/facultadDatos';
 import { ServFacultadDatosService } from '../../services/SigninLogin/serv-facultad-datos.service';
+import { ServCategoriaDatosService } from '../../services/SigninLogin/serv-categoria-datos.service';
+import { CategoriaDatos } from '../../models/categoriaDatos';
 
 @Component({
   selector: 'app-sign-in',
@@ -37,6 +39,9 @@ export class SignInComponent implements OnInit {
 facultadControl = new FormControl<FacultadDatos | null>(null, Validators.required);
   facultades: FacultadDatos[] = [];
 
+  categoriaControl = new FormControl<CategoriaDatos | null>(null, Validators.required);
+  categorias: CategoriaDatos[] = [];
+
   hide = signal(true);
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
@@ -46,16 +51,25 @@ facultadControl = new FormControl<FacultadDatos | null>(null, Validators.require
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   errorMessage = signal('');
 
-  constructor(private servicioFacultadDatos: ServFacultadDatosService) {
+  constructor(private servicioFacultadDatos: ServFacultadDatosService, private servicioCategoriaDatos: ServCategoriaDatosService ) {
   }
 
   ngOnInit(): void {
      this.servicioFacultadDatos.getFacultadDatos().subscribe({
-      next: (data) => {
-        this.facultades = data;
+      next: (datafacultad) => {
+        this.facultades = datafacultad;
       },
       error: (err) => {
         console.error('Error al obtener datos de facultades', err);
+      }
+    });
+
+    this.servicioCategoriaDatos.getCategoriaDatos().subscribe({
+      next: (datacategoria) => {
+        this.categorias = datacategoria;
+      },
+      error: (err) => {
+        console.error('Error al obtener datos de categorías', err);
       }
     });
   }
