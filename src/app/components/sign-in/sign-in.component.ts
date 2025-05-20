@@ -12,7 +12,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { FacultadDatos } from '../../models/facultadDatos';
 import { ServFacultadDatosService } from '../../services/SigninLogin/serv-facultad-datos.service';
-import { NgIf, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-sign-in',
@@ -27,8 +26,7 @@ import { NgIf, NgFor } from '@angular/common';
     MatIconModule,
     MatRadioModule,
     MatSelectModule,
-    NgIf,
-    NgFor],
+],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
   templateUrl: './sign-in.component.html',
@@ -49,11 +47,10 @@ facultadControl = new FormControl<FacultadDatos | null>(null, Validators.require
   errorMessage = signal('');
 
   constructor(private servicioFacultadDatos: ServFacultadDatosService) {
-
   }
 
   ngOnInit(): void {
-    this.servicioFacultadDatos.getFacultadDatos().subscribe({
+     this.servicioFacultadDatos.getFacultadDatos().subscribe({
       next: (data) => {
         this.facultades = data;
       },
@@ -82,8 +79,6 @@ facultadControl = new FormControl<FacultadDatos | null>(null, Validators.require
   fifthFormGroup: FormGroup = this._formBuilder.group({fifthCtrl: ['']});
   sixthFormGroup: FormGroup = this._formBuilder.group({sixthCtrl: ['']});
   seventhFormGroup: FormGroup = this._formBuilder.group({seventhCtrl: ['']});
-
-
   }
   
   

@@ -110,22 +110,22 @@
     </form>
   </mat-step>
 
-  <mat-step [stepControl]="seventhFormGroup">
+ <mat-step [stepControl]="seventhFormGroup">
   <form [formGroup]="seventhFormGroup">
     <ng-template matStepLabel><strong>Facultad</strong></ng-template>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Seleccione una facultad</mat-label>
-      <mat-select formControlName="facultadControl" required>
-        <mat-option value="">--</mat-option>
-        <mat-option *ngFor="let facultad of facultades" [value]="facultad">
-          {{ facultad.nombre }}
-        </mat-option>
+      <mat-form-field appearance="fill">
+  <mat-label>Facultad</mat-label>
+  <mat-select [formGroup]="seventhFormGroup" required>
+    <mat-option>--</mat-option>
+    @for (facultad of facultades; track facultad) {
+          <mat-option [value]="facultad">{{ facultad.nombre }}</mat-option>
+        }
       </mat-select>
-      <mat-error *ngIf="seventhFormGroup.get('facultadControl')?.hasError('required')">
-        Elija una facultad
-      </mat-error>
-    </mat-form-field>
+      @if (seventhFormGroup.get('seventhFormGroup')?.hasError('required')) {
+        <mat-error>Elija una facultad</mat-error>
+  }
+</mat-form-field>
 
     <div>
       <button mat-button matStepperPrevious type="button">Atrás</button>
@@ -133,6 +133,7 @@
     </div>
   </form>
 </mat-step>
+
 
 </mat-vertical-stepper>
   </mat-tab>
@@ -155,18 +156,22 @@
     </form>
   </mat-step>
 
-   <mat-step [stepControl]="seventhFormGroup">
+  <mat-step [stepControl]="seventhFormGroup">
   <form [formGroup]="seventhFormGroup">
     <ng-template matStepLabel><strong>Facultad</strong></ng-template>
 
-      <mat-label>Seleccione una facultad</mat-label>
-        <mat-option value="">--</mat-option>
-        <mat-option *ngFor="let facultad of facultades" [value]="facultad">
-          {{ facultad.nombre }}
-        </mat-option>
-      <mat-error *ngIf="seventhFormGroup.get('facultadControl')?.hasError('required')">
-        Elija una facultad
-      </mat-error>
+      <mat-form-field appearance="fill">
+  <mat-label>Facultad</mat-label>
+  <mat-select [formGroup]="seventhFormGroup" required>
+    <mat-option>--</mat-option>
+    @for (facultad of facultades; track facultad) {
+          <mat-option [value]="facultad">{{ facultad.nombre }}</mat-option>
+        }
+      </mat-select>
+      @if (seventhFormGroup.get('seventhFormGroup')?.hasError('required')) {
+        <mat-error>Elija una facultad</mat-error>
+  }
+</mat-form-field>
 
     <div>
       <button mat-button matStepperPrevious type="button">Atrás</button>
@@ -174,6 +179,7 @@
     </div>
   </form>
 </mat-step>
+
 
 
    <mat-step [stepControl]="fourthFormGroup">
@@ -269,18 +275,31 @@
   </ng-template>
   <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'500ms'">
 
-    <mat-step [stepControl]="seventhFormGroup">
-    <form [formGroup]="seventhFormGroup">
-      <ng-template matStepLabel><strong>Nombre</strong></ng-template>
-       <mat-option value="">--</mat-option>
-    @for (facultad of facultades; track facultadControl) {
-      <mat-option [value]="facultades">{{ facultad.nombre }}</mat-option>
-    }
-  @if (facultadControl.hasError('required')) {
-    <mat-error>Por favor selecciona una facultad</mat-error>
+   <mat-step [stepControl]="seventhFormGroup">
+  <form [formGroup]="seventhFormGroup">
+    <ng-template matStepLabel><strong>Facultad</strong></ng-template>
+
+      <mat-form-field appearance="fill">
+  <mat-label>Facultad</mat-label>
+  <mat-select [formGroup]="seventhFormGroup" required>
+    <mat-option>--</mat-option>
+    @for (facultad of facultades; track facultad) {
+          <mat-option [value]="facultad">{{ facultad.nombre }}</mat-option>
+        }
+      </mat-select>
+      @if (seventhFormGroup.get('seventhFormGroup')?.hasError('required')) {
+        <mat-error>Elija una facultad</mat-error>
   }
- </form>
-  </mat-step>
+</mat-form-field>
+
+    <div>
+      <button mat-button matStepperPrevious type="button">Atrás</button>
+      <button mat-button matStepperNext type="submit">Siguiente</button>
+    </div>
+  </form>
+</mat-step>
+
+
 
 
   <mat-step [stepControl]="secondFormGroup">
