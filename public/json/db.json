@@ -114,7 +114,7 @@
     "email": "kevincarbos@ug.edu.ec",
     "password": "kevin001",
     "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-    "rol": "estudiante"
+    "rol": "ESTUDIANTE"
   },
   {
     "id": 2,
@@ -122,7 +122,7 @@
     "email": "nicolelemay@ug.edu.ec",
     "password": "nicole456",
     "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-    "rol": "estudiante"
+    "rol": "ESTUDIANTE"
   },
   {
     "id": 3,
@@ -130,7 +130,7 @@
     "email": "wilsonortiza@ug.edu.ec",
     "password": "wilson789",
     "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-    "rol": "estudiante"
+    "rol": "ESTUDIANTE"
   },
   {
     "id": 4,
@@ -138,7 +138,7 @@
     "email": "joselynesarmientoa@ug.edu.ec",
     "password": "joselyne012",
     "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-    "rol": "estudiante"
+    "rol": "ESTUDIANTE"
   },
   {
     "id": 5,
@@ -146,7 +146,7 @@
     "email": "fidelvelasquezm@ug.edu.ec",
     "password": "fidel345",
     "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-    "rol": "estudiante"
+    "rol": "ESTUDIANTE"
   },
   {
     "id": 6,
@@ -154,7 +154,7 @@
     "email": "fcmf@ug.edu.ec",
     "password": "FCMF000",
     "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-    "rol": "facultad"
+    "rol": "FACULTAD"
   },
 
    {
@@ -163,7 +163,7 @@
     "email": "c-ia@ug.edu.ec",
     "password": "c-ia000",
     "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-    "rol": "club"
+    "rol": "CLUB"
   }
 
 ],
@@ -187,14 +187,5 @@
     {"nombre":"JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS"},
     {"nombre":"MEDICINA VETERINARIA Y ZOOTECNIA"},
     {"nombre":"ODONTOLOGIA"}
-  ],
-  "categoriaDatos": [
-    {"nombre":"Medio Ambiente"},
-    {"nombre":"Formación Ciudadana"},
-    {"nombre":"Emprendimiento"},
-    {"nombre":"Tecnología e Innovación"},
-    {"nombre":"Salud"},
-    {"nombre":"Arte y Cultura"},
-    {"nombre":"Desarrollo Social"}
   ]
 }

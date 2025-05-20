@@ -4,5 +4,5 @@ export interface Cuentas {
   email: string;
   password: string;
   facultad: string;
-  rol: 'estudiante' | 'facultad' | 'club';
+  rol: 'ESTUDIANTE' | 'FACULTAD' | 'CLUB';
 }

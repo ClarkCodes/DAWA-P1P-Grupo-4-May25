@@ -2,7 +2,6 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { TablaReutilizableComponent } from '../shared/tabla-reutilizable/tabla-reutilizable.component';
 
 
-
 @Component({
   selector: 'app-crud-signin-login',
   standalone: true,
