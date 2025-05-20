@@ -1,5 +1,5 @@
 {
-  "facultades":[
+  "facultades": [
     {
       "id": 1,
       "nombre": "Ciencias Matemáticas y Físicas",
@@ -43,7 +43,6 @@
       "telefono": "042281148"
     }
   ],
-
   "estudianteCuentas": [
     {
       "id": 1,
@@ -96,7 +95,6 @@
       "facultadDatos": "CIENCIAS ECONOMICAS"
     }
   ],
-
   "facultadCuentas": [
     {
       "id": 1,
@@ -139,8 +137,6 @@
       "modalidad": "presencial"
     }
   ],
-
-
   "clubCuentas": [
     {
       "id": 1,
@@ -151,7 +147,6 @@
       "categoria": "Tecnología e Innovación",
       "clubActivo": "Activo"
     },
-
     {
       "id": 2,
       "nombre": "Círculo Literario",
@@ -189,36 +184,118 @@
       "clubActivo": "No Activo"
     }
   ],
-
   "facultadDatos": [
-    
-    {"nombre":"ARQUITECTURA Y URBANISMO"},
-    {"nombre":"CIENCIAS ADMINISTRATIVAS"},
-    {"nombre":"CIENCIAS AGRARIAS"},
-    {"nombre":"CIENCIAS ECONOMICAS"},
-    {"nombre":"CIENCIAS MATEMATICAS Y FISICAS"},
-    {"nombre":"CIENCIAS MEDICAS"},
-    {"nombre":"CIENCIAS NATURALES"},
-    {"nombre":"CIENCIAS PSICOLOGICAS"},
-    {"nombre":"CIENCIAS QUIMICAS"},
-    {"nombre":"COMUNICACION SOCIAL"},
-    {"nombre":"CIENCIAS DE LA ACTIVIDAD FÍSICA"},
-    {"nombre":"FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION"},
-    {"nombre":"INGENIERIA INDUSTRIAL"},
-    {"nombre":"INGENIERIA QUIMICA"},
-    {"nombre":"JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS"},
-    {"nombre":"MEDICINA VETERINARIA Y ZOOTECNIA"},
-    {"nombre":"ODONTOLOGIA"}
-  ], 
-
+    {
+      "nombre": "ARQUITECTURA Y URBANISMO"
+    },
+    {
+      "nombre": "CIENCIAS ADMINISTRATIVAS"
+    },
+    {
+      "nombre": "CIENCIAS AGRARIAS"
+    },
+    {
+      "nombre": "CIENCIAS ECONOMICAS"
+    },
+    {
+      "nombre": "CIENCIAS MATEMATICAS Y FISICAS"
+    },
+    {
+      "nombre": "CIENCIAS MEDICAS"
+    },
+    {
+      "nombre": "CIENCIAS NATURALES"
+    },
+    {
+      "nombre": "CIENCIAS PSICOLOGICAS"
+    },
+    {
+      "nombre": "CIENCIAS QUIMICAS"
+    },
+    {
+      "nombre": "COMUNICACION SOCIAL"
+    },
+    {
+      "nombre": "CIENCIAS DE LA ACTIVIDAD FÍSICA"
+    },
+    {
+      "nombre": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION"
+    },
+    {
+      "nombre": "INGENIERIA INDUSTRIAL"
+    },
+    {
+      "nombre": "INGENIERIA QUIMICA"
+    },
+    {
+      "nombre": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS"
+    },
+    {
+      "nombre": "MEDICINA VETERINARIA Y ZOOTECNIA"
+    },
+    {
+      "nombre": "ODONTOLOGIA"
+    }
+  ],
   "categoriaDatos": [
-    {"nombre":"Medio Ambiente"},
-    {"nombre":"Formación Ciudadana"},
-    {"nombre":"Emprendimiento"},
-    {"nombre":"Tecnología e Innovación"},
-    {"nombre":"Salud"},
-    {"nombre":"Arte y Cultura"},
-    {"nombre":"Desarrollo Social"}
+    {
+      "nombre": "Medio Ambiente"
+    },
+    {
+      "nombre": "Formación Ciudadana"
+    },
+    {
+      "nombre": "Emprendimiento"
+    },
+    {
+      "nombre": "Tecnología e Innovación"
+    },
+    {
+      "nombre": "Salud"
+    },
+    {
+      "nombre": "Arte y Cultura"
+    },
+    {
+      "nombre": "Desarrollo Social"
+    }
+  ],
+  "comentarios": [
+    {
+      "id": "0f6a",
+      "estudianteNombre": "Susana Gonzalez",
+      "nombreEvento": "evento3",
+      "experiencia": "5",
+      "mensaje": "Excelente ambiente y atención por parte del equipo, me sentí muy bien recibido y cómodo durante toda la jornada.",
+      "fecha": "2025-05-20T03:48:39.169Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "fdd6",
+      "estudianteNombre": "Minerva Lopez",
+      "nombreEvento": "evento4",
+      "experiencia": "2",
+      "mensaje": "El evento comenzó con retraso y la información proporcionada fue confusa, lo que generó desorientación entre los participantes.",
+      "fecha": "2025-05-20T03:49:13.466Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "0862",
+      "estudianteNombre": "sully Vera",
+      "nombreEvento": "evento1",
+      "experiencia": "3",
+      "mensaje": "El espacio estaba demasiado saturado y el sonido no fue adecuado, dificultando la experiencia general.",
+      "fecha": "2025-05-20T03:52:01.291Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "e94a",
+      "estudianteNombre": "Juan Carlos Mendez",
+      "nombreEvento": "evento2",
+      "experiencia": "4",
+      "mensaje": "Me encantó la oportunidad de conocer a otros profesionales de mi industria. Los talleres fueron muy útiles",
+      "fecha": "2025-05-20T04:24:36.796Z",
+      "aceptoTerminos": true
+    }
   ]
-
 }
