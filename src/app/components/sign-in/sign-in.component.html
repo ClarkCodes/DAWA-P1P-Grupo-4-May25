@@ -1,72 +1,60 @@
 <div class="signin-container">
-  <form class="signin-form" (submit)="$event.preventDefault()">
+  <form class="signin-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <h2>Registro de usuario</h2>
 
-    <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Nombre</mat-label>
-    <input matInput placeholder="Ex. Kevin">
-  </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Ex. Kevin" formControlName="nombre">
+    </mat-form-field>
 
-  <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label>
-    <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-    @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-      <mat-error>Please enter a valid email address</mat-error>
-    }
-    @if (emailFormControl.hasError('required')) {
-      <mat-error>Email is <strong>required</strong></mat-error>
-    }
-  </mat-form-field>
-</form>
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" placeholder="email">
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
 
-   <div class="example-container">
-  <mat-form-field>
-    <mat-label>Enter your password</mat-label>
-    <input matInput [type]="hide() ? 'password' : 'text'" />
-    <button
-      mat-icon-button
-      matSuffix
-      (click)="clickEvent($event)"
-      [attr.aria-label]="'Hide password'"
-      [attr.aria-pressed]="hide()"
-    >
-      <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide() ? 'password' : 'text'" placeholder="password" formControlName="password"/>
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()"
+      >
+        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
 
-  <div>
-    
-  </div>
-      
-  <div>
     <mat-form-field appearance="fill">
-  <mat-label>Facultad</mat-label>
-  <mat-select [formControl]="facultadControl" required>
-    <mat-option>--</mat-option>
-    @for (facultad of facultades; track facultad) {
-          <mat-option [value]="facultad">{{ facultad.nombre }}</mat-option>
+      <mat-label>Facultad</mat-label>
+      <mat-select formControlName="facultad" required>
+        <mat-option>--</mat-option>
+         @for (facultad of facultades; track facultad) {
+          <mat-option [value]="facultad.nombre">{{ facultad.nombre }}</mat-option>
         }
       </mat-select>
       @if (facultadControl.hasError('required')) {
         <mat-error>Elija una Facultad</mat-error>
   }
-  </mat-form-field>
-  </div>
 
-  <div>
+    </mat-form-field>
+
     <label id="example-radio-group-label">Rol de Usuario</label>
-  </div>
+    <mat-radio-group formControlName="rol" aria-label="Select an option">
+      <mat-radio-button value="ESTUDIANTE">Estudiante</mat-radio-button>
+      <mat-radio-button value="CLUB">Club Estudiantil</mat-radio-button>
+      <mat-radio-button value="FACULTAD">Facultad</mat-radio-button>
+    </mat-radio-group>
 
-  <div>
-  <mat-radio-group aria-label="Select an option">
-  <mat-radio-button value="estudiante">Estudiante</mat-radio-button>
-  <mat-radio-button value="club">Club Estudiantil</mat-radio-button>
-  <mat-radio-button value="facultad">Facultad</mat-radio-button>
-</mat-radio-group>
-  </div>
-<section>
-  <div class="example-button-row">
-    <button mat-flat-button>Aceptar</button>
-  </div>
+    <div class="example-button-row">
+      <button mat-flat-button type="submit">Aceptar</button>
+    </div>
+  </form>
+</div>
