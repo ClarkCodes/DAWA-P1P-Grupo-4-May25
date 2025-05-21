@@ -1,21 +1,4 @@
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: radial-gradient(circle, #ffffff 0%, #bee0ff 20%, #fffbfb 100%);
 
-}
-
-.login-container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  -webkit-backdrop-filter: blur( 4px );
-  backdrop-filter: blur( 4px );
-
-}
 
 .login-form {
   background-color: rgba(247, 247, 247, 0.9);
@@ -27,6 +10,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+   margin: 32px auto;
+  padding: 32px;
 }
 
 .login-form h2 {
