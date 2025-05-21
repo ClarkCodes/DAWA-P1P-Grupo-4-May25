@@ -1,7 +1,7 @@
 {
   "facultades": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Ciencias Matemáticas y Físicas",
       "direccion": "Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
       "horarioAtencion": [
@@ -22,7 +22,7 @@
       "telefono": "042396881"
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Ciencias Médicas",
       "direccion": "Av. Kennedy y Av. Delta, Universidad de Guayaquil - Ciudadela Universitaria",
       "horarioAtencion": [
@@ -184,57 +184,210 @@
       "clubActivo": "No Activo"
     }
   ],
+  "clubes": [
+    {
+      "id": "1",
+      "titulo": "Torneo de Ajedrez Universitario",
+      "descripcion": "Participa en el torneo anual de ajedrez organizado por el Club de Ajedrez.",
+      "categoria": "Concurso",
+      "fecha": "2025-06-10",
+      "esGratuito": true,
+      "costo": 0,
+      "cupoMaximo": 50,
+      "lugar": "Sala de Conferencias - Edificio B",
+      "nombreClub": "Club de Ajedrez",
+      "enlaceInscripcion": "https://forms.gle/ajedrez2025",
+      "aficheUrl": "https://universidad.edu.pe/imgs/ajedrez2025.jpg",
+      "etiquetas": [
+        "ajedrez",
+        "competencia",
+        "estrategia"
+      ]
+    },
+    {
+      "id": "2",
+      "titulo": "Taller de Robótica",
+      "descripcion": "Aprende a construir tu primer robot con Arduino.",
+      "categoria": "Taller",
+      "fecha": "2025-06-18",
+      "esGratuito": false,
+      "costo": 15,
+      "cupoMaximo": 30,
+      "lugar": "Laboratorio de Electrónica - Edificio D",
+      "nombreClub": "Club de Robótica",
+      "enlaceInscripcion": "https://forms.gle/robotica2025",
+      "aficheUrl": "https://universidad.edu.pe/imgs/robotica2025.png",
+      "etiquetas": [
+        "robotica",
+        "arduino",
+        "ingenieria"
+      ]
+    },
+    {
+      "id": "3",
+      "titulo": "Cine Foro: El impacto del cambio climático",
+      "descripcion": "Proyección de documental y discusión guiada con expertos.",
+      "categoria": "Charla",
+      "fecha": "2025-06-22",
+      "esGratuito": true,
+      "costo": 0,
+      "cupoMaximo": 100,
+      "lugar": "Auditorio Central",
+      "nombreClub": "Club de Ecología",
+      "enlaceInscripcion": "https://forms.gle/cineclima2025",
+      "aficheUrl": "https://universidad.edu.pe/imgs/cineclima.jpg",
+      "etiquetas": [
+        "medio ambiente",
+        "cine",
+        "conciencia"
+      ]
+    },
+    {
+      "id": "4",
+      "titulo": "Feria de Proyectos Tecnológicos",
+      "descripcion": "Exposición de proyectos realizados por estudiantes de ingeniería y tecnología.",
+      "categoria": "Exposición",
+      "fecha": "2025-07-01",
+      "esGratuito": true,
+      "costo": 0,
+      "cupoMaximo": 300,
+      "lugar": "Plaza Tech - Campus Principal",
+      "nombreClub": "Club de Innovación",
+      "enlaceInscripcion": "https://forms.gle/feriaproyectos2025",
+      "aficheUrl": "https://universidad.edu.pe/imgs/feria-tech.jpg",
+      "etiquetas": [
+        "tecnología",
+        "innovación",
+        "proyectos"
+      ]
+    }
+  ],
+  "Cuentas": [
+    {
+      "id": "1",
+      "nombre": "CARBO SANDOVAL KEVIN RUBEN",
+      "email": "kevincarbos@ug.edu.ec",
+      "password": "kevin00001",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "2",
+      "nombre": "LEMA YAGUARI NICOLE ODALYS",
+      "email": "nicolelemay@ug.edu.ec",
+      "password": "nicole456",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "3",
+      "nombre": "ORTIZ AGUIRRE WILSON FABRICIO",
+      "email": "wilsonortiza@ug.edu.ec",
+      "password": "wilson789",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "4",
+      "nombre": "SARMIENTO AMAYA JOSELYNE BELEN",
+      "email": "joselynesarmientoa@ug.edu.ec",
+      "password": "joselyne012",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "5",
+      "nombre": "VELASQUEZ MENDOZA FIDEL ERNESTO",
+      "email": "fidelvelasquezm@ug.edu.ec",
+      "password": "fidel345",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "7",
+      "nombre": "club",
+      "email": "c-ia@ug.edu.ec",
+      "password": "c-ia000",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "CLUB"
+    },
+    {
+      "id": "4081",
+      "nombre": "testa",
+      "email": "testa1@gmail.com",
+      "password": "testa123",
+      "facultad": "CIENCIAS ECONOMICAS",
+      "rol": "FACULTAD"
+    }
+  ],
   "facultadDatos": [
     {
-      "nombre": "ARQUITECTURA Y URBANISMO"
+      "nombre": "ARQUITECTURA Y URBANISMO",
+      "id": "adc4"
     },
     {
-      "nombre": "CIENCIAS ADMINISTRATIVAS"
+      "nombre": "CIENCIAS ADMINISTRATIVAS",
+      "id": "104a"
     },
     {
-      "nombre": "CIENCIAS AGRARIAS"
+      "nombre": "CIENCIAS AGRARIAS",
+      "id": "a720"
     },
     {
-      "nombre": "CIENCIAS ECONOMICAS"
+      "nombre": "CIENCIAS ECONOMICAS",
+      "id": "6d91"
     },
     {
-      "nombre": "CIENCIAS MATEMATICAS Y FISICAS"
+      "nombre": "CIENCIAS MATEMATICAS Y FISICAS",
+      "id": "abf8"
     },
     {
-      "nombre": "CIENCIAS MEDICAS"
+      "nombre": "CIENCIAS MEDICAS",
+      "id": "a7c0"
     },
     {
-      "nombre": "CIENCIAS NATURALES"
+      "nombre": "CIENCIAS NATURALES",
+      "id": "ccf8"
     },
     {
-      "nombre": "CIENCIAS PSICOLOGICAS"
+      "nombre": "CIENCIAS PSICOLOGICAS",
+      "id": "300f"
     },
     {
-      "nombre": "CIENCIAS QUIMICAS"
+      "nombre": "CIENCIAS QUIMICAS",
+      "id": "92e8"
     },
     {
-      "nombre": "COMUNICACION SOCIAL"
+      "nombre": "COMUNICACION SOCIAL",
+      "id": "4324"
     },
     {
-      "nombre": "CIENCIAS DE LA ACTIVIDAD FÍSICA"
+      "nombre": "CIENCIAS DE LA ACTIVIDAD FÍSICA",
+      "id": "3996"
     },
     {
-      "nombre": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION"
+      "nombre": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
+      "id": "0ee6"
     },
     {
-      "nombre": "INGENIERIA INDUSTRIAL"
+      "nombre": "INGENIERIA INDUSTRIAL",
+      "id": "d09f"
     },
     {
-      "nombre": "INGENIERIA QUIMICA"
+      "nombre": "INGENIERIA QUIMICA",
+      "id": "9a3c"
     },
     {
-      "nombre": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS"
+      "nombre": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
+      "id": "33a7"
     },
     {
-      "nombre": "MEDICINA VETERINARIA Y ZOOTECNIA"
+      "nombre": "MEDICINA VETERINARIA Y ZOOTECNIA",
+      "id": "15b7"
     },
     {
-      "nombre": "ODONTOLOGIA"
+      "nombre": "ODONTOLOGIA",
+      "id": "cfe1"
     }
   ],
   "categoriaDatos": [
