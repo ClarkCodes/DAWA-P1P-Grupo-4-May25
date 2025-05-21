@@ -1,0 +1,110 @@
+<h2 class="Titulo">Comentarios del Evento</h2>
+
+<!-- FORMULARIO -->
+<div class="form-contenedor">
+<mat-dialog-content class="mat-typography">
+<form [formGroup]="comentarioForm" (ngSubmit)="onSubmit()">
+
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>ID</mat-label>
+  <input matInput formControlName="id" readonly />
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="width: 100%;">
+<mat-label>Tu nombre</mat-label>
+<input matInput formControlName="estudianteNombre" />
+<mat-error *ngIf="comentarioForm.get('estudianteNombre')?.touched && comentarioForm.get('estudianteNombre')?.invalid">
+  <ng-container *ngIf="comentarioForm.get('estudianteNombre')?.errors?.['required']">
+  El nombre es obligatorio
+  </ng-container>
+  <ng-container *ngIf="comentarioForm.get('estudianteNombre')?.errors?.['maxlength']">
+  El nombre no puede exceder 50 caracteres
+  </ng-container>
+  <ng-container *ngIf="comentarioForm.get('estudianteNombre')?.errors?.['nombreInvalido']">
+  El nombre solo puede contener letras y espacios
+  </ng-container>
+</mat-error>
+</mat-form-field>
+
+<mat-form-field>
+<mat-label>Nombre del Evento</mat-label>
+<mat-select formControlName="nombreEvento" required>
+    <mat-option value="evento1">Evento 1 - Conferencia Angular</mat-option>
+    <mat-option value="evento2">Evento 2 - Taller de TypeScript</mat-option>
+    <mat-option value="evento3">Evento 3 - Meetup de Desarrollo Web</mat-option>
+    <mat-option value="evento4">Evento 4 - Hackathon 2025</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-label>Selecciona del 1 al 5 como fue tu experiencia:</mat-label><br>
+<mat-radio-group formControlName="experiencia" appearance="outline" style="width: 100%;">
+<mat-radio-button value="1">1</mat-radio-button>
+<mat-radio-button value="2">2</mat-radio-button>
+<mat-radio-button value="3">3</mat-radio-button>
+<mat-radio-button value="4">4</mat-radio-button>
+<mat-radio-button value="5">5</mat-radio-button>
+</mat-radio-group><br><br>
+
+
+<mat-form-field appearance="outline" style="width: 100%;">
+<mat-label>Comentario</mat-label>
+<textarea matInput formControlName="mensaje" rows="3"></textarea>
+<mat-error *ngIf="comentarioForm.get('mensaje')?.touched && comentarioForm.get('mensaje')?.invalid">
+El comentario es obligatorio
+</mat-error>
+</mat-form-field>
+
+<mat-checkbox formControlName="aceptoTerminos">
+Acepto que mi comentario sea público y respetuoso
+</mat-checkbox>
+
+<div style="margin-top: 16px;">
+  <button mat-raised-button class="Registro" type="submit" [disabled]="comentarioForm.invalid">
+    {{ editandoComentario ? 'Actualizar Comentario' : 'Enviar Comentario' }}
+  </button>
+
+  <button *ngIf="editandoComentario" class="Cancelar" mat-button type="button" (click)="cancelarEdicion()" style="margin-left: 8px;">
+    Cancelar Edición
+  </button>
+</div>
+</form>
+</mat-dialog-content>
+</div>
+<br /><br> 
+
+
+
+
+<!-- FILTRO DE BÚSQUEDA
+<mat-form-field class="filtro" appearance="outline" style="width: 100%;">
+  <mat-label>Buscar comentarios</mat-label>
+  <input matInput [(ngModel)]="filtroTexto" (ngModelChange)="aplicarFiltro()" placeholder="Nombre del estudiante" />
+</mat-form-field>-->
+<div class="SearchContainer">
+  <form class="ComentarioSearchForm">
+    <mat-form-field appearance="outline" class="FormElement">
+      <mat-label> Buscar </mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput type="search" placeholder="Ej.: Nombre del estudiante" #searchInput (keyup)="search( searchInput )">
+    </mat-form-field>
+  </form>
+
+<!-- LISTA DE COMENTARIOS -->
+<section class="Comentario">
+  <div *ngFor="let c of comentarios" style="border-bottom: 1px solid #ccc; padding: 8px 0;">
+    <div>
+      <strong>{{ c.estudianteNombre }}</strong>
+      <small>({{ c.fecha | date: 'short' }})</small>
+    </div>
+    <div><em><strong>Evento: </strong></em> {{ c.nombreEvento }}</div>
+    <div><em><strong>Experiencia: </strong></em> {{ c.experiencia }}</div>
+    <div><em><strong>Comentario: </strong></em> {{ c.mensaje }}</div>
+    <div><em><strong>Aceptó términos: </strong></em> {{ c.aceptoTerminos ? 'Sí' : 'No' }}</div>
+    <div style="margin-top: 8px;" >
+      <button mat-button class="EditarComentario" (click)="editarComentario(c)">Editar</button>
+      <button mat-button class="EliminarComentario" (click)="eliminarComentario(c)">Eliminar</button>
+    </div>
+  </div>
+</section>
+
+
