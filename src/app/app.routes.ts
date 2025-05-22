@@ -5,6 +5,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { PaginaNoEncontradaComponent } from './components/pagina-no-encontrada/pagina-no-encontrada.component';
 import { CrudFacultadesComponent } from './components/crud-facultades/crud-facultades.component';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
+import { EstudiantesComponent } from './components/estudiantes/estudiantes.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'signin', component: SignInComponent },
   { path: 'crud-facultades', component: CrudFacultadesComponent },
   { path: 'comentarios', component: ComentariosComponent },
+  { path: 'estudiantes', component: EstudiantesComponent },
   { path: '404', component: PaginaNoEncontradaComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "**", redirectTo:"404" },

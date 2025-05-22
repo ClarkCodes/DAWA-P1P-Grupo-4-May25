@@ -1,7 +1,7 @@
 {
   "facultades": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Ciencias Matemáticas y Físicas",
       "direccion": "Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
       "horarioAtencion": [
@@ -22,7 +22,7 @@
       "telefono": "042396881"
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Ciencias Médicas",
       "direccion": "Av. Kennedy y Av. Delta, Universidad de Guayaquil - Ciudadela Universitaria",
       "horarioAtencion": [
@@ -45,7 +45,7 @@
   ],
   "estudianteCuentas": [
     {
-      "id": 1,
+      "id": "1",
       "primerNombre": "Juan",
       "primerApellido": "Pérez",
       "segundoApellido": "Gómez",
@@ -55,7 +55,7 @@
       "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS"
     },
     {
-      "id": 2,
+      "id": "2",
       "primerNombre": "María",
       "primerApellido": "López",
       "segundoApellido": "Martínez",
@@ -65,7 +65,7 @@
       "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS"
     },
     {
-      "id": 3,
+      "id": "3",
       "primerNombre": "Carlos",
       "primerApellido": "Ramírez",
       "segundoApellido": "Sánchez",
@@ -75,7 +75,7 @@
       "facultadDatos": "CIENCIAS ADMINISTRATIVAS"
     },
     {
-      "id": 4,
+      "id": "4",
       "primerNombre": "Laura",
       "primerApellido": "Torres",
       "segundoApellido": "Jiménez",
@@ -85,7 +85,7 @@
       "facultadDatos": "COMUNICACION SOCIAL"
     },
     {
-      "id": 5,
+      "id": "5",
       "primerNombre": "Alex",
       "primerApellido": "Fernández",
       "segundoApellido": "Ruiz",
@@ -97,7 +97,7 @@
   ],
   "facultadCuentas": [
     {
-      "id": 1,
+      "id": "1",
       "facultadDatos": "CIENCIAS QUIMICAS",
       "siglas": "FIQ",
       "email": "FIQ@ug.edu.ec",
@@ -105,7 +105,7 @@
       "modalidad": "presencial"
     },
     {
-      "id": 2,
+      "id": "2",
       "facultadDatos": "ARQUITECTURA Y URBANISMO",
       "siglas": "FAU",
       "email": "FAU@ug.edu.ec",
@@ -113,7 +113,7 @@
       "modalidad": "virtual"
     },
     {
-      "id": 3,
+      "id": "3",
       "facultadDatos": "CIENCIAS NATURALES",
       "siglas": "FCN",
       "email": "FCN@ug.edu.ec",
@@ -121,7 +121,7 @@
       "modalidad": "presencial"
     },
     {
-      "id": 4,
+      "id": "4",
       "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS",
       "siglas": "FCMF",
       "email": "FCMF@ug.edu.ec",
@@ -129,7 +129,7 @@
       "modalidad": "virtual"
     },
     {
-      "id": 5,
+      "id": "5",
       "facultadDatos": "CIENCIAS PSICOLOGICAS",
       "siglas": "FCPS",
       "email": "FCPS@ug.edu.ec",
@@ -139,7 +139,7 @@
   ],
   "clubCuentas": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Club de IA",
       "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS",
       "email": "roboticaia@ug.edu.ec",
@@ -148,7 +148,7 @@
       "clubActivo": "Activo"
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Círculo Literario",
       "facultadDatos": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
       "email": "literatura@ug.edu.ec",
@@ -157,7 +157,7 @@
       "clubActivo": "Activo"
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "EcoUG",
       "facultadDatos": "CIENCIAS NATURALES",
       "email": "ecoug@ug.edu.ec",
@@ -166,7 +166,7 @@
       "clubActivo": "No Activo"
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "UG Emprende",
       "facultadDatos": "CIENCIAS ADMINISTRATIVAS",
       "email": "emprendedores@ug.edu.ec",
@@ -175,7 +175,7 @@
       "clubActivo": "Activo"
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "Club de Debate",
       "facultadDatos": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
       "email": "debateug@ug.edu.ec",
@@ -186,78 +186,102 @@
   ],
   "facultadDatos": [
     {
-      "nombre": "ARQUITECTURA Y URBANISMO"
+      "nombre": "ARQUITECTURA Y URBANISMO",
+      "id": "904d"
     },
     {
-      "nombre": "CIENCIAS ADMINISTRATIVAS"
+      "nombre": "CIENCIAS ADMINISTRATIVAS",
+      "id": "27a9"
     },
     {
-      "nombre": "CIENCIAS AGRARIAS"
+      "nombre": "CIENCIAS AGRARIAS",
+      "id": "d7d4"
     },
     {
-      "nombre": "CIENCIAS ECONOMICAS"
+      "nombre": "CIENCIAS ECONOMICAS",
+      "id": "81ec"
     },
     {
-      "nombre": "CIENCIAS MATEMATICAS Y FISICAS"
+      "nombre": "CIENCIAS MATEMATICAS Y FISICAS",
+      "id": "16f0"
     },
     {
-      "nombre": "CIENCIAS MEDICAS"
+      "nombre": "CIENCIAS MEDICAS",
+      "id": "a55c"
     },
     {
-      "nombre": "CIENCIAS NATURALES"
+      "nombre": "CIENCIAS NATURALES",
+      "id": "bb6a"
     },
     {
-      "nombre": "CIENCIAS PSICOLOGICAS"
+      "nombre": "CIENCIAS PSICOLOGICAS",
+      "id": "aa98"
     },
     {
-      "nombre": "CIENCIAS QUIMICAS"
+      "nombre": "CIENCIAS QUIMICAS",
+      "id": "7826"
     },
     {
-      "nombre": "COMUNICACION SOCIAL"
+      "nombre": "COMUNICACION SOCIAL",
+      "id": "5f56"
     },
     {
-      "nombre": "CIENCIAS DE LA ACTIVIDAD FÍSICA"
+      "nombre": "CIENCIAS DE LA ACTIVIDAD FÍSICA",
+      "id": "dfb0"
     },
     {
-      "nombre": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION"
+      "nombre": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
+      "id": "ac45"
     },
     {
-      "nombre": "INGENIERIA INDUSTRIAL"
+      "nombre": "INGENIERIA INDUSTRIAL",
+      "id": "6f13"
     },
     {
-      "nombre": "INGENIERIA QUIMICA"
+      "nombre": "INGENIERIA QUIMICA",
+      "id": "6f10"
     },
     {
-      "nombre": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS"
+      "nombre": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
+      "id": "bf2e"
     },
     {
-      "nombre": "MEDICINA VETERINARIA Y ZOOTECNIA"
+      "nombre": "MEDICINA VETERINARIA Y ZOOTECNIA",
+      "id": "ebc1"
     },
     {
-      "nombre": "ODONTOLOGIA"
+      "nombre": "ODONTOLOGIA",
+      "id": "0c2d"
     }
   ],
   "categoriaDatos": [
     {
-      "nombre": "Medio Ambiente"
+      "nombre": "Medio Ambiente",
+      "id": "445b"
     },
     {
-      "nombre": "Formación Ciudadana"
+      "nombre": "Formación Ciudadana",
+      "id": "1122"
     },
     {
-      "nombre": "Emprendimiento"
+      "nombre": "Emprendimiento",
+      "id": "8beb"
     },
     {
-      "nombre": "Tecnología e Innovación"
+      "nombre": "Tecnología e Innovación",
+      "id": "b521"
     },
     {
-      "nombre": "Salud"
+      "nombre": "Salud",
+      "id": "b5f6"
     },
     {
-      "nombre": "Arte y Cultura"
+      "nombre": "Arte y Cultura",
+      "id": "b14c"
     },
     {
-      "nombre": "Desarrollo Social"
+      "nombre": "Desarrollo Social",
+      "id": "7844"
     }
   ],
   "comentarios": [
@@ -265,9 +289,9 @@
       "id": "0f6a",
       "estudianteNombre": "Susana Gonzalez",
       "nombreEvento": "evento3",
-      "experiencia": "5",
+      "experiencia": "4",
       "mensaje": "Excelente ambiente y atención por parte del equipo, me sentí muy bien recibido y cómodo durante toda la jornada.",
-      "fecha": "2025-05-20T03:48:39.169Z",
+      "fecha": "2025-05-21T21:19:03.512Z",
       "aceptoTerminos": true
     },
     {
@@ -295,6 +319,38 @@
       "experiencia": "4",
       "mensaje": "Me encantó la oportunidad de conocer a otros profesionales de mi industria. Los talleres fueron muy útiles",
       "fecha": "2025-05-20T04:24:36.796Z",
+      "aceptoTerminos": true
+    }
+  ],
+  "estudiantes": [
+    {
+      "id": "ada6",
+      "estudianteNombre": "Lorena Poveda",
+      "nombreEvento": "Comercial",
+      "telefono": "1234567",
+      "email": "Lorena@gmail.com",
+      "edad": "22",
+      "fecha": "2025-05-22T01:43:55.636Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "cf22",
+      "estudianteNombre": "Luca Jose Gomez",
+      "nombreEvento": "Ejemplo 2\t",
+      "telefono": "0956235652",
+      "email": "Luca@gmail.com",
+      "edad": "22",
+      "fecha": "2025-05-22T01:44:48.889Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "59c2",
+      "estudianteNombre": "Juan Jose",
+      "nombreEvento": "ejemplo",
+      "telefono": "0956869555",
+      "email": "Juan@gmail.com",
+      "edad": "27",
+      "fecha": "2025-05-22T01:45:29.901Z",
       "aceptoTerminos": true
     }
   ]

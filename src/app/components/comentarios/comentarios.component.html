@@ -75,23 +75,18 @@ Acepto que mi comentario sea público y respetuoso
 
 
 
-<!-- FILTRO DE BÚSQUEDA
-<mat-form-field class="filtro" appearance="outline" style="width: 100%;">
-  <mat-label>Buscar comentarios</mat-label>
-  <input matInput [(ngModel)]="filtroTexto" (ngModelChange)="aplicarFiltro()" placeholder="Nombre del estudiante" />
-</mat-form-field>-->
-<div class="SearchContainer">
-  <form class="ComentarioSearchForm">
-    <mat-form-field appearance="outline" class="FormElement">
-      <mat-label> Buscar </mat-label>
-      <mat-icon matPrefix>search</mat-icon>
-      <input matInput type="search" placeholder="Ej.: Nombre del estudiante" #searchInput (keyup)="search( searchInput )">
-    </mat-form-field>
-  </form>
+<!-- FILTRO DE BUSQUEDA -->
+<mat-form-field appearance="outline" class="full-width" style="max-width: 400px; margin-bottom: 16px;">
+  <mat-label>Buscar por nombre </mat-label>
+  <input matInput [formControl]="searchControl" placeholder="Escribe para buscar...">
+</mat-form-field>
+
+
+
 
 <!-- LISTA DE COMENTARIOS -->
 <section class="Comentario">
-  <div *ngFor="let c of comentarios" style="border-bottom: 1px solid #ccc; padding: 8px 0;">
+  <div *ngFor="let c of comentariosFiltrados" style="border-bottom: 1px solid #ccc; padding: 8px 0;">
     <div>
       <strong>{{ c.estudianteNombre }}</strong>
       <small>({{ c.fecha | date: 'short' }})</small>

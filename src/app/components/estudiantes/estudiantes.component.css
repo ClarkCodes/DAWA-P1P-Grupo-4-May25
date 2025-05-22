@@ -1,0 +1,146 @@
+.Titulo{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /*background-color: azure;*/
+    font-size: 40px;
+    color: black;
+    text-align: center;
+}
+
+/* INICIO CONTENEDOR FORMULARIO*/
+.form-contenedor {
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  flex-direction: column; 
+  gap: 16px;              
+  padding: 20px;
+  max-width: 400px;      
+  margin: 0 auto;       
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+mat-form-field {
+  width: 100%; 
+  margin-bottom: 30px;
+}
+
+mat-radio-button{
+    text-align: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+/* FIN CONTENEDOR FORMULARIO */
+
+
+/*BOTONES*/
+button.Registro {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  width: 100%;
+}
+
+button.Registro:not([disabled]) {
+  background-color: #4caf4f77 !important; 
+  color: black !important;
+}
+
+button.Registro:not([disabled]):hover {
+  background-color: #388e3c !important;
+  color: white !important;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+button.Cancelar {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  width: 100%;
+}
+
+button.Cancelar:not([disabled]) {
+  background-color: #af4c4c77 !important; 
+  color: black !important;
+}
+
+button.Cancelar:not([disabled]):hover {
+  background-color: #e60909 !important;
+  color: white !important;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+button.editarRegistro {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+  width: auto;
+}
+
+button.editarRegistro:not([disabled]) {
+  background-color: #4caf4f77 !important; 
+  color: black !important;
+}
+
+button.editarRegistro:not([disabled]):hover {
+  background-color: #388e3c !important;
+  color: white !important;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.eliminarRegistro {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+  width: auto;
+}
+
+button.eliminarRegistro:not([disabled]) {
+  background-color: #af4c4c77 !important; 
+  color: black !important;
+}
+
+button.eliminarRegistro:not([disabled]):hover {
+  background-color: #e60909 !important;
+  color: white !important;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+/* FIN BOTONES */
+
+
+/*INICIO PRESENTACION DATOS*/
+.table-container {
+  padding: 24px;
+  max-width: 100%;
+  overflow-x: auto; 
+}
+
+table.mat-elevation-z8 {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+/*FIN PRESENTACION DATOS*/
+
+
