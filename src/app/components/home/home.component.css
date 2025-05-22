@@ -1,0 +1,69 @@
+/* home.component.css */
+
+/* Define CSS variables for theme-agnostic colors */
+:root {
+  --primary-bg: #4169e1; /* Royal blue, as per your inline style */
+  --hover-bg: #5a7de6; /* Lighter blue for hover */
+  --shadow-color: rgba(0, 0, 0, 0.2); /* Subtle shadow for light theme */
+  --text-color: #ffffff; /* White text for contrast */
+  --border-radius: 8px; /* Modern rounded corners */
+  --transition: all 0.3s ease; /* Smooth transitions */
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-color: rgba(255, 255, 255, 0.1); /* Lighter shadow for dark theme */
+  }
+}
+
+/* Style the grid list container */
+mat-grid-list {
+  padding: 16px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Subtle gradient background */
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  margin: 16px;
+}
+
+/* Style each grid tile */
+mat-grid-tile {
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-bg);
+  transition: var(--transition);
+}
+
+/* Hover effect for tiles */
+mat-grid-tile:hover {
+  background-color: var(--hover-bg);
+  transform: scale(1.02); /* Subtle zoom on hover */
+  box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+/* Style images within tiles */
+mat-grid-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+  filter: brightness(90%); /* Slightly dim for elegance */
+}
+
+/* Image hover effect */
+mat-grid-tile:hover img {
+  filter: brightness(100%); /* Brighten on hover */
+  transform: scale(1.05); /* Slight zoom for dynamic feel */
+}
+
+/* Ensure responsiveness */
+@media (max-width: 600px) {
+  mat-grid-list {
+    padding: 8px;
+    margin: 8px;
+  }
+
+  mat-grid-tile {
+    border-radius: 4px; /* Smaller radius for smaller screens */
+  }
+}
