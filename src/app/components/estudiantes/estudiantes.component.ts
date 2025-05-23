@@ -18,7 +18,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
-import { MatIcon } from '@angular/material/icon';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatTable } from '@angular/material/table';
 import { MatHeaderCell } from '@angular/material/table';
 import { MatCellDef } from '@angular/material/table';
@@ -41,12 +41,11 @@ import { merge } from 'rxjs';
     MatSelectModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatIcon,
     MatTable,
     MatHeaderCell,
     MatCellDef,
     MatTableModule,
-    MatPaginator
+    MatPaginator,
   ],
   templateUrl: './estudiantes.component.html',
   styleUrl: './estudiantes.component.css'
