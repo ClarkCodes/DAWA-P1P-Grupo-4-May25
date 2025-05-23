@@ -82,7 +82,7 @@ export class EstudiantesComponent implements OnInit{
         id: [{ value: '', disabled: true }], 
         estudianteNombre: ['', [Validators.required, Validators.maxLength(50), this.nombreValido]],
         nombreEvento: ['', Validators.required],
-        telefono: ['', Validators.required],
+        telefono: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
         email: ['', [Validators.required, Validators.email]],
         edad: ['', Validators.required],
         aceptoTerminos: [true, this.aceptaTerminosValidator]
