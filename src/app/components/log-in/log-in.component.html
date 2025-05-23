@@ -1,30 +1,33 @@
-<body>
-  <div class="login-container">
-  <form class="login-form" (submit)="$event.preventDefault()">
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
     <h2>Iniciar sesión</h2>
 
-    <mat-form-field appearance="fill">
-      <mat-label>E-mail</mat-label>
-      <input matInput type="email" (cdkAutofill)="email = $event.isAutofilled">
-      @if (email) {
-        <mat-hint>Autofilled!</mat-hint>
-      }
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" placeholder="ej: usuario@correo.com" />
+      <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email requerido</mat-error>
+      <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Email no válido</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" (cdkAutofill)="password = $event.isAutofilled">
-      @if (password) {
-        <mat-hint>Autofilled!</mat-hint>
-      }
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Mostrar/ocultar contraseña'"
+        [attr.aria-pressed]="hide()"
+        type="button"
+      >
+        <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Contraseña requerida</mat-error>
     </mat-form-field>
 
-    <div class="actions">
-      <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+    <div class="mat-button">
+     <a href="/signin" class="button-link">Registrarse</a>
     </div>
-
-    <button mat-raised-button class="submit-btn" type="submit">Iniciar sesión</button>
+      <button mat-stroked-button aria-label="Show an example snack-bar" class="submit-btn" type="submit" [disabled]="loginForm.invalid">Acceder</button>
   </form>
 </div>
-</body>
-

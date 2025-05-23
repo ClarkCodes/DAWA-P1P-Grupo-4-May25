@@ -6,14 +6,18 @@ import { PaginaNoEncontradaComponent } from './components/pagina-no-encontrada/p
 import { CrudFacultadesComponent } from './components/crud-facultades/crud-facultades.component';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
 import { EstudiantesComponent } from './components/estudiantes/estudiantes.component';
+import { CrudSigninLoginComponent } from './components/crud-signin-login/crud-signin-login.component';
+import { EventosComponent } from './components/crud-eventos-clubes/crud-eventos-clubes.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LogInComponent },
   { path: 'signin', component: SignInComponent },
+  { path: 'crud-signin-login', component: CrudSigninLoginComponent },
   { path: 'crud-facultades', component: CrudFacultadesComponent },
   { path: 'comentarios', component: ComentariosComponent },
   { path: 'estudiantes', component: EstudiantesComponent },
+  { path: 'crud-eventos-clubes', component: EventosComponent },
   { path: '404', component: PaginaNoEncontradaComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "**", redirectTo:"404" },
