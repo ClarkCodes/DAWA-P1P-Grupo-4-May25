@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy,Component, inject, signal} from '@angular/core';
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -12,6 +12,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-log-in',
@@ -26,13 +32,32 @@ import { CommonModule } from '@angular/common';
     MatIconModule,
     MatFormField,
     MatLabel,
-    CommonModule,
-  ],
+    CommonModule,MatFormFieldModule, MatSelectModule, MatButtonModule  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
-  
+
+  private _snackBar = inject(MatSnackBar);
+
+ horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
+  openSnackBar() {
+    this._snackBar.open('ACCESO EXITOSO', 'Cerrar', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
+
+  invalidSnackBar() {
+    this._snackBar.open('ACCESO DENEGADO (Revisar credenciales)', 'Cerrar', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+
+   }
  private cuentasService = inject(CuentasService);
   private router = inject(Router);
 
@@ -49,6 +74,7 @@ export class LogInComponent {
 });
 
  onSubmit(): void {
+
   if (this.loginForm.valid) {
     const email = this.loginForm.get('email')?.value ?? '';
     const password = this.loginForm.get('password')?.value ?? '';
@@ -64,18 +90,21 @@ export class LogInComponent {
           switch (user.rol) {
               case 'ESTUDIANTE':
                 this.router.navigate(['/estudiante']);
+                this.openSnackBar()
                 break;
               case 'FACULTAD':
                 this.router.navigate(['/crud-facultades']);
+                this.openSnackBar()
                 break;
               case 'CLUB':
                 this.router.navigate(['/crud-eventos-clubes']);
+                this.openSnackBar()
                 break;
               default:
                 alert('Rol desconocido');
             }
         } else {
-          alert('Correo o contraseña incorrectos');
+          this.invalidSnackBar();
         }
       },
       error: (err) => {
@@ -83,8 +112,11 @@ export class LogInComponent {
         alert('Error al consultar usuarios');
       }
     });
-  }
+    
+  } 
+  
 }
+ 
 
 }
 

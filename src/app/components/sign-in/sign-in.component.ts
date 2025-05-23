@@ -14,6 +14,12 @@ import { Cuentas } from '../../models/cuentas';
 import { FormGroup } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -30,9 +36,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatRadioModule,
     MatButtonModule,
     NgIf,
-    MatSelectModule
-
-    ],
+    MatSelectModule    ],
+    
   standalone: true,
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
@@ -44,6 +49,27 @@ nombreControl = new FormControl('', Validators.required);
 passwordControl = new FormControl('', Validators.required);
 rolControl = new FormControl('', Validators.required);
 
+private _snackBar = inject(MatSnackBar);
+
+ horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
+  openSnackBar() {
+    this.router.navigate(['/login']).then(() => {
+      window.scrollTo(0, 0);});
+    this._snackBar.open('REGISTRO EXITOSO', 'Cerrar', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
+
+  InvalidSnackBar() {
+    this._snackBar.open('REGISTRO DENEGADO', 'Cerrar', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
+
   userForm: FormGroup;
 
   onSubmit() {
@@ -54,27 +80,27 @@ rolControl = new FormControl('', Validators.required);
       // Llamar servicio para guardar (asumiendo que servicioCuentas tiene método saveUser)
       this.servicioCuentas.addCuentas(userData).subscribe({
         next: (response) => {
-          console.log('Usuario guardado', response);
-          this.clearForm();
+        this.openSnackBar();
+        
         },
         error: (error) => {
-          console.error('Error al guardar usuario', error);
+          this.InvalidSnackBar();
         }
       });
     } else {
-      console.warn('Formulario inválido');
+      this.InvalidSnackBar();
     }
   }
 
   clearForm() {
-    this.userForm.reset();
+    
   }
 
 
 facultadControl = new FormControl< | null>(null, Validators.required);
   facultades: FacultadDatos[] = [];
 
-  constructor(private servicioFacultadDatos: ServFacultadDatosService, private servicioCuentas: CuentasService) {
+  constructor(private servicioFacultadDatos: ServFacultadDatosService, private servicioCuentas: CuentasService, private router: Router) {
      this.userForm = new FormGroup({
       nombre: this.nombreControl,
       email: this.emailFormControl,
