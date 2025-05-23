@@ -9,26 +9,38 @@
     <mat-form-field class="example-full-width">
       <mat-label>Nombre</mat-label>
       <input matInput placeholder="Ej. Kevin" formControlName="nombre">
+      <!-- Mensaje de error para campo obligatorio -->
+      <mat-error *ngIf="nombreControl.hasError('required')">
+        Campo <strong>OBLIGATORIO</strong>
+      </mat-error>
+      <!-- Mensaje de error para formato inválido -->
+      <mat-error *ngIf="nombreControl.hasError('pattern')">
+        Solo se permiten <strong>letras</strong>
+      </mat-error>
     </mat-form-field>
 
-    <!-- Campo para el correo electrónico con validaciones -->
+    <!-- Campo para el correo electrónico -->
     <mat-form-field class="example-full-width">
       <mat-label>Email</mat-label>
-      <input type="email" matInput formControlName="email" placeholder="Correo electrónico">
+      <input type="email" matInput placeholder="Correo electrónico" formControlName="email">
       <!-- Mensaje de error para formato de email inválido -->
       <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-        Por favor, ingrese un correo electrónico válido
+        Ingrese un correo electrónico válido
       </mat-error>
       <!-- Mensaje de error para campo obligatorio -->
       <mat-error *ngIf="emailFormControl.hasError('required')">
-        El correo electrónico es <strong>obligatorio</strong>
+        Campo <strong>OBLIGATORIO</strong>
       </mat-error>
     </mat-form-field>
 
     <!-- Campo para la contraseña con opción de mostrar/ocultar -->
-    <mat-form-field>
+    <mat-form-field class="example-full-width">
       <mat-label>Contraseña</mat-label>
       <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Contraseña" formControlName="password">
+      <!-- Mensaje de error para campo obligatorio -->
+      <mat-error *ngIf="passwordControl.hasError('required')">
+        Campo <strong>OBLIGATORIO</strong>
+      </mat-error>
       <!-- Botón para alternar visibilidad de la contraseña -->
       <button
         type="button"
@@ -43,7 +55,7 @@
     </mat-form-field>
 
     <!-- Campo para seleccionar la facultad -->
-    <mat-form-field appearance="fill">
+    <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Facultad</mat-label>
       <mat-select formControlName="facultad" required>
         <mat-option value="">--</mat-option>
@@ -52,10 +64,10 @@
           <mat-option [value]="facultad.nombre">{{ facultad.nombre }}</mat-option>
         }
       </mat-select>
-      <!-- Mensaje de error si no se selecciona una facultad -->
-      @if (facultadControl.hasError('required')) {
-        <mat-error>Seleccione una facultad</mat-error>
-      }
+      <!-- Mensaje de error para campo obligatorio -->
+      <mat-error *ngIf="facultadControl.hasError('required')">
+        Campo <strong>OBLIGATORIO</strong>
+      </mat-error>
     </mat-form-field>
 
     <!-- Grupo de botones de radio para seleccionar el rol del usuario -->

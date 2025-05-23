@@ -32,34 +32,35 @@ import { FacultadDatos } from '../../models/facultadDatos';
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent implements OnInit {
-  // Controles del formulario
-  nombreControl = new FormControl('', [Validators.required]);
+  // Controles del formulario con validaciones
+  nombreControl = new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]);
   passwordControl = new FormControl('', [Validators.required]);
   rolControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   facultadControl = new FormControl<FacultadDatos | null>(null, [Validators.required]);
-  
-  // FormGroup que agrupa todos los controles
+
+  // FormGroup que agrupa todos los controles del formulario
   userForm: FormGroup;
-  
+
   // Lista de facultades obtenidas del servicio
   facultades: FacultadDatos[] = [];
-  
+
   // Señal para controlar la visibilidad de la contraseña
   hide = signal(true);
-  
-  // Inyección de servicios
+
+  // Inyección de servicios necesarios
   private _snackBar = inject(MatSnackBar);
   private servicioFacultadDatos = inject(ServFacultadDatosService);
   private servicioCuentas = inject(CuentasService);
   private router = inject(Router);
-  
-  // Posiciones para el snackbar
-  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
+  // Configuración de posiciones para el snackbar
+  private horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  private verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
+  // Constructor del componente
   constructor() {
-    // Inicialización del FormGroup
+    // Inicialización del FormGroup con los controles
     this.userForm = new FormGroup({
       nombre: this.nombreControl,
       email: this.emailFormControl,
@@ -79,11 +80,12 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  // Método que se ejecuta al inicializar el componente
+  // Método de inicialización del componente
   ngOnInit(): void {
+    // Obtener datos de facultades desde el servicio
     this.servicioFacultadDatos.getFacultadDatos().subscribe({
       next: (datafacultad) => {
-        this.facultades = datafacultad; // Asigna los datos de facultades
+        this.facultades = datafacultad;
       },
       error: (err) => {
         console.error('Error al obtener datos de facultades:', err);
@@ -91,18 +93,18 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  // Muestra un snackbar con mensaje de registro exitoso
+  // Método para mostrar notificación de registro exitoso
   private openSnackBar(): void {
     this._snackBar.open('REGISTRO EXITOSO', 'Cerrar', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });
     this.router.navigate(['/login']).then(() => {
-      window.scrollTo(0, 0); // Desplaza la ventana al inicio
+      window.scrollTo(0, 0);
     });
   }
 
-  // Muestra un snackbar con mensaje de registro denegado
+  // Método para mostrar notificación de registro denegado
   private invalidSnackBar(): void {
     this._snackBar.open('REGISTRO DENEGADO', 'Cerrar', {
       horizontalPosition: this.horizontalPosition,
@@ -110,12 +112,13 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  // Maneja el envío del formulario
+  // Método para manejar el envío del formulario
   onSubmit(): void {
     if (this.userForm.valid) {
       const userData = this.userForm.value;
       console.log('Datos del formulario:', userData);
 
+      // Enviar datos al servicio de cuentas
       this.servicioCuentas.addCuentas(userData).subscribe({
         next: () => this.openSnackBar(),
         error: () => this.invalidSnackBar()
@@ -125,7 +128,7 @@ export class SignInComponent implements OnInit {
     }
   }
 
-  // Cambia la visibilidad de la contraseña
+  // Método para alternar la visibilidad de la contraseña
   clickEvent(event: MouseEvent): void {
     this.hide.set(!this.hide());
     event.stopPropagation();
