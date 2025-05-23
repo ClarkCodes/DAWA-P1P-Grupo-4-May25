@@ -1,8 +1,9 @@
- <div class="mat-elevation-z8">
+<!-- Tabla de usuarios con funcionalidad de edición y paginación -->
+<div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
-    <!-- Nombre Column -->
+    <!-- Columna Nombre -->
     <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef> NOMBRE </th>
+      <th mat-header-cell *matHeaderCellDef>NOMBRE</th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngIf="editingRowId !== element.id; else editNombre">
           {{ element.nombre }}
@@ -13,9 +14,9 @@
       </td>
     </ng-container>
 
-    <!-- Email Column -->
+    <!-- Columna Email -->
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> CORREO </th>
+      <th mat-header-cell *matHeaderCellDef>CORREO</th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngIf="editingRowId !== element.id; else editEmail">
           {{ element.email }}
@@ -26,9 +27,9 @@
       </td>
     </ng-container>
 
-    <!-- Password Column -->
+    <!-- Columna Contraseña -->
     <ng-container matColumnDef="password">
-      <th mat-header-cell *matHeaderCellDef> CONTRASEÑA </th>
+      <th mat-header-cell *matHeaderCellDef>CONTRASEÑA</th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngIf="editingRowId !== element.id; else editPassword">
           {{ element.password }}
@@ -39,9 +40,9 @@
       </td>
     </ng-container>
 
-    <!-- Facultad Column -->
+    <!-- Columna Facultad -->
     <ng-container matColumnDef="facultad">
-      <th mat-header-cell *matHeaderCellDef> FACULTAD </th>
+      <th mat-header-cell *matHeaderCellDef>FACULTAD</th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngIf="editingRowId !== element.id; else editFacultad">
           {{ element.facultad }}
@@ -52,9 +53,9 @@
       </td>
     </ng-container>
 
-    <!-- Rol Column -->
+    <!-- Columna Rol -->
     <ng-container matColumnDef="rol">
-      <th mat-header-cell *matHeaderCellDef> ROL </th>
+      <th mat-header-cell *matHeaderCellDef>ROL</th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngIf="editingRowId !== element.id; else editRol">
           {{ element.rol }}
@@ -65,35 +66,38 @@
       </td>
     </ng-container>
 
-    <!-- Actions Column -->
+    <!-- Columna Acciones -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element" class="ActionsCellClass">
+      <td mat-cell *matCellDef="let element" class="actions-cell">
         <ng-container *ngIf="editingRowId !== element.id; else saveCancelButtons">
-          <button mat-icon-button (click)="startEdit(element)" aria-label="Botón Editar" class="EditButtonClass">
+          <button mat-icon-button (click)="startEdit(element)" aria-label="Editar">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button (click)="delete(element)" aria-label="Botón Eliminar">
+          <button mat-icon-button (click)="delete(element)" aria-label="Eliminar">
             <mat-icon>delete</mat-icon>
           </button>
         </ng-container>
         <ng-template #saveCancelButtons>
-          <button mat-icon-button (click)="saveEdit()" aria-label="Botón Guardar">
+          <button mat-icon-button (click)="saveEdit()" aria-label="Guardar">
             <mat-icon>save</mat-icon>
           </button>
-          <button mat-icon-button (click)="cancelEdit()" aria-label="Botón Cancelar">
+          <button mat-icon-button (click)="cancelEdit()" aria-label="Cancelar">
             <mat-icon>cancel</mat-icon>
           </button>
         </ng-template>
       </td>
     </ng-container>
 
+    <!-- Definición de filas de encabezado y datos -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[10, 15, 20]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements">
+  <!-- Paginador para controlar la navegación de la tabla -->
+  <mat-paginator
+    [pageSizeOptions]="[10, 15, 20]"
+    showFirstLastButtons
+    aria-label="Seleccionar página de elementos">
   </mat-paginator>
 </div>

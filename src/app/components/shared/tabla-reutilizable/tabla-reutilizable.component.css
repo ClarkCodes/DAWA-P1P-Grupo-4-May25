@@ -1,10 +1,9 @@
 /* Style for mat-form-field and input in edit mode */
 mat-form-field, td input[matInput] {
-  width: 11rem; /* Shorter width for edit inputs (adjust as needed, e.g., 6rem for even shorter) */
+  width: 11rem;
   border-radius: 25px;
 }
 
-/* Style for actions column */
 .ActionsCellClass {
   display: flex;
   height: 60px;
@@ -22,7 +21,6 @@ mat-form-field, td input[matInput] {
   padding-right: 15px;
 }
 
-/* Style for actions header */
 .ActionsContainerClass {
   width: fit-content;
 }
@@ -31,7 +29,6 @@ mat-form-field, td input[matInput] {
   text-align: center;
 }
 
-/* Style for search form (unchanged) */
 .FacultadesSearchForm {
   width: 100%;
   display: flex;
@@ -52,12 +49,10 @@ mat-form-field, td input[matInput] {
   text-align: center;
 }
 
-/* Ensure table cells have consistent padding and alignment */
 table.mat-table td {
   padding: 8px;
 }
 
-/* Prevent text overflow in table cells */
 .mat-cell {
   white-space: nowrap;
   overflow: hidden;
