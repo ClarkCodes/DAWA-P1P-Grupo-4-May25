@@ -176,7 +176,7 @@
       "email": "test@test.com",
       "password": "test",
       "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "ESTUDIANTE"
+      "rol": "FACULTAD"
     }
   ],
   "facultadDatos": [
@@ -325,6 +325,16 @@
       "email": "Juan@gmail.com",
       "edad": "27",
       "fecha": "2025-05-22T01:45:29.901Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "0a65",
+      "estudianteNombre": "test",
+      "nombreEvento": "test",
+      "telefono": "testestest",
+      "email": "test@test.com",
+      "edad": "test",
+      "fecha": "2025-05-23T05:17:19.909Z",
       "aceptoTerminos": true
     }
   ]

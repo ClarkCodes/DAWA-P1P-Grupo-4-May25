@@ -96,7 +96,7 @@ export class LogInComponent {
             // Redirigir según el rol del usuario
             switch (user.rol) {
               case 'ESTUDIANTE':
-                this.router.navigate(['/estudiante']);
+                this.router.navigate(['/estudiantes']);
                 this.openSnackBar();
                 break;
               case 'FACULTAD':
