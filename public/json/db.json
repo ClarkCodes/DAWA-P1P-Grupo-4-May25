@@ -45,7 +45,7 @@
   ],
   "estudianteCuentas": [
     {
-      "id": 1,
+      "id": "1",
       "primerNombre": "Juan",
       "primerApellido": "Pérez",
       "segundoApellido": "Gómez",
@@ -55,7 +55,7 @@
       "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS"
     },
     {
-      "id": 2,
+      "id": "2",
       "primerNombre": "María",
       "primerApellido": "López",
       "segundoApellido": "Martínez",
@@ -65,7 +65,7 @@
       "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS"
     },
     {
-      "id": 3,
+      "id": "3",
       "primerNombre": "Carlos",
       "primerApellido": "Ramírez",
       "segundoApellido": "Sánchez",
@@ -75,7 +75,7 @@
       "facultadDatos": "CIENCIAS ADMINISTRATIVAS"
     },
     {
-      "id": 4,
+      "id": "4",
       "primerNombre": "Laura",
       "primerApellido": "Torres",
       "segundoApellido": "Jiménez",
@@ -85,7 +85,7 @@
       "facultadDatos": "COMUNICACION SOCIAL"
     },
     {
-      "id": 5,
+      "id": "5",
       "primerNombre": "Alex",
       "primerApellido": "Fernández",
       "segundoApellido": "Ruiz",
@@ -97,7 +97,7 @@
   ],
   "facultadCuentas": [
     {
-      "id": 1,
+      "id": "1",
       "facultadDatos": "CIENCIAS QUIMICAS",
       "siglas": "FIQ",
       "email": "FIQ@ug.edu.ec",
@@ -105,7 +105,7 @@
       "modalidad": "presencial"
     },
     {
-      "id": 2,
+      "id": "2",
       "facultadDatos": "ARQUITECTURA Y URBANISMO",
       "siglas": "FAU",
       "email": "FAU@ug.edu.ec",
@@ -113,7 +113,7 @@
       "modalidad": "virtual"
     },
     {
-      "id": 3,
+      "id": "3",
       "facultadDatos": "CIENCIAS NATURALES",
       "siglas": "FCN",
       "email": "FCN@ug.edu.ec",
@@ -121,7 +121,7 @@
       "modalidad": "presencial"
     },
     {
-      "id": 4,
+      "id": "4",
       "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS",
       "siglas": "FCMF",
       "email": "FCMF@ug.edu.ec",
@@ -129,7 +129,7 @@
       "modalidad": "virtual"
     },
     {
-      "id": 5,
+      "id": "5",
       "facultadDatos": "CIENCIAS PSICOLOGICAS",
       "siglas": "FCPS",
       "email": "FCPS@ug.edu.ec",
@@ -139,7 +139,7 @@
   ],
   "clubCuentas": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Club de IA",
       "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS",
       "email": "roboticaia@ug.edu.ec",
@@ -148,7 +148,7 @@
       "clubActivo": "Activo"
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Círculo Literario",
       "facultadDatos": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
       "email": "literatura@ug.edu.ec",
@@ -157,7 +157,7 @@
       "clubActivo": "Activo"
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "EcoUG",
       "facultadDatos": "CIENCIAS NATURALES",
       "email": "ecoug@ug.edu.ec",
@@ -166,7 +166,7 @@
       "clubActivo": "No Activo"
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "UG Emprende",
       "facultadDatos": "CIENCIAS ADMINISTRATIVAS",
       "email": "emprendedores@ug.edu.ec",
@@ -175,7 +175,7 @@
       "clubActivo": "Activo"
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "Club de Debate",
       "facultadDatos": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
       "email": "debateug@ug.edu.ec",
@@ -188,16 +188,14 @@
     {
       "id": "1",
       "titulo": "Torneo de Ajedrez Universitario",
-      "descripcion": "Participa en el torneo anual de ajedrez organizado por el Club de Ajedrez.",
+      "descripcion": "Participa en el torneo anual de ajedrez organizado por el Club UG Emprende.",
       "categoria": "Concurso",
       "fecha": "2025-06-10",
-      "esGratuito": true,
+      "esGratuito": "si",
       "costo": 0,
-      "cupoMaximo": 50,
       "lugar": "Sala de Conferencias - Edificio B",
-      "nombreClub": "Club de Ajedrez",
-      "enlaceInscripcion": "https://forms.gle/ajedrez2025",
-      "aficheUrl": "https://universidad.edu.pe/imgs/ajedrez2025.jpg",
+      "nombreClub": "UG Emprende",
+      "aficheUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1z3LU_9GQohYvs30-XkEvmC5P-syte3ga-A&s",
       "etiquetas": [
         "ajedrez",
         "competencia",
@@ -210,13 +208,11 @@
       "descripcion": "Aprende a construir tu primer robot con Arduino.",
       "categoria": "Taller",
       "fecha": "2025-06-18",
-      "esGratuito": false,
+      "esGratuito": "no",
       "costo": 15,
-      "cupoMaximo": 30,
       "lugar": "Laboratorio de Electrónica - Edificio D",
-      "nombreClub": "Club de Robótica",
-      "enlaceInscripcion": "https://forms.gle/robotica2025",
-      "aficheUrl": "https://universidad.edu.pe/imgs/robotica2025.png",
+      "nombreClub": "Club de IA",
+      "aficheUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph5wfpSSqUbSiiuTyWsh1OjunrBwSAkheKA&s",
       "etiquetas": [
         "robotica",
         "arduino",
@@ -229,13 +225,11 @@
       "descripcion": "Proyección de documental y discusión guiada con expertos.",
       "categoria": "Charla",
       "fecha": "2025-06-22",
-      "esGratuito": true,
+      "esGratuito": "si",
       "costo": 0,
-      "cupoMaximo": 100,
       "lugar": "Auditorio Central",
-      "nombreClub": "Club de Ecología",
-      "enlaceInscripcion": "https://forms.gle/cineclima2025",
-      "aficheUrl": "https://universidad.edu.pe/imgs/cineclima.jpg",
+      "nombreClub": "Club de Debate",
+      "aficheUrl": "https://www.dejateinnovar.es/wp-content/uploads/2023/11/Collage-Dejate-innovar_page-0001-copia-768x733.jpg",
       "etiquetas": [
         "medio ambiente",
         "cine",
@@ -248,18 +242,29 @@
       "descripcion": "Exposición de proyectos realizados por estudiantes de ingeniería y tecnología.",
       "categoria": "Exposición",
       "fecha": "2025-07-01",
-      "esGratuito": true,
+      "esGratuito": "si",
       "costo": 0,
-      "cupoMaximo": 300,
       "lugar": "Plaza Tech - Campus Principal",
-      "nombreClub": "Club de Innovación",
-      "enlaceInscripcion": "https://forms.gle/feriaproyectos2025",
-      "aficheUrl": "https://universidad.edu.pe/imgs/feria-tech.jpg",
+      "nombreClub": "Club de IA",
+      "aficheUrl": "https://i.pinimg.com/736x/9a/6e/bf/9a6ebf70573218da5b2c70e3f536b3f5.jpg",
       "etiquetas": [
         "tecnología",
         "innovación",
         "proyectos"
       ]
+    },
+    {
+      "id": 1747952736858,
+      "titulo": "gfxffgx",
+      "descripcion": "cfgxgfx",
+      "categoria": "Cultural",
+      "fecha": "2025-05-15T05:00:00.000Z",
+      "esGratuito": "si",
+      "costo": null,
+      "lugar": "ghccghcgh",
+      "nombreClub": "UG Emprende",
+      "aficheUrl": "https://www.uam.edu.co/medellin/wp-content/uploads/2017/04/AFICHE-concurso-de-oratoria-Fac.-derecho.jpg",
+      "etiquetas": "gfxfxfgx, gfxfxf"
     }
   ],
   "Cuentas": [
@@ -392,25 +397,32 @@
   ],
   "categoriaDatos": [
     {
-      "nombre": "Medio Ambiente"
+      "nombre": "Medio Ambiente",
+      "id": "5375"
     },
     {
-      "nombre": "Formación Ciudadana"
+      "nombre": "Formación Ciudadana",
+      "id": "f95b"
     },
     {
-      "nombre": "Emprendimiento"
+      "nombre": "Emprendimiento",
+      "id": "7eb7"
     },
     {
-      "nombre": "Tecnología e Innovación"
+      "nombre": "Tecnología e Innovación",
+      "id": "f0f9"
     },
     {
-      "nombre": "Salud"
+      "nombre": "Salud",
+      "id": "e2cb"
     },
     {
-      "nombre": "Arte y Cultura"
+      "nombre": "Arte y Cultura",
+      "id": "4f88"
     },
     {
-      "nombre": "Desarrollo Social"
+      "nombre": "Desarrollo Social",
+      "id": "4e59"
     }
   ],
   "comentarios": [

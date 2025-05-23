@@ -1,24 +1,26 @@
-import { Component, OnInit } from '@angular/core'; 
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Evento } from '../../models/crud-eventos-clubes.model';
-import { EventosService } from '../../services/crud-eventos-clubes.service';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { EventosService } from '../../services/crud-eventos-clubes.service';
+import { Evento } from '../../models/crud-eventos-clubes.model';
+import { ClubCuenta } from '../../services/crud-eventos-clubes.service';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @Component({
-  selector: 'app-eventos',
+  selector: 'app-crud-eventos-clubes',
   standalone: true,
   templateUrl: './crud-eventos-clubes.component.html',
-  styleUrl: './crud-eventos-clubes.component.css',
+  styleUrls: ['./crud-eventos-clubes.component.css'],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -26,153 +28,130 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatButtonModule,
-    MatCardModule,
-    MatSnackBarModule,
-    MatRadioModule,
     MatTableModule,
-    MatIconModule
+    MatButtonModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
   ]
 })
 export class EventosComponent implements OnInit {
-  formularioEvento!: FormGroup;
+  loggedClubName: string = 'UG Emprende'; 
+  eventoForm!: FormGroup;
   eventos: Evento[] = [];
-  editando: boolean = false;
-  idEditando: number | null = null;
-  columnas: string[] = ['titulo', 'categoria', 'fecha', 'lugar', 'nombreClub', 'acciones'];
-
-  // Simulación de login
-  nombreClubActual: string = 'Club de Tecnología';
+  clubes: ClubCuenta[] = [];
+  clubLogueado: ClubCuenta | null = null;
+  editarModo: boolean = false;
+  idEventoEditando: number | null = null;
+  imagenPreview: string = '';
+  displayedColumns: string[] = [
+    'titulo', 'descripcion', 'categoria', 'fecha',
+    'esGratuito', 'costo', 'lugar', 'nombreClub', 'aficheUrl', 'etiquetas', 'acciones'
+  ];
 
   constructor(
     private fb: FormBuilder,
-    private servicio: EventosService,
-    private snackBar: MatSnackBar
+    private eventosService: EventosService
   ) {}
 
-  ngOnInit() {
-    this.formularioEvento = this.fb.group({
+  ngOnInit(): void {
+    this.inicializarFormulario();
+    this.cargarClubLogueado();
+    this.cargarEventos();
+  }
+
+  inicializarFormulario(): void {
+    this.eventoForm = this.fb.group({
       titulo: ['', Validators.required],
       descripcion: ['', Validators.required],
-      categoria: ['Charla', Validators.required],
-      otraCategoria: [''],
+      categoria: ['', Validators.required],
       fecha: ['', Validators.required],
-      esGratuito: [true, Validators.required],
-      costo: [{ value: '', disabled: true }, Validators.min(0)],
-      cupoMaximo: [0, [Validators.required, Validators.min(1)]],
+      esGratuito: ['si', Validators.required],
+      costo: [{ value: '', disabled: true }, Validators.required],
       lugar: ['', Validators.required],
-      aficheUrl: [''],
-      etiquetas: ['']
+      nombreClub: ['', Validators.required],
+      aficheUrl: ['', Validators.required],
+      etiquetas: ['', Validators.required]
     });
 
-    this.formularioEvento.get('esGratuito')?.valueChanges.subscribe(valor => {
-      const costoControl = this.formularioEvento.get('costo');
-      if (valor === false) {
+    this.eventoForm.get('esGratuito')?.valueChanges.subscribe(valor => {
+      const costoControl = this.eventoForm.get('costo');
+      if (valor === 'no') {
         costoControl?.enable();
-        costoControl?.setValidators([Validators.required, Validators.min(0)]);
       } else {
         costoControl?.disable();
-        costoControl?.clearValidators();
-        costoControl?.setValue('');
+        costoControl?.reset();
       }
-      costoControl?.updateValueAndValidity();
     });
 
-    // Suscribirse a los cambios del servicio
-    this.servicio.getEventos().subscribe((datos: Evento[]) => {
-      this.eventos = datos;
+    this.eventoForm.get('aficheUrl')?.valueChanges.subscribe(url => {
+      this.imagenPreview = url;
     });
   }
 
-  mostrarOtraCategoria(): boolean {
-    return this.formularioEvento.get('categoria')?.value === 'Otro';
+  cargarClubLogueado(): void {
+    this.eventosService.obtenerClubes().subscribe(clubes => {
+      this.clubes = clubes;
+      this.clubLogueado = this.clubes[0]; // Simulación: primer club
+      if (this.clubLogueado) {
+        this.eventoForm.patchValue({ nombreClub: this.clubLogueado.nombre });
+      }
+    });
   }
 
-  guardar() {
-    if (this.formularioEvento.invalid) {
-      this.snackBar.open('Por favor, completa todos los campos obligatorios.', 'Cerrar', {
-        duration: 3000
-      });
-      return;
-    }
+  cargarEventos(): void {
+    this.eventosService.obtenerEventos().subscribe(eventos => {
+      this.eventos = eventos;
+    });
+  }
 
-    const formData = this.formularioEvento.getRawValue();
-    const categoriaFinal = formData.categoria === 'Otro' && formData.otraCategoria
-      ? formData.otraCategoria
-      : formData.categoria;
+  guardarEvento(): void {
+    if (this.eventoForm.invalid) return;
 
     const nuevoEvento: Evento = {
-      ...formData,
-      id: this.editando && this.idEditando ? this.idEditando : Date.now(),
-      categoria: categoriaFinal,
-      nombreClub: this.nombreClubActual,
-      etiquetas: formData.etiquetas
-        ? formData.etiquetas.split(',').map((e: string) => e.trim())
-        : []
+      ...this.eventoForm.getRawValue(),
+      id: this.idEventoEditando ?? Date.now()
     };
 
-    if (this.editando) {
-      this.servicio.actualizarEvento(nuevoEvento);
-      this.snackBar.open('Evento actualizado correctamente.', 'Cerrar', { duration: 3000 });
+    if (this.editarModo && this.idEventoEditando !== null) {
+      this.eventosService.actualizarEvento(nuevoEvento).subscribe(() => {
+        const index = this.eventos.findIndex(e => e.id === this.idEventoEditando);
+        if (index !== -1) this.eventos[index] = nuevoEvento;
+        this.resetFormulario();
+      });
     } else {
-      this.servicio.agregarEvento(nuevoEvento);
-      this.snackBar.open('Evento agregado correctamente.', 'Cerrar', { duration: 3000 });
-    }
-
-    this.cancelar();
-  }
-
-  editar(evento: Evento) {
-    if (evento.nombreClub !== this.nombreClubActual) {
-      this.snackBar.open('Solo puedes editar eventos creados por tu club.', 'Cerrar', {
-        duration: 3000
+      this.eventosService.agregarEvento(nuevoEvento).subscribe((eventoCreado: Evento) => {
+        this.eventos.push(eventoCreado);
+        this.resetFormulario();
       });
-      return;
     }
-
-    this.editando = true;
-    this.idEditando = evento.id;
-
-    const esCategoriaOtra = !['Charla', 'Taller', 'Concurso', 'Seminario'].includes(evento.categoria);
-
-    this.formularioEvento.patchValue({
-      ...evento,
-      categoria: esCategoriaOtra ? 'Otro' : evento.categoria,
-      otraCategoria: esCategoriaOtra ? evento.categoria : '',
-      etiquetas: evento.etiquetas?.join(', ') || ''
-    });
-
+  } 
+  editarEvento(evento: Evento): void { 
+    this.editarModo = true;
+    this.idEventoEditando = evento.id;
+    this.eventoForm.patchValue(evento);
     if (!evento.esGratuito) {
-      this.formularioEvento.get('costo')?.enable();
+      this.eventoForm.get('costo')?.enable();
     }
-  }
+    this.imagenPreview = evento.aficheUrl ?? '';
+}
 
-  eliminar(id: number) {
-    const evento = this.eventos.find(e => e.id === id);
-
-    if (evento?.nombreClub !== this.nombreClubActual) {
-      this.snackBar.open('Solo puedes eliminar eventos creados por tu club.', 'Cerrar', {
-        duration: 3000
-      });
-      return;
-    }
-
-    const confirmado = confirm('¿Estás seguro de que deseas eliminar este evento?');
-    if (confirmado) {
-      this.servicio.eliminarEvento(id);
-      this.snackBar.open('Evento eliminado.', 'Cerrar', {
-        duration: 3000
-      });
-    }
-  }
-
-  cancelar() {
-    this.editando = false;
-    this.idEditando = null;
-    this.formularioEvento.reset({
-      categoria: 'Charla',
-      esGratuito: true
+  eliminarEvento(id: number): void {
+    this.eventosService.eliminarEvento(id).subscribe(() => {
+      this.eventos = this.eventos.filter(e => e.id !== id);
     });
-    this.formularioEvento.get('costo')?.disable();
+  }
+
+  resetFormulario(): void {
+    this.eventoForm.reset();
+    this.imagenPreview = '';
+    this.editarModo = false;
+    this.idEventoEditando = null;
+    this.eventoForm.patchValue({
+      esGratuito: 'si',
+      nombreClub: this.clubLogueado?.nombre ?? ''
+    });
+    this.eventoForm.get('costo')?.disable();
   }
 }
