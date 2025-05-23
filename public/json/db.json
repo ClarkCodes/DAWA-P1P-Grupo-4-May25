@@ -246,9 +246,9 @@
       "id": "0f6a",
       "estudianteNombre": "Susana Gonzalez",
       "nombreEvento": "evento3",
-      "experiencia": "5",
+      "experiencia": "4",
       "mensaje": "Excelente ambiente y atención por parte del equipo, me sentí muy bien recibido y cómodo durante toda la jornada.",
-      "fecha": "2025-05-20T03:48:39.169Z",
+      "fecha": "2025-05-21T21:19:03.512Z",
       "aceptoTerminos": true
     },
     {
@@ -285,6 +285,38 @@
       "experiencia": "5",
       "mensaje": "test",
       "fecha": "2025-05-21T16:32:00.460Z",
+      "aceptoTerminos": true
+    }
+  ],
+  "estudiantes": [
+    {
+      "id": "ada6",
+      "estudianteNombre": "Lorena Poveda",
+      "nombreEvento": "Comercial",
+      "telefono": "1234567",
+      "email": "Lorena@gmail.com",
+      "edad": "22",
+      "fecha": "2025-05-22T01:43:55.636Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "cf22",
+      "estudianteNombre": "Luca Jose Gomez",
+      "nombreEvento": "Ejemplo 2\t",
+      "telefono": "0956235652",
+      "email": "Luca@gmail.com",
+      "edad": "22",
+      "fecha": "2025-05-22T01:44:48.889Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "59c2",
+      "estudianteNombre": "Juan Jose",
+      "nombreEvento": "ejemplo",
+      "telefono": "0956869555",
+      "email": "Juan@gmail.com",
+      "edad": "27",
+      "fecha": "2025-05-22T01:45:29.901Z",
       "aceptoTerminos": true
     }
   ]
