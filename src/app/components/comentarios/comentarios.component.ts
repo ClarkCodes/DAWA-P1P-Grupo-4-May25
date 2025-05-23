@@ -2,7 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServComentariosService } from '../../services/serv-comentarios.service';
 import { Comentario } from '../../models/comentarios';
-import { AbstractControl, FormBuilder, FormGroup, NgForm, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidationErrors, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -36,9 +36,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class ComentariosComponent implements OnInit{
   comentarios: Comentario[] = [];
+  comentariosFiltrados: Comentario[] = [];
   comentarioForm: FormGroup;
   editandoComentario: Comentario | null = null;
   dataSource = new MatTableDataSource<Comentario>();
+  searchControl = new FormControl('');
 
   constructor(
     private fb: FormBuilder,
@@ -56,11 +58,22 @@ export class ComentariosComponent implements OnInit{
 
   ngOnInit(): void {
     this.cargarComentarios();
+    this.searchControl.valueChanges.subscribe(value => {
+      this.filtrarComentario(value || '');
+    });
+  }
+
+  filtrarComentario(texto: string): void {
+    const filtro = texto.trim().toLowerCase();
+    this.comentariosFiltrados = this.comentarios.filter(comentario =>
+      comentario.estudianteNombre.toLowerCase().includes(filtro)
+    );
   }
 
   cargarComentarios(): void {
     this.servComentariosService.getComentarios().subscribe( ( data: Comentario[] ) => {
       this.comentarios = data;
+      this.comentariosFiltrados = data; 
     });
   }
 

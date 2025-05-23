@@ -1,60 +1,81 @@
+<!-- Contenedor principal del formulario de registro -->
 <div class="signin-container">
+  <!-- Formulario de registro con grupo de controles de Angular -->
   <form class="signin-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <!-- Título del formulario -->
     <h2>Registro de usuario</h2>
 
+    <!-- Campo para el nombre -->
     <mat-form-field class="example-full-width">
       <mat-label>Nombre</mat-label>
-      <input matInput placeholder="Ex. Kevin" formControlName="nombre">
+      <input matInput placeholder="Ej. Kevin" formControlName="nombre">
     </mat-form-field>
 
+    <!-- Campo para el correo electrónico con validaciones -->
     <mat-form-field class="example-full-width">
       <mat-label>Email</mat-label>
-      <input type="email" matInput formControlName="email" placeholder="email">
+      <input type="email" matInput formControlName="email" placeholder="Correo electrónico">
+      <!-- Mensaje de error para formato de email inválido -->
       <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-        Please enter a valid email address
+        Por favor, ingrese un correo electrónico válido
       </mat-error>
+      <!-- Mensaje de error para campo obligatorio -->
       <mat-error *ngIf="emailFormControl.hasError('required')">
-        Email is <strong>required</strong>
+        El correo electrónico es <strong>obligatorio</strong>
       </mat-error>
     </mat-form-field>
 
+    <!-- Campo para la contraseña con opción de mostrar/ocultar -->
     <mat-form-field>
       <mat-label>Contraseña</mat-label>
-      <input matInput [type]="hide() ? 'password' : 'text'" placeholder="password" formControlName="password"/>
+      <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Contraseña" formControlName="password">
+      <!-- Botón para alternar visibilidad de la contraseña -->
       <button
+        type="button"
         mat-icon-button
         matSuffix
         (click)="clickEvent($event)"
-        [attr.aria-label]="'Hide password'"
+        [attr.aria-label]="'Ocultar contraseña'"
         [attr.aria-pressed]="hide()"
       >
-        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
     </mat-form-field>
 
+    <!-- Campo para seleccionar la facultad -->
     <mat-form-field appearance="fill">
       <mat-label>Facultad</mat-label>
       <mat-select formControlName="facultad" required>
-        <mat-option>--</mat-option>
-         @for (facultad of facultades; track facultad) {
+        <mat-option value="">--</mat-option>
+        <!-- Iteración sobre la lista de facultades -->
+        @for (facultad of facultades; track facultad) {
           <mat-option [value]="facultad.nombre">{{ facultad.nombre }}</mat-option>
         }
       </mat-select>
+      <!-- Mensaje de error si no se selecciona una facultad -->
       @if (facultadControl.hasError('required')) {
-        <mat-error>Elija una Facultad</mat-error>
-  }
-
+        <mat-error>Seleccione una facultad</mat-error>
+      }
     </mat-form-field>
 
-    <label id="example-radio-group-label">Rol de Usuario</label>
-    <mat-radio-group formControlName="rol" aria-label="Select an option">
+    <!-- Grupo de botones de radio para seleccionar el rol del usuario -->
+    <label id="example-radio-group-label">Rol de usuario</label>
+    <mat-radio-group formControlName="rol" aria-label="Seleccione una opción">
       <mat-radio-button value="ESTUDIANTE">Estudiante</mat-radio-button>
       <mat-radio-button value="CLUB">Club Estudiantil</mat-radio-button>
       <mat-radio-button value="FACULTAD">Facultad</mat-radio-button>
     </mat-radio-group>
 
+    <!-- Botón de envío del formulario -->
     <div class="example-button-row">
-      <button mat-flat-button type="submit">Aceptar</button>
+      <button
+        mat-flat-button
+        type="submit"
+        class="submit-btn"
+        [disabled]="userForm.invalid"
+      >
+        Acceder
+      </button>
     </div>
   </form>
 </div>

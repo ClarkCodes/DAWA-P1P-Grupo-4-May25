@@ -1,17 +1,37 @@
+<!-- Contenedor principal del formulario de inicio de sesión -->
 <div class="login-container">
+  <!-- Formulario de login con validaciones de Angular Reactive Forms -->
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <!-- Título del formulario -->
     <h2>Iniciar sesión</h2>
 
+    <!-- Campo para el correo electrónico -->
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Email</mat-label>
-      <input type="email" matInput formControlName="email" placeholder="ej: usuario@correo.com" />
-      <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email requerido</mat-error>
-      <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Email no válido</mat-error>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        placeholder="ej: usuario@correo.com"
+      />
+      <!-- Mensajes de error para el campo email -->
+      <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+        Email requerido
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+        Email no válido
+      </mat-error>
     </mat-form-field>
 
+    <!-- Campo para la contraseña -->
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Contraseña</mat-label>
-      <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+      <input
+        matInput
+        [type]="hide() ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <!-- Botón para mostrar/ocultar contraseña -->
       <button
         mat-icon-button
         matSuffix
@@ -22,15 +42,26 @@
       >
         <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
-      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Contraseña requerida</mat-error>
+      <!-- Mensaje de error para el campo contraseña -->
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+        Contraseña requerida
+      </mat-error>
     </mat-form-field>
 
+    <!-- Enlace para registrarse -->
     <div class="mat-button">
-     <a href="/signin" class="button-link">Registrarse</a>
+      <a href="/signin" class="button-link">Registrarse</a>
     </div>
 
-    <button mat-raised-button color="primary" class="submit-btn" type="submit" [disabled]="loginForm.invalid">
-      Iniciar sesión
+    <!-- Botón de envío del formulario -->
+    <button
+      mat-stroked-button
+      class="submit-btn"
+      type="submit"
+      [disabled]="loginForm.invalid"
+      aria-label="Iniciar sesión"
+    >
+      Acceder
     </button>
   </form>
 </div>
