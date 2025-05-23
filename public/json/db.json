@@ -126,7 +126,7 @@
       "id": "1",
       "nombre": "CARBO SANDOVAL KEVIN RUBEN",
       "email": "kevincarbos@ug.edu.ec",
-      "password": "kevin00001",
+      "password": "kevin0001",
       "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
       "rol": "ESTUDIANTE"
     },
@@ -169,6 +169,14 @@
       "password": "c-ia000",
       "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
       "rol": "CLUB"
+    },
+    {
+      "id": "8ddf",
+      "nombre": "test",
+      "email": "test@test.com",
+      "password": "test",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
     }
   ],
   "facultadDatos": [

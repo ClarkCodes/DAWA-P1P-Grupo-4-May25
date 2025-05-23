@@ -1,122 +1,124 @@
-import {ChangeDetectionStrategy,Component, inject, signal} from '@angular/core';
-import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { CuentasService } from '../../services/SigninLogin/cuentas.service';
 import { Cuentas } from '../../models/cuentas';
-import { MatFormField } from '@angular/material/input';
-import { MatLabel } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatButtonModule } from '@angular/material/button';
-import { Router } from '@angular/router';
-import { FormGroup } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
-import {MatSelectModule} from '@angular/material/select';
 
+/**
+ * Componente para la gestión del inicio de sesión de usuarios.
+ */
 @Component({
   selector: 'app-log-in',
+  standalone: true,
   imports: [
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatLabel,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatRadioModule,
-    MatIconModule,
-    MatFormField,
-    MatLabel,
-    CommonModule,MatFormFieldModule, MatSelectModule, MatButtonModule  ],
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
-
+  // Servicios inyectados
+  private cuentasService = inject(CuentasService);
+  private router = inject(Router);
   private _snackBar = inject(MatSnackBar);
 
- horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  // Configuración de la posición del SnackBar
+  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  openSnackBar() {
+  // Señal para controlar la visibilidad de la contraseña
+  hide = signal(true);
+
+  // Formulario reactivo para el inicio de sesión
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required)
+  });
+
+  /**
+   * Muestra un SnackBar con mensaje de acceso exitoso.
+   */
+  openSnackBar(): void {
     this._snackBar.open('ACCESO EXITOSO', 'Cerrar', {
       horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
+      verticalPosition: this.verticalPosition
     });
   }
 
-  invalidSnackBar() {
+  /**
+   * Muestra un SnackBar con mensaje de acceso denegado por credenciales incorrectas.
+   */
+  invalidSnackBar(): void {
     this._snackBar.open('ACCESO DENEGADO (Revisar credenciales)', 'Cerrar', {
       horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
+      verticalPosition: this.verticalPosition
     });
+  }
 
-   }
- private cuentasService = inject(CuentasService);
-  private router = inject(Router);
-
-  hide = signal(true);
-  clickEvent(event: MouseEvent) {
+  /**
+   * Alterna la visibilidad de la contraseña.
+   * @param event Evento del ratón para evitar propagación.
+   */
+  clickEvent(event: MouseEvent): void {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
 
-  // Formulario reactivo
- loginForm = new FormGroup({
-  email: new FormControl('', [Validators.required, Validators.email]),
-  password: new FormControl('', Validators.required)
-});
+  /**
+   * Maneja el envío del formulario de inicio de sesión.
+   * Valida las credenciales y redirige según el rol del usuario.
+   */
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+      const email = this.loginForm.get('email')?.value ?? '';
+      const password = this.loginForm.get('password')?.value ?? '';
 
- onSubmit(): void {
+      this.cuentasService.getCuentas().subscribe({
+        next: (cuentas: Cuentas[]) => {
+          const user = cuentas.find(
+            (u) => u.email === email && u.password === password
+          );
 
-  if (this.loginForm.valid) {
-    const email = this.loginForm.get('email')?.value ?? '';
-    const password = this.loginForm.get('password')?.value ?? '';
-
-    this.cuentasService.getCuentas().subscribe({
-      next: (cuentas: Cuentas[]) => {
-        const user = cuentas.find(
-          (u) => u.email === email && u.password === password
-        );
-
-        if (user) {
-          // Redirigir según el rol
-          switch (user.rol) {
+          if (user) {
+            // Redirigir según el rol del usuario
+            switch (user.rol) {
               case 'ESTUDIANTE':
                 this.router.navigate(['/estudiante']);
-                this.openSnackBar()
+                this.openSnackBar();
                 break;
               case 'FACULTAD':
                 this.router.navigate(['/crud-facultades']);
-                this.openSnackBar()
+                this.openSnackBar();
                 break;
               case 'CLUB':
                 this.router.navigate(['/crud-eventos-clubes']);
-                this.openSnackBar()
+                this.openSnackBar();
                 break;
               default:
                 alert('Rol desconocido');
             }
-        } else {
-          this.invalidSnackBar();
+          } else {
+            this.invalidSnackBar();
+          }
+        },
+        error: (err) => {
+          console.error('Error al consultar usuarios:', err);
+          alert('Error al consultar usuarios');
         }
-      },
-      error: (err) => {
-        console.error(err);
-        alert('Error al consultar usuarios');
-      }
-    });
-    
-  } 
-  
+      });
+    }
+  }
 }
- 
-
-}
-
