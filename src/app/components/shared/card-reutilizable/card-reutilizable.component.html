@@ -1,0 +1,59 @@
+<mat-card class="EventoFacultadClass" appearance="outlined">
+  @if( eventoFacultad?.aficheUrl ){
+    <img mat-card-lg-image [src]="eventoFacultad?.aficheUrl" alt="Afiche del Evento" (mouseenter)="hoveredCardId = eventoFacultad!.id" (mouseleave)="hoveredCardId = null" [ngClass]="{ 'hovered': hoveredCardId === eventoFacultad!.id }">
+  }
+  @else {
+    <img mat-card-lg-image src="/images/no-image-found-design.webp" alt="Imagen del Producto">
+  }
+  <div class="CardBodyClass">
+    <mat-card-header>
+      <mat-card-title class="title">{{ eventoFacultad?.nombre }}</mat-card-title>
+      <mat-card-subtitle class="subtitle">{{ eventoFacultad?.area }}</mat-card-subtitle>
+<!--       <mat-chip-set>
+        <mat-chip>{{ categoria | uppercase }}</mat-chip>
+        <mat-chip>{{ facultad }}</mat-chip>
+      </mat-chip-set> -->
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>
+        {{ eventoFacultad?.descripcion?.descripcionCorta }}
+      </p>
+      <p>
+        @if( eventoFacultad?.organizadorExterno ) {
+          Organizador: {{ eventoFacultad?.organizadorExterno }}<br>
+        }
+        Lugar: {{ eventoFacultad?.lugar }}
+        @if( eventoFacultad?.variosDias ){
+          Desde: {{ eventoFacultad?.fecha }}
+        }
+        @else {
+          Fecha: {{ eventoFacultad?.fecha }}
+        }
+      </p>
+        <div class="ValorDiv">
+          <div>Valor:</div>
+          <div>
+            @if( eventoFacultad?.esGratuito ) {
+              <mat-chip-set>
+                <mat-chip>Gratuito</mat-chip>
+              </mat-chip-set>
+            }
+            @else {
+              {{ eventoFacultad?.costo | currency:"USD" }}
+            }
+          </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-fab extended (click)="verDetalles()">
+        <mat-icon>article</mat-icon>
+        Ver Detalles
+      </button>
+      <button mat-fab extended (click)="eliminar()">
+        <mat-icon>delete</mat-icon>
+        Eliminar
+      </button>
+    </mat-card-actions>
+  </div>
+</mat-card>

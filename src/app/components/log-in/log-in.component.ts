@@ -100,7 +100,7 @@ export class LogInComponent {
                 this.openSnackBar();
                 break;
               case 'FACULTAD':
-                this.router.navigate(['/crud-facultades']);
+                this.router.navigate(['/crud-eventos-facultades']);
                 this.openSnackBar();
                 break;
               case 'CLUB':

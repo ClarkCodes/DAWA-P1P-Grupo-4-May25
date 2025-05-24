@@ -240,7 +240,7 @@ $app-theme: mat.define-theme(
     ),
   ));
 
- 
+
  &  /* Color css variables to apply on elements that are not components such divs and alike to properly apply a correct theme color to maintain consistency */
   {--primary: #323380;
   --on-primary: #ffffff;
@@ -306,14 +306,20 @@ $app-theme: mat.define-theme(
     supporting-text-line-height: 24pt,
     container-shape: 15px,
   ));
+}
 
-  @include mat.tooltip-overrides((
-    container-color: #086ee4,
+.snackbar-success {
+  @include mat.snack-bar-overrides((
+    container-color: #00b85f,
     supporting-text-color: whitesmoke,
+    button-color: gold,
+  ));
+}
+
+.EventoDetailsDialogClass {
+  @include mat.dialog-overrides((
+    container-min-width: 55dvw,
   ));
 
-  @include mat.toolbar-overrides((
-    container-background-color: orange,
-    container-text-color: orange,
-  ));
+
 }

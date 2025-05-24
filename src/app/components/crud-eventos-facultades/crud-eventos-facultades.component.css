@@ -1,0 +1,71 @@
+.MainActionsContainer{
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .NewEventoContainerDivClass {
+    justify-content: center;
+    width: 100%;
+
+    button {
+      width: fit-content;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var( --on-tertiary );
+      background-color: var( --tertiary );
+      border: 2px solid var( --tertiary-fixed );
+      cursor: pointer;
+      border-radius: 8px;
+    }
+  }
+
+  .SearchContainerDivClass {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .FacultadesSearchForm{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+
+      mat-form-field{
+        width: 15rem;
+        border-radius: 25px;
+        transition: width .35s ease-in-out;
+
+        &:focus-within{
+          width: 70%;
+          transition: width .27s ease-out;
+        }
+
+        input{
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.EventosCardsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  gap: 3rem;
+
+  app-card-reutilizable {
+    width: 25dvw;
+  }
+}

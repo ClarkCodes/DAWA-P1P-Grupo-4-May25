@@ -1,0 +1,130 @@
+@if( eventoFacultad ) {
+  <h1>Editar Evento</h1>
+}
+@else{
+  <h1>Crear Evento</h1>
+}
+<form class="CrearEditarEventoFacultadForm" [formGroup]="form" (submit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label> Nombre </mat-label>
+    <input matInput formControlName="nombre" type="text" placeholder="Ej.: Hackaton por un mejor mañana" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label> Categoría </mat-label>
+    <mat-select [(value)]="categoria" formControlName="categoria">
+      @for( categoria of categorias; track $index ){
+        <mat-option [value]="categoria.id"> {{categoria.nombre}} </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label> Facultad </mat-label>
+    <mat-select [(value)]="facultad" formControlName="facultad">
+      @for( facultad of facultades; track $index ){
+        <mat-option [value]="facultad.id"> {{facultad.nombre}} </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Organizador externo(opcional) </mat-label>
+    <input matInput formControlName="organizadorExterno" type="text" placeholder="Ej.: Sociedad de Estadistica" >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Descripción corta </mat-label>
+    <input matInput formControlName="descripcionCorta" type="text" placeholder="Ej.: Ven a disfrutar una tarde de aprendizaje">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Descripción detallada </mat-label>
+    <textarea matInput formControlName="descripcionDetalles" placeholder="Ej.: Este evento se trata de profundizar en los aspectos de la industria del software..."></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Área </mat-label>
+    <textarea matInput formControlName="area" placeholder="Ej.: Desarrollo de Software"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-slide-toggle formControlName="variosDias">Tiene varios dias</mat-slide-toggle>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="variosDias">Tiene varios dias</mat-checkbox>
+
+  <mat-form-field>
+    <mat-label> Fecha </mat-label>
+    <input matInput formControlName="fecha" [matDatepicker]="picker" type="date" placeholder="Ej.: 24/06/2025">
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label> Fecha Hasta </mat-label>
+    <input matInput formControlName="fechaHasta" [matDatepicker]="datePicker" type="date" placeholder="Ej.: 27/06/2025">
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+    <mat-datepicker #datePicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label> Hora </mat-label>
+    <input matInput formControlName="hora" [formControl]="formControl" [matTimepicker]="timePicker" type="time" placeholder="Ej.: 08:00AM" >
+    <mat-timepicker-toggle matIconSuffix [for]="timePicker"/>
+    <mat-timepicker #timePicker/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-slide-toggle formControlName="esGratuito">Es Gratuito</mat-slide-toggle>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Costo </mat-label>
+    <input matInput formControlName="costo" type="text" placeholder="Ej.: 10.00">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Dirección </mat-label>
+    <input matInput formControlName="direccion" type="text" placeholder="Ej.: Av. de las Américas y Alban Borja">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Lugar </mat-label>
+    <input matInput formControlName="lugar" type="text" placeholder="Ej.: Edificio B, Salon de Eventos">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Afiche URL </mat-label>
+    <input matInput formControlName="aficheUrl" type="text" placeholder="Ej.: https://static.platzi.com/media/user_upload/CONF-2021-std-twitter-tiendita-b59050ee-9359-41f7-9ccb-f243a8d9515d.jpg">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Sitio Web </mat-label>
+    <input matInput formControlName="sitioWeb" type="text" placeholder="Ej.: https://platzi.com/">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Teléfono de contacto </mat-label>
+    <input matInput formControlName="telefonoContacto" type="text" placeholder="Ej.: 0995123896">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label> Etiquetas (separadas por espacios) </mat-label>
+    <input matInput formControlName="etiquetas" type="text" placeholder="Ej.: software tecnologia platzi programacion">
+  </mat-form-field>
+
+  <div class="ActionsDivClass">
+    <button mat-raised-button color="primary" type="submit">
+      @if( eventoFacultad ) {
+        Editar
+      }
+      @else{
+        Crear
+      }
+    </button>
+    <button mat-button type="button" (click)="cancel()">Cancelar</button>
+  </div>
+</form>
