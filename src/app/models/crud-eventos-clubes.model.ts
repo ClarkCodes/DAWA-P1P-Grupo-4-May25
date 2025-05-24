@@ -6,7 +6,6 @@ export interface Evento {
   fecha: string;
   esGratuito: boolean;
   costo?: number;
-  cupoMaximo: number;
   lugar: string;
   nombreClub: string; 
   aficheUrl?: string;

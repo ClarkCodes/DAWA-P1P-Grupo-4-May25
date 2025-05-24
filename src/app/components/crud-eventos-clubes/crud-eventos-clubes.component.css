@@ -1,81 +1,54 @@
-
-mat-card {
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 900px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-}
-
-.campo {
-  display: block;
-  margin-bottom: 20px;
-}
-
-.campo-radio {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-
-.botones {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-
-.tabla-eventos {
-  margin-top: 40px;
-}
-
-table {
+.full-width {
   width: 100%;
-  border-collapse: collapse;
+  margin-bottom: 16px;
 }
 
-th.mat-header-cell, td.mat-cell {
-  text-align: left;
-  padding: 12px;
-  font-size: 14px;
+.formulario-card,
+.tabla-card {
+  margin-bottom: 24px;
+  padding: 16px;
 }
 
-th.mat-header-cell {
-  background-color: #f5f5f5;
-  font-weight: bold;
+.radio-group {
+  display: flex;
+  gap: 16px;
+  margin: 12px 0;
 }
 
-tr.mat-row:nth-child(odd) {
-  background-color: #fafafa;
+.radio-label {
+  font-weight: 500;
+  margin-top: 8px;
 }
 
-tr.mat-row:hover {
-  background-color: #e0f7fa;
+.form-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
 }
 
-@media (max-width: 768px) {
-  mat-form-field,
-  .campo {
-    width: 100%;
-  }
-
-  .botones {
-    flex-direction: column;
-  }
-
-  .campo-radio {
-    flex-direction: column;
-  }
+.imagen-preview {
+  margin-bottom: 16px;
+  text-align: center;
 }
 
-
-label {
-  font-weight: bold;
+.imagen-preview img {
+  max-height: 150px;
+  object-fit: contain;
+}
+.afiche-imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.afiche-imagen img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
 
-.campo p {
-  margin: 5px 0 20px 0;
-  font-style: italic;
+.afiche-imagen img:hover {
+  transform: scale(1.1);
 }

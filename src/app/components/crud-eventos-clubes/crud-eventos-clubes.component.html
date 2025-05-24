@@ -1,135 +1,145 @@
-<mat-card>
-  <h2>Crear Evento de Club Universitario</h2>
-  <form [formGroup]="formularioEvento" (ngSubmit)="guardar()">
-    <mat-form-field appearance="fill" class="campo">
+<mat-card class="formulario-card">
+  <h2>Crear un evento para un club universitario</h2>
+
+  <form [formGroup]="eventoForm" (ngSubmit)="guardarEvento()" class="evento-form">
+    <mat-form-field appearance="fill" class="full-width">
       <mat-label>Título</mat-label>
-      <input matInput formControlName="titulo" required />
+      <input matInput formControlName="titulo" required>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="campo">
+    <mat-form-field appearance="fill" class="full-width">
       <mat-label>Descripción</mat-label>
       <textarea matInput formControlName="descripcion" required></textarea>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="campo">
+    <mat-form-field appearance="fill" class="full-width">
       <mat-label>Categoría</mat-label>
       <mat-select formControlName="categoria" required>
-        <mat-option value="Charla">Charla</mat-option>
-        <mat-option value="Taller">Taller</mat-option>
-        <mat-option value="Concurso">Concurso</mat-option>
-        <mat-option value="Seminario">Seminario</mat-option>
-        <mat-option value="Otro">Otro</mat-option>
+        <mat-option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="campo" *ngIf="mostrarOtraCategoria()">
-      <mat-label>Otra Categoría</mat-label>
-      <input matInput formControlName="otraCategoria" />
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Fecha del evento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fecha" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="campo">
-      <mat-label>Fecha</mat-label>
-      <input matInput formControlName="fecha" type="date" required />
+    <label class="radio-label">¿Es gratuito?</label>
+    <mat-radio-group formControlName="esGratuito" class="radio-group" required>
+      <mat-radio-button [value]="true">Sí</mat-radio-button>   <mat-radio-button [value]="false">No</mat-radio-button>  </mat-radio-group>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Costo</mat-label>
+      <input matInput type="number" formControlName="costo" [disabled]="eventoForm.get('costo')?.disabled ?? false" required>
     </mat-form-field>
 
-    <label class="campo">¿Es gratuito?</label>
-    <mat-radio-group formControlName="esGratuito" class="campo-radio">
-      <mat-radio-button [value]="true">Sí</mat-radio-button>
-      <mat-radio-button [value]="false">No</mat-radio-button>
-    </mat-radio-group>
-
-    <mat-form-field appearance="fill" class="campo" *ngIf="!formularioEvento.get('esGratuito')?.value">
-      <mat-label>Costo ($)</mat-label>
-      <input matInput type="number" formControlName="costo" />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="campo">
-      <mat-label>Cupo Máximo</mat-label>
-      <input matInput type="number" formControlName="cupoMaximo" required />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="campo">
+    <mat-form-field appearance="fill" class="full-width">
       <mat-label>Lugar</mat-label>
-      <input matInput formControlName="lugar" required />
+      <input matInput formControlName="lugar" required>
     </mat-form-field>
 
-    <!-- Nombre del Club como texto plano (no editable) -->
-    <div class="campo">
-      <label>Nombre del Club</label>
-      <p>{{ nombreClubActual }}</p>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre del club</mat-label>
+      <mat-select formControlName="nombreClub" required [disabled]="true">
+        <mat-option *ngFor="let club of clubes" [value]="club.nombre">{{ club.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>URL del afiche</mat-label>
+      <input matInput formControlName="aficheUrl" required>
+    </mat-form-field>
+
+    <div *ngIf="imagenPreview" class="imagen-preview">
+      <img [src]="imagenPreview" alt="Previsualización del afiche">
     </div>
 
-    <mat-form-field appearance="fill" class="campo">
-      <mat-label>URL del afiche</mat-label>
-      <input matInput formControlName="aficheUrl" />
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Etiquetas</mat-label>
+      <input matInput formControlName="etiquetas" required>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="campo">
-      <mat-label>Etiquetas (separadas por coma)</mat-label>
-      <input matInput formControlName="etiquetas" />
-    </mat-form-field>
-
-    <div class="botones">
+    <div class="form-buttons">
       <button mat-raised-button color="primary" type="submit">
-        {{ editando ? 'Actualizar' : 'Guardar' }}
+        {{ editarModo ? 'Actualizar' : 'Crear' }} evento
       </button>
-      <button mat-button color="warn" type="button" (click)="cancelar()">Cancelar</button>
+      <button mat-stroked-button type="button" (click)="resetFormulario()">Cancelar</button>
     </div>
   </form>
 </mat-card>
 
-<mat-card class="tabla-eventos">
-  <h2>Eventos Registrados</h2>
-  <table mat-table [dataSource]="eventos" class="mat-elevation-z8" multiTemplateDataRows>
+<mat-card class="tabla-card">
+  <table mat-table [dataSource]="eventos" class="mat-elevation-z8 tabla-eventos">
 
     <ng-container matColumnDef="titulo">
-      <th mat-header-cell *matHeaderCellDef> Título </th>
-      <td mat-cell *matCellDef="let evento"> {{ evento.titulo }} </td>
+      <th mat-header-cell *matHeaderCellDef>Título</th>
+      <td mat-cell *matCellDef="let evento">{{ evento.titulo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef>Descripción</th>
+      <td mat-cell *matCellDef="let evento">{{ evento.descripcion }}</td>
     </ng-container>
 
     <ng-container matColumnDef="categoria">
-      <th mat-header-cell *matHeaderCellDef> Categoría </th>
-      <td mat-cell *matCellDef="let evento"> {{ evento.categoria }} </td>
+      <th mat-header-cell *matHeaderCellDef>Categoría</th>
+      <td mat-cell *matCellDef="let evento">{{ evento.categoria }}</td>
     </ng-container>
 
     <ng-container matColumnDef="fecha">
-      <th mat-header-cell *matHeaderCellDef> Fecha </th>
-      <td mat-cell *matCellDef="let evento"> {{ evento.fecha }} </td>
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let evento">{{ evento.fecha | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="esGratuito">
+      <th mat-header-cell *matHeaderCellDef>Gratuito</th>
+      <td mat-cell *matCellDef="let evento">{{ evento.esGratuito ? 'Sí' : 'No' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="costo">
+      <th mat-header-cell *matHeaderCellDef>Costo</th>
+      <td mat-cell *matCellDef="let evento">{{ evento.costo || '-' }}</td>
     </ng-container>
 
     <ng-container matColumnDef="lugar">
-      <th mat-header-cell *matHeaderCellDef> Lugar </th>
-      <td mat-cell *matCellDef="let evento"> {{ evento.lugar }} </td>
+      <th mat-header-cell *matHeaderCellDef>Lugar</th>
+      <td mat-cell *matCellDef="let evento">{{ evento.lugar }}</td>
     </ng-container>
 
     <ng-container matColumnDef="nombreClub">
-      <th mat-header-cell *matHeaderCellDef> Nombre del Club </th>
-      <td mat-cell *matCellDef="let evento"> {{ evento.nombreClub }} </td>
+      <th mat-header-cell *matHeaderCellDef>Club</th>
+      <td mat-cell *matCellDef="let evento">{{ evento.nombreClub }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="acciones">
-      <th mat-header-cell *matHeaderCellDef> Acciones </th>
-      <td mat-cell *matCellDef="let evento">
-        <button
-          mat-button
-          color="primary"
-          (click)="editar(evento)"
-          *ngIf="evento.nombreClub === nombreClubActual"
-        >
-          Editar
-        </button>
-        <button
-          mat-button
-          color="warn"
-          (click)="eliminar(evento.id)"
-          *ngIf="evento.nombreClub === nombreClubActual"
-        >
-          Eliminar
-        </button>
+    <ng-container matColumnDef="aficheUrl">
+      <th mat-header-cell *matHeaderCellDef>Afiche</th>
+      <td mat-cell *matCellDef="let evento" class="afiche-imagen">
+        <img [src]="evento.aficheUrl" alt="Afiche del evento">
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+    <ng-container matColumnDef="etiquetas">
+      <th mat-header-cell *matHeaderCellDef>Etiquetas</th>
+      <td mat-cell *matCellDef="let evento">{{ evento.etiquetas }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let evento">
+        <ng-container *ngIf="evento.nombreClub === loggedClubName">
+          <button mat-icon-button color="accent" (click)="editarEvento(evento)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="eliminarEvento(evento.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </mat-card>
