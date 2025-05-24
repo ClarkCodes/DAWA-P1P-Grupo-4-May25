@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Evento } from '../models/crud-eventos-clubes.model';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Evento } from '../models/crud-eventos-clubes.model';
 
+// Interface for Club Accounts
 export interface ClubCuenta {
   id: number;
   nombre: string;
   facultadDatos: string;
-  email: string;
+  correoElectronico: string;
   contrasena: string;
-  categoria: string;
+  categoria: string; // Category of the club itself (e.g., "Académico", "Cultural")
   clubActivo: boolean;
 }
 
@@ -17,35 +19,45 @@ export interface ClubCuenta {
   providedIn: 'root'
 })
 export class EventosService {
-  private readonly URL_EVENTOS_JSON = 'http://localhost:3000/clubes';        // Aquí están los EVENTOS
-  private readonly URL_CLUBES_JSON = 'http://localhost:3000/clubCuentas';    // Aquí están las CUENTAS DE CLUBES
+  // Correct URLs as per your setup and comments in previous versions
+  private readonly URL_EVENTOS_JSON = 'http://localhost:3000/clubes';       // Aquí están los EVENTOS DE LOS CLUBES
+  private readonly URL_CLUBES_JSON = 'http://localhost:3000/clubCuentas';   // Aquí están las CUENTAS DE CLUBES
 
   constructor(private http: HttpClient) {}
 
-  // ✅ Obtener todos los eventos (guardados en 'clubes')
+  // Eventos CRUD methods
   obtenerEventos(): Observable<Evento[]> {
     return this.http.get<Evento[]>(this.URL_EVENTOS_JSON);
   }
 
-  // ✅ Crear nuevo evento
+  obtenerEventoPorId(id: number): Observable<Evento> {
+    return this.http.get<Evento>(`${this.URL_EVENTOS_JSON}/${id}`);
+  }
+
   agregarEvento(evento: Evento): Observable<Evento> {
     return this.http.post<Evento>(this.URL_EVENTOS_JSON, evento);
   }
 
-  // ✅ Editar evento existente
-  actualizarEvento(eventoActualizado: Evento): Observable<Evento> {
-    const url = `${this.URL_EVENTOS_JSON}/${eventoActualizado.id}`;
-    return this.http.put<Evento>(url, eventoActualizado);
+  actualizarEvento(evento: Evento): Observable<Evento> {
+    return this.http.put<Evento>(`${this.URL_EVENTOS_JSON}/${evento.id}`, evento);
   }
 
-  // ✅ Eliminar evento
   eliminarEvento(id: number): Observable<void> {
-    const url = `${this.URL_EVENTOS_JSON}/${id}`;
-    return this.http.delete<void>(url);
+    return this.http.delete<void>(`${this.URL_EVENTOS_JSON}/${id}`);
   }
 
-  // ✅ Obtener lista de cuentas de clubes (para extraer nombre del club logueado)
+  // Club Cuentas methods
   obtenerClubes(): Observable<ClubCuenta[]> {
     return this.http.get<ClubCuenta[]>(this.URL_CLUBES_JSON);
+  }
+
+  // Method to get unique categories specifically from the EVENTS collection ('clubes')
+  obtenerCategoriasDesdeEventos(): Observable<string[]> {
+    return this.http.get<Evento[]>(this.URL_EVENTOS_JSON).pipe(
+      map((eventos: Evento[]) => {
+        const categorias = eventos.map(evento => evento.categoria);
+        return [...new Set(categorias)].sort(); // Ensure unique and sorted categories
+      })
+    );
   }
 }

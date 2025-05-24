@@ -43,6 +43,53 @@
       "telefono": "042281148"
     }
   ],
+  "clubCuentas": [
+    {
+      "id": "1",
+      "nombre": "Club de IA",
+      "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS",
+      "email": "roboticaia@ug.edu.ec",
+      "contrasena": "Rob0tic@2025",
+      "categoria": "Tecnología e Innovación",
+      "clubActivo": "Activo"
+    },
+    {
+      "id": "2",
+      "nombre": "Círculo Literario",
+      "facultadDatos": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
+      "email": "literatura@ug.edu.ec",
+      "contrasena": "Letras#123",
+      "categoria": "Arte y Cultura",
+      "clubActivo": "Activo"
+    },
+    {
+      "id": "3",
+      "nombre": "EcoUG",
+      "facultadDatos": "CIENCIAS NATURALES",
+      "email": "ecoug@ug.edu.ec",
+      "contrasena": "Natur@l2025",
+      "categoria": "Medio Ambiente",
+      "clubActivo": "No Activo"
+    },
+    {
+      "id": "4",
+      "nombre": "UG Emprende",
+      "facultadDatos": "CIENCIAS ADMINISTRATIVAS",
+      "email": "emprendedores@ug.edu.ec",
+      "contrasena": "Emprend3#UG",
+      "categoria": "Emprendimiento",
+      "clubActivo": "Activo"
+    },
+    {
+      "id": "5",
+      "nombre": "Club de Debate",
+      "facultadDatos": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
+      "email": "debateug@ug.edu.ec",
+      "contrasena": "Deb@t3UG2025",
+      "categoria": "Formación Ciudadana",
+      "clubActivo": "No Activo"
+    }
+  ],
   "clubes": [
     {
       "id": "1",
@@ -113,17 +160,17 @@
       ]
     },
     {
-      "id": 1747952736858,
-      "titulo": "gfxffgx",
-      "descripcion": "cfgxgfx",
-      "categoria": "Cultural",
-      "fecha": "2025-05-15T05:00:00.000Z",
-      "esGratuito": "si",
-      "costo": null,
-      "lugar": "ghccghcgh",
+      "titulo": "Taller de Oratoria",
+      "descripcion": "Taller de oratoria destinado a toda la comunidad estudiantil",
+      "categoria": "Taller",
+      "fecha": "2025-05-15",
+      "esGratuito": "no",
+      "costo": 20,
+      "lugar": "Aula 2D-007",
       "nombreClub": "UG Emprende",
       "aficheUrl": "https://www.uam.edu.co/medellin/wp-content/uploads/2017/04/AFICHE-concurso-de-oratoria-Fac.-derecho.jpg",
-      "etiquetas": "gfxfxfgx, gfxfxf"
+      "etiquetas": "Oratoria, Taller",
+      "id": "1747952736858"
     }
   ],
   "Cuentas": [

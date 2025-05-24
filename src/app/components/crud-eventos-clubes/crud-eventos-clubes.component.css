@@ -1,43 +1,54 @@
-.form-card,
-.table-card {
-  margin: 20px auto;
-  max-width: 1200px;
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.formulario-card,
+.tabla-card {
+  margin-bottom: 24px;
   padding: 16px;
 }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-
-mat-form-field {
-  width: 100%;
-}
-
-.form-actions {
+.radio-group {
   display: flex;
-  justify-content: flex-start;
-  gap: 12px;
-  margin-top: 20px;
+  gap: 16px;
+  margin: 12px 0;
 }
 
-.table-card table {
-  width: 100%;
-  overflow: auto;
+.radio-label {
+  font-weight: 500;
+  margin-top: 8px;
 }
 
-table mat-header-cell,
-table mat-cell {
-  padding: 12px 8px;
-  text-align: left;
+.form-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
 }
 
-mat-card {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+.imagen-preview {
+  margin-bottom: 16px;
+  text-align: center;
 }
 
-mat-icon-button {
-  margin-right: 4px;
+.imagen-preview img {
+  max-height: 150px;
+  object-fit: contain;
+}
+.afiche-imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.afiche-imagen img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.afiche-imagen img:hover {
+  transform: scale(1.1);
 }
