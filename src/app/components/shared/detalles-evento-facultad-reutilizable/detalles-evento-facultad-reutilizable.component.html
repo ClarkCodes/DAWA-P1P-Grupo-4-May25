@@ -1,0 +1,71 @@
+<div class="DetallesContainer">
+  @if( data.eventoFacultad.aficheUrl ){
+    <img mat-card-lg-image [src]="data.eventoFacultad.aficheUrl" alt="Afiche del Evento" >
+  }
+  @else {
+    <img mat-card-lg-image src="/images/no-image-found-design.webp" alt="Imagen del Producto">
+  }
+  <div class="BodyClass">
+    <div class="HeaderDivClass">
+      <h4 class="title">
+        {{ data.eventoFacultad.nombre }}
+      </h4>
+      <h6 class="subtitle">
+        {{ data.eventoFacultad.area }}
+      </h6>
+    </div>
+
+    <div class="ContentClass">
+      <p>
+        {{ data.eventoFacultad.descripcion.descripcionCorta }}
+      </p>
+      <p>
+        {{ data.eventoFacultad.descripcion.descripcionDetalles }}
+      </p>
+      <p>
+        @if( data.eventoFacultad.organizadorExterno ) {
+          Organizador: {{ data.eventoFacultad.organizadorExterno }}<br>
+        }
+        @if( data.eventoFacultad.direccion ){
+          Dirección: {{ data.eventoFacultad.direccion }}<br>
+        }
+        Lugar: {{ data.eventoFacultad.lugar }}<br>
+        @if( data.eventoFacultad.variosDias ){
+          Desde: {{ data.eventoFacultad.fecha }}<br>
+          Hasta: {{ data.eventoFacultad.fechaHasta }}<br>
+        }
+        @else {
+          Fecha: {{ data.eventoFacultad.fecha }}<br>
+        }
+        Hora: {{ data.eventoFacultad.hora }}<br>
+      </p>
+      <div class="ValorDiv">
+        <div>Valor:</div>
+        <div>
+          @if( data.eventoFacultad.esGratuito ) {
+            <mat-chip-set>
+              <mat-chip>Gratuito</mat-chip>
+            </mat-chip-set>
+          }
+          @else {
+            {{ data.eventoFacultad.costo | currency:"USD" }}
+          }
+        </div>
+      </div>
+      <p>
+        Sitio Web: {{ data.eventoFacultad.sitioWeb }}<br>
+        Teléfono de Contacto: {{ data.eventoFacultad.telefonoContacto }}<br>
+        Etiquetas: {{ data.eventoFacultad.etiquetas }}
+      </p>
+    </div>
+    <div class="ActionsDivClass">
+      <button mat-fab extended (click)="editar()">
+        <mat-icon>edit</mat-icon>
+        Editar
+      </button>
+      <button mat-raised-button (click)="onCancel()">
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>

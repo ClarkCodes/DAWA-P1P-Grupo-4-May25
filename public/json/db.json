@@ -1,25 +1,125 @@
 {
-  "facultades": [
+  "eventosFacultad":[
     {
-      "id": "1",
-      "nombre": "Ciencias Matemáticas y Físicas",
-      "direccion": "Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
-      "horarioAtencion": [
-        {
-          "diaDesde": "lunes",
-          "diaHasta": "viernes",
-          "horaDesde": "7:00",
-          "horaHasta": "23:00"
-        },
-        {
-          "diaDesde": "sabado",
-          "diaHasta": "sabado",
-          "horaDesde": "6:30",
-          "horaHasta": "17:00"
-        }
-      ],
-      "sitioWeb": "http://fcmf.ug.edu.ec/",
-      "telefono": "042396881"
+      "id": 1,
+      "nombre": "NASA SpaceApps Challenge - Hackaton de Programación",
+      "categoriaId": 1,
+      "facultadId": "abf8",
+      "organizadorExterno": "NASA International",
+      "descripcion": {
+        "descripcionCorta": "Participa en una sana competencia organizadas por profesores de Programación de todos los semestres y carreras que incorporan esta materia.",
+        "descripcionDetalles": "El NASA Space Apps Challenge Guayaquil es el hackathon internacional de ciencia y tecnología más grande a nivel mundial organizado por la NASA. Durante un fin de semana, personas de todo el mundo colaboran para desarrollar soluciones innovadoras a desafíos relacionados con el espacio y la ciencia terrestre. El evento se organiza en simultáneo en más de 500 ciudades en el mundo. Por primera vez en Guayaquil, la Universidad de Guaquil actúa como anfitrión y organizador del evento local, convirtiéndose en la ciudad con mayor número de inscritos en toda Hispanoamérica."
+      },
+      "area": "Ingeniería y Desarrollo de Software",
+      "variosDias": false,
+      "fecha": "2025-06-10",
+      "fechaHasta": "NA",
+      "hora":"8:00",
+      "esGratuito": true,
+      "costo": 0,
+      "direccion":"Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
+      "lugar": "Facultad, Sala de Conferencias - Ala B",
+      "aficheUrl": "https://i0.wp.com/dialoguemos.ec/wp-content/uploads/2024/10/banner-nasa.png?resize=600%2C490&ssl=1",
+      "sitioWeb": "https://www.spaceappschallenge.org/",
+      "telefonoContacto": "042396881",
+      "etiquetas": ["programación", "competencia", "estrategia", "equipos", "software"]
+    },
+    {
+      "id": 2,
+      "nombre": "Women in Data Science Worldwide Guayaquil",
+      "categoriaId": 7,
+      "facultadId": "abf8",
+      "organizadorExterno": "Sociedad Ecuatoriana de Estadística",
+      "descripcion": {
+        "descripcionCorta": "🎉 ¡Llega WiDS Guayaquil 2025! 🚀",
+        "descripcionDetalles": "Este 30 de mayo acompáñanos en un evento único donde mujeres líderes en ciencia de datos compartirán su experiencia transformando organizaciones con el poder de los datos. 💡📊 🌟 Ven y conoce a mujeres que analizan, lideran y transforman con datos."
+      },
+      "area": "🎯 Transformación digital y ciencia de datos",
+      "variosDias": false,
+      "fecha": "2025-05-30",
+      "fechaHasta": "NA",
+      "hora":"09:00",
+      "esGratuito": true,
+      "costo": 0,
+      "direccion":"Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
+      "lugar": "📍 Épico, Guayarte",
+      "aficheUrl": "https://scontent.fgye7-1.fna.fbcdn.net/v/t39.30808-6/495467804_713176984615280_4276968321639154981_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=jgn-4NIb4oMQ7kNvwHZKrfJ&_nc_oc=AdmweqTLBXOcs9gmnmzCvQjqJFHeuzlGJD0SRO9eCl1IZGuy_-usSje9dcTcejlQddo&_nc_zt=23&_nc_ht=scontent.fgye7-1.fna&_nc_gid=juNzZrd2dbhLsZrc6V8d9g&oh=00_AfJWvDylsatG8TfUFl-3OH67KF5UqUI_8QKmIED4aWhypg&oe=68341C2E",
+      "sitioWeb": "https://www.facebook.com/100077689531978/posts/713177501281895/?_rdr",
+      "telefonoContacto": "042789456",
+      "etiquetas": ["#WiDSGuayaquil", "#WiDSEcuador", "#MujeresEnDatos", "#CienciaDeDatos", "#DataScience", "#SEE25Años"]
+    }
+  ],
+  "eventosFacultadTopId": {
+      "topId": 2
+  },
+  "eventosFacultadCategoria":[
+    {
+      "id": 1,
+      "nombre": "Competencia"
+     },
+    {
+      "id": 2,
+      "nombre": "Integracion"
+    },
+    {
+      "id": 3,
+      "nombre": "Congreso"
+    },
+    {
+      "id": 4,
+      "nombre": "Seminario"
+    },
+    {
+      "id": 5,
+      "nombre": "Charla"
+    },
+    {
+      "id": 6,
+      "nombre": "Taller"
+    },
+    {
+      "id": 7,
+      "nombre": "Conferencia"
+    },
+    {
+      "id": 8,
+      "nombre": "Exposicion"
+    },
+    {
+      "id": 9,
+      "nombre": "Concierto"
+    },
+    {
+      "id": 10,
+      "nombre": "Festival"
+    },
+    {
+      "id": 11,
+      "nombre": "Debate"
+    },
+    {
+      "id": 12,
+      "nombre": "Fiesta"
+    },
+    {
+      "id": 13,
+      "nombre": "Celebración"
+    },
+    {
+      "id": 14,
+      "nombre": "Reunion"
+    },
+    {
+      "id": 15,
+      "nombre": "Mañana Deportiva"
+    },
+    {
+      "id": 16,
+      "nombre": "Campeonato"
+    },
+    {
+      "id": 17,
+      "nombre": "Casa abierta"
     }
   ],
   "clubCuentas": [
