@@ -20,27 +20,6 @@
       ],
       "sitioWeb": "http://fcmf.ug.edu.ec/",
       "telefono": "042396881"
-    },
-    {
-      "id": "2",
-      "nombre": "Ciencias Médicas",
-      "direccion": "Av. Kennedy y Av. Delta, Universidad de Guayaquil - Ciudadela Universitaria",
-      "horarioAtencion": [
-        {
-          "diaDesde": "lunes",
-          "diaHasta": "viernes",
-          "horaDesde": "7:00",
-          "horaHasta": "21:00"
-        },
-        {
-          "diaDesde": "sabado",
-          "diaHasta": "sabado",
-          "horaDesde": "7:00",
-          "horaHasta": "17:00"
-        }
-      ],
-      "sitioWeb": "http://fcm.ug.edu.ec/",
-      "telefono": "042281148"
     }
   ],
   "clubCuentas": [
@@ -175,14 +154,6 @@
   ],
   "Cuentas": [
     {
-      "id": "1",
-      "nombre": "CARBO SANDOVAL KEVIN RUBEN",
-      "email": "kevincarbos@ug.edu.ec",
-      "password": "kevin0001",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "ESTUDIANTE"
-    },
-    {
       "id": "2",
       "nombre": "LEMA YAGUARI NICOLE ODALYS",
       "email": "nicolelemay@ug.edu.ec",
@@ -216,26 +187,26 @@
     },
     {
       "id": "7",
-      "nombre": "club",
-      "email": "c-ia@ug.edu.ec",
-      "password": "c-ia000",
+      "nombre": "Ajedrez",
+      "email": "ajedrez@ug.edu.ec",
+      "password": "Ajedrez001",
       "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
       "rol": "CLUB"
     },
     {
       "id": "8ddf",
-      "nombre": "test",
-      "email": "test@test.com",
-      "password": "test",
+      "nombre": "FCMF",
+      "email": "fcmf@ug.edu.ec",
+      "password": "FCMF321",
       "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
       "rol": "FACULTAD"
     },
     {
-      "id": "9b46",
-      "nombre": "joselyne",
-      "email": "joselyne-33@hotmail.com",
-      "password": "joselyne",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "id": "0c09",
+      "nombre": "Juan",
+      "email": "juanp@outlook.com",
+      "password": "juanp",
+      "facultad": "INGENIERIA INDUSTRIAL",
       "rol": "ESTUDIANTE"
     }
   ],
@@ -345,15 +316,6 @@
       "mensaje": "Me encantó la oportunidad de conocer a otros profesionales de mi industria. Los talleres fueron muy útiles",
       "fecha": "2025-05-20T04:24:36.796Z",
       "aceptoTerminos": true
-    },
-    {
-      "id": "4675",
-      "estudianteNombre": "test",
-      "nombreEvento": "evento4",
-      "experiencia": "5",
-      "mensaje": "test",
-      "fecha": "2025-05-21T16:32:00.460Z",
-      "aceptoTerminos": true
     }
   ],
   "estudiantes": [
@@ -385,16 +347,6 @@
       "email": "Juan@gmail.com",
       "edad": "27",
       "fecha": "2025-05-22T01:45:29.901Z",
-      "aceptoTerminos": true
-    },
-    {
-      "id": "0a65",
-      "estudianteNombre": "test",
-      "nombreEvento": "test",
-      "telefono": "testestest",
-      "email": "test@test.com",
-      "edad": "test",
-      "fecha": "2025-05-23T05:17:19.909Z",
       "aceptoTerminos": true
     }
   ]
