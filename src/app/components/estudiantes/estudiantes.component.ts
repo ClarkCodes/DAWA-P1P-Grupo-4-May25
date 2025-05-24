@@ -4,7 +4,7 @@ import { ServEstudiantesService } from '../../services/serv-estudiantes-service'
 import { Estudiantes } from '../../models/estudiantes';
 //import { ServComentariosService } from '../../services/serv-estudiantes-service';
 //import { Comentario } from '../../models/comentarios';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -51,6 +51,7 @@ import { merge } from 'rxjs';
   styleUrl: './estudiantes.component.css'
 })
 export class EstudiantesComponent implements OnInit{
+
     filterValue: string = '';
     searchControl = new FormControl('');
     estudiantes: Estudiantes[] = [];
@@ -82,9 +83,10 @@ export class EstudiantesComponent implements OnInit{
         id: [{ value: '', disabled: true }], 
         estudianteNombre: ['', [Validators.required, Validators.maxLength(50), this.nombreValido]],
         nombreEvento: ['', Validators.required],
-        telefono: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
+        telefono: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10),
+        this.soloNumerosValidator()]],
         email: ['', [Validators.required, Validators.email]],
-        edad: ['', Validators.required],
+        edad: ['', Validators.required, this.edadValidator()],
         aceptoTerminos: [true, this.aceptaTerminosValidator]
       });
 
@@ -267,4 +269,37 @@ export class EstudiantesComponent implements OnInit{
     aceptaTerminosValidator(control: AbstractControl): ValidationErrors | null {
       return control.value === true ? null : { aceptaTerminosRequerido: true };
     }
+
+    soloNumerosValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const soloNumeros = /^\d+$/;
+    if (control.value && !soloNumeros.test(control.value)) {
+      return { soloNumeros: true };
+    }
+    return null;
+  };
+}
+
+edadValidator(): ValidatorFn {
+ return (control: AbstractControl): ValidationErrors | null => {
+    const regex = /^\d{1,2}$/; // solo números de 1 a 2 dígitos
+    return control.value && !regex.test(control.value) ? { edadInvalida: true } : null;
+  };
+}
+
+soloNumeros(event: KeyboardEvent): void {
+  const teclasPermitidas = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
+
+  // Permitir teclas especiales
+  if (teclasPermitidas.includes(event.key)) {
+    return;
   }
+
+  // Permitir solo números del 0 al 9
+  if (!/^[0-9]$/.test(event.key)) {
+    event.preventDefault();
+  }
+}
+
+
+}

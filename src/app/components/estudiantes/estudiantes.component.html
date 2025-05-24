@@ -36,12 +36,36 @@
 </mat-error>
 </mat-form-field>
 
-
+<!--
 <mat-form-field hintLabel="Min 7 caracteres - Max 10 caracteres">
   <mat-label>Ingrese su numero de contacto</mat-label>
   <input matInput #input minlength="7" maxlength="10" placeholder="Ex. Nougat" (input)="onInput($event)"  formControlName="telefono"/>
   <mat-hint align="end">{{value().length}}/10</mat-hint>
+</mat-form-field -->
+
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Ingrese su número de contacto</mat-label>
+  <input matInput formControlName="telefono" maxlength="10" />
+  <mat-error *ngIf="estudiantesForm.get('telefono')?.touched && estudiantesForm.get('telefono')?.invalid">
+    <ng-container *ngIf="estudiantesForm.get('telefono')?.errors?.['required']">
+      Este campo es obligatorio
+    </ng-container>
+    <ng-container *ngIf="estudiantesForm.get('telefono')?.errors?.['minlength']">
+      Debe tener al menos 7 dígitos
+    </ng-container>
+    <ng-container *ngIf="estudiantesForm.get('telefono')?.errors?.['maxlength']">
+      No debe superar 10 dígitos
+    </ng-container>
+    <ng-container *ngIf="estudiantesForm.get('telefono')?.errors?.['soloNumeros']">
+      Solo se permiten números
+    </ng-container>
+  </mat-error>
 </mat-form-field>
+
+
+
+
+<!--  -->
 
 <mat-form-field appearance="outline">
   <mat-label>Ingrese su correo</mat-label>
@@ -57,7 +81,7 @@
   </mat-error>
 </mat-form-field>
 
-
+<!--  
 <mat-form-field appearance="outline" style="width: 100%;">
 <mat-label>Tu edad</mat-label>
 <input matInput formControlName="edad" />
@@ -66,15 +90,33 @@
   El campo es obligatorio
   </ng-container>
 </mat-error>
+</mat-form-field>  -->
+
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Tu edad</mat-label>
+  <input matInput formControlName="edad" maxlength="2"  (keydown)="soloNumeros($event)"/>
+  <mat-error *ngIf="estudiantesForm.get('edad')?.touched && estudiantesForm.get('edad')?.invalid">
+    <ng-container *ngIf="estudiantesForm.get('edad')?.errors?.['required']">
+      Este campo es obligatorio
+    </ng-container>
+    <ng-container *ngIf="estudiantesForm.get('edad')?.errors?.['edadInvalida']">
+      Solo se permiten números (máximo 2 dígitos)
+    </ng-container>
+  </mat-error>
 </mat-form-field>
 
+
+
+
+<!--  -->
+
 <mat-checkbox formControlName="aceptoTerminos">
-Acepto que mi comentario sea público y respetuoso
+Recibir avisos de nuevos eventos 
 </mat-checkbox>
 
 <div style="margin-top: 16px;">
   <button mat-raised-button class="Registro" type="submit" [disabled]="estudiantesForm.invalid">
-    {{ editandoEstudiantes ? 'Actualizar Comentario' : 'Enviar Comentario' }}
+    {{ editandoEstudiantes ? 'Actualizar Datos' : 'Enviar Registro' }}
   </button>
 
   <button *ngIf="editandoEstudiantes" class="Cancelar" mat-button type="button" (click)="cancelarEdicion()" style="margin-left: 8px;">
