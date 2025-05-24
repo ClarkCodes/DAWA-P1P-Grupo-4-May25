@@ -1,15 +1,21 @@
 <mat-card class="formulario-card">
-  <h2>Crear un evento para un club universitario</h2>
+  <h2>{{ editarModo ? 'Editar' : 'Crear' }} un evento para un club universitario</h2>
 
   <form [formGroup]="eventoForm" (ngSubmit)="guardarEvento()" class="evento-form">
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Título</mat-label>
       <input matInput formControlName="titulo" required>
+      <mat-error *ngIf="eventoForm.get('titulo')?.hasError('required')">
+        El título es requerido
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Descripción</mat-label>
       <textarea matInput formControlName="descripcion" required></textarea>
+      <mat-error *ngIf="eventoForm.get('descripcion')?.hasError('required')">
+        La descripción es requerida
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
@@ -17,6 +23,9 @@
       <mat-select formControlName="categoria" required>
         <mat-option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</mat-option>
       </mat-select>
+      <mat-error *ngIf="eventoForm.get('categoria')?.hasError('required')">
+        La categoría es requerida
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
@@ -24,20 +33,34 @@
       <input matInput [matDatepicker]="picker" formControlName="fecha" required>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="eventoForm.get('fecha')?.hasError('required')">
+        La fecha es requerida
+      </mat-error>
     </mat-form-field>
 
     <label class="radio-label">¿Es gratuito?</label>
     <mat-radio-group formControlName="esGratuito" class="radio-group" required>
-      <mat-radio-button [value]="true">Sí</mat-radio-button>   <mat-radio-button [value]="false">No</mat-radio-button>  </mat-radio-group>
+      <mat-radio-button [value]="true">Sí</mat-radio-button>
+      <mat-radio-button [value]="false">No</mat-radio-button>
+    </mat-radio-group>
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Costo</mat-label>
-      <input matInput type="number" formControlName="costo" [disabled]="eventoForm.get('costo')?.disabled ?? false" required>
+      <input matInput type="number" formControlName="costo" [disabled]="eventoForm.get('esGratuito')?.value" required>
+      <mat-error *ngIf="eventoForm.get('costo')?.hasError('required')">
+        El costo es requerido para eventos pagados
+      </mat-error>
+      <mat-error *ngIf="eventoForm.get('costo')?.hasError('min')">
+        El costo mínimo es $0.01
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Lugar</mat-label>
       <input matInput formControlName="lugar" required>
+      <mat-error *ngIf="eventoForm.get('lugar')?.hasError('required')">
+        El lugar es requerido
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
@@ -50,6 +73,9 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>URL del afiche</mat-label>
       <input matInput formControlName="aficheUrl" required>
+      <mat-error *ngIf="eventoForm.get('aficheUrl')?.hasError('required')">
+        La URL del afiche es requerida
+      </mat-error>
     </mat-form-field>
 
     <div *ngIf="imagenPreview" class="imagen-preview">
@@ -59,6 +85,9 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Etiquetas</mat-label>
       <input matInput formControlName="etiquetas" required>
+      <mat-error *ngIf="eventoForm.get('etiquetas')?.hasError('required')">
+        Las etiquetas son requeridas
+      </mat-error>
     </mat-form-field>
 
     <div class="form-buttons">
@@ -90,7 +119,7 @@
 
     <ng-container matColumnDef="fecha">
       <th mat-header-cell *matHeaderCellDef>Fecha</th>
-      <td mat-cell *matCellDef="let evento">{{ evento.fecha | date }}</td>
+      <td mat-cell *matCellDef="let evento">{{ evento.fecha | date:'mediumDate' }}</td>
     </ng-container>
 
     <ng-container matColumnDef="esGratuito">
@@ -100,7 +129,7 @@
 
     <ng-container matColumnDef="costo">
       <th mat-header-cell *matHeaderCellDef>Costo</th>
-      <td mat-cell *matCellDef="let evento">{{ evento.costo || '-' }}</td>
+      <td mat-cell *matCellDef="let evento">{{ evento.esGratuito ? '-' : (evento.costo | currency) }}</td>
     </ng-container>
 
     <ng-container matColumnDef="lugar">
@@ -116,7 +145,7 @@
     <ng-container matColumnDef="aficheUrl">
       <th mat-header-cell *matHeaderCellDef>Afiche</th>
       <td mat-cell *matCellDef="let evento" class="afiche-imagen">
-        <img [src]="evento.aficheUrl" alt="Afiche del evento">
+        <img [src]="evento.aficheUrl" alt="Afiche del evento" (click)="imagenPreview = evento.aficheUrl">
       </td>
     </ng-container>
 
@@ -128,18 +157,31 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let evento">
-        <ng-container *ngIf="evento.nombreClub === loggedClubName">
-          <button mat-icon-button color="accent" (click)="editarEvento(evento)">
+        <div class="acciones-container">
+          <button mat-icon-button color="primary" 
+                  matTooltip="Editar evento"
+                  (click)="editarEvento(evento)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="warn" (click)="eliminarEvento(evento.id)">
+          
+          <button mat-icon-button color="warn" 
+                  matTooltip="Eliminar evento"
+                  (click)="eliminarEvento(evento.id ?? 0)">
             <mat-icon>delete</mat-icon>
           </button>
-        </ng-container>
+          
+          <button *ngIf="editarModo && (idEventoEditando === evento.id)" 
+                  mat-icon-button color="accent"
+                  matTooltip="Cancelar edición"
+                  (click)="resetFormulario()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+        [class.highlighted]="getRowClass(row)"></tr>
   </table>
 </mat-card>
