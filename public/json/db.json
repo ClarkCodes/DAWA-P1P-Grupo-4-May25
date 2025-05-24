@@ -177,6 +177,14 @@
       "password": "test",
       "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
       "rol": "FACULTAD"
+    },
+    {
+      "id": "9b46",
+      "nombre": "joselyne",
+      "email": "joselyne-33@hotmail.com",
+      "password": "joselyne",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
     }
   ],
   "facultadDatos": [
