@@ -1,7 +1,7 @@
 {
-  "eventosFacultad":[
+  "eventosFacultad": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "NASA SpaceApps Challenge - Hackaton de Programación",
       "categoriaId": 1,
       "facultadId": "abf8",
@@ -14,111 +14,93 @@
       "variosDias": false,
       "fecha": "2025-06-10",
       "fechaHasta": "NA",
-      "hora":"8:00",
+      "hora": "8:00",
       "esGratuito": true,
       "costo": 0,
-      "direccion":"Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
+      "direccion": "Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
       "lugar": "Facultad, Sala de Conferencias - Ala B",
       "aficheUrl": "https://i0.wp.com/dialoguemos.ec/wp-content/uploads/2024/10/banner-nasa.png?resize=600%2C490&ssl=1",
       "sitioWeb": "https://www.spaceappschallenge.org/",
       "telefonoContacto": "042396881",
-      "etiquetas": ["programación", "competencia", "estrategia", "equipos", "software"]
-    },
-    {
-      "id": 2,
-      "nombre": "Women in Data Science Worldwide Guayaquil",
-      "categoriaId": 7,
-      "facultadId": "abf8",
-      "organizadorExterno": "Sociedad Ecuatoriana de Estadística",
-      "descripcion": {
-        "descripcionCorta": "🎉 ¡Llega WiDS Guayaquil 2025! 🚀",
-        "descripcionDetalles": "Este 30 de mayo acompáñanos en un evento único donde mujeres líderes en ciencia de datos compartirán su experiencia transformando organizaciones con el poder de los datos. 💡📊 🌟 Ven y conoce a mujeres que analizan, lideran y transforman con datos."
-      },
-      "area": "🎯 Transformación digital y ciencia de datos",
-      "variosDias": false,
-      "fecha": "2025-05-30",
-      "fechaHasta": "NA",
-      "hora":"09:00",
-      "esGratuito": true,
-      "costo": 0,
-      "direccion":"Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
-      "lugar": "📍 Épico, Guayarte",
-      "aficheUrl": "https://scontent.fgye7-1.fna.fbcdn.net/v/t39.30808-6/495467804_713176984615280_4276968321639154981_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=jgn-4NIb4oMQ7kNvwHZKrfJ&_nc_oc=AdmweqTLBXOcs9gmnmzCvQjqJFHeuzlGJD0SRO9eCl1IZGuy_-usSje9dcTcejlQddo&_nc_zt=23&_nc_ht=scontent.fgye7-1.fna&_nc_gid=juNzZrd2dbhLsZrc6V8d9g&oh=00_AfJWvDylsatG8TfUFl-3OH67KF5UqUI_8QKmIED4aWhypg&oe=68341C2E",
-      "sitioWeb": "https://www.facebook.com/100077689531978/posts/713177501281895/?_rdr",
-      "telefonoContacto": "042789456",
-      "etiquetas": ["#WiDSGuayaquil", "#WiDSEcuador", "#MujeresEnDatos", "#CienciaDeDatos", "#DataScience", "#SEE25Años"]
+      "etiquetas": [
+        "programación",
+        "competencia",
+        "estrategia",
+        "equipos",
+        "software"
+      ]
     }
   ],
   "eventosFacultadTopId": {
-      "topId": 2
+    "topId": 2
   },
-  "eventosFacultadCategoria":[
+  "eventosFacultadCategoria": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Competencia"
-     },
+    },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Integracion"
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "Congreso"
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "Seminario"
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "Charla"
     },
     {
-      "id": 6,
+      "id": "6",
       "nombre": "Taller"
     },
     {
-      "id": 7,
+      "id": "7",
       "nombre": "Conferencia"
     },
     {
-      "id": 8,
+      "id": "8",
       "nombre": "Exposicion"
     },
     {
-      "id": 9,
+      "id": "9",
       "nombre": "Concierto"
     },
     {
-      "id": 10,
+      "id": "10",
       "nombre": "Festival"
     },
     {
-      "id": 11,
+      "id": "11",
       "nombre": "Debate"
     },
     {
-      "id": 12,
+      "id": "12",
       "nombre": "Fiesta"
     },
     {
-      "id": 13,
+      "id": "13",
       "nombre": "Celebración"
     },
     {
-      "id": 14,
+      "id": "14",
       "nombre": "Reunion"
     },
     {
-      "id": 15,
+      "id": "15",
       "nombre": "Mañana Deportiva"
     },
     {
-      "id": 16,
+      "id": "16",
       "nombre": "Campeonato"
     },
     {
-      "id": 17,
+      "id": "17",
       "nombre": "Casa abierta"
     }
   ],
@@ -241,7 +223,7 @@
     {
       "titulo": "Taller de Oratoria",
       "descripcion": "Taller de oratoria destinado a toda la comunidad estudiantil",
-      "categoria": "Taller",
+      "categoria": "Exposición",
       "fecha": "2025-05-15",
       "esGratuito": "no",
       "costo": 20,
@@ -250,17 +232,22 @@
       "aficheUrl": "https://www.uam.edu.co/medellin/wp-content/uploads/2017/04/AFICHE-concurso-de-oratoria-Fac.-derecho.jpg",
       "etiquetas": "Oratoria, Taller",
       "id": "1747952736858"
+    },
+    {
+      "id": 1748070882307,
+      "titulo": "Evento de ia",
+      "descripcion": "evento en el auditorio",
+      "categoria": "Charla",
+      "fecha": "2025-05-24",
+      "esGratuito": true,
+      "costo": null,
+      "lugar": "Facultad",
+      "nombreClub": "Club de IA",
+      "aficheUrl": "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artificial-intelligence-flyer-design-template-b41bbf3b37a179bcadd3e6d480cbfacc_screen.jpg?ts=1683088499",
+      "etiquetas": "ia, evento, "
     }
   ],
   "Cuentas": [
-    {
-      "id": "1",
-      "nombre": "CARBO SANDOVAL KEVIN RUBEN",
-      "email": "kevincarbos@ug.edu.ec",
-      "password": "kevin0001",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "ESTUDIANTE"
-    },
     {
       "id": "2",
       "nombre": "LEMA YAGUARI NICOLE ODALYS",
@@ -295,26 +282,26 @@
     },
     {
       "id": "7",
-      "nombre": "club",
-      "email": "c-ia@ug.edu.ec",
-      "password": "c-ia000",
+      "nombre": "Ajedrez",
+      "email": "ajedrez@ug.edu.ec",
+      "password": "Ajedrez001",
       "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
       "rol": "CLUB"
     },
     {
       "id": "8ddf",
-      "nombre": "test",
-      "email": "test@test.com",
-      "password": "test",
+      "nombre": "FCMF",
+      "email": "fcmf@ug.edu.ec",
+      "password": "FCMF321",
       "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
       "rol": "FACULTAD"
     },
     {
-      "id": "9b46",
-      "nombre": "joselyne",
-      "email": "joselyne-33@hotmail.com",
-      "password": "joselyne",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "id": "86d9",
+      "nombre": "Juan",
+      "email": "juanp@hotmail.com",
+      "password": "juan",
+      "facultad": "CIENCIAS MEDICAS",
       "rol": "ESTUDIANTE"
     }
   ],
@@ -424,15 +411,6 @@
       "mensaje": "Me encantó la oportunidad de conocer a otros profesionales de mi industria. Los talleres fueron muy útiles",
       "fecha": "2025-05-20T04:24:36.796Z",
       "aceptoTerminos": true
-    },
-    {
-      "id": "4675",
-      "estudianteNombre": "test",
-      "nombreEvento": "evento4",
-      "experiencia": "5",
-      "mensaje": "test",
-      "fecha": "2025-05-21T16:32:00.460Z",
-      "aceptoTerminos": true
     }
   ],
   "estudiantes": [
@@ -464,16 +442,6 @@
       "email": "Juan@gmail.com",
       "edad": "27",
       "fecha": "2025-05-22T01:45:29.901Z",
-      "aceptoTerminos": true
-    },
-    {
-      "id": "0a65",
-      "estudianteNombre": "test",
-      "nombreEvento": "test",
-      "telefono": "testestest",
-      "email": "test@test.com",
-      "edad": "test",
-      "fecha": "2025-05-23T05:17:19.909Z",
       "aceptoTerminos": true
     }
   ]

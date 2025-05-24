@@ -2,8 +2,7 @@ import { Component , OnInit, signal, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServEstudiantesService } from '../../services/serv-estudiantes-service';
 import { Estudiantes } from '../../models/estudiantes';
-//import { ServComentariosService } from '../../services/serv-estudiantes-service';
-//import { Comentario } from '../../models/comentarios';
+import { ComentariosComponent } from '../comentarios/comentarios.component';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -46,6 +45,7 @@ import { merge } from 'rxjs';
     MatCellDef,
     MatTableModule,
     MatPaginator,
+    ComentariosComponent
   ],
   templateUrl: './estudiantes.component.html',
   styleUrl: './estudiantes.component.css'

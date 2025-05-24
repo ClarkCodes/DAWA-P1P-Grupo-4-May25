@@ -11,9 +11,10 @@ import { ServEventosFacultadesService } from '../../../services/EventosFacultade
 import { DetallesEventoFacultadReutilizableComponent } from '../detalles-evento-facultad-reutilizable/detalles-evento-facultad-reutilizable.component';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-card-reutilizable',
-  imports: [MatButtonModule, MatCardModule, MatIconModule, MatChipsModule, UpperCasePipe, CurrencyPipe, NgClass],
+  imports: [MatButtonModule, MatCardModule, MatIconModule, MatChipsModule, CurrencyPipe, NgClass],
   templateUrl: './card-reutilizable.component.html',
   styleUrl: './card-reutilizable.component.css'
 })
