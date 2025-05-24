@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatCheckboxModule } from '@angular/material/checkbox'; // Keep if used, otherwise can remove
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,6 +14,7 @@ import { EventosService, ClubCuenta } from '../../services/crud-eventos-clubes.s
 import { Evento } from '../../models/crud-eventos-clubes.model';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-crud-eventos-clubes',
@@ -34,18 +35,19 @@ import { MatCardModule } from '@angular/material/card';
     MatNativeDateModule,
     MatRadioModule,
     MatCardModule,
+    MatTooltipModule
   ]
 })
 export class EventosComponent implements OnInit {
-  loggedClubName: string = 'UG Emprende'; // This should probably come from an authentication service in a real app
+  loggedClubName: string = 'UG Emprende';
   eventoForm!: FormGroup;
   eventos: Evento[] = [];
-  clubes: ClubCuenta[] = []; // Stores the list of club accounts
-  clubLogueado: ClubCuenta | null = null; // Simulates the logged-in club's account
+  clubes: ClubCuenta[] = [];
+  clubLogueado: ClubCuenta | null = null;
   editarModo: boolean = false;
   idEventoEditando: number | null = null;
   imagenPreview: string = '';
-  categorias: string[] = []; // This array will hold unique categories obtained from events
+  categorias: string[] = [];
   displayedColumns: string[] = [
     'titulo', 'descripcion', 'categoria', 'fecha',
     'esGratuito', 'costo', 'lugar', 'nombreClub', 'aficheUrl', 'etiquetas', 'acciones'
@@ -58,50 +60,46 @@ export class EventosComponent implements OnInit {
 
   ngOnInit(): void {
     this.inicializarFormulario();
-    this.cargarClubes(); // Load club accounts (to set loggedClubName)
-    this.cargarCategoriasEventos(); // Load categories from events for the dropdown
-    this.cargarEventos(); // Load all existing events for the table
+    this.cargarClubes();
+    this.cargarCategoriasEventos();
+    this.cargarEventos();
   }
 
   inicializarFormulario(): void {
     this.eventoForm = this.fb.group({
       titulo: ['', Validators.required],
       descripcion: ['', Validators.required],
-      categoria: ['', Validators.required], // This will be populated dynamically
+      categoria: ['', Validators.required],
       fecha: ['', Validators.required],
-      esGratuito: [true, Validators.required], // Initialize as boolean 'true'
-      costo: [{ value: null, disabled: true }], // Initialize with null for number type, disabled
+      esGratuito: [true, Validators.required],
+      costo: [{ value: null, disabled: true }],
       lugar: ['', Validators.required],
       nombreClub: ['', Validators.required],
       aficheUrl: ['', Validators.required],
       etiquetas: ['', Validators.required]
     });
 
-    // Subscribe to changes in 'esGratuito' to enable/disable 'costo' control
     this.eventoForm.get('esGratuito')?.valueChanges.subscribe(valor => {
       const costoControl = this.eventoForm.get('costo');
-      if (valor === false) { // If 'esGratuito' is boolean `false` (not free)
+      if (valor === false) {
         costoControl?.enable();
         costoControl?.setValidators([Validators.required, Validators.min(0.01)]);
-      } else { // If 'esGratuito' is boolean `true` (free)
+      } else {
         costoControl?.disable();
-        costoControl?.reset(null); // Reset to null for number type
+        costoControl?.reset(null);
         costoControl?.clearValidators();
       }
       costoControl?.updateValueAndValidity();
     });
 
-    // Update image preview when aficheUrl changes
     this.eventoForm.get('aficheUrl')?.valueChanges.subscribe(url => {
       this.imagenPreview = url;
     });
   }
 
-  // Method to load club accounts and identify the logged-in club (simulated)
   cargarClubes(): void {
     this.eventosService.obtenerClubes().subscribe(clubes => {
       this.clubes = clubes;
-      // Simulate logging in as the first club for demonstration purposes
       this.clubLogueado = this.clubes[0];
       if (this.clubLogueado) {
         this.eventoForm.patchValue({ nombreClub: this.clubLogueado.nombre });
@@ -109,14 +107,12 @@ export class EventosComponent implements OnInit {
     });
   }
 
-  // Method to populate the 'categorias' array from existing events
   cargarCategoriasEventos(): void {
     this.eventosService.obtenerCategoriasDesdeEventos().subscribe(categorias => {
-      this.categorias = categorias; // The service already sorts them
+      this.categorias = categorias;
     });
   }
 
-  // Method to load all events for the table
   cargarEventos(): void {
     this.eventosService.obtenerEventos().subscribe(eventos => {
       this.eventos = eventos;
@@ -125,91 +121,107 @@ export class EventosComponent implements OnInit {
 
   guardarEvento(): void {
     if (this.eventoForm.invalid) {
-      this.eventoForm.markAllAsTouched(); // Mark all fields as touched to show validation errors
+      this.eventoForm.markAllAsTouched();
       return;
     }
 
     const formValue = this.eventoForm.getRawValue();
+    const fechaParaGuardar = formValue.fecha instanceof Date 
+      ? formValue.fecha.toISOString().split('T')[0] 
+      : formValue.fecha;
 
-    // Handle date conversion from Date object (from mat-datepicker) to string (YYYY-MM-DD) for the model
-    const fechaParaGuardar = formValue.fecha instanceof Date
-      ? formValue.fecha.toISOString().split('T')[0]
-      : formValue.fecha; // If it's already a string, use it directly (e.g., when editing)
-
-    const nuevoEvento: Evento = {
-      ...formValue, // Spread all form values
-      fecha: fechaParaGuardar, // Use the converted date string
-      id: this.idEventoEditando ?? Date.now() // Assign new ID or existing ID for update
+    const eventoToSave: Evento = {
+      ...formValue,
+      fecha: fechaParaGuardar,
+      ...(this.editarModo && this.idEventoEditando !== null ? { id: this.idEventoEditando } : {})
     };
 
     if (this.editarModo && this.idEventoEditando !== null) {
-      // Update existing event
-      this.eventosService.actualizarEvento(nuevoEvento).subscribe(() => {
-        const index = this.eventos.findIndex(e => e.id === this.idEventoEditando);
-        if (index !== -1) {
-          this.eventos[index] = nuevoEvento; // Update in local array
-        }
-        this.resetFormulario();
-        this.cargarEventos(); // Reload events to ensure data consistency
-        this.cargarCategoriasEventos(); // Refresh categories in case a new one was added/updated
+      this.eventosService.actualizarEvento(eventoToSave).subscribe({
+        next: () => {
+          this.resetFormulario();
+          this.cargarEventos();
+          this.cargarCategoriasEventos();
+        },
+        error: (error) => console.error('Error al actualizar el evento:', error)
       });
     } else {
-      // Add new event
-      this.eventosService.agregarEvento(nuevoEvento).subscribe((eventoCreado: Evento) => {
-        this.eventos.push(eventoCreado); // Add to local array
-        this.resetFormulario();
-        this.cargarEventos(); // Reload events
-        this.cargarCategoriasEventos(); // Refresh categories in case a new one was added
+      delete eventoToSave.id;
+      this.eventosService.agregarEvento(eventoToSave).subscribe({
+        next: () => {
+          this.resetFormulario();
+          this.cargarEventos();
+          this.cargarCategoriasEventos();
+        },
+        error: (error) => console.error('Error al crear el evento:', error)
       });
     }
   }
 
   editarEvento(evento: Evento): void {
     this.editarModo = true;
-    this.idEventoEditando = evento.id;
+    this.idEventoEditando = evento.id ?? null;
+    
+    const fechaParaFormulario = typeof evento.fecha === 'string' 
+      ? new Date(evento.fecha) 
+      : evento.fecha;
 
-    // Convert date string from model to Date object for the datepicker to display correctly
-    const fechaParaFormulario = typeof evento.fecha === 'string' ? new Date(evento.fecha) : evento.fecha;
-
-    // Patch form with event data
     this.eventoForm.patchValue({
-      ...evento,
-      fecha: fechaParaFormulario, // Use the Date object for the form's date picker
+      titulo: evento.titulo,
+      descripcion: evento.descripcion,
+      categoria: evento.categoria,
+      fecha: fechaParaFormulario,
+      esGratuito: evento.esGratuito,
+      costo: evento.costo,
+      lugar: evento.lugar,
+      nombreClub: evento.nombreClub,
+      aficheUrl: evento.aficheUrl,
+      etiquetas: evento.etiquetas
     });
 
-    // Adjust 'costo' control state and validators based on 'esGratuito' (which is boolean)
-    if (evento.esGratuito === false) { // Correct comparison with boolean `false`
-      this.eventoForm.get('costo')?.enable();
-      this.eventoForm.get('costo')?.setValidators([Validators.required, Validators.min(0.01)]);
+    const costoControl = this.eventoForm.get('costo');
+    if (!evento.esGratuito) {
+      costoControl?.enable();
+      costoControl?.setValidators([Validators.required, Validators.min(0.01)]);
     } else {
-      this.eventoForm.get('costo')?.disable();
-      this.eventoForm.get('costo')?.clearValidators();
+      costoControl?.disable();
+      costoControl?.clearValidators();
     }
-    this.eventoForm.get('costo')?.updateValueAndValidity(); // Update validators and value
-    this.imagenPreview = evento.aficheUrl ?? ''; // Set image preview
+    costoControl?.updateValueAndValidity();
+    
+    this.imagenPreview = evento.aficheUrl ?? '';
+    document.querySelector('.formulario-card')?.scrollIntoView({ behavior: 'smooth' });
   }
 
   eliminarEvento(id: number): void {
-    this.eventosService.eliminarEvento(id).subscribe(() => {
-      this.eventos = this.eventos.filter(e => e.id !== id); // Remove from local array
-      this.cargarEventos(); // Reload events
-      this.cargarCategoriasEventos(); // Refresh categories after deletion
-    });
+    if (confirm('¿Estás seguro de que deseas eliminar este evento?')) {
+      this.eventosService.eliminarEvento(id).subscribe({
+        next: () => {
+          this.eventos = this.eventos.filter(e => e.id !== id);
+          this.cargarCategoriasEventos();
+        },
+        error: (err) => console.error('Error al eliminar evento:', err)
+      });
+    }
   }
 
   resetFormulario(): void {
-    this.eventoForm.reset(); // Resets all form controls
-    this.imagenPreview = ''; // Clear image preview
-    this.editarModo = false; // Exit edit mode
-    this.idEventoEditando = null; // Clear editing ID
-    // Set default values after reset
+    this.eventoForm.reset();
+    this.imagenPreview = '';
+    this.editarModo = false;
+    this.idEventoEditando = null;
     this.eventoForm.patchValue({
-      esGratuito: true, // Default to free
-      nombreClub: this.clubLogueado?.nombre ?? '' // Set logged club name
+      esGratuito: true,
+      nombreClub: this.clubLogueado?.nombre ?? ''
     });
-    // Ensure costo is disabled and validators are cleared when resetting to free
     this.eventoForm.get('costo')?.disable();
     this.eventoForm.get('costo')?.clearValidators();
     this.eventoForm.get('costo')?.updateValueAndValidity();
+  }
+
+  getRowClass(evento: Evento) {
+    return {
+      'highlighted': this.editarModo && this.idEventoEditando === evento.id
+    };
   }
 }
