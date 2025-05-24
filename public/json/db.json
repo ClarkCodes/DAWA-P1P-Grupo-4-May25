@@ -1,0 +1,435 @@
+{
+  "eventosFacultad": [
+    {
+      "id": "1",
+      "nombre": "NASA SpaceApps Challenge - Hackaton de Programación",
+      "categoriaId": 1,
+      "facultadId": "abf8",
+      "organizadorExterno": "NASA International",
+      "descripcion": {
+        "descripcionCorta": "Participa en una sana competencia organizadas por profesores de Programación de todos los semestres y carreras que incorporan esta materia.",
+        "descripcionDetalles": "El NASA Space Apps Challenge Guayaquil es el hackathon internacional de ciencia y tecnología más grande a nivel mundial organizado por la NASA. Durante un fin de semana, personas de todo el mundo colaboran para desarrollar soluciones innovadoras a desafíos relacionados con el espacio y la ciencia terrestre. El evento se organiza en simultáneo en más de 500 ciudades en el mundo. Por primera vez en Guayaquil, la Universidad de Guaquil actúa como anfitrión y organizador del evento local, convirtiéndose en la ciudad con mayor número de inscritos en toda Hispanoamérica."
+      },
+      "area": "Ingeniería y Desarrollo de Software",
+      "variosDias": false,
+      "fecha": "2025-06-10",
+      "fechaHasta": "NA",
+      "hora": "8:00",
+      "esGratuito": true,
+      "costo": 0,
+      "direccion": "Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
+      "lugar": "Facultad, Sala de Conferencias - Ala B",
+      "aficheUrl": "https://i0.wp.com/dialoguemos.ec/wp-content/uploads/2024/10/banner-nasa.png?resize=600%2C490&ssl=1",
+      "sitioWeb": "https://www.spaceappschallenge.org/",
+      "telefonoContacto": "042396881",
+      "etiquetas": [
+        "programación",
+        "competencia",
+        "estrategia",
+        "equipos",
+        "software"
+      ]
+    }
+  ],
+  "eventosFacultadTopId": {
+    "topId": 2
+  },
+  "eventosFacultadCategoria": [
+    {
+      "id": "1",
+      "nombre": "Competencia"
+    },
+    {
+      "id": "2",
+      "nombre": "Integracion"
+    },
+    {
+      "id": "3",
+      "nombre": "Congreso"
+    },
+    {
+      "id": "4",
+      "nombre": "Seminario"
+    },
+    {
+      "id": "5",
+      "nombre": "Charla"
+    },
+    {
+      "id": "6",
+      "nombre": "Taller"
+    },
+    {
+      "id": "7",
+      "nombre": "Conferencia"
+    },
+    {
+      "id": "8",
+      "nombre": "Exposicion"
+    },
+    {
+      "id": "9",
+      "nombre": "Concierto"
+    },
+    {
+      "id": "10",
+      "nombre": "Festival"
+    },
+    {
+      "id": "11",
+      "nombre": "Debate"
+    },
+    {
+      "id": "12",
+      "nombre": "Fiesta"
+    },
+    {
+      "id": "13",
+      "nombre": "Celebración"
+    },
+    {
+      "id": "14",
+      "nombre": "Reunion"
+    },
+    {
+      "id": "15",
+      "nombre": "Mañana Deportiva"
+    },
+    {
+      "id": "16",
+      "nombre": "Campeonato"
+    },
+    {
+      "id": "17",
+      "nombre": "Casa abierta"
+    }
+  ],
+  "clubCuentas": [
+    {
+      "id": "1",
+      "nombre": "Club de IA",
+      "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS",
+      "email": "roboticaia@ug.edu.ec",
+      "contrasena": "Rob0tic@2025",
+      "categoria": "Tecnología e Innovación",
+      "clubActivo": "Activo"
+    },
+    {
+      "id": "2",
+      "nombre": "Círculo Literario",
+      "facultadDatos": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
+      "email": "literatura@ug.edu.ec",
+      "contrasena": "Letras#123",
+      "categoria": "Arte y Cultura",
+      "clubActivo": "Activo"
+    },
+    {
+      "id": "3",
+      "nombre": "EcoUG",
+      "facultadDatos": "CIENCIAS NATURALES",
+      "email": "ecoug@ug.edu.ec",
+      "contrasena": "Natur@l2025",
+      "categoria": "Medio Ambiente",
+      "clubActivo": "No Activo"
+    },
+    {
+      "id": "4",
+      "nombre": "UG Emprende",
+      "facultadDatos": "CIENCIAS ADMINISTRATIVAS",
+      "email": "emprendedores@ug.edu.ec",
+      "contrasena": "Emprend3#UG",
+      "categoria": "Emprendimiento",
+      "clubActivo": "Activo"
+    },
+    {
+      "id": "5",
+      "nombre": "Club de Debate",
+      "facultadDatos": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
+      "email": "debateug@ug.edu.ec",
+      "contrasena": "Deb@t3UG2025",
+      "categoria": "Formación Ciudadana",
+      "clubActivo": "No Activo"
+    }
+  ],
+  "clubes": [
+    {
+      "id": "1",
+      "titulo": "Torneo de Ajedrez Universitario",
+      "descripcion": "Participa en el torneo anual de ajedrez organizado por el Club UG Emprende.",
+      "categoria": "Concurso",
+      "fecha": "2025-06-10",
+      "esGratuito": true,
+      "costo": null,
+      "lugar": "Sala de Conferencias - Edificio B",
+      "nombreClub": "UG Emprende",
+      "aficheUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1z3LU_9GQohYvs30-XkEvmC5P-syte3ga-A&s",
+      "etiquetas": [
+        "ajedrez",
+        "competencia",
+        "estrategia"
+      ]
+    },
+    {
+      "id": "2",
+      "titulo": "Taller de Robótica",
+      "descripcion": "Aprende a construir tu primer robot con Arduino.",
+      "categoria": "Taller",
+      "fecha": "2025-06-18",
+      "esGratuito": false,
+      "costo": 15,
+      "lugar": "Laboratorio de Electrónica - Edificio D",
+      "nombreClub": "Club de IA",
+      "aficheUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph5wfpSSqUbSiiuTyWsh1OjunrBwSAkheKA&s",
+      "etiquetas": [
+        "robotica",
+        "arduino",
+        "ingenieria"
+      ]
+    },
+    {
+      "id": "3",
+      "titulo": "Cine Foro: El impacto del cambio climático",
+      "descripcion": "Proyección de documental y discusión guiada con expertos.",
+      "categoria": "Charla",
+      "fecha": "2025-06-22",
+      "esGratuito": true,
+      "costo": null,
+      "lugar": "Auditorio Central",
+      "nombreClub": "Club de Debate",
+      "aficheUrl": "https://www.dejateinnovar.es/wp-content/uploads/2023/11/Collage-Dejate-innovar_page-0001-copia-768x733.jpg",
+      "etiquetas": [
+        "medio ambiente",
+        "cine",
+        "conciencia"
+      ]
+    },
+    {
+      "titulo": "Feria de Proyectos Tecnológico",
+      "descripcion": "Exposición de proyectos realizados por estudiantes de ingeniería y tecnología.",
+      "categoria": "Exposición",
+      "fecha": "2025-07-01",
+      "esGratuito": true,
+      "costo": null,
+      "lugar": "Plaza Tech - Campus Principal",
+      "nombreClub": "Club de IA",
+      "aficheUrl": "https://i.pinimg.com/736x/9a/6e/bf/9a6ebf70573218da5b2c70e3f536b3f5.jpg",
+      "etiquetas": [
+        "tecnología",
+        "innovación",
+        "proyectos"
+      ],
+      "id": "4"
+    },
+    {
+      "id": "c4b7",
+      "titulo": "Concurso de Deletreo",
+      "descripcion": "Concurso con premio económico de deletreo.",
+      "categoria": "Concurso",
+      "fecha": "2025-05-15",
+      "esGratuito": false,
+      "costo": 10,
+      "lugar": "Patio de la facultad de Administración ",
+      "nombreClub": "Círculo Literario",
+      "aficheUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgJUrV9kQ6X-UAX-ReWu5j6djQZ5CsAHjDhA&s",
+      "etiquetas": ["concurso", "deletreo", "dominio"]
+    }
+  ],
+  "Cuentas": [
+    {
+      "id": "2",
+      "nombre": "LEMA YAGUARI NICOLE ODALYS",
+      "email": "nicolelemay@ug.edu.ec",
+      "password": "nicole456",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "3",
+      "nombre": "ORTIZ AGUIRRE WILSON FABRICIO",
+      "email": "wilsonortiza@ug.edu.ec",
+      "password": "wilson789",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "4",
+      "nombre": "SARMIENTO AMAYA JOSELYNE BELEN",
+      "email": "joselynesarmientoa@ug.edu.ec",
+      "password": "joselyne012",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "5",
+      "nombre": "VELASQUEZ MENDOZA FIDEL ERNESTO",
+      "email": "fidelvelasquezm@ug.edu.ec",
+      "password": "fidel345",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "7",
+      "nombre": "Ajedrez",
+      "email": "ajedrez@ug.edu.ec",
+      "password": "Ajedrez001",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "CLUB"
+    },
+    {
+      "id": "8ddf",
+      "nombre": "FCMF",
+      "email": "fcmf@ug.edu.ec",
+      "password": "FCMF321",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "FACULTAD"
+    },
+    {
+      "id": "86d9",
+      "nombre": "Juan",
+      "email": "juanp@hotmail.com",
+      "password": "juan",
+      "facultad": "CIENCIAS MEDICAS",
+      "rol": "ESTUDIANTE"
+    }
+  ],
+  "facultadDatos": [
+    {
+      "nombre": "ARQUITECTURA Y URBANISMO",
+      "id": "adc4"
+    },
+    {
+      "nombre": "CIENCIAS ADMINISTRATIVAS",
+      "id": "104a"
+    },
+    {
+      "nombre": "CIENCIAS AGRARIAS",
+      "id": "a720"
+    },
+    {
+      "nombre": "CIENCIAS ECONOMICAS",
+      "id": "6d91"
+    },
+    {
+      "nombre": "CIENCIAS MATEMATICAS Y FISICAS",
+      "id": "abf8"
+    },
+    {
+      "nombre": "CIENCIAS MEDICAS",
+      "id": "a7c0"
+    },
+    {
+      "nombre": "CIENCIAS NATURALES",
+      "id": "ccf8"
+    },
+    {
+      "nombre": "CIENCIAS PSICOLOGICAS",
+      "id": "300f"
+    },
+    {
+      "nombre": "CIENCIAS QUIMICAS",
+      "id": "92e8"
+    },
+    {
+      "nombre": "COMUNICACION SOCIAL",
+      "id": "4324"
+    },
+    {
+      "nombre": "CIENCIAS DE LA ACTIVIDAD FÍSICA",
+      "id": "3996"
+    },
+    {
+      "nombre": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
+      "id": "0ee6"
+    },
+    {
+      "nombre": "INGENIERIA INDUSTRIAL",
+      "id": "d09f"
+    },
+    {
+      "nombre": "INGENIERIA QUIMICA",
+      "id": "9a3c"
+    },
+    {
+      "nombre": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
+      "id": "33a7"
+    },
+    {
+      "nombre": "MEDICINA VETERINARIA Y ZOOTECNIA",
+      "id": "15b7"
+    },
+    {
+      "nombre": "ODONTOLOGIA",
+      "id": "cfe1"
+    }
+  ],
+  "comentarios": [
+    {
+      "id": "0f6a",
+      "estudianteNombre": "Susana Gonzalez",
+      "nombreEvento": "evento3",
+      "experiencia": "4",
+      "mensaje": "Excelente ambiente y atención por parte del equipo, me sentí muy bien recibido y cómodo durante toda la jornada.",
+      "fecha": "2025-05-21T21:19:03.512Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "fdd6",
+      "estudianteNombre": "Minerva Lopez",
+      "nombreEvento": "evento4",
+      "experiencia": "2",
+      "mensaje": "El evento comenzó con retraso y la información proporcionada fue confusa, lo que generó desorientación entre los participantes.",
+      "fecha": "2025-05-20T03:49:13.466Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "0862",
+      "estudianteNombre": "sully Vera",
+      "nombreEvento": "evento1",
+      "experiencia": "3",
+      "mensaje": "El espacio estaba demasiado saturado y el sonido no fue adecuado, dificultando la experiencia general.",
+      "fecha": "2025-05-20T03:52:01.291Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "e94a",
+      "estudianteNombre": "Juan Carlos Mendez",
+      "nombreEvento": "evento2",
+      "experiencia": "4",
+      "mensaje": "Me encantó la oportunidad de conocer a otros profesionales de mi industria. Los talleres fueron muy útiles",
+      "fecha": "2025-05-20T04:24:36.796Z",
+      "aceptoTerminos": true
+    }
+  ],
+  "estudiantes": [
+    {
+      "id": "ada6",
+      "estudianteNombre": "Lorena Poveda",
+      "nombreEvento": "Comercial",
+      "telefono": "1234567",
+      "email": "Lorena@gmail.com",
+      "edad": "22",
+      "fecha": "2025-05-22T01:43:55.636Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "cf22",
+      "estudianteNombre": "Luca Jose Gomez",
+      "nombreEvento": "Ejemplo 2\t",
+      "telefono": "0956235652",
+      "email": "Luca@gmail.com",
+      "edad": "22",
+      "fecha": "2025-05-22T01:44:48.889Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "59c2",
+      "estudianteNombre": "Juan Jose",
+      "nombreEvento": "ejemplo",
+      "telefono": "0956869555",
+      "email": "Juan@gmail.com",
+      "edad": "27",
+      "fecha": "2025-05-22T01:45:29.901Z",
+      "aceptoTerminos": true
+    }
+  ]
+}

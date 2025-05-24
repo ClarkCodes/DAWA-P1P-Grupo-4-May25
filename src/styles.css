@@ -4,12 +4,54 @@
 html, body { height: 100%; }
 
 body {
+  width: 100%;
   margin: 0;
   font-family: "Poppins", Roboto, "Helvetica Neue", sans-serif;
+  background-color: var( --surface );
+}
+
+app-root {
+  display: grid;
+  min-height: 100dvh;
+  grid-template-rows: auto 1fr auto;
 }
 
 main{
-  padding-inline: 3rem;
+  padding-inline: 4rem;
+  box-sizing: border-box;
+}
+
+*{
+  font-size: 11.5pt;
+  font-family: Poppins;
+}
+
+router-outlet{
+  display: none;
+}
+
+h1 {
+  font-size: 32pt;
+}
+
+h2 {
+  font-size: 24pt;
+}
+
+h3 {
+  font-size: 18pt;
+}
+
+h4 {
+  font-size: 16pt;
+}
+
+h5 {
+  font-size: 14pt;
+}
+
+h6 {
+  font-size: 12pt;
 }
 
 :root{
@@ -20,17 +62,4 @@ mat-icon {
   font-family: 'Material Symbols Rounded';
   font-size: var(--font-size-line-height);
   line-height: var(--font-size-line-height);
-}
-
-header, footer{
-  height: 200px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: orange;
-
-  h2{
-    color: whitesmoke;
-  }
 }

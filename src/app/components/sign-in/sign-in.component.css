@@ -1,0 +1,68 @@
+.signin-container {
+  max-width: 600px;
+  margin: 32px auto;
+  padding: 32px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  transition: box-shadow 0.3s ease;
+}
+
+.signin-form h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 24px;
+}
+
+mat-form-field.example-full-width,
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+mat-radio-button {
+  font-size: 14px;
+  color: #444;
+}
+
+.bold-label,
+label {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+  display: block;
+}
+
+mat-label {
+  font-weight: 500;
+  color: #555;
+}
+
+mat-error {
+  font-size: 13px;
+  color: #e53935;
+}
+
+mat-form-field.mat-focused .mat-form-field-outline {
+  border-color: #1976d2;
+}
+
+.example-input-wrapper {
+  margin-bottom: 20px;
+}
+
+mat-form-field,
+mat-radio-button,
+mat-select {
+  transition: all 0.3s ease;
+}

@@ -1,0 +1,103 @@
+<!-- Tabla de usuarios con funcionalidad de edición y paginación -->
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <!-- Columna Nombre -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>NOMBRE</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editingRowId !== element.id; else editNombre">
+          {{ element.nombre }}
+        </ng-container>
+        <ng-template #editNombre>
+          <input matInput [formControl]="editForm.controls['nombre']" />
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Columna Email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>CORREO</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editingRowId !== element.id; else editEmail">
+          {{ element.email }}
+        </ng-container>
+        <ng-template #editEmail>
+          <input matInput [formControl]="editForm.controls['email']" />
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Columna Contraseña -->
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef>CONTRASEÑA</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editingRowId !== element.id; else editPassword">
+          {{ element.password }}
+        </ng-container>
+        <ng-template #editPassword>
+          <input matInput [formControl]="editForm.controls['password']" type="text" />
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Columna Facultad -->
+    <ng-container matColumnDef="facultad">
+      <th mat-header-cell *matHeaderCellDef>FACULTAD</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editingRowId !== element.id; else editFacultad">
+          {{ element.facultad }}
+        </ng-container>
+        <ng-template #editFacultad>
+          <input matInput [formControl]="editForm.controls['facultad']" />
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Columna Rol -->
+    <ng-container matColumnDef="rol">
+      <th mat-header-cell *matHeaderCellDef>ROL</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editingRowId !== element.id; else editRol">
+          {{ element.rol }}
+        </ng-container>
+        <ng-template #editRol>
+          <input matInput [formControl]="editForm.controls['rol']" />
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Columna Acciones -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" class="actions-cell">
+        <ng-container *ngIf="editingRowId !== element.id; else saveCancelButtons">
+          <button mat-icon-button (click)="startEdit(element)" aria-label="Editar">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="delete(element)" aria-label="Eliminar">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-container>
+        <ng-template #saveCancelButtons>
+          <button mat-icon-button (click)="saveEdit()" aria-label="Guardar">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button (click)="cancelEdit()" aria-label="Cancelar">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Definición de filas de encabezado y datos -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Paginador para controlar la navegación de la tabla -->
+  <mat-paginator
+    [pageSizeOptions]="[10, 15, 20]"
+    showFirstLastButtons
+    aria-label="Seleccionar página de elementos">
+  </mat-paginator>
+</div>

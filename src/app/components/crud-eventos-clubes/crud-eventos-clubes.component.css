@@ -1,0 +1,85 @@
+.formulario-card {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.tabla-card {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.radio-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.imagen-preview {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.imagen-preview img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 4px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tabla-eventos {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.acciones-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.afiche-imagen img {
+  max-width: 100px;
+  max-height: 60px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.afiche-imagen img:hover {
+  transform: scale(1.5);
+}
+
+.highlighted {
+  background-color: #f5f5f5 !important;
+}
+
+@media (max-width: 768px) {
+  .formulario-card, .tabla-card {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .acciones-container {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
