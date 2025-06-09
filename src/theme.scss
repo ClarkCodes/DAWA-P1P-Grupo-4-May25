@@ -234,92 +234,208 @@ $app-theme: mat.define-theme(
 
   @include mat.theme-overrides((
     shape: (
-      small: 12px,
-      medium: 16px,
-      large: 24px,
+      small: 8px,
+      medium: 12px,
+      large: 20px,
     ),
   ));
 
 
- &  /* Color css variables to apply on elements that are not components such divs and alike to properly apply a correct theme color to maintain consistency */
-  {--primary: #323380;
-  --on-primary: #ffffff;
-  --primary-container: #e1dfff;
-  --on-primary-container: #0d0a5f;
-  --inverse-primary: #c1c1ff;
-  --primary-fixed: #e1dfff;
-  --primary-fixed-dim: #c1c1ff;
-  --on-primary-fixed: #0d0a5f;
-  --on-primary-fixed-variant: #3c3e8b;
-  --secondary: #00677e;
-  --on-secondary: #ffffff;
-  --secondary-container: #b4ebff;
-  --on-secondary-container: #001f27;
-  --secondary-fixed: #b4ebff;
-  --secondary-fixed-dim: #4dd6fc;
-  --on-secondary-fixed: #001f27;
-  --on-secondary-fixed-variant: #004e5f;
-  --tertiary: #1160a5;
-  --on-tertiary: #ffffff;
-  --tertiary-container: #d3e4ff;
-  --on-tertiary-container: #001c38;
-  --tertiary-fixed: #d3e4ff;
-  --tertiary-fixed-dim: #a1c9ff;
-  --on-tertiary-fixed: #001c38;
-  --on-tertiary-fixed-variant: #004880;
-  --background: #fcf8f8;
-  --on-background: #1c1b1b;
-  --surface: #fcf8f8;
-  --surface-dim: #ddd9d9;
-  --surface-bright: #fcf8f8;
-  --surface-container-lowest: #ffffff;
-  --surface-container-low: #f6f3f2;
-  --surface-container: #f1edec;
-  --surface-container-high: #ebe7e7;
-  --surface-container-highest: #e5e2e1;
-  --on-surface: #1c1b1b;
-  --shadow: #000000;
-  --scrim: #000000;
-  --surface-tint: #5d5f5f;
-  --inverse-surface: #313030;
-  --inverse-on-surface: #f4f0ef;
-  --outline: #747878;
-  --outline-variant: #c4c7c8;
-  --neutral: #797776;
-  --neutral10: #1c1b1b;
-  --error: #ba1a1a;
-  --error-container: #ffdad6;
-  --on-error: #ffffff;
-  --on-error-container: #410002;
-  --surface-variant: #e0e3e3;
-  --on-surface-variant: #444748;
-  --neutral-variant: #747879;
-  --neutral-variant20: #2d3132;
-  --inverse-secondary: #4dd6fc;
-  --inverse-tertiary: #a1c9ff;}
+  & { /* Color css variables to apply on elements that are not components such divs and alike to properly apply a correct theme color to maintain consistency */
+    --primary: #323380;
+    --on-primary: #ffffff;
+    --primary-container: #e1dfff;
+    --on-primary-container: #0d0a5f;
+    --inverse-primary: #c1c1ff;
+    --primary-fixed: #e1dfff;
+    --primary-fixed-dim: #c1c1ff;
+    --on-primary-fixed: #0d0a5f;
+    --on-primary-fixed-variant: #3c3e8b;
+    --secondary: #00677e;
+    --on-secondary: #ffffff;
+    --secondary-container: #b4ebff;
+    --on-secondary-container: #001f27;
+    --secondary-fixed: #b4ebff;
+    --secondary-fixed-dim: #4dd6fc;
+    --on-secondary-fixed: #001f27;
+    --on-secondary-fixed-variant: #004e5f;
+    --tertiary: #1160a5;
+    --on-tertiary: #ffffff;
+    --tertiary-container: #d3e4ff;
+    --on-tertiary-container: #001c38;
+    --tertiary-fixed: #d3e4ff;
+    --tertiary-fixed-dim: #a1c9ff;
+    --on-tertiary-fixed: #001c38;
+    --on-tertiary-fixed-variant: #004880;
+    --background: #fcf8f8;
+    --on-background: #1c1b1b;
+    --surface: #fcf8f8;
+    --surface-dim: #ddd9d9;
+    --surface-bright: #fcf8f8;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #f6f3f2;
+    --surface-container: #f1edec;
+    --surface-container-high: #ebe7e7;
+    --surface-container-highest: #e5e2e1;
+    --on-surface: #1c1b1b;
+    --shadow: #000000;
+    --scrim: #000000;
+    --surface-tint: #5d5f5f;
+    --inverse-surface: #313030;
+    --inverse-on-surface: #f4f0ef;
+    --outline: #747878;
+    --outline-variant: #c4c7c8;
+    --neutral: #797776;
+    --neutral10: #1c1b1b;
+    --error: #ba1a1a;
+    --error-container: #ffdad6;
+    --on-error: #ffffff;
+    --on-error-container: #410002;
+    --surface-variant: #e0e3e3;
+    --on-surface-variant: #444748;
+    --neutral-variant: #747879;
+    --neutral-variant20: #2d3132;
+    --inverse-secondary: #4dd6fc;
+    --inverse-tertiary: #a1c9ff;
 
+
+    /* Paletas de Colores adicionales para notificaciones, chips y elementos de informacion y alerta pequenios */
+
+    --purple-50: #F2EAFA;
+    //--purple-100: #E4D4F4;
+    //--purple-200: #C9A9E9;
+    //--purple-300: #AE7EDE;
+    --purple-400: #9353D3;
+    //--purple-500: #7828C8;
+    //--purple-600: #6020A0;
+    //--purple-700: #481878;
+    --purple-800: #301050;
+    //--purple-900: #180828;
+
+    --green-50: #E8FAF0;
+    //--green-100: #D1F4E0;
+    --green-200: #A2E9C1;
+    //--green-300: #74DFA2;
+    //--green-400: #45D483;
+    --green-500: #17C964;
+    //--green-600: #12A150;
+    //--green-700: #0E793C;
+    //--green-800: #095028;
+    //--green-900: #052814;
+
+    //--yellow-50: #FEFCE8;
+    //--yellow-100: #FDEDD3;
+    --yellow-200: #FBDBA7;
+    //--yellow-300: #F9C97C;
+    --yellow-400: #F7B750;
+    --yellow-500: #F5a524;
+    //--yellow-600: #C4841D;
+    //--yellow-700: #936316;
+    --yellow-800: #62420E;
+    //--yellow-900: #312107;
+
+    --cyan-300: #C3F4FD;
+    --cyan-400: #A5EEFD;
+    //--cyan-500: #7EE7FC;
+    --cyan-800: #0E8AAA;
+
+    --success-container: var( --green-500 );
+    --on-success-container: var( --green-50 );
+  }
 
   /* Styling the components that are not standalone, work with cdk and appear as a dissmisable modal and so on */
+  /* Snackbar global style override */
   @include mat.snack-bar-overrides((
     supporting-text-font: 'Poppins',
-    supporting-text-size: 14pt,
+    supporting-text-size: 11pt,
     supporting-text-line-height: 24pt,
-    container-shape: 15px,
+    container-shape: 8px,
+  ));
+
+
+  /* FIN DEL ROOT */
+}
+
+/* Individual dismissable Components styles overrides customizations */
+
+.EventoDetailsDialogClass, .DeleteConfirmationDialogClass, .CreateOrEditEventDialogClass {
+  @include mat.dialog-overrides((
+    container-color: rgba( 255, 255, 255, .75 ),
   ));
 }
 
-.snackbar-success {
-  @include mat.snack-bar-overrides((
-    container-color: #00b85f,
-    supporting-text-color: whitesmoke,
-    button-color: gold,
-  ));
-}
-
-.EventoDetailsDialogClass {
+.EventoDetailsDialogClass, .CreateOrEditEventDialogClass {
   @include mat.dialog-overrides((
     container-min-width: 55dvw,
   ));
 
+  height: 85%;
+  max-height: 85%;
+}
 
+.DeleteConfirmationDialogClass {
+  height: fit-content;
+}
+
+.snackbar-success {
+  @include mat.snack-bar-overrides((
+    container-color: var( --green-500 ), //#00b85f,
+    supporting-text-color: var( --green-50 ),
+    button-color: rgb( 250, 255, 0 ),
+  ));
+}
+
+.snackbar-error {
+  @include mat.snack-bar-overrides((
+    container-color: var( --error ),
+    supporting-text-color: var( --on-error ),
+    button-color: var( --error-container ),
+  ));
+}
+
+.snackbar-warning {
+  @include mat.snack-bar-overrides((
+    container-color: var( --yellow-500 ),
+    supporting-text-color: white,
+    button-color: var( --yellow-800 ),
+  ));
+}
+
+.chip-facultad {
+  @include mat.chips-overrides((
+    elevated-container-color: var( --purple-800 ),
+    label-text-color: var( --purple-50 ),
+    outline-color: var( --purple-400 ),
+  ));
+}
+
+.chip-categoria {
+  @include mat.chips-overrides((
+    elevated-container-color: var( --yellow-200 ),
+    label-text-color: var( --yellow-800 ),
+    outline-color: var( --yellow-400 ),
+  ));
+}
+
+.chip-gratuito {
+  @include mat.chips-overrides((
+    elevated-container-color: var( --green-500 ),
+    label-text-color: rgb( 250, 255, 0 ),
+    outline-color: var( --green-200 ),
+  ));
+}
+
+.chip-etiqueta {
+  @include mat.chips-overrides((
+    elevated-container-color: var( --cyan-300 ),
+    label-text-color: var( --cyan-800 ),
+    outline-color: var( --cyan-400 ),
+  ));
+}
+
+.tooltip-search-help-info {
+  @include mat.tooltip-overrides((
+    container-color: var( --secondary ),
+    supporting-text-color: var( --on-secondary ),
+  ));
 }
