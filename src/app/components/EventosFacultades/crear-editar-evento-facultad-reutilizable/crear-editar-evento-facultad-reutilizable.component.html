@@ -1,0 +1,236 @@
+<div class="CreateEditEventContainer">
+  @if( eventoFacultad ) {
+    <h2>Editar Evento</h2>
+  }
+  @else{
+    <h2>Crear Nuevo Evento</h2>
+  }
+
+  <form [formGroup]="eventoFacultadForm" (submit)="onSubmit()">
+    <mat-stepper orientation="vertical" [linear]="!eventoFacultad" (selectionChange)="onStepChange( $event.selectedIndex )" #stepper>
+      <mat-step formGroupName='step1' [stepControl]="eventoFacultadForm.get( 'step1' )!" label="Básicos" state="id_card">
+        <div class="ContentClass">
+          <mat-form-field>
+            <mat-label> Nombre del Evento </mat-label>
+            <input matInput formControlName="nombre" type="text" placeholder="Ej.: Hackaton por un mejor mañana" />
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step1.nombre' )" />
+          <mat-form-field>
+            <mat-label> Descripción corta </mat-label>
+            <input matInput formControlName="descripcionCorta" type="text" placeholder="Ej.: Ven a disfrutar una tarde de aprendizaje" />
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step1.descripcionCorta' )" />
+          <mat-form-field>
+            <mat-label> Descripción detallada </mat-label>
+            <textarea matInput formControlName="descripcionDetalles" placeholder="Ej.: Este evento se trata de profundizar en los aspectos de la industria del software..."></textarea>
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step1.descripcionDetalles' )" />
+        </div>
+        <div class="NavigationDiv">
+          <button mat-button matStepperNext type="button" (click)="onNext()" [disabled]="eventoFacultadForm.get( 'step1' )?.invalid"> {{nextStepLabel}} </button>
+        </div>
+      </mat-step>
+
+      <mat-step formGroupName='step2' [stepControl]="eventoFacultadForm.get( 'step2' )!" label="Tipo de evento" state="category">
+        <div class="ContentClass">
+          <mat-form-field>
+            <mat-label> Área </mat-label>
+            <input matInput formControlName="area" type="text" placeholder="Ej.: Desarrollo de Software" />
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step2.area' )" />
+          <mat-form-field>
+            <mat-label> Categoría </mat-label>
+            <mat-select [(value)]="selectedCategoriaId" formControlName="categoriaCombo" aria-label="Seleccionar Categoria del Evento">
+              @for( categoria of categorias; track categoria.id ){
+                <mat-option [value]="categoria.id"> {{categoria.nombre}} </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step2.categoriaCombo' )" />
+          <mat-form-field>
+            <mat-label> Facultad </mat-label>
+            <mat-select [(value)]="selectedFacultadId" formControlName="facultadCombo" aria-label="Seleccionar Facultad que representa al Evento">
+              @for( facultad of facultades; track facultad.id ){
+                <mat-option [value]="facultad.id"> {{facultad.nombre}} </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step2.facultadCombo' )" />
+        </div>
+        <div class="NavigationDiv">
+          <button mat-button matStepperPrevious type="button" (click)="onPrevious()"> {{previousStepLabel}} </button>
+          <button mat-button matStepperNext type="button" (click)="onNext()" [disabled]="eventoFacultadForm.get( 'step2' )?.invalid"> {{nextStepLabel}} </button>
+        </div>
+      </mat-step>
+
+      <mat-step formGroupName='step3' [stepControl]="eventoFacultadForm.get( 'step3' )!" [optional]="eventoFacultadForm.get( 'step3.organizadorRadioGroup' )?.value === 'facultad'" label="Organizador" state="tenancy">
+        <mat-radio-group class="OrganizadorRadioGroupClass" formControlName="organizadorRadioGroup" aria-label="Seleccione un organizador">
+          <mat-radio-button value="facultad">Facultad</mat-radio-button>
+          <mat-radio-button value="externo">Externo</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field id="organizadorExternoFieldId">
+          <mat-label> Organizador externo </mat-label>
+          <input matInput formControlName="organizadorExterno" type="text" placeholder="Ej.: Sociedad de Estadistica" />
+        </mat-form-field>
+        <app-form-field-error [control]="eventoFacultadForm.get( 'step3.organizadorExterno' )" />
+        <div class="NavigationDiv">
+          <button mat-button matStepperPrevious type="button" (click)="onPrevious()"> {{previousStepLabel}} </button>
+          <button mat-button matStepperNext type="button" (click)="onNext()" [disabled]="eventoFacultadForm.get( 'step3' )?.invalid"> {{nextStepLabel}} </button>
+        </div>
+      </mat-step>
+
+      <mat-step formGroupName='step4' [stepControl]="eventoFacultadForm.get( 'step4' )!" label="Fecha y Hora" state="calendar_clock">
+        <div id="fechaHoraContentDivId">
+          <mat-slide-toggle formControlName="variosDias" aria-label="Activar evento de varios dias">Tiene varios dias</mat-slide-toggle>
+          <div id="fechaDesdeHastaDivId">
+            @if ( eventoFacultadForm.get( 'step4.variosDias' )?.value ) {
+              <mat-form-field>
+                <mat-label>Fechas Desde - Hasta</mat-label>
+                <mat-date-range-input [rangePicker]="dateFromToPicker">
+                  <input matStartDate
+                    formControlName="fecha"
+                    placeholder="27/06/2025" >
+                  <input matEndDate
+                    formControlName="fechaHasta"
+                    placeholder="28/06/2025" >
+                </mat-date-range-input>
+                <mat-hint>DD/MM/YYYY - DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="dateFromToPicker"></mat-datepicker-toggle>
+                <mat-date-range-picker #dateFromToPicker></mat-date-range-picker>
+              </mat-form-field>
+              <app-form-field-error [control]="eventoFacultadForm.get( 'step4.fecha' )" />
+              <app-form-field-error [control]="eventoFacultadForm.get( 'step4.fechaHasta' )" />
+            }@else {
+              <mat-form-field id="fechaId">
+                <mat-label> Fecha </mat-label>
+                <input matInput
+                  formControlName="fecha"
+                  [matDatepicker]="datePicker"
+                  placeholder="Ej.: 24/06/2025" >
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+                <mat-datepicker #datePicker></mat-datepicker>
+              </mat-form-field>
+              <app-form-field-error [control]="eventoFacultadForm.get( 'step4.fecha' )" />
+            }
+          </div>
+          <mat-form-field id="horaId">
+            <mat-label> Hora </mat-label>
+            <input matInput
+              formControlName="hora"
+              [matTimepicker]="timePicker"
+              placeholder="Ej.: 08:00AM" >
+            <mat-timepicker-toggle matIconSuffix [for]="timePicker"/>
+            <mat-timepicker #timePicker/>
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step4.hora' )" />
+        </div>
+        <div class="NavigationDiv">
+          <button mat-button matStepperPrevious type="button" (click)="onPrevious()"> {{previousStepLabel}} </button>
+          <button mat-button matStepperNext type="button" (click)="onNext()" [disabled]="eventoFacultadForm.get( 'step4' )?.invalid"> {{nextStepLabel}} </button>
+        </div>
+      </mat-step>
+
+      <mat-step formGroupName='step5' [stepControl]="eventoFacultadForm.get( 'step5' )!" label="Costo" state="attach_money">
+        <div id="costoContentDivId">
+          <mat-slide-toggle formControlName="esGratuito" aria-label="Indicar que el evento es gratuito">Es Gratuito</mat-slide-toggle>
+          <mat-form-field id="costoId">
+            <mat-icon matPrefix>attach_money</mat-icon>
+            <mat-label> Costo </mat-label>
+            <input matInput formControlName="costo" type="number" placeholder="0.00" min="0" value="0" step="0.01" />
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step5.costo' )" />
+        </div>
+        <div class="NavigationDiv">
+          <button mat-button matStepperPrevious type="button" (click)="onPrevious()"> {{previousStepLabel}} </button>
+          <button mat-button matStepperNext type="button" (click)="onNext()" [disabled]="eventoFacultadForm.get( 'step5' )?.invalid"> {{nextStepLabel}} </button>
+        </div>
+      </mat-step>
+
+      <mat-step formGroupName='step6' [stepControl]="eventoFacultadForm.get( 'step6' )!" label="Lugar" state="pin_drop">
+        <div class="ContentClass">
+          <mat-form-field>
+            <mat-label> Dirección </mat-label>
+            <input matInput formControlName="direccion" type="text" placeholder="Ej.: Av. de las Américas y Alban Borja" />
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step6.direccion' )" />
+          <mat-form-field>
+            <mat-label> Lugar </mat-label>
+            <input matInput formControlName="lugar" type="text" placeholder="Ej.: Edificio B, Salon de Eventos" />
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step6.lugar' )" />
+        </div>
+        <div class="NavigationDiv">
+          <button mat-button matStepperPrevious type="button" (click)="onPrevious()"> {{previousStepLabel}} </button>
+          <button mat-button matStepperNext type="button" (click)="onNext()" [disabled]="eventoFacultadForm.get( 'step6' )?.invalid"> {{nextStepLabel}} </button>
+        </div>
+      </mat-step>
+
+      <mat-step formGroupName='step7' [stepControl]="eventoFacultadForm.get( 'step7' )!" optional label="Afiche y Contacto" state="language">
+        <div class="ContentClass">
+          <mat-form-field>
+            <mat-label> Afiche URL </mat-label>
+            <input matInput formControlName="aficheUrl" type="text" placeholder="Ej.: https://static.platzi.com/media/user_upload/CONF-2021-std-twitter-tiendita-b59050ee-9359-41f7-9ccb-f243a8d9515d.jpg" />
+          </mat-form-field>
+          @if ( eventoFacultadForm.get( 'step7.aficheUrl' )?.value ) {
+            <div id="eventImgPreviewDivId">
+              <img [src]="eventoFacultadForm.get( 'step7.aficheUrl' )?.value" alt="Imagen del Evento" (error)="onImagePreviewError( $event )">
+            </div>
+          }
+          <mat-form-field>
+            <mat-label> Sitio Web </mat-label>
+            <input matInput formControlName="sitioWeb" type="text" placeholder="Ej.: https://platzi.com/" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label> Teléfono de contacto </mat-label>
+            <input matInput formControlName="telefonoContacto" type="text" placeholder="Ej.: 0995123896" />
+          </mat-form-field>
+          <app-form-field-error [control]="eventoFacultadForm.get( 'step7.telefonoContacto' )" />
+        </div>
+        <div class="NavigationDiv">
+          <button mat-button matStepperPrevious type="button" (click)="onPrevious()"> {{previousStepLabel}} </button>
+          <button mat-button matStepperNext type="button" (click)="onNext()" [disabled]="eventoFacultadForm.get( 'step7' )?.invalid"> {{nextStepLabel}} </button>
+        </div>
+      </mat-step>
+
+      <mat-step formGroupName='step8' [stepControl]="eventoFacultadForm.get( 'step8' )!" optional label="Etiquetas" state="sell">
+        <div class="ContentClass">
+          <mat-icon id="infoIconId" [matTooltip]="etiquetasToolTipMsj" matTooltipPosition="left" [matTooltipClass]="'tooltip-search-help-info'">info</mat-icon>
+          <mat-form-field>
+            <mat-label> Etiquetas </mat-label>
+            <mat-chip-grid id="etiquetasGridId" #reactiveChipGrid aria-label="Ingrese etiquetas del evento" >
+              @for ( tag of reactiveTags(); track tag ) {
+                <mat-chip-row (removed)="removeReactiveTag( tag )">
+                  {{tag}}
+                  <button matChipRemove type="button" [attr.aria-label]="'Remover etiqueta ' + tag">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+              }
+            </mat-chip-grid>
+            <input
+              matInput
+              formControlName="etiquetasInput"
+              type="text"
+              placeholder="Nueva etiqueta... ej.: #tecnologia  software  #programacion"
+              [matChipInputFor]="reactiveChipGrid"
+              (matChipInputTokenEnd)="addReactiveTag( $event )" >
+          </mat-form-field>
+        </div>
+        <div class="NavigationDiv">
+          <button mat-button matStepperPrevious type="button" (click)="onPrevious()"> {{previousStepLabel}} </button>
+          <button mat-button matStepperNext type="button" (click)="onNext()" [disabled]="eventoFacultadForm.get( 'step8' )?.invalid"> {{nextStepLabel}} </button>
+        </div>
+      </mat-step>
+      <mat-step label="Finalizar" state="event_available" errorMessage="Hay pasos con errores o incompletos" [hasError]="finalStepReached && eventoFacultadForm.invalid">
+        <div id="completeStepContent">
+          <p>👌🏼😊 ¡Todo listo! ✨</p>
+        </div>
+        <div class="NavigationDiv">
+          <button mat-button matStepperPrevious type="button" (click)="onPrevious()"> {{previousStepLabel}} </button>
+          <button mat-button type="submit" [disabled]="eventoFacultadForm.invalid"> {{eventoFacultad ? 'Actualizar' : 'Crear'}} evento </button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </form>
+</div>
