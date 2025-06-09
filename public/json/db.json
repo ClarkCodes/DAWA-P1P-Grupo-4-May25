@@ -3,18 +3,17 @@
     {
       "id": "1",
       "nombre": "NASA SpaceApps Challenge - Hackaton de Programación",
-      "categoriaId": 1,
-      "facultadId": "abf8",
-      "organizadorExterno": "NASA International",
       "descripcion": {
         "descripcionCorta": "Participa en una sana competencia organizadas por profesores de Programación de todos los semestres y carreras que incorporan esta materia.",
         "descripcionDetalles": "El NASA Space Apps Challenge Guayaquil es el hackathon internacional de ciencia y tecnología más grande a nivel mundial organizado por la NASA. Durante un fin de semana, personas de todo el mundo colaboran para desarrollar soluciones innovadoras a desafíos relacionados con el espacio y la ciencia terrestre. El evento se organiza en simultáneo en más de 500 ciudades en el mundo. Por primera vez en Guayaquil, la Universidad de Guaquil actúa como anfitrión y organizador del evento local, convirtiéndose en la ciudad con mayor número de inscritos en toda Hispanoamérica."
       },
       "area": "Ingeniería y Desarrollo de Software",
+      "categoriaId": "1",
+      "facultadId": "abf8",
+      "organizadorExterno": "NASA International",
       "variosDias": false,
-      "fecha": "2025-06-10",
-      "fechaHasta": "NA",
-      "hora": "8:00",
+      "fechaHora": "2025-06-10T13:00:00.000Z",
+      "fechaHasta": "",
       "esGratuito": true,
       "costo": 0,
       "direccion": "Victor Manuel Rendón, entre Córdova y Baquerizo Moreno",
@@ -29,11 +28,100 @@
         "equipos",
         "software"
       ]
+    },
+    {
+      "id": "3",
+      "nombre": "Jornada Deportiva TI",
+      "descripcion": {
+        "descripcionCorta": "No cuentes los dias, haz que los dias cuenten!",
+        "descripcionDetalles": "Participa con tu equipo y disfruta de este dia de integracion.\nComo participar:\n* Llena el formulario hasta el 09/06/2025\n* Confirma tu participacion mediante correo electronico.\n* Presentate el dia y hora indicados con tu equipo e indumentaria adecuada a la disciplina escogida."
+      },
+      "area": "Deporte e Integración",
+      "categoriaId": "15",
+      "facultadId": "abf8",
+      "organizadorExterno": "",
+      "variosDias": false,
+      "fechaHora": "2025-06-21T14:00:00.000Z",
+      "fechaHasta": "",
+      "esGratuito": true,
+      "costo": 0,
+      "direccion": "Av. Delta y Av. Kennedy Yes",
+      "lugar": "Complejo CEDID - Universidad de Guayaquil - Ciudadela Universitaria",
+      "aficheUrl": "https://tecnologicopichincha.ec/wp-content/uploads/2025/04/OP-Actividad-Fisica-y-Deportes-horizontal.jpg",
+      "sitioWeb": "",
+      "telefonoContacto": "0994567891",
+      "etiquetas": [
+        "deporte",
+        "tecnologia",
+        "informacion",
+        "equipo",
+        "#TI"
+      ]
+    },
+    {
+      "id": "4",
+      "nombre": "Women in Data Science Worldwide Guayaquil",
+      "descripcion": {
+        "descripcionCorta": "🎉 ¡Llega WiDS Guayaquil 2025! 🚀",
+        "descripcionDetalles": "Este 30 de mayo acompáñanos en un evento único donde mujeres líderes en ciencia de datos compartirán su experiencia transformando organizaciones con el poder de los datos. 💡📊 🌟 Ven y conoce a mujeres que analizan, lideran y transforman con datos."
+      },
+      "area": "🎯 Transformación digital y ciencia de datos",
+      "categoriaId": "8",
+      "facultadId": "104a",
+      "organizadorExterno": "Sociedad Ecuatoriana de Estadística",
+      "variosDias": true,
+      "fechaHora": "2025-05-30T13:30:00.000Z",
+      "fechaHasta": "2025-06-01T05:00:00.000Z",
+      "esGratuito": false,
+      "costo": 10.5,
+      "direccion": "Km2 Av. Carlos Julio Arosemena Plaza Guayarte, frente a la UCSG.",
+      "lugar": "📍 Épico, Guayarte",
+      "aficheUrl": "https://scontent.fgye7-1.fna.fbcdn.net/v/t39.30808-6/499217466_722698930329752_1340027343150158388_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dYDUx-p_WHoQ7kNvwGFyU_4&_nc_oc=AdmC42q2T-bBMTW48c_mkGljUPO1U9aT4euBxCBlxpFpk70H87yonIxiDQq8DbrzFt4&_nc_zt=23&_nc_ht=scontent.fgye7-1.fna&_nc_gid=-qYwqGkIKhSLGkrvhOG-7Q&oh=00_AfPuyGKrFvPu-y7lJBiRTtvfA7M8Ty9SlvbdXHO3tCjv0w&oe=684AEBBF",
+      "sitioWeb": "https://www.facebook.com/100077689531978/posts/713177501281895/?_rdr",
+      "telefonoContacto": "0997894562",
+      "etiquetas": [
+        "#WiDSGuayaquil",
+        "#WiDSEcuador",
+        "#MujeresEnDatos",
+        "#CienciaDeDatos",
+        "#DataScience",
+        "#SEE25Años"
+      ]
+    },
+    {
+      "id": "5",
+      "nombre": "Media Jornada",
+      "descripcion": {
+        "descripcionCorta": "¡Participa y actualízate con los avances que están transformando el mundo",
+        "descripcionDetalles": "En el marco del 92.º aniversario de la Facultad de Ciencias Matemáticas y Físicas, la carrera de Ingeniería en Tecnologías de la Información organiza una Media Jornada Tecnológica enfocada en Telecomunicaciones, Analítica y Cloud, dirigida a estudiantes, docentes y comunidad en general. \n\nDurante la jornada, se desarrollarán charlas y presentaciones enfocadas en el impacto de la nube, el análisis de datos y la evolución de las telecomunicaciones, con el objetivo de fortalecer el conocimiento técnico y profesional de los asistentes.\n\n🔗 Preinscripción: El evento cuenta con registro previo a través del código QR disponible en el afiche."
+      },
+      "area": "Telecomunicaciones, Analítica y Cloud",
+      "categoriaId": "3",
+      "facultadId": "abf8",
+      "organizadorExterno": "",
+      "variosDias": false,
+      "fechaHora": "2025-06-20T14:00:00.000Z",
+      "fechaHasta": "",
+      "esGratuito": true,
+      "costo": 0,
+      "direccion": "Edif. Centro - Victor Manuel Rendón #429 y Córdova",
+      "lugar": "Auditorio de la Carrera de Ingeniería en Tecnologias de la Información",
+      "aficheUrl": "https://scontent.fgye7-1.fna.fbcdn.net/v/t39.30808-6/504385427_1281806633402554_5015768754704894026_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=_dO_kmlxHqwQ7kNvwH0BMlw&_nc_oc=AdlBpg8YA2yin9xfnJNqIGW-Lp1wdPo-RbCBhw_T2B5DsZiORn8E2CSLbdpIawaY2Bs&_nc_zt=23&_nc_ht=scontent.fgye7-1.fna&_nc_gid=Q0GBGwLr7Bb0QuPO6zMSBA&oh=00_AfNyPuQFACET18oy1F4Qg1gwBYlVrQdTdxz8xjcdzl5RXA&oe=684AEF01",
+      "sitioWeb": "https://www.facebook.com/photo/?fbid=1281806630069221&set=a.807868647463024",
+      "telefonoContacto": "",
+      "etiquetas": [
+        "tecnologia",
+        "conferencia",
+        "innovacion",
+        "#TI",
+        "jornada",
+        "aprendizaje",
+        "telecomunicaciones",
+        "analitica",
+        "cloud"
+      ]
     }
   ],
-  "eventosFacultadTopId": {
-    "topId": 2
-  },
   "eventosFacultadCategoria": [
     {
       "id": "1",
@@ -231,7 +319,11 @@
       "lugar": "Patio de la facultad de Administración ",
       "nombreClub": "Círculo Literario",
       "aficheUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgJUrV9kQ6X-UAX-ReWu5j6djQZ5CsAHjDhA&s",
-      "etiquetas": ["concurso", "deletreo", "dominio"]
+      "etiquetas": [
+        "concurso",
+        "deletreo",
+        "dominio"
+      ]
     }
   ],
   "Cuentas": [
