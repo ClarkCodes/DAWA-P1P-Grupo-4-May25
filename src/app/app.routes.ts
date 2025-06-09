@@ -8,7 +8,6 @@ import { EstudiantesComponent } from './components/estudiantes/estudiantes.compo
 import { CrudSigninLoginComponent } from './components/crud-signin-login/crud-signin-login.component';
 import { EventosComponent } from './components/crud-eventos-clubes/crud-eventos-clubes.component';
 import { CrudEventosFacultadesComponent } from './components/crud-eventos-facultades/crud-eventos-facultades.component';
-import { CrearEditarEventoFacultadReutilizableComponent } from './components/shared/crear-editar-evento-facultad-reutilizable/crear-editar-evento-facultad-reutilizable.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: "Inicio - UG Eventos" },
@@ -16,7 +15,6 @@ export const routes: Routes = [
   { path: 'signin', component: SignInComponent, title: "Registro - UG Eventos" },
   { path: 'crud-signin-login', component: CrudSigninLoginComponent, title: "Gestión de Registro e Inicio de Sesión - UG Eventos" },
   { path: 'crud-eventos-facultades', component: CrudEventosFacultadesComponent, title: "Gestión de Eventos de Facultades - UG Eventos" },
-  { path: 'crear-editar-eventos-facultades', component: CrearEditarEventoFacultadReutilizableComponent, title: "Gestión de Eventos de Facultades - UG Eventos" },
   { path: 'crud-eventos-clubes', component: EventosComponent, title: "Gestión de Eventos de Clubes - UG Eventos" },
   { path: 'comentarios', component: ComentariosComponent, title: "Comentarios - UG Eventos" },
   { path: 'estudiantes', component: EstudiantesComponent, title: "Estudiantes - UG Eventos" },
