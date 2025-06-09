@@ -1,0 +1,71 @@
+mat-card{
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  img {
+    width: 100%;
+    height: fit-content;
+    justify-self: center;
+    align-self: top;
+    transition: box-shadow .15s ease-in;
+    padding-inline: -1.5rem;
+  }
+
+  .CardBodyClass{
+    padding-inline: 1.2rem;
+
+    mat-card-header{
+      display: flex;
+      flex-direction: column;
+      padding-top: 1rem;
+
+      .subtitle{
+        padding-top: 1rem;
+      }
+
+      mat-chip-set{
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    p, .title, .subtitle, .ValorDiv div, .ValorDiv div mat-chip {
+      font-family: "Poppins";
+      line-height: 22pt;
+    }
+
+    .subtitle{
+      font-weight: bold;
+    }
+
+    p, .ValorDiv div, .ValorDiv div mat-chip {
+      font-size: 13pt;
+    }
+
+    .ValorDiv{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    mat-card-actions{
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 1.5rem 0;
+      margin: 1rem 0;
+      top: auto;
+      bottom: 0;
+
+      button{
+        align-items: center;
+        width: 40%;
+        font-size: 16pt;
+        padding-inline: .5rem;
+      }
+    }
+  }
+}
+
+
