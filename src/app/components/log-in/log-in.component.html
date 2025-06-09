@@ -12,13 +12,13 @@
         type="email"
         matInput
         formControlName="email"
-        placeholder="ej: usuario@correo.com"
+        placeholder="Ej.: usuario@correo.com"
       />
       <!-- Mensajes de error para el campo email -->
-      <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+      <mat-error class="formError" *ngIf="loginForm.get('email')?.hasError('required')">
         Email requerido
       </mat-error>
-      <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+      <mat-error class="formError" *ngIf="loginForm.get('email')?.hasError('email')">
         Email no válido
       </mat-error>
     </mat-form-field>
@@ -30,6 +30,7 @@
         matInput
         [type]="hide() ? 'password' : 'text'"
         formControlName="password"
+        placeholder="contraseña123"
       />
       <!-- Botón para mostrar/ocultar contraseña -->
       <button
@@ -43,14 +44,14 @@
         <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
       <!-- Mensaje de error para el campo contraseña -->
-      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+      <mat-error class="formError" *ngIf="loginForm.get('password')?.hasError('required')">
         Contraseña requerida
       </mat-error>
     </mat-form-field>
 
     <!-- Enlace para registrarse -->
-    <div class="mat-button">
-      <a href="/signin" class="button-link">Registrarse</a>
+    <div>
+      <a mat-button href="/signin" class="Registrarse-button-link">Registrarse</a>
     </div>
 
     <!-- Botón de envío del formulario -->

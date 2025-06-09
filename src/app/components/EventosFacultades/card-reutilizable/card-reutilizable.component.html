@@ -1,18 +1,13 @@
 <mat-card class="EventoFacultadClass" appearance="outlined">
-  @if( eventoFacultad?.aficheUrl ){
-    <img mat-card-lg-image [src]="eventoFacultad?.aficheUrl" alt="Afiche del Evento" (mouseenter)="hoveredCardId = eventoFacultad!.id" (mouseleave)="hoveredCardId = null" [ngClass]="{ 'hovered': hoveredCardId === eventoFacultad!.id }">
-  }
-  @else {
-    <img mat-card-lg-image src="/images/no-image-found-design.webp" alt="Imagen del Producto">
-  }
+  <img mat-card-lg-image [src]="eventoFacultad?.aficheUrl" alt="Afiche del Evento" (error)="onAficheImageError( $event )" >
   <div class="CardBodyClass">
     <mat-card-header>
       <mat-card-title class="title">{{ eventoFacultad?.nombre }}</mat-card-title>
       <mat-card-subtitle class="subtitle">{{ eventoFacultad?.area }}</mat-card-subtitle>
-<!--       <mat-chip-set>
-        <mat-chip>{{ categoria | uppercase }}</mat-chip>
-        <mat-chip>{{ facultad }}</mat-chip>
-      </mat-chip-set> -->
+      <mat-chip-set role="list">
+        <mat-chip role="listitem" class="chip-categoria">{{ categoria | uppercase }}</mat-chip>
+        <mat-chip role="listitem" class="chip-facultad">{{ facultad }}</mat-chip>
+      </mat-chip-set>
     </mat-card-header>
 
     <mat-card-content>
@@ -21,26 +16,26 @@
       </p>
       <p>
         @if( eventoFacultad?.organizadorExterno ) {
-          Organizador: {{ eventoFacultad?.organizadorExterno }}<br>
+          <b>Organizador:</b> {{ eventoFacultad?.organizadorExterno }}<br>
         }
-        Lugar: {{ eventoFacultad?.lugar }}
+        <b>Lugar:</b> {{ eventoFacultad?.lugar }}<br>
         @if( eventoFacultad?.variosDias ){
-          Desde: {{ eventoFacultad?.fecha }}
+          <b>Desde:</b> {{ eventoFacultad?.fechaHora | date: 'longDate': undefined : 'es' }}
         }
         @else {
-          Fecha: {{ eventoFacultad?.fecha }}
+          <b>Fecha:</b> {{ eventoFacultad?.fechaHora | date: 'longDate': undefined : 'es' }}
         }
       </p>
         <div class="ValorDiv">
-          <div>Valor:</div>
+          <div><b>Valor:</b></div>
           <div>
             @if( eventoFacultad?.esGratuito ) {
               <mat-chip-set>
-                <mat-chip>Gratuito</mat-chip>
+                <mat-chip class="chip-gratuito">GRATUITO</mat-chip>
               </mat-chip-set>
             }
             @else {
-              {{ eventoFacultad?.costo | currency:"USD" }}
+              {{ eventoFacultad?.costo | currency: 'USD' : 'symbol-narrow' : undefined : 'en-US' }}
             }
           </div>
         </div>

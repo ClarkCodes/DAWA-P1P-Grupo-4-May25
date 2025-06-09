@@ -1,18 +1,17 @@
 export interface EventoFacultad {
-  id: number;
+  id: string;
   nombre: string;
-  categoriaId: number;
-  facultadId: string;
-  organizadorExterno: string;
   descripcion: {
       descripcionCorta: string;
       descripcionDetalles: string;
   };
   area: string;
+  categoriaId: string;
+  facultadId: string;
+  organizadorExterno: string;
   variosDias: boolean;
-  fecha: string;
+  fechaHora: string;
   fechaHasta: string;
-  hora: string;
   esGratuito: boolean;
   costo: number;
   direccion: string;
@@ -24,15 +23,11 @@ export interface EventoFacultad {
 }
 
 export interface EventosFacultadCategoria {
-  id: number;
+  id: string;
   nombre: string;
 }
 
 export interface Facultad {
   nombre: string;
   id: string;
-}
-
-export interface EventosFacultadTopId {
-  topId: number;
 }

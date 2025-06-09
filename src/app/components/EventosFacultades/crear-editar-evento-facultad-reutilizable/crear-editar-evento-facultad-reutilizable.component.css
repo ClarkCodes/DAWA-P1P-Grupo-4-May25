@@ -1,0 +1,125 @@
+::ng-deep .mat-step-header .mat-step-icon mat-icon {
+  line-height: 13pt;
+}
+
+mat-stepper {
+  border-radius: 16px;
+  margin-bottom: 2.3rem;
+  filter: drop-shadow( 1px 3px 5px var( --neutral-variant ) );
+}
+
+.CreateEditEventContainer {
+  -webkit-backdrop-filter: blur( 11px );
+  backdrop-filter: blur( 11px );
+  box-shadow: 0 4px 16px rgba( 0, 0, 0, .3 );
+  padding-inline: 2.5rem;
+  --small-input-width: 15.7rem;
+  --std-content-padding-vertical: 1.5rem;
+
+  h2 {
+    padding-top: .7rem;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .NavigationDiv, .OrganizadorRadioGroupClass, #fechaHoraContentDivId {
+      padding-top: 1rem;
+    }
+
+    textarea {
+      height: 12rem;
+    }
+
+    .ContentClass {
+      padding-top: var( --std-content-padding-vertical );
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .OrganizadorRadioGroupClass {
+      padding-bottom: 2rem;
+      display: flex;
+      justify-content: left;
+      gap: 15px;
+    }
+
+    #organizadorExternoFieldId {
+      width: 100%;
+    }
+
+    #fechaHoraContentDivId {
+      padding-top: var( --std-content-padding-vertical );
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      width: 100%;
+
+      #fechaDesdeHastaDivId {
+        flex-direction: row;
+        width: 40%;
+
+        mat-form-field {
+          width: 20rem;
+        }
+
+        #fechaId {
+          padding-right: 2rem;
+        }
+      }
+
+      #horaId {
+        width: 20rem;
+        margin-bottom: -3rem;
+      }
+    }
+
+    #costoContentDivId #costoId {
+      width: var( --small-input-width );
+    }
+
+    #costoContentDivId {
+      display: flex;
+      flex-direction: column;
+      padding-top: var( --std-content-padding-vertical );
+    }
+
+    #costoId {
+      padding-top: 3rem;
+    }
+
+    #eventImgPreviewDivId {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      padding-bottom: var( --std-content-padding-vertical );
+
+      img {
+        max-width: 50%;
+        height: auto;
+        border-radius: 16px;
+      }
+    }
+
+    #infoIconId {
+      width: fit-content;
+      padding-bottom: 1rem;
+      color: var( --secondary );
+      align-self: end;
+    }
+
+    #etiquetasGridId {
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: var( --std-content-padding-vertical );
+    }
+
+    #completeStepContent {
+      padding-top: .5rem;
+    }
+  }
+}

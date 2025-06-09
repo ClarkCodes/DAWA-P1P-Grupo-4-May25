@@ -31,15 +31,16 @@ mat-card{
       }
     }
 
-    p, .title, .subtitle{
+    p, .title, .subtitle, .ValorDiv div, .ValorDiv div mat-chip {
       font-family: "Poppins";
+      line-height: 22pt;
     }
 
     .subtitle{
       font-weight: bold;
     }
 
-    p {
+    p, .ValorDiv div, .ValorDiv div mat-chip {
       font-size: 13pt;
     }
 
@@ -52,14 +53,16 @@ mat-card{
     mat-card-actions{
       flex-direction: row;
       justify-content: space-evenly;
-      padding-top: 1.5rem;
-      padding-bottom: 2rem;
+      padding: 1.5rem 0;
+      margin: 1rem 0;
       top: auto;
       bottom: 0;
 
       button{
+        align-items: center;
         width: 40%;
         font-size: 16pt;
+        padding-inline: .5rem;
       }
     }
   }

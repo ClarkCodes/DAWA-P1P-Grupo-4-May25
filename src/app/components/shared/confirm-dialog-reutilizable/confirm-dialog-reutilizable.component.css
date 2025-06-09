@@ -1,0 +1,50 @@
+.DeleteConfimationContainerClass {
+  width: 100%;
+  height: fit-content;
+  -webkit-backdrop-filter: blur( 8px );
+  backdrop-filter: blur( 8px );
+  box-shadow: 0 4px 16px rgba( 0, 0, 0, .3 );
+
+  h2 {
+    font-family: "Poppins";
+    line-height: 28pt;
+    padding: 1rem 2.5rem;
+  }
+
+  mat-dialog-content {
+    height: fit-content;
+    padding: 0 2.5rem;
+
+    p {
+      font-size: 13pt;
+      font-family: "Poppins";
+      line-height: 28pt;
+    }
+  }
+
+  mat-dialog-actions {
+    width: 100%;
+    padding: 30px 2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    button{
+      width: 40%;
+      height: 4rem;
+
+      mat-icon{
+        width: fit-content;
+        height: 100%;
+        font-size: 18pt;
+        display: flex;
+        align-items: center;
+      }
+
+      .ActionSpan {
+        font-size: 14pt;
+      }
+    }
+  }
+}

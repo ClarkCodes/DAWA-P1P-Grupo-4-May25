@@ -1,8 +1,15 @@
-<h2 mat-dialog-title>{{ data.title }}</h2>
-<mat-dialog-content>
-  <p>{{ data.message }}</p>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button (click)="onCancel()">Cancelar</button>
-  <button mat-button color="primary" (click)="onConfirm()">Eliminar</button>
-</mat-dialog-actions>
+<div class="DeleteConfimationContainerClass">
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+  <mat-dialog-content>
+    <p>{{ data.message }}</p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-flat-button (click)="onConfirm()">
+      <mat-icon matPrefix>delete</mat-icon>
+      <span class="ActionSpan"> Eliminar </span>
+    </button>
+    <button mat-stroked-button (click)="onCancel()">
+      <span class="ActionSpan"> Cancelar </span>
+    </button>
+  </mat-dialog-actions>
+</div>

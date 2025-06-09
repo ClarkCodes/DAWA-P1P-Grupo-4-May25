@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-   margin: 32px auto;
+  margin: 32px auto;
   padding: 32px;
 }
 
@@ -24,36 +24,51 @@ mat-form-field {
   width: 100%;
 }
 
-.actions {
+.formError {
+  margin: 10px 0;
+}
+
+.example-full-width button {
+  width: fit-content;
+  margin-right: 10px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+
+  mat-icon {
+    width: fit-content;
+  }
 }
 
-.forgot-password {
-  font-size: 0.9rem;
-  color: #1976d2;
+.Registrarse-button-link {
   text-decoration: none;
-}
+  margin-top: -2rem;
+  margin-bottom: -1rem;
 
-.forgot-password:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .submit-btn {
   width: 100%;
   padding: 0.75rem;
-  font-size: 1rem;
+  font-size: 20pt;
   border-radius: 8px;
+  cursor: pointer;
   background-color: var( --primary );
   color: var( --on-primary );
-  transition: background-color .2s ease;
 
-  &:hover{
+  &:hover {
     background-color: var( --tertiary );
   }
 
   &:active{
     background-color: var( --on-primary-fixed );
   }
-}
 
+  &:disabled {
+    background: lightgray;
+    color: gray;
+  }
+}

@@ -1,0 +1,80 @@
+.DetallesContainer {
+  -webkit-backdrop-filter: blur( 11px );
+  backdrop-filter: blur( 11px );
+  box-shadow: 0 4px 16px rgba( 0, 0, 0, .3 );
+}
+
+img {
+  width: 100%;
+  height: fit-content;
+  justify-self: center;
+  align-self: top;
+}
+
+.BodyClass{
+  padding-inline: 2.5rem;
+
+  .HeaderDivClass{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+
+    .subtitle{
+      padding-top: 1rem;
+      margin: 0;
+    }
+
+    mat-chip-set{
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  p, .title, .subtitle, .ValorDiv div, .ValorDiv div mat-chip {
+    font-family: "Poppins";
+    line-height: 26pt;
+  }
+
+  .subtitle{
+    font-weight: bold;
+  }
+
+  p, .ValorDiv div, .ValorDiv div mat-chip {
+    font-size: 13pt;
+  }
+
+  .ValorDiv{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .ActionsDivClass{
+    width: 100%;
+    padding: 30px 0;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+
+    button{
+      width: 30%;
+      min-width: 150px;
+      height: 4rem;
+
+      mat-icon{
+        width: fit-content;
+        height: 100%;
+        font-size: 18pt;
+        display: flex;
+        align-items: center;
+      }
+
+      .EditButtonTextSpan, .CancelButtonTextSpan {
+        font-size: 14pt;
+      }
+    }
+  }
+}
