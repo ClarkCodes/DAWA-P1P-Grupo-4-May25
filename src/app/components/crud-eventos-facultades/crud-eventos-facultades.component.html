@@ -1,32 +1,35 @@
 <h1>Gestión de Eventos de Facultad</h1>
 
-<div class="MainActionsContainer">
-  <div class="NewEventoContainerDivClass" >
-    <button mat-fab extended class="NewEventButtonClass" (click)="addEvento()">
-      <mat-icon>add</mat-icon>
-      Nuevo Evento
-    </button>
+<div id="visualizationDiv">
+  <div class="MainActionsContainer">
+    <div class="NewEventoContainerDivClass" >
+      <button mat-fab extended class="NewEventButtonClass" (click)="addEvento()">
+        <mat-icon>add</mat-icon>
+        Nuevo Evento
+      </button>
+    </div>
+    <div class="SearchContainerDivClass">
+      <form class="FacultadesSearchForm">
+        <mat-form-field appearance="outline" class="FormElement">
+          <mat-label> Buscar </mat-label>
+          <mat-icon matPrefix>search</mat-icon>
+          <input matInput type="search" placeholder="Ej.: Hackaton" #searchInput (input)="search( searchInput )" >
+        </mat-form-field>
+        <mat-icon id="infoIconId" [matTooltip]="searchToolTipMsj" matTooltipPosition="right" [matTooltipClass]="'tooltip-search-help-info'">info</mat-icon>
+      </form>
+    </div>
   </div>
-  <div class="SearchContainerDivClass">
-    <form class="FacultadesSearchForm">
-      <mat-form-field appearance="outline" class="FormElement">
-        <mat-label> Buscar </mat-label>
-        <mat-icon matPrefix>search</mat-icon>
-        <input matInput type="search" placeholder="Ej.: Nombre del evento" #searchInput (keyup)="search( searchInput )">
-      </mat-form-field>
-    </form>
-  </div>
-</div>
 
-@if( eventosFacultades?.length === 0 ){
-  <div class="AvisoDivClass">
-    <p class="AvisoClass">No existen Eventos para mostrar por el momento.</p>
-  </div>
-}
-@if( eventosFacultades!.length > 0 ){
-  <div class="EventosCardsContainer">
-    @for( evento of eventosFacultades; track $index ){
-      <app-card-reutilizable [eventoFacultad]="evento" (deleted)="deleteEvento( $event )" />
-    }
-  </div>
-}
+  @if( !eventosFacultades ) {
+    <div class="AvisoDivClass">
+      <p class="AvisoClass">No existen Eventos para mostrar por el momento.</p>
+    </div>
+  }
+  @else if( eventosFacultades!.length > 0 ) {
+    <div class="EventosCardsContainer">
+      @for( evento of eventosFacultades; track $index ){
+        <app-card-reutilizable [eventoFacultad]="evento" (deleted)="deleteEvento( $event )" (updated)="updateEvento( $event )" />
+      }
+    </div>
+  }
+</div>

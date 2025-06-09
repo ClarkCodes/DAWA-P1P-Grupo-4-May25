@@ -12,15 +12,32 @@
 
     button {
       width: fit-content;
-      padding: 10px;
+      padding:10px 20px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 7px;
+      cursor: pointer;
+      border-radius: 8px;
       color: var( --on-tertiary );
       background-color: var( --tertiary );
       border: 2px solid var( --tertiary-fixed );
-      cursor: pointer;
-      border-radius: 8px;
+      transition-property: color, background-color;
+      transition: .15s ease;
+
+      &:hover{
+        color: var( --on-tertiary-fixed );
+        background-color: var( --tertiary-fixed );
+        transition-property: color, background-color;
+        transition: .2s ease;
+      }
+
+      &:active{
+        color: var( --on-tertiary-fixed-dim );
+        background-color: var( --tertiary-fixed-dim );
+        transition-property: color, background-color;
+        transition: .1s ease;
+      }
     }
   }
 
@@ -51,7 +68,36 @@
           text-align: center;
         }
       }
+
+      #infoIconId {
+        width: fit-content;
+        padding-top: 15px;
+        padding-left: 10px;
+        color: var( --secondary );
+      }
     }
+  }
+}
+
+.AvisoDivClass {
+  width: 100%;
+  height: 500px;
+  background: url( '/images/no-image-found-design.webp' ) no-repeat center center;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .AvisoClass {
+    width: fit-content;
+    font-size: 24pt;
+    padding: 16px;
+    border-radius: 12px;
+    color: var( --tertiary );
+    text-shadow: 3px 3px 7px white;
+    background-color: rgba( 50, 50, 50, .1 );
+    -webkit-backdrop-filter: blur( 4.3px );
+    backdrop-filter: blur( 4.3px );
   }
 }
 
@@ -65,7 +111,13 @@
   margin-bottom: 5rem;
   gap: 3rem;
 
+  @media( max-width: 700px ) {
+    justify-content: left;
+    padding-left: 1rem;
+  }
+
   app-card-reutilizable {
     width: 25dvw;
+    min-width: 430px;
   }
 }
