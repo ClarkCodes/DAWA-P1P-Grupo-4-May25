@@ -1,0 +1,91 @@
+<div class="DetallesContainer">
+  @if( data.eventoFacultad.aficheUrl ){
+    <img mat-card-lg-image [src]="data.eventoFacultad.aficheUrl" alt="Afiche del Evento" >
+  }
+  @else {
+    <img mat-card-lg-image src="/images/no-image-found-design.webp" alt="Imagen del Producto">
+  }
+  <div class="BodyClass">
+    <div class="HeaderDivClass">
+      <h4 class="title">
+        {{ data.eventoFacultad.nombre }}
+      </h4>
+      <h6 class="subtitle">
+        {{ data.eventoFacultad.area }}
+      </h6>
+      <mat-chip-set role="list">
+        <mat-chip role="listitem" class="chip-categoria">{{ data.categoriaName| uppercase }}</mat-chip>
+        <mat-chip role="listitem" class="chip-facultad">{{ data.facultadName }}</mat-chip>
+      </mat-chip-set>
+    </div>
+
+    <div class="ContentClass">
+      <p>
+        {{ data.eventoFacultad.descripcion.descripcionCorta }}
+      </p>
+      <p>
+        {{ data.eventoFacultad.descripcion.descripcionDetalles }}
+      </p>
+      <p>
+        @if( data.eventoFacultad.organizadorExterno ) {
+          <b>Organizador:</b> {{ data.eventoFacultad.organizadorExterno }}<br>
+        }
+        @if( data.eventoFacultad.direccion ){
+          <b>Dirección:</b> {{ data.eventoFacultad.direccion }}<br>
+        }
+        <b>Lugar:</b> {{ data.eventoFacultad.lugar }}
+      </p>
+      <p>
+        @if( data.eventoFacultad.variosDias ){
+          <b>Desde:</b> {{ data.eventoFacultad.fechaHora | date: 'longDate': undefined : 'es' }}<br>
+          <b>Hasta:</b> {{ data.eventoFacultad.fechaHasta | date: 'longDate': undefined : 'es' }}<br>
+        }
+        @else {
+          <b>Fecha:</b> {{ data.eventoFacultad.fechaHora | date: 'longDate': undefined : 'es' }}<br>
+        }
+        <b>Hora:</b> {{ data.eventoFacultad.fechaHora | date: 'h:mm a' }}<br>
+      </p>
+      <div class="ValorDiv">
+        <div><b>Valor:</b></div>
+        <div>
+          @if( data.eventoFacultad.esGratuito ) {
+            <mat-chip-set>
+              <mat-chip class="chip-gratuito">GRATUITO</mat-chip>
+            </mat-chip-set>
+          }
+          @else {
+            {{ data.eventoFacultad.costo | currency: 'USD' : 'symbol-narrow' : undefined : 'en-US' }}
+          }
+        </div>
+      </div>
+      @if( data.eventoFacultad.sitioWeb || data.eventoFacultad.telefonoContacto ) {
+        <p>
+          @if( data.eventoFacultad.sitioWeb ) {
+            <b>Sitio Web: </b><a [href]="data.eventoFacultad.sitioWeb" target="_blank" aria-label="Abrir sitio web del evento" noopener noreferer> {{ data.eventoFacultad.sitioWeb }}</a> <br>
+          }
+          @if( data.eventoFacultad.telefonoContacto ) {
+            <b>Teléfono de Contacto:</b> {{ data.eventoFacultad.telefonoContacto }}<br>
+          }
+        </p>
+      }
+      @if( data.eventoFacultad.etiquetas ) {
+        <p>
+          <mat-chip-set role="list">
+            @for( etiqueta of data.eventoFacultad.etiquetas; track $index ) {
+              <mat-chip role="listitem" class="chip-etiqueta">{{ etiqueta }}</mat-chip>
+            }
+          </mat-chip-set>
+        </p>
+      }
+    </div>
+    <div class="ActionsDivClass">
+      <button mat-flat-button (click)="editar()">
+        <mat-icon matPrefix class="DetallesEditButtonIcon">edit</mat-icon>
+        <span class="EditButtonTextSpan">Editar</span>
+      </button>
+      <button mat-stroked-button (click)="onCancel()">
+        <span class="CancelButtonTextSpan">Cancelar</span>
+      </button>
+    </div>
+  </div>
+</div>
