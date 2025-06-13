@@ -1,7 +1,7 @@
 ---
 name: Título de la Solicitud de Feature
 about: "### *Solicitud de Feature* Se solicita la implementación de esta feature,
-  parte de la milestone de Página General de Eventos."
+  parte de la milestone de <Nombre del Hito>."
 title: "## Requerimiento Funcional  * Escribe el requerimiento funcional."
 labels: enhancement
 assignees: ''
