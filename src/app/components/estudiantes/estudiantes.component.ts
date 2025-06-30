@@ -30,6 +30,7 @@ import { merge } from 'rxjs';
 @Component({
   selector: 'app-estudiantes',
   providers: [provideNativeDateAdapter()],
+  standalone: true,
   imports: [
     CommonModule,
     MatFormFieldModule,

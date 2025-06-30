@@ -28,9 +28,13 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './tabla-reutilizable.component.html',
   styleUrls: ['./tabla-reutilizable.component.css']
 })
+
 export class TablaReutilizableComponent implements OnInit, AfterViewInit {
   // Columnas que se mostrarán en la tabla
   displayedColumns: string[] = ['nombre', 'email', 'password', 'facultad', 'rol', 'actions'];
+
+  // Control de búsqueda para filtrar los datos de la tabla
+  searchControl = new FormControl('');
 
   // Fuente de datos para la tabla
   dataSource = new MatTableDataSource<Cuentas>();
@@ -80,7 +84,19 @@ export class TablaReutilizableComponent implements OnInit, AfterViewInit {
   // Carga las cuentas desde el servicio
   loadCuentas(): void {
     this.cuentasService.getCuentas().subscribe((data: Cuentas[]) => {
-      this.dataSource.data = data;
+    this.dataSource.data = data;
+    this.dataSource.filterPredicate = (data: Cuentas, filter: string) => {
+      const filterValue = filter.trim().toLowerCase();
+      // Filtra solo si el nombre, rol o email comienza con el texto ingresado
+      return data.nombre.toLowerCase().startsWith(filterValue) ||
+              data.email.toLowerCase().startsWith(filterValue)||
+              data.facultad.toLowerCase().startsWith(filterValue)||
+              data.rol.toLowerCase().startsWith(filterValue);
+      };
+
+      this.searchControl.valueChanges.subscribe(value => {
+      this.dataSource.filter = value || '';
+      });
     });
   }
 

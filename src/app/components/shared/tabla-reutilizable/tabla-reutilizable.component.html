@@ -1,5 +1,11 @@
 <!-- Tabla de usuarios con funcionalidad de edición y paginación -->
 <div class="mat-elevation-z8">
+  <!-- FILTRO DE BUSQUEDA -->
+  <mat-form-field appearance="outline" class="full-width" style="width: 300px; margin-bottom: 16px;">
+  <mat-label>Buscar</mat-label>
+  <input matInput [formControl]="searchControl" placeholder="Escribe aquí para buscar...">
+  </mat-form-field>
+  
   <table mat-table [dataSource]="dataSource">
     <!-- Columna Nombre -->
     <ng-container matColumnDef="nombre">
@@ -32,10 +38,10 @@
       <th mat-header-cell *matHeaderCellDef>CONTRASEÑA</th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngIf="editingRowId !== element.id; else editPassword">
-          {{ element.password }}
+          {{ "********" }}
         </ng-container>
         <ng-template #editPassword>
-          <input matInput [formControl]="editForm.controls['password']" type="text" />
+          
         </ng-template>
       </td>
     </ng-container>
