@@ -92,7 +92,7 @@
 </mat-error>
 </mat-form-field>  -->
 
-<mat-form-field appearance="outline" style="width: 100%;">
+<!-- <mat-form-field appearance="outline" style="width: 100%;">
   <mat-label>Tu edad</mat-label>
   <input matInput formControlName="edad" maxlength="2"  (keydown)="soloNumeros($event)"/>
   <mat-error *ngIf="estudiantesForm.get('edad')?.touched && estudiantesForm.get('edad')?.invalid">
@@ -103,8 +103,7 @@
       Solo se permiten números (máximo 2 dígitos)
     </ng-container>
   </mat-error>
-</mat-form-field>
-
+</mat-form-field>-->
 
 
 
@@ -165,10 +164,12 @@ Recibir avisos de nuevos eventos
     <th mat-header-cell *matHeaderCellDef mat-sort-header>CORREO</th>
     <td mat-cell *matCellDef="let element">{{element.email}}</td>
   </ng-container>
-  <ng-container matColumnDef="edad">
+  
+  <!-- <ng-container matColumnDef="edad">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>EDAD</th>
     <td mat-cell *matCellDef="let element">{{element.edad}}</td>
-  </ng-container>
+  </ng-container>-->
+
   <ng-container matColumnDef="aceptoTerminos">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>ACEPTO TERMINOS</th>
     <td mat-cell *matCellDef="let element">{{element.aceptoTerminos ? 'Sí' : 'No'}}</td>

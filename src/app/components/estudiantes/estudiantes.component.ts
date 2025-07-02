@@ -68,7 +68,6 @@ export class EstudiantesComponent implements OnInit{
     'nombreEvento',
     'telefono',
     'email',
-    'edad',
     'aceptoTerminos',
     'opciones'
   ];
@@ -87,7 +86,6 @@ export class EstudiantesComponent implements OnInit{
         telefono: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10),
         this.soloNumerosValidator()]],
         email: ['', [Validators.required, Validators.email]],
-        edad: ['', Validators.required, this.edadValidator()],
         aceptoTerminos: [true, this.aceptaTerminosValidator]
       });
 
@@ -172,7 +170,6 @@ export class EstudiantesComponent implements OnInit{
         nombreEvento: formValue.nombreEvento,
         telefono: formValue.telefono,
         email: formValue.email,
-        edad: formValue.edad,
         fecha: new Date().toISOString(),
         aceptoTerminos: formValue.aceptoTerminos
       };
@@ -185,7 +182,6 @@ export class EstudiantesComponent implements OnInit{
           nombreEvento: '',
           telefono: '',
           email: '',
-          edad: '',
           aceptoTerminos: true
         });
         this.cargarRegistro();
@@ -210,7 +206,6 @@ export class EstudiantesComponent implements OnInit{
           nombreEvento: '',
           telefono: '',
           email: '',
-          edad: '',
           aceptoTerminos: true
         });
         this.cargarRegistro();
@@ -227,7 +222,6 @@ export class EstudiantesComponent implements OnInit{
       nombreEvento: estudiantes.nombreEvento,
       telefono: estudiantes.telefono,
       email: estudiantes.email,
-      edad: estudiantes.edad,
       aceptoTerminos: estudiantes.aceptoTerminos ?? true
     });
   }
@@ -239,7 +233,6 @@ export class EstudiantesComponent implements OnInit{
         nombreEvento: '',
         telefono: '',
         email: '',
-        edad: '',
         aceptoTerminos: true
       });
     }
@@ -281,12 +274,6 @@ export class EstudiantesComponent implements OnInit{
   };
 }
 
-edadValidator(): ValidatorFn {
- return (control: AbstractControl): ValidationErrors | null => {
-    const regex = /^\d{1,2}$/; // solo números de 1 a 2 dígitos
-    return control.value && !regex.test(control.value) ? { edadInvalida: true } : null;
-  };
-}
 
 soloNumeros(event: KeyboardEvent): void {
   const teclasPermitidas = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
