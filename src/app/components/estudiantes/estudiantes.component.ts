@@ -25,6 +25,9 @@ import { MatSort } from '@angular/material/sort';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { merge } from 'rxjs';
+import { EventosService } from '../../services/crud-eventos-clubes.service';
+import { Evento } from '../../models/crud-eventos-clubes.model';
+
 
 
 @Component({
@@ -58,6 +61,7 @@ export class EstudiantesComponent implements OnInit{
     estudiantes: Estudiantes[] = [];
     estudiantesFiltrados: Estudiantes[] = [];
     estudiantesForm: FormGroup;
+    eventosDisponibles: Evento[] = [];
     editandoEstudiantes: Estudiantes | null = null;
      @ViewChild(MatSort) sort!: MatSort;
     dataSource = new MatTableDataSource<Estudiantes>
@@ -77,7 +81,8 @@ export class EstudiantesComponent implements OnInit{
 
     constructor(
       private fb: FormBuilder,
-      private ServEstudiantesService: ServEstudiantesService
+      private ServEstudiantesService: ServEstudiantesService,
+       private eventosService: EventosService
     ) {
       this.estudiantesForm = this.fb.group({
         id: [{ value: '', disabled: true }], 
@@ -125,6 +130,11 @@ export class EstudiantesComponent implements OnInit{
     this.searchControl.valueChanges.subscribe(value => {
       this.dataSource.filter = value || '';
     });
+
+    this.eventosService.obtenerEventos().subscribe(data => {
+  this.eventosDisponibles = data;
+});
+
   }
 
   ngAfterViewInit() {

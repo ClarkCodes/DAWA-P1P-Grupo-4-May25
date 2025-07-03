@@ -26,14 +26,13 @@
 </mat-error>
 </mat-form-field>
 
-<mat-form-field appearance="outline" style="width: 100%;">
+<mat-form-field appearance="fill" style="width: 100%;">
 <mat-label>Nombre del evento</mat-label>
-<input matInput formControlName="nombreEvento" />
-<mat-error *ngIf="estudiantesForm.get('nombreEvento')?.touched && estudiantesForm.get('nombreEvento')?.invalid">
-  <ng-container *ngIf="estudiantesForm.get('nombreEvento')?.errors?.['required']">
-  El campo es obligatorio
-  </ng-container>
-</mat-error>
+<mat-select formControlName="nombreEvento">
+  <mat-option *ngFor="let evento of eventosDisponibles" [value]="evento.titulo">
+      {{ evento.titulo }}
+</mat-option>
+</mat-select>
 </mat-form-field>
 
 <!--
@@ -61,8 +60,6 @@
     </ng-container>
   </mat-error>
 </mat-form-field>
-
-
 
 
 <!--  -->
