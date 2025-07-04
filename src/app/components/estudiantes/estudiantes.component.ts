@@ -25,6 +25,9 @@ import { MatSort } from '@angular/material/sort';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { merge } from 'rxjs';
+import { EventosService } from '../../services/crud-eventos-clubes.service';
+import { Evento } from '../../models/crud-eventos-clubes.model';
+
 
 
 @Component({
@@ -58,6 +61,7 @@ export class EstudiantesComponent implements OnInit{
     estudiantes: Estudiantes[] = [];
     estudiantesFiltrados: Estudiantes[] = [];
     estudiantesForm: FormGroup;
+    eventosDisponibles: Evento[] = [];
     editandoEstudiantes: Estudiantes | null = null;
      @ViewChild(MatSort) sort!: MatSort;
     dataSource = new MatTableDataSource<Estudiantes>
@@ -68,7 +72,6 @@ export class EstudiantesComponent implements OnInit{
     'nombreEvento',
     'telefono',
     'email',
-    'edad',
     'aceptoTerminos',
     'opciones'
   ];
@@ -78,7 +81,8 @@ export class EstudiantesComponent implements OnInit{
 
     constructor(
       private fb: FormBuilder,
-      private ServEstudiantesService: ServEstudiantesService
+      private ServEstudiantesService: ServEstudiantesService,
+       private eventosService: EventosService
     ) {
       this.estudiantesForm = this.fb.group({
         id: [{ value: '', disabled: true }], 
@@ -87,7 +91,6 @@ export class EstudiantesComponent implements OnInit{
         telefono: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10),
         this.soloNumerosValidator()]],
         email: ['', [Validators.required, Validators.email]],
-        edad: ['', Validators.required, this.edadValidator()],
         aceptoTerminos: [true, this.aceptaTerminosValidator]
       });
 
@@ -127,6 +130,11 @@ export class EstudiantesComponent implements OnInit{
     this.searchControl.valueChanges.subscribe(value => {
       this.dataSource.filter = value || '';
     });
+
+    this.eventosService.obtenerEventos().subscribe(data => {
+  this.eventosDisponibles = data;
+});
+
   }
 
   ngAfterViewInit() {
@@ -172,7 +180,6 @@ export class EstudiantesComponent implements OnInit{
         nombreEvento: formValue.nombreEvento,
         telefono: formValue.telefono,
         email: formValue.email,
-        edad: formValue.edad,
         fecha: new Date().toISOString(),
         aceptoTerminos: formValue.aceptoTerminos
       };
@@ -185,7 +192,6 @@ export class EstudiantesComponent implements OnInit{
           nombreEvento: '',
           telefono: '',
           email: '',
-          edad: '',
           aceptoTerminos: true
         });
         this.cargarRegistro();
@@ -210,7 +216,6 @@ export class EstudiantesComponent implements OnInit{
           nombreEvento: '',
           telefono: '',
           email: '',
-          edad: '',
           aceptoTerminos: true
         });
         this.cargarRegistro();
@@ -227,7 +232,6 @@ export class EstudiantesComponent implements OnInit{
       nombreEvento: estudiantes.nombreEvento,
       telefono: estudiantes.telefono,
       email: estudiantes.email,
-      edad: estudiantes.edad,
       aceptoTerminos: estudiantes.aceptoTerminos ?? true
     });
   }
@@ -239,7 +243,6 @@ export class EstudiantesComponent implements OnInit{
         nombreEvento: '',
         telefono: '',
         email: '',
-        edad: '',
         aceptoTerminos: true
       });
     }
@@ -281,12 +284,6 @@ export class EstudiantesComponent implements OnInit{
   };
 }
 
-edadValidator(): ValidatorFn {
- return (control: AbstractControl): ValidationErrors | null => {
-    const regex = /^\d{1,2}$/; // solo números de 1 a 2 dígitos
-    return control.value && !regex.test(control.value) ? { edadInvalida: true } : null;
-  };
-}
 
 soloNumeros(event: KeyboardEvent): void {
   const teclasPermitidas = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];

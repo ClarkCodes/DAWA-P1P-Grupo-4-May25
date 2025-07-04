@@ -382,6 +382,30 @@
       "password": "juan",
       "facultad": "CIENCIAS MEDICAS",
       "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "8fc9",
+      "nombre": "joselyne",
+      "email": "joseline-33@hotmail.com",
+      "password": "Joselyne",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "ESTUDIANTE"
+    },
+    {
+      "id": "ee48",
+      "nombre": "joselyne",
+      "email": "joselyne-33@hotmail.com",
+      "password": "Joselyne95",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "CLUB"
+    },
+    {
+      "id": "6fe7",
+      "nombre": "katty",
+      "email": "katty@hotmail.com",
+      "password": "0921938601",
+      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
+      "rol": "CLUB"
     }
   ],
   "facultadDatos": [
@@ -496,31 +520,30 @@
     {
       "id": "ada6",
       "estudianteNombre": "Lorena Poveda",
-      "nombreEvento": "Comercial",
-      "telefono": "1234567",
+      "nombreEvento": "Feria de Proyectos Tecnológico",
+      "telefono": "1234567890",
       "email": "Lorena@gmail.com",
       "edad": "22",
-      "fecha": "2025-05-22T01:43:55.636Z",
-      "aceptoTerminos": true
-    },
-    {
-      "id": "cf22",
-      "estudianteNombre": "Luca Jose Gomez",
-      "nombreEvento": "Ejemplo 2\t",
-      "telefono": "0956235652",
-      "email": "Luca@gmail.com",
-      "edad": "22",
-      "fecha": "2025-05-22T01:44:48.889Z",
+      "fecha": "2025-07-03T02:49:03.682Z",
       "aceptoTerminos": true
     },
     {
       "id": "59c2",
       "estudianteNombre": "Juan Jose",
-      "nombreEvento": "ejemplo",
+      "nombreEvento": "Concurso de Deletreo",
       "telefono": "0956869555",
       "email": "Juan@gmail.com",
       "edad": "27",
-      "fecha": "2025-05-22T01:45:29.901Z",
+      "fecha": "2025-07-03T02:48:04.864Z",
+      "aceptoTerminos": true
+    },
+    {
+      "id": "c243",
+      "estudianteNombre": "katty",
+      "nombreEvento": "Feria de Proyectos Tecnológico",
+      "telefono": "0943850967",
+      "email": "katty@hotmail.com",
+      "fecha": "2025-07-03T02:47:40.179Z",
       "aceptoTerminos": true
     }
   ]
