@@ -4680,23 +4680,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rocke\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Mstr\\.nuget\\packages\\": {},
+    "D:\\VisualStudioComp\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rocke\\Documents\\UG\\SEMESTRES\\7MO SEMESTRE\\3_DESARROLLO DE APLICACIONES WEB AVANZADO\\PROYECTO\\grupo_4_proyecto1p\\BACKEND\\UGEventosSolution\\DataBaseFirst\\DataBaseFirst.csproj",
+      "projectUniqueName": "D:\\Codes\\Angular\\DAWA-P1P-Grupo-4-May25\\BACKEND\\UGEventosSolution\\DataBaseFirst\\DataBaseFirst.csproj",
       "projectName": "DataBaseFirst",
-      "projectPath": "C:\\Users\\rocke\\Documents\\UG\\SEMESTRES\\7MO SEMESTRE\\3_DESARROLLO DE APLICACIONES WEB AVANZADO\\PROYECTO\\grupo_4_proyecto1p\\BACKEND\\UGEventosSolution\\DataBaseFirst\\DataBaseFirst.csproj",
-      "packagesPath": "C:\\Users\\rocke\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rocke\\Documents\\UG\\SEMESTRES\\7MO SEMESTRE\\3_DESARROLLO DE APLICACIONES WEB AVANZADO\\PROYECTO\\grupo_4_proyecto1p\\BACKEND\\UGEventosSolution\\DataBaseFirst\\obj\\",
+      "projectPath": "D:\\Codes\\Angular\\DAWA-P1P-Grupo-4-May25\\BACKEND\\UGEventosSolution\\DataBaseFirst\\DataBaseFirst.csproj",
+      "packagesPath": "C:\\Users\\Mstr\\.nuget\\packages\\",
+      "outputPath": "D:\\Codes\\Angular\\DAWA-P1P-Grupo-4-May25\\BACKEND\\UGEventosSolution\\DataBaseFirst\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "D:\\VisualStudioComp\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\rocke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mstr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4724,7 +4724,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -4761,7 +4761,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
