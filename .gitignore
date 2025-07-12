@@ -28,6 +28,14 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
+# Visual Studio
+/.vs
+/BACKEND/UGEventosSolution/.vs
+/BACKEND/UGEventosSolution/APIUGEventos/obj
+/BACKEND/UGEventosSolution/APIUGEventos/bin
+/BACKEND/UGEventosSolution/DataBaseFirst/obj
+/BACKEND/UGEventosSolution/DataBaseFirst/bin
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/
