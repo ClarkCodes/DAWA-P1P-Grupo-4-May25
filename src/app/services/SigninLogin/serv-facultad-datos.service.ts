@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class ServFacultadDatosService {
 
-   private jsonFacultadDatosUrl: string = 'http://localhost:3000/facultadDatos'; // Url del Endpoint de productos del Json Server
+   private apiFacultadDatosUrl: string = 'http://localhost:5214/api/Facultades'; // Url del Endpoint de productos del Api Server
 
   constructor( private http: HttpClient ) { // Inyeccion de HTTP Client
   }
 
     getFacultadDatos(): Observable<FacultadDatos[]> {
-    return this.http.get<FacultadDatos[]>(this.jsonFacultadDatosUrl);
+    return this.http.get<FacultadDatos[]>(this.apiFacultadDatosUrl);
   }
 }

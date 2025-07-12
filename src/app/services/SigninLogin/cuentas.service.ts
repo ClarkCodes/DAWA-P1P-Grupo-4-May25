@@ -1,51 +1,83 @@
+// src/app/services/SigninLogin/cuentas.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Cuentas } from '../../models/cuentas';
+import { CreateCuentas } from '../../models/createCuentas';
+import { FacultadDatos } from '../../models/facultadDatos';
+import { RolDatos } from '../../models/rolDatos';
 
-// Decorador que marca la clase como un servicio inyectable, disponible en el ámbito raíz
 @Injectable({
   providedIn: 'root'
 })
 export class CuentasService {
-  // URL del endpoint para el JSON Server
-  private jsonCuentasUrl: string = 'http://localhost:3000/Cuentas';
+  private apiCuentasUrl: string = 'http://localhost:5214/api/Cuentas';
 
-  // Inyección del servicio HttpClient para realizar peticiones HTTP
   constructor(private http: HttpClient) {}
 
-  // Obtiene la lista de cuentas desde el servidor
   getCuentas(): Observable<Cuentas[]> {
-    return this.http.get<Cuentas[]>(this.jsonCuentasUrl);
+    return this.http.get<Cuentas[]>(this.apiCuentasUrl).pipe(
+      catchError(error => {
+        console.error('Error al obtener cuentas:', error);
+        return throwError(() => new Error(error.error || 'No se pudo obtener la lista de cuentas.'));
+      })
+    );
   }
 
-  // Agrega una nueva cuenta al servidor
-  addCuentas(cuenta: Cuentas): Observable<Cuentas> {
-    return this.http.post<Cuentas>(this.jsonCuentasUrl, cuenta);
+  getFacultades(): Observable<FacultadDatos[]> {
+    return this.http.get<FacultadDatos[]>(`${this.apiCuentasUrl}/facultades`).pipe(
+      catchError(error => {
+        console.error('Error al obtener facultades:', error);
+        return throwError(() => new Error(error.error || 'No se pudo obtener la lista de facultades.'));
+      })
+    );
   }
 
-  // Actualiza una cuenta existente en el servidor
-  editCuentas(cuenta: Cuentas): Observable<Cuentas> {
-    const cuentaUrl = `${this.jsonCuentasUrl}/${cuenta.id}`;
-    return this.http.put<Cuentas>(cuentaUrl, cuenta);
+  getRoles(): Observable<RolDatos[]> {
+    return this.http.get<RolDatos[]>(`${this.apiCuentasUrl}/roles`).pipe(
+      catchError(error => {
+        console.error('Error al obtener roles:', error);
+        return throwError(() => new Error(error.error || 'No se pudo obtener la lista de roles.'));
+      })
+    );
   }
 
-  // Elimina una cuenta del servidor
-  deleteCuentas(cuenta: Cuentas): Observable<void> {
-    const cuentaUrl = `${this.jsonCuentasUrl}/${cuenta.id}`;
-    return this.http.delete<void>(cuentaUrl);
+  addCuentas(cuenta: CreateCuentas): Observable<Cuentas> {
+    return this.http.post<Cuentas>(this.apiCuentasUrl, cuenta).pipe(
+      catchError(error => {
+        console.error('Error al crear cuenta:', error);
+        return throwError(() => new Error(error.error || 'No se pudo crear la cuenta.'));
+      })
+    );
   }
 
-  // Valida las credenciales de un usuario y devuelve la cuenta correspondiente
+editCuentas(id: number, cuenta: Partial<Cuentas>): Observable<void> {
+    const cuentaDto = {
+      nombre: cuenta.nombre,
+      email: cuenta.email,
+      password: cuenta.password,
+      facultadId: cuenta.facultadId,
+      rolId: cuenta.rolId
+    };
+    return this.http.put<void>(`${this.apiCuentasUrl}/${id}`, cuentaDto);
+  }
+
+  deleteCuentas(id: number): Observable<void> {
+    const cuentaUrl = `${this.apiCuentasUrl}/${id}`;
+    return this.http.delete<void>(cuentaUrl).pipe(
+      catchError(error => {
+        console.error('Error al eliminar cuenta:', error);
+        return throwError(() => new Error(error.error || 'No se pudo eliminar la cuenta.'));
+      })
+    );
+  }
+
   login(email: string, password: string): Observable<Cuentas> {
-    return this.http.get<Cuentas[]>(this.jsonCuentasUrl).pipe(
-      map((cuentas) => {
-        const usuario = cuentas.find(u => u.email === email && u.password === password);
-        if (!usuario) {
-          throw new Error('Credenciales inválidas');
-        }
-        return usuario;
+    return this.http.post<Cuentas>(`${this.apiCuentasUrl}/login`, { email, password }).pipe(
+      catchError(error => {
+        console.error('Error en login:', error);
+        return throwError(() => new Error(error.error || 'Credenciales inválidas'));
       })
     );
   }
