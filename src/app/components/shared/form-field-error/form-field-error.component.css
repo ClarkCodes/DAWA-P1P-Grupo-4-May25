@@ -2,4 +2,6 @@ mat-error {
   margin-top: -.5rem;
   padding-left: 1rem;
   padding-bottom: 1.7rem;
+  color: var( --error );
+  font-weight: bold;
 }

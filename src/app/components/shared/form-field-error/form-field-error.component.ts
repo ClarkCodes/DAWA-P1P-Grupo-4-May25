@@ -30,6 +30,8 @@ export class FormFieldErrorComponent {
         case 'min': return `Debe ser mayor o igual a ${this.control.errors['min'].min}`;
         case 'max': return `Debe ser menor o igual a ${this.control.errors['max'].max}`;
         case 'pattern': return 'El valor no coincide con el patrón requerido';
+        case 'notEqualCurrentPwd': return 'No coincide con la contraseña guardada';
+        case 'notEqualConfirmingPwd': return 'No coincide con la nueva contraseña';
         default: return 'Campo inválido';
       }
     }

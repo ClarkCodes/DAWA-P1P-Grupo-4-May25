@@ -4,21 +4,20 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-confirm-dialog-reutilizable',
+  selector: 'app-confirmation-dialog',
   standalone: true,
   imports: [MatDialogContent, MatDialogActions, MatDialogTitle, MatButton, MatIcon],
-  templateUrl: './confirm-dialog-reutilizable.component.html',
-  styleUrl: './confirm-dialog-reutilizable.component.css'
+  templateUrl: './confirmation-dialog.component.html',
+  styleUrl: './confirmation-dialog.component.css'
 })
 
-export class ConfirmDialogReutilizableComponent {
-
+export class ConfirmationDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<ConfirmDialogReutilizableComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { title: string; message: string }
+    public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
+    @Inject( MAT_DIALOG_DATA ) public data: { title: string; message: string }
   ) {}
 
-   onConfirm(): void {
+  onConfirm(): void {
     this.dialogRef.close( true );
   }
 

@@ -1,0 +1,156 @@
+::ng-deep .mdc-snackbar__surface {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-left: 2rem !important;
+  margin-right: 3rem !important;
+}
+
+.NotificationContainer {
+  --noti-type: error;
+  --surface-color: if(
+      style( --noti-type: success ): var( --success-container-color );
+      style( --noti-type: error ): var( --error-container-color );
+      else: var( --warning-container-color )
+  );
+
+  --surface-secondary-color: if(
+      style( --noti-type: success ): var( --success-container-secondary-color );
+      style( --noti-type: error ): var( --error-container-secondary-color );
+      else: var( --warning-container-secondary-color )
+  );
+
+  --accent-color: if(
+      style( --noti-type: success ): var( --success-accent-color );
+      style( --noti-type: error ): var( --error-accent-color );
+      else: var( --warning-accent-color )
+  );
+
+  --text-color: if(
+      style( --noti-type: success ): var( --success-accent-color );
+      style( --noti-type: error ): var( --error-text-color );
+      else: var( --warning-accent-color )
+  );
+
+  z-index: 2;
+  top: 0;
+  left: -2rem;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  padding: 1.5rem 0;
+  padding-left: 2rem;
+  padding-right: 2.5rem;
+  box-shadow: 2px 2px 12px rgba( 0, 0, 0, .3 );
+  border: 2px solid var( --accent-color );
+  border-radius: var( --border-radius-large );
+
+  &::before, &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var( --border-radius-large );
+    filter: blur( 12px );
+  }
+
+  &::before {
+    z-index: -2;
+    background: url( '/images/book-1920x1080.jpg' ) center center no-repeat;
+    background-size: cover;
+  }
+
+  &::after {
+    z-index: -1;
+    background: var( --surface-color );
+    -webkit-backdrop-filter: blur( 40px );
+    backdrop-filter: blur( 40px );
+  }
+
+  .CloseButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: fit-content;
+    height: fit-content;
+    padding: .1rem;
+    border: none;
+    background: transparent;
+    border-radius: var( --border-radius-full );
+    font-size: 8pt;
+    cursor: pointer;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    opacity: .85;
+
+    &:hover {
+      opacity: 1;
+      background-color: var( --surface-secondary-color );
+      transition: opacity .12s ease, background-color .12s ease;
+    }
+
+    &:active {
+      opacity: .8;
+      background-color: var( --surface-secondary-color );
+    }
+  }
+
+  .IconBgClass {
+    width: 45px;
+    min-width: 45px;
+    max-width: 45px;
+    height: 45px;
+    min-height: 45px;
+    max-height: 45px;
+    border-radius: var( --border-radius-giant-full );
+    background-color: var( --surface-secondary-color );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+
+    mat-icon {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: .1rem;
+    }
+  }
+
+  .NotificationContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-right: -4rem;
+
+    .TitleClass {
+      color: var( --text-color );
+      font-size: 12pt;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: .5rem;
+      line-height: 1.2lh;
+    }
+
+    p {
+      max-width: 550px;
+      color: var( --text-color );
+      line-height: 1.2lh;
+      font-size: 11pt;
+      text-align: justify;
+      margin: 0;
+    }
+  }
+}
