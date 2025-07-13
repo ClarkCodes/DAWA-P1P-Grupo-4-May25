@@ -29,12 +29,9 @@ yarn-error.log
 .history/*
 
 # Visual Studio
-/.vs
-/BACKEND/UGEventosSolution/.vs
-/BACKEND/UGEventosSolution/APIUGEventos/obj
-/BACKEND/UGEventosSolution/APIUGEventos/bin
-/BACKEND/UGEventosSolution/DataBaseFirst/obj
-/BACKEND/UGEventosSolution/DataBaseFirst/bin
+**/.vs/
+**/obj/
+**/bin/
 
 # Miscellaneous
 /.angular/cache

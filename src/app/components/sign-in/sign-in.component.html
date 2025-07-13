@@ -41,6 +41,10 @@
       <mat-error *ngIf="passwordControl.hasError('required')">
         Campo <strong>OBLIGATORIO</strong>
       </mat-error>
+      <!-- Mensaje de error para longitud mínima -->
+      <mat-error *ngIf="passwordControl.hasError('minlength')">
+        La contraseña debe tener al menos <strong>6 caracteres</strong>
+      </mat-error>
       <!-- Botón para alternar visibilidad de la contraseña -->
       <button
         type="button"
@@ -57,11 +61,11 @@
     <!-- Campo para seleccionar la facultad -->
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Facultad</mat-label>
-      <mat-select formControlName="facultad" required>
+      <mat-select formControlName="facultadId" required>
         <mat-option value="">--</mat-option>
         <!-- Iteración sobre la lista de facultades -->
-        @for (facultad of facultades; track facultad) {
-          <mat-option [value]="facultad.nombre">{{ facultad.nombre }}</mat-option>
+        @for (facultad of facultades; track facultad.id) {
+          <mat-option [value]="facultad.id">{{ facultad.nombre }}</mat-option>
         }
       </mat-select>
       <!-- Mensaje de error para campo obligatorio -->
@@ -70,13 +74,15 @@
       </mat-error>
     </mat-form-field>
 
-    <!-- Grupo de botones de radio para seleccionar el rol del usuario -->
+    <!-- Campo para seleccionar el rol -->
     <label id="example-radio-group-label">Rol de usuario</label>
-    <mat-radio-group formControlName="rol" aria-label="Seleccione una opción">
-      <mat-radio-button value="ESTUDIANTE">Estudiante</mat-radio-button>
-      <mat-radio-button value="CLUB">Club Estudiantil</mat-radio-button>
-      <mat-radio-button value="FACULTAD">Facultad</mat-radio-button>
-    </mat-radio-group>
+<mat-radio-group formControlName="rolId" aria-label="Seleccione una opción">
+  @for (rol of roles; track rol.id) {
+    <mat-radio-button [value]="rol.id">{{ rol.nombre }}</mat-radio-button>
+  }
+</mat-radio-group>
+<mat-error *ngIf="rolControl.hasError('required')">
+</mat-error>
 
     <!-- Botón de envío del formulario -->
     <div class="example-button-row">

@@ -1,3 +1,4 @@
+// sign-in.component.ts
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -12,8 +13,8 @@ import { Router } from '@angular/router';
 import { CuentasService } from '../../services/SigninLogin/cuentas.service';
 import { ServFacultadDatosService } from '../../services/SigninLogin/serv-facultad-datos.service';
 import { FacultadDatos } from '../../models/facultadDatos';
+import { RolDatos } from '../../models/rolDatos';
 
-// Definición del componente Angular
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -29,47 +30,37 @@ import { FacultadDatos } from '../../models/facultadDatos';
     MatSelectModule
   ],
   templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.css'
+  styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  // Controles del formulario con validaciones
   nombreControl = new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]);
-  passwordControl = new FormControl('', [Validators.required]);
+  passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   rolControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  facultadControl = new FormControl<FacultadDatos | null>(null, [Validators.required]);
+  facultadControl = new FormControl('', [Validators.required]);
 
-  // FormGroup que agrupa todos los controles del formulario
   userForm: FormGroup;
-
-  // Lista de facultades obtenidas del servicio
   facultades: FacultadDatos[] = [];
-
-  // Señal para controlar la visibilidad de la contraseña
+  roles: RolDatos[] = [];
   hide = signal(true);
 
-  // Inyección de servicios necesarios
   private _snackBar = inject(MatSnackBar);
   private servicioFacultadDatos = inject(ServFacultadDatosService);
   private servicioCuentas = inject(CuentasService);
   private router = inject(Router);
 
-  // Configuración de posiciones para el snackbar
   private horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   private verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  // Constructor del componente
   constructor() {
-    // Inicialización del FormGroup con los controles
     this.userForm = new FormGroup({
       nombre: this.nombreControl,
       email: this.emailFormControl,
       password: this.passwordControl,
-      facultad: this.facultadControl,
-      rol: this.rolControl
+      facultadId: this.facultadControl,
+      rolId: this.rolControl
     });
 
-    // Suscripción a cambios en el email para convertirlo a minúsculas
     this.emailFormControl.valueChanges.subscribe(value => {
       if (value && typeof value === 'string') {
         const lowerCaseValue = value.toLowerCase();
@@ -80,20 +71,34 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  // Método de inicialización del componente
   ngOnInit(): void {
-    // Obtener datos de facultades desde el servicio
     this.servicioFacultadDatos.getFacultadDatos().subscribe({
       next: (datafacultad) => {
         this.facultades = datafacultad;
       },
       error: (err) => {
         console.error('Error al obtener datos de facultades:', err);
+        this._snackBar.open('Error al cargar facultades', 'Cerrar', {
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+      }
+    });
+
+    this.servicioCuentas.getRoles().subscribe({
+      next: (roles) => {
+        this.roles = roles;
+      },
+      error: (err) => {
+        console.error('Error al obtener datos de roles:', err);
+        this._snackBar.open('Error al cargar roles', 'Cerrar', {
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
       }
     });
   }
 
-  // Método para mostrar notificación de registro exitoso
   private openSnackBar(): void {
     this._snackBar.open('REGISTRO EXITOSO', 'Cerrar', {
       horizontalPosition: this.horizontalPosition,
@@ -104,31 +109,35 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  // Método para mostrar notificación de registro denegado
-  private invalidSnackBar(): void {
-    this._snackBar.open('REGISTRO DENEGADO', 'Cerrar', {
+  private invalidSnackBar(message: string = 'REGISTRO DENEGADO'): void {
+    this._snackBar.open(message, 'Cerrar', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });
   }
 
-  // Método para manejar el envío del formulario
   onSubmit(): void {
     if (this.userForm.valid) {
-      const userData = this.userForm.value;
-      console.log('Datos del formulario:', userData);
-
-      // Enviar datos al servicio de cuentas
+      const userData = {
+        id: 0, // ID can be set to 0 for new accounts
+        nombre: this.userForm.value.nombre,
+        email: this.userForm.value.email,
+        password: this.userForm.value.password,
+        facultadId: this.userForm.value.facultadId,
+        rolId: this.userForm.value.rolId
+      };
       this.servicioCuentas.addCuentas(userData).subscribe({
         next: () => this.openSnackBar(),
-        error: () => this.invalidSnackBar()
+        error: (err) => {
+          const message = err.error?.message || 'Error al registrar la cuenta';
+          this.invalidSnackBar(message);
+        }
       });
     } else {
-      this.invalidSnackBar();
+      this.invalidSnackBar('Por favor, completa todos los campos correctamente');
     }
   }
 
-  // Método para alternar la visibilidad de la contraseña
   clickEvent(event: MouseEvent): void {
     this.hide.set(!this.hide());
     event.stopPropagation();

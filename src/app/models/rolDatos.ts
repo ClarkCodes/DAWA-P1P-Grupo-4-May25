@@ -1,4 +1,4 @@
-export interface FacultadDatos {
+export interface RolDatos {
     id: string;
     nombre: string;
 }
