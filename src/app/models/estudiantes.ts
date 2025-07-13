@@ -4,7 +4,6 @@ export interface Estudiantes {
   nombreEvento: string;
   telefono: string;
   email: string;
-  edad: string;
   fecha: string;        
   aceptoTerminos: boolean;  
 }

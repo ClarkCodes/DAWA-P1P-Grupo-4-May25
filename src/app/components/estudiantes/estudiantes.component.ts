@@ -204,7 +204,6 @@ export class EstudiantesComponent implements OnInit{
         nombreEvento: formValue.nombreEvento,
         telefono: formValue.telefono,
         email: formValue.email,
-        edad: formValue.edad,
         fecha: new Date().toISOString(),
         aceptoTerminos: formValue.aceptoTerminos
       };
