@@ -1,8 +1,12 @@
+// src/app/components/tabla-reutilizable/tabla-reutilizable.component.ts
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cuentas } from '../../../models/cuentas';
+import { CreateCuentas } from '../../../models/createCuentas';
+import { FacultadDatos } from '../../../models/facultadDatos';
+import { RolDatos } from '../../../models/rolDatos';
 import { CuentasService } from '../../../services/SigninLogin/cuentas.service';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
@@ -11,8 +15,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
-// Define el componente Angular
 @Component({
   selector: 'app-tabla-reutilizable',
   standalone: true,
@@ -23,115 +28,188 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatSelectModule // Agregado para comboboxes
   ],
   templateUrl: './tabla-reutilizable.component.html',
   styleUrls: ['./tabla-reutilizable.component.css']
 })
-
 export class TablaReutilizableComponent implements OnInit, AfterViewInit {
-  // Columnas que se mostrarán en la tabla
-  displayedColumns: string[] = ['nombre', 'email', 'password', 'facultad', 'rol', 'actions'];
-
-  // Control de búsqueda para filtrar los datos de la tabla
+  displayedColumns: string[] = ['nombre', 'email', 'facultadNombre', 'rolNombre', 'actions'];
   searchControl = new FormControl('');
-
-  // Fuente de datos para la tabla
   dataSource = new MatTableDataSource<Cuentas>();
-
-  // ID de la fila que se está editando
   editingRowId: number | null = null;
+  facultades: FacultadDatos[] = [];
+  roles: RolDatos[] = [];
 
-  // Formulario para edición de cuentas
   editForm: FormGroup<{
     id: FormControl<number>;
     nombre: FormControl<string>;
     email: FormControl<string>;
     password: FormControl<string>;
-    facultad: FormControl<string>;
-    rol: FormControl<string>;
+    facultadId: FormControl<string>;
+    rolId: FormControl<string>;
   }>;
 
-  // Referencia al paginador de la tabla
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  // Constructor con inyección de dependencias
   constructor(
     private cuentasService: CuentasService,
     private fb: FormBuilder
   ) {
-    // Inicializa el formulario de edición
     this.editForm = this.fb.group({
       id: new FormControl<number>(0, { nonNullable: true }),
-      nombre: new FormControl<string>('', { nonNullable: true }),
-      email: new FormControl<string>('', { nonNullable: true }),
+      nombre: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s'-]*$")
+] }),
+      email: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
       password: new FormControl<string>('', { nonNullable: true }),
-      facultad: new FormControl<string>('', { nonNullable: true }),
-      rol: new FormControl<string>('', { nonNullable: true })
+      facultadId: new FormControl<string>('', { nonNullable: true }),
+      rolId: new FormControl<string>('', { nonNullable: true }),
     });
   }
 
-  // Inicializa el componente
   ngOnInit(): void {
     this.loadCuentas();
+    this.loadFacultades();
+    this.loadRoles();
+
+    this.searchControl.valueChanges.subscribe(value => {
+      this.dataSource.filter = value?.trim().toLowerCase() || '';
+    });
   }
 
-  // Configura el paginador después de que la vista esté lista
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
 
-  // Carga las cuentas desde el servicio
   loadCuentas(): void {
-    this.cuentasService.getCuentas().subscribe((data: Cuentas[]) => {
-    this.dataSource.data = data;
-    this.dataSource.filterPredicate = (data: Cuentas, filter: string) => {
-      const filterValue = filter.trim().toLowerCase();
-      // Filtra solo si el nombre, rol o email comienza con el texto ingresado
-      return data.nombre.toLowerCase().startsWith(filterValue) ||
-              data.email.toLowerCase().startsWith(filterValue)||
-              data.facultad.toLowerCase().startsWith(filterValue)||
-              data.rol.toLowerCase().startsWith(filterValue);
-      };
-
-      this.searchControl.valueChanges.subscribe(value => {
-      this.dataSource.filter = value || '';
-      });
+    this.cuentasService.getCuentas().subscribe({
+      next: (data: Cuentas[]) => {
+        this.dataSource.data = data;
+        this.dataSource.filterPredicate = (data: Cuentas, filter: string) => {
+          const filterValue = filter.trim().toLowerCase();
+          return (
+            data.nombre.toLowerCase().includes(filterValue) ||
+            data.email.toLowerCase().includes(filterValue) ||
+            data.facultadNombre.toLowerCase().includes(filterValue) ||
+            data.rolNombre.toLowerCase().includes(filterValue)
+          );
+        };
+      },
+      error: (err) => {
+        alert(err.message);
+      }
     });
   }
 
-  // Inicia la edición de una cuenta
-  startEdit(cuenta: Cuentas): void {
-    this.editingRowId = cuenta.id;
-    this.editForm.patchValue(cuenta);
+  loadFacultades(): void {
+    this.cuentasService.getFacultades().subscribe({
+      next: (data: FacultadDatos[]) => {
+        this.facultades = data;
+      },
+      error: (err) => {
+        alert(err.message);
+      }
+    });
   }
 
-  // Guarda los cambios de la cuenta editada
+  loadRoles(): void {
+    this.cuentasService.getRoles().subscribe({
+      next: (data: RolDatos[]) => {
+        this.roles = data;
+      },
+      error: (err) => {
+        alert(err.message);
+      }
+    });
+  }
+
+  startEdit(cuenta: Cuentas): void {
+    this.editingRowId = cuenta.id;
+    this.editForm.patchValue({
+      id: cuenta.id,
+      nombre: cuenta.nombre,
+      email: cuenta.email,
+      password: cuenta.password,
+      facultadId: cuenta.facultadId,
+      rolId: cuenta.rolId
+    });
+  }
+
   saveEdit(): void {
     if (this.editForm.valid) {
-      const updatedCuenta: Cuentas = this.editForm.value as Cuentas;
-      this.cuentasService.editCuentas(updatedCuenta).subscribe(() => {
-        alert('Cuenta actualizada exitosamente');
-        this.loadCuentas();
-        this.cancelEdit();
+      const updatedCuenta: CreateCuentas = {
+        id: this.editForm.value.id!,
+        nombre: this.editForm.value.nombre!,
+        email: this.editForm.value.email!,
+        password: this.editForm.value.password!,
+        facultadId: this.editForm.value.facultadId!,
+        rolId: this.editForm.value.rolId!
+      };
+      const id = this.editingRowId || 0;
+      this.cuentasService.editCuentas(id, updatedCuenta).subscribe({
+        next: (response) => {
+          alert('Cuenta actualizada exitosamente');
+          this.loadCuentas();
+          this.cancelEdit();
+        },
+        error: (err) => {
+          alert(err.message);
+        }
       });
+    } else {
+      alert('Edición Cancelada');
+      this.loadCuentas();
+      this.cancelEdit();
     }
   }
 
-  // Cancela la edición actual
   cancelEdit(): void {
     this.editingRowId = null;
     this.editForm.reset();
   }
 
-  // Elimina una cuenta tras confirmación
   delete(cuenta: Cuentas): void {
     const confirmation = confirm(`¿Está seguro de eliminar la cuenta ${cuenta.nombre}?`);
     if (confirmation) {
-      this.cuentasService.deleteCuentas(cuenta).subscribe(() => {
-        alert('Cuenta eliminada exitosamente');
-        this.loadCuentas();
+      this.cuentasService.deleteCuentas(cuenta.id).subscribe({
+        next: () => {
+          alert('Cuenta eliminada exitosamente');
+          this.loadCuentas();
+        },
+        error: (err) => {
+          alert(err.message);
+        }
       });
+    }
+  }
+
+  // Método para agregar una nueva cuenta
+  addCuenta(): void {
+    if (this.editForm.valid) {
+      const newCuenta: CreateCuentas = {
+        id: 0, // El ID será asignado por el backend
+        nombre: this.editForm.value.nombre!,
+        email: this.editForm.value.email!,
+        password: this.editForm.value.password!,
+        facultadId: this.editForm.value.facultadId!,
+        rolId: this.editForm.value.rolId! 
+      };
+      this.cuentasService.addCuentas(newCuenta).subscribe({
+        next: (response) => {
+          alert('Cuenta creada exitosamente');
+          this.loadCuentas();
+          this.cancelEdit();
+        },
+        error: (err) => {
+          alert(err.message);
+        }
+      });
+    } else {
+      alert('Por favor, complete todos los campos requeridos correctamente.');
+      this.loadCuentas();
+      this.cancelEdit();
     }
   }
 }

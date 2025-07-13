@@ -1,8 +1,15 @@
+import { FacultadDatos } from "./facultadDatos";
+import { RolDatos } from "./rolDatos";
+
 export interface Cuentas {
   id: number;
   nombre: string;
   email: string;
   password: string;
-  facultad: string;
-  rol: 'ESTUDIANTE' | 'FACULTAD' | 'CLUB';
+  facultadId: string;
+  facultadNombre: string;
+  rolId: string;
+  rolNombre: string;
+  token: string;
 }
+
