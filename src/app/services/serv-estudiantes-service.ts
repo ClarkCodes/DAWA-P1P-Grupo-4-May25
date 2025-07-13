@@ -8,7 +8,7 @@ import { Estudiantes } from '../models/estudiantes';
 })
 
 export class ServEstudiantesService {
-    private jsonestudianteUrl: string = 'http://localhost:3000/estudiantes';
+    private jsonestudianteUrl: string = 'https://localhost:7035/api/Estudiante';
     constructor( private http: HttpClient ) { 
     }
 
