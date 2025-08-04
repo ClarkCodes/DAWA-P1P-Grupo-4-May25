@@ -1,0 +1,64 @@
+<div class="CambiarContraseniaContainer">
+  <h2>Cambiar Contraseña</h2>
+
+  <form [formGroup]="cambiarContraseniaForm" (submit)="onSubmit()">
+    <mat-form-field #currentPwdControl>
+      <mat-label> Contraseña actual </mat-label>
+      <mat-icon matPrefix>key_vertical</mat-icon>
+      <input matInput formControlName="currentPassword" [type]="hideCurrentPwd() ? 'password' : 'text'" placeholder="Ingrese su constraseña actual..." />
+      <!-- Botón para alternar visibilidad de la contraseña -->
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="showHidePassword( $event, 'currentPwd' )"
+        [attr.aria-label]="hideCurrentPwd() ? 'Mostrar Contraseña' : 'Ocultar contraseña'"
+        [attr.aria-pressed]="hideCurrentPwd()"
+      >
+        <mat-icon>{{ hideCurrentPwd() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <app-form-field-error [control]="cambiarContraseniaForm.get( 'currentPassword' )" />
+
+    <mat-form-field>
+      <mat-label> Nueva Contraseña </mat-label>
+      <mat-icon matPrefix>key</mat-icon>
+      <input matInput formControlName="newPassword" [type]="hideNewPwd() ? 'password' : 'text'" placeholder="Ingrese su constraseña nueva..." />
+      <!-- Botón para alternar visibilidad de la contraseña -->
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="showHidePassword( $event, 'newPwd' )"
+        [attr.aria-label]="hideNewPwd() ? 'Mostrar Contraseña' : 'Ocultar contraseña'"
+        [attr.aria-pressed]="hideNewPwd()"
+      >
+        <mat-icon>{{ hideNewPwd() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <app-form-field-error [control]="cambiarContraseniaForm.get( 'newPassword' )" />
+
+    <mat-form-field>
+      <mat-label> Confirmar Contraseña </mat-label>
+      <mat-icon matPrefix>sync_lock</mat-icon>
+      <input matInput formControlName="confirmPassword" [type]="hideConfirmPwd() ? 'password' : 'text'" placeholder="Repita su constraseña nueva..." />
+      <!-- Botón para alternar visibilidad de la contraseña -->
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="showHidePassword( $event, 'confirmPwd' )"
+        [attr.aria-label]="hideConfirmPwd() ? 'Mostrar Contraseña' : 'Ocultar contraseña'"
+        [attr.aria-pressed]="hideConfirmPwd()"
+      >
+        <mat-icon>{{ hideConfirmPwd() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <app-form-field-error [control]="cambiarContraseniaForm.get( 'confirmPassword' )" />
+
+    <button mat-flat-button type="submit" [disabled]="cambiarContraseniaForm.invalid || cambiarContraseniaForm.untouched || !cambiarContraseniaForm.dirty">
+      <mat-icon matPrefix>security</mat-icon>
+      <span>Actualizar</span>
+    </button>
+  </form>
+</div>
