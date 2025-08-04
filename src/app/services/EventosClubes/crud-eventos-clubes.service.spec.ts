@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EventosService } from './crud-eventos-clubes.service';
+import { ServEventosClubesService } from './crud-eventos-clubes.service';
 
 describe('EventoService', () => {
-  let service: EventosService;
+  let service: ServEventosClubesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EventosService);
+    service = TestBed.inject(ServEventosClubesService);
   });
 
   it('should be created', () => {

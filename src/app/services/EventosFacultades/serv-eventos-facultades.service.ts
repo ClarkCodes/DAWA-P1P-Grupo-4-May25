@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { EventoFacultad, EventosFacultadCategoria, Facultad } from '../../models/eventoFacultad';
+import { EventoFacultad, EventosFacultadCategoria } from '../../models/eventoFacultad';
+import { Facultad } from "../../models/facultad";
 
 @Injectable({ providedIn: 'root' })
 
 export class ServEventosFacultadesService {
 
-  private jsonEventosFacultadUrl: string = 'http://localhost:3000/eventosFacultad'; // Url del Endpoint de Eventos de Facultad del Json Server
+  private jsonEventosFacultadUrl: string = 'http://localhost:3000/eventosFacultades'; // Url del Endpoint de Eventos de Facultad del Json Server
   private jsonEventosFacultadCategoriasUrl: string = 'http://localhost:3000/eventosFacultadCategoria'; // Url del Endpoint de Categorias de Eventos de Facultad del Json Server
   private jsonFacultadesUrl: string = 'http://localhost:3000/facultadDatos'; // Url del Endpoint de Facultades del Json Server
 
@@ -53,8 +54,8 @@ export class ServEventosFacultadesService {
     this.getCategoriaById( id ).subscribe( ( data: EventosFacultadCategoria[] ) => {
       categoriaName = data.at( 0 )?.nombre ?? '';
     });
-    //console.log( 'Categoria Name: ' );
-    //console.log( categoriaName );
+    console.log( 'Categoria Name: ' );
+    console.log( categoriaName );
     return categoriaName;
   }
 
@@ -67,8 +68,8 @@ export class ServEventosFacultadesService {
     this.getFacultadById( id ).subscribe( ( data: Facultad[] ) => {
       facultadName = data.at( 0 )?.nombre ?? '';
     });
-    //console.log( 'Facultad Name: ' );
-    //console.log( facultadName );
+    console.log( 'Facultad Name: ' );
+    console.log( facultadName );
     return facultadName;
   }
 

@@ -1,5 +1,6 @@
 export interface EventoFacultad {
-  id: string;
+  id: number;
+  idTipoEvento: number;
   nombre: string;
   descripcion: {
       descripcionCorta: string;
@@ -27,7 +28,3 @@ export interface EventosFacultadCategoria {
   nombre: string;
 }
 
-export interface Facultad {
-  nombre: string;
-  id: string;
-}

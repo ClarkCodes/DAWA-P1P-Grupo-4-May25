@@ -1,6 +1,3 @@
-import { FacultadDatos } from "./facultadDatos";
-import { RolDatos } from "./rolDatos";
-
 export interface Cuentas {
   id: number;
   nombre: string;
@@ -12,4 +9,3 @@ export interface Cuentas {
   rolNombre: string;
   token: string;
 }
-

@@ -1,4 +1,4 @@
-export interface Evento {
+export interface EventoClub {
   id?: number;
   titulo: string;
   descripcion: string;
@@ -7,7 +7,15 @@ export interface Evento {
   esGratuito: boolean;
   costo?: number;
   lugar: string;
-  nombreClub: string; 
+  idClub: string;
   aficheUrl?: string;
   etiquetas?: string[];
+}
+
+export interface Club {
+  id: number;
+  nombre: string;
+  idFacultad: string;
+  categoria: string;
+  clubActivo: boolean;
 }
