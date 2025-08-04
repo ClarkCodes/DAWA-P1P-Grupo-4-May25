@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
   template: `
     <div class="NotificationContainer" [style.--noti-type]="data?.type">
       <button class="CloseButton" aria-label="Cerrar notificación" (click)="closeCustomSnackbarNotification()">
-        <mat-icon [class]="getIconStylesClassName( data?.icon )" style="font-size: 20px;" >close</mat-icon>
+        <mat-icon [class]="getIconStylesClassName( data?.icon )" >close</mat-icon>
       </button>
       <div class="IconBgClass">
         <mat-icon [class]="getIconStylesClassName( data?.icon )" >{{ data?.icon }}</mat-icon>

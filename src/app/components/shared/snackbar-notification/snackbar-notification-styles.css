@@ -79,8 +79,8 @@
     position: absolute;
     top: 5px;
     right: 5px;
-    width: fit-content;
-    height: fit-content;
+    width: 25px;
+    height: 25px;
     padding: .1rem;
     border: none;
     background: transparent;
@@ -101,6 +101,15 @@
     &:active {
       opacity: .8;
       background-color: var( --surface-secondary-color );
+    }
+
+    mat-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      margin-top: -1.5px;
+      margin-left: .5px;
     }
   }
 
