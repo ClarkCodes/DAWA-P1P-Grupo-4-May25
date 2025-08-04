@@ -1,0 +1,165 @@
+<!-- Contenedor principal del formulario de registro -->
+<div class="signin-container">
+  <!-- Título del formulario -->
+  <h2>Registro de usuario</h2>
+  <!-- Formulario de registro con grupo de controles de Angular -->
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <!-- Grupo de botones de radio para seleccionar el rol del usuario -->
+    <label id="rol-radio-group-label">Rol de usuario:</label>
+    <mat-radio-group formControlName="idRol" aria-label="Seleccione una opción">
+      <mat-radio-button value='2'>Estudiante</mat-radio-button>
+      <mat-radio-button value='3'>Facultad</mat-radio-button>
+      <mat-radio-button value='4'>Club Estudiantil</mat-radio-button>
+    </mat-radio-group>
+
+    <!-- Campo para el nombre -->
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <mat-icon matPrefix class="form-field-icon">id_card</mat-icon>
+      <input matInput placeholder="Escriba su nombre..." formControlName="nombre">
+    </mat-form-field>
+    <div class="ErrorDiv">
+      <app-form-field-error [control]="userForm.get( 'nombre' )" />
+      <!-- Mensaje de error para campo obligatorio -->
+      <mat-error *ngIf="userForm.get( 'nombre' )?.hasError('required') && userForm.get( 'nombre' )?.touched">
+        Campo <strong>OBLIGATORIO</strong>
+      </mat-error>
+      <!-- Mensaje de error para formato inválido -->
+      <mat-error *ngIf="userForm.get( 'nombre' )?.hasError('pattern') && userForm.get( 'nombre' )?.touched">
+        Solo se permiten <strong>letras</strong>
+      </mat-error>
+    </div>
+
+    @if( rolEnum[userForm.get( 'idRol' )?.value] === 'ESTUDIANTE' ) { <!-- Si es una cuenta de ESTUDIANTE -->
+      <mat-form-field>
+        <mat-label>Apellidos</mat-label>
+        <mat-icon matPrefix class="form-field-icon">id_card</mat-icon>
+        <input matInput placeholder="Escriba sus apellidos..." formControlName="apellidos">
+      </mat-form-field>
+      <div class="ErrorDiv">
+        <app-form-field-error [control]="userForm.get( 'apellidos' )" />
+        <!-- Mensaje de error para campo obligatorio -->
+        <mat-error *ngIf="userForm.get( 'apellidos' )?.hasError('required') && userForm.get( 'apellidos' )?.touched">
+          Campo <strong>OBLIGATORIO</strong>
+        </mat-error>
+        <!-- Mensaje de error para formato inválido -->
+        <mat-error *ngIf="userForm.get( 'apellidos' )?.hasError('pattern') && userForm.get( 'apellidos' )?.touched">
+          Solo se permiten <strong>letras</strong>
+        </mat-error>
+      </div>
+    }
+
+    <!-- Campo para el correo electrónico -->
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <mat-icon matPrefix class="form-field-icon">mail</mat-icon>
+      <input type="email" matInput placeholder="Correo electrónico..." formControlName="email">
+    </mat-form-field>
+    <div class="ErrorDiv">
+      <app-form-field-error [control]="userForm.get( 'email' )" />
+      <!-- Mensaje de error para campo obligatorio -->
+      <mat-error *ngIf="userForm.get( 'email' )?.hasError('required')  && userForm.get( 'email' )?.touched">
+        Campo <strong>OBLIGATORIO</strong>
+      </mat-error>
+    </div>
+
+    <!-- Campo para la contraseña con opción de mostrar/ocultar -->
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <mat-icon matPrefix class="form-field-icon">lock</mat-icon>
+      <input matInput [type]="hidePassword() ? 'password' : 'text'" placeholder="Contraseña..." formControlName="password">
+      <!-- Botón para alternar visibilidad de la contraseña -->
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="showHidePassword($event)"
+        [attr.aria-label]="'Ocultar contraseña'"
+        [attr.aria-pressed]="hidePassword()"
+      >
+        <mat-icon class="form-field-icon">{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="ErrorDiv">
+      <app-form-field-error [control]="userForm.get( 'password' )" />
+      <!-- Mensaje de error para campo obligatorio -->
+      <mat-error *ngIf="userForm.get( 'password' )?.hasError('required') && userForm.get( 'password' )?.touched">
+        Campo <strong>OBLIGATORIO</strong>
+      </mat-error>
+    </div>
+
+    @if( rolEnum[userForm.get( 'idRol' )?.value] === 'ESTUDIANTE' ) { <!-- Si es una cuenta de ESTUDIANTE -->
+      <div class="CedulaTelefonoDiv">
+        <mat-form-field>
+          <mat-label> Cédula </mat-label>
+          <mat-icon matPrefix class="form-field-icon">id_card</mat-icon>
+          <input matInput formControlName="cedula" type="text" placeholder="Cedula de Identidad..." />
+        </mat-form-field>
+        <app-form-field-error [control]="userForm.get( 'cedula' )" />
+
+        <mat-form-field id="telefonoId">
+          <mat-label> Teléfono </mat-label>
+          <mat-icon matPrefix class="form-field-icon">phone</mat-icon>
+          <input matInput formControlName="telefono" type="tel" placeholder="Teléfono..." />
+        </mat-form-field>
+        <app-form-field-error [control]="userForm.get( 'telefono' )" />
+      </div>
+
+      <mat-form-field class="matDatePicker-fechaNacimiento">
+        <mat-label> Fecha de Nacimiento </mat-label>
+        <mat-icon matPrefix class="form-field-icon">cake</mat-icon>
+        <input matInput
+          formControlName="fechaNacimiento"
+          [matDatepicker]="datePicker"
+          placeholder="Fecha de Nacimiento..." >
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="datePicker"/>
+        <mat-datepicker touchUi #datePicker/>
+      </mat-form-field>
+      <app-form-field-error [control]="userForm.get( 'fechaNacimiento' )" />
+    }
+
+    <!-- Campo para seleccionar la facultad -->
+    <mat-form-field>
+      <mat-label>Facultad</mat-label>
+      <mat-icon matPrefix class="form-field-icon">school</mat-icon>
+      <mat-select formControlName="idFacultad" required>
+        <!-- Iteración sobre la lista de facultades -->
+        @for( facultad of facultades; track facultad.id ){
+          <mat-option [value]="facultad.id"> {{facultad.nombre}} </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <!-- Mensaje de error para campo obligatorio -->
+    <mat-error *ngIf="userForm.get( 'idFacultad' )?.hasError('required') && userForm.get( 'idFacultad' )?.touched">
+      Campo <strong>OBLIGATORIO</strong>
+    </mat-error>
+
+    @if( userForm.get( 'idRol' )?.value === '4' ) { <!-- Si es una cuenta de CLUB -->
+      <mat-form-field>
+        <mat-label> Club </mat-label>
+        <mat-icon matPrefix class="form-field-icon">groups</mat-icon>
+        <mat-select formControlName="idClub" aria-label="Seleccionar Club al que pertenece el cuenta de usuario">
+          @for( club of clubes; track club.id ){
+            <mat-option [value]="club.id"> {{club.nombre}} </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <app-form-field-error [control]="userForm.get( 'idClub' )" />
+    }
+
+    <!-- Botón de envío del formulario -->
+    <div class="SubmitDiv">
+      <button
+        mat-flat-button
+        type="submit"
+        [disabled]="userForm.invalid || userForm.untouched || !userForm.dirty"
+      >
+        <mat-icon matPrefix>signature</mat-icon>
+        <span>
+          Registrarse
+        </span>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,14 +1,13 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ServLoginService } from '../../services/SigninLogin/serv-login.service';
-import { Cuentas } from '../../models/cuentas';
-import { SnackBarNotification } from '../shared/snackbar-notification/snackbar-notification';
+import { CuentasService } from '../../services/SignupLogin/cuentas.service';
+import { SnackbarNotificationService } from '../shared/snackbar-notification/snackbar-notification.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -20,68 +19,62 @@ import { SnackBarNotification } from '../shared/snackbar-notification/snackbar-n
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    RouterLink
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
-  private cuentasService = inject(ServLoginService);
-  private router = inject(Router);
-  private snackBar: SnackBarNotification = new SnackBarNotification();
+  // Servicios inyectados
+  private cuentasService = inject( CuentasService );
+  private snackBarNotification = inject( SnackbarNotificationService ); // Shared SnackBar para notificaciones consistentes en todo el sitio
 
-  hide = signal(true);
+  // Señal para controlar la visibilidad de la contraseña
+  isPasswordHidden = signal( true );
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   });
 
-  clickEvent(event: MouseEvent): void {
-    this.hide.set(!this.hide());
+  @ViewChild( 'submitBtn' ) submitBtn!: HTMLButtonElement;
+
+  /**
+   * Alterna la visibilidad de la contraseña.
+   * @param event Evento del ratón para evitar propagación.
+   */
+  showHidePassword( event: MouseEvent ): void {
+    this.isPasswordHidden.set( !this.isPasswordHidden() );
     event.stopPropagation();
   }
 
-  onSubmit(): void {
-    if (this.loginForm.valid) {
+  /**
+   * Maneja el envío del formulario de inicio de sesión.
+   * Usa el servicio de Cuentas para validar las credenciales y de ser correctas, redirige según el rol del usuario.
+   */
+  onSubmit() {
+    if ( this.loginForm.valid ) {
       const email = this.loginForm.get('email')?.value ?? '';
       const password = this.loginForm.get('password')?.value ?? '';
+      this.cuentasService.login( email, password );
 
-      this.cuentasService.login(email, password).subscribe({
-        next: (user: Cuentas) => {
-          // Almacenar el token y los datos del usuario en localStorage
-          localStorage.setItem('token', user.token);
-          localStorage.setItem('user', JSON.stringify({
-            id: user.id,
-            nombre: user.nombre,
-            email: user.email,
-            rolId: user.rolId
-          }));
+      this.cuentasService.rolUsuarioLogueado$.subscribe( rol => {
+        if( rol ) {
+          this.cuentasService.loginRouter( rol?.nombre );
 
-          // Redirigir según el rol del usuario
-          switch (user.rolId) {
-            case 'EST':
-              this.router.navigate(['/estudiantes']);
-              this.snackBar.openSnackBar('ACCESO EXITOSO', 'success');
-              break;
-            case 'FAC':
-              this.router.navigate(['/crud-eventos-facultades']);
-              this.snackBar.openSnackBar('ACCESO EXITOSO', 'success');
-              break;
-            case 'CLB':
-              this.router.navigate(['/crud-eventos-clubes']);
-              this.snackBar.openSnackBar('ACCESO EXITOSO', 'success');
-              break;
-            default:
-              this.snackBar.openSnackBar('Rol desconocido', 'error');
-          }
-        },
-        error: (err) => {
-          console.error('Error al iniciar sesión:', err);
-          this.snackBar.openSnackBar('ACCESO DENEGADO (Revisar credenciales)', 'error');
+          this.cuentasService.usuarioLogueado$.subscribe( usuario => {
+            if( usuario ){
+              this.snackBarNotification.openCustomNotification( 'ACCESO EXITOSO', `Bienvenido/a ${usuario.nombre}`, 'success' );
+            }
+          });
         }
       });
     }
+  }
+
+  onEnterKeyUp(): void {
+    this.submitBtn.click();
   }
 }
