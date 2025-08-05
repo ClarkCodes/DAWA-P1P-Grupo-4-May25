@@ -3,17 +3,143 @@
     <a routerLink="/home" aria-label="Ir a Inicio">
       <img src="/images/Logo_UG_EVENTOS_white.webp" alt="UG Eventos Logo" height="50px">
     </a>
-    <span></span>
-    <span class="example-spacer"></span>
-    <a mat-button routerLink="/crud-signin-login" aria-label="Visualización" class="signin-button">
-      <span class="HeaderLinkButtonText">Visualización</span>
-    </a>
-    <a mat-button routerLink="/signin" aria-label="Registrarse" class="signin-button">
-      <span class="HeaderLinkButtonText">Registrarse</span>
-    </a>
-    <a mat-button routerLink="/login" aria-label="Iniciar Sesión" class="login-button">
-      <span class="HeaderLinkButtonText">Iniciar Sesión</span>
-    </a>
+
+    <div class="HeaderNavigationShortContainer">
+      <span class="ShortContainerPageTitle">
+        <mat-icon>{{getPageTitleIcon()}}</mat-icon>
+        {{getPageTitleName()}}
+      </span>
+      <button mat-icon-button
+        class="HeaderNavigationResponsiveMenuBtn" [matMenuTriggerFor]="mainResponsiveShortMenu"
+        matTooltip="Menu" matTooltipPosition="left" matTooltipClass="tooltip-action-info" >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #mainResponsiveShortMenu="matMenu">
+        <button mat-menu-item routerLink="/home">
+          <mat-icon>home</mat-icon>
+          <span>Inicio</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="/eventos">
+          <mat-icon>event</mat-icon>
+          <span>Eventos</span>
+        </button>
+        @if ( usuarioLogueado && ( rolEnum[usuarioLogueadoRolId] === 'FACULTAD' || rolEnum[usuarioLogueadoRolId] === 'ADMINISTRADOR' ) ) {
+          <button mat-menu-item routerLink="/crud-eventos-facultades">
+            <mat-icon>event_upcoming</mat-icon>
+            <span>Gestion de Eventos(Facultad)</span>
+          </button>
+        }
+        @if ( usuarioLogueado && ( rolEnum[usuarioLogueadoRolId] === 'CLUB' || rolEnum[usuarioLogueadoRolId] === 'ADMINISTRADOR' ) ) {
+          <button mat-menu-item routerLink="/crud-eventos-clubes">
+            <mat-icon>event_upcoming</mat-icon>
+            <span>Gestion de Eventos(Club)</span>
+          </button>
+        }
+        @if ( usuarioLogueado && ( rolEnum[usuarioLogueadoRolId] === 'ADMINISTRADOR' ) ) {
+          <mat-divider></mat-divider>
+          <button mat-menu-item routerLink="/crud-signin-login">
+            <mat-icon>admin_panel_settings</mat-icon>
+            <span>Visualización</span>
+          </button>
+        }
+        <mat-divider></mat-divider>
+        @if ( usuarioLogueado ) {
+          <button mat-menu-item routerLink="/perfil">
+            <mat-icon class="ProfileMenuMatIcon">
+              @if ( usuarioLogueado.fotoPerfilUrl ) {
+                <img class="AccountProfileFallbackMenuImage" [src]="usuarioLogueado.fotoPerfilUrl" alt="Imagen de Perfil">
+              }
+              @else {
+                account_circle
+              }
+            </mat-icon>
+            <span>Perfil - {{getUserName()}}</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar Sesión</span>
+          </button>
+        }
+        @else {
+          <button mat-menu-item routerLink="/login">
+            <mat-icon>login</mat-icon>
+            <span>Iniciar Sesión</span>
+          </button>
+          <button mat-menu-item routerLink="/signup">
+            <mat-icon>signature</mat-icon>
+            <span>Registrarse</span>
+          </button>
+        }
+      </mat-menu>
+    </div>
+
+    <div class="HeaderNavigationWideContainer">
+      <span class="spacer"></span>
+      <nav>
+        <a routerLink="/home" routerLinkActive="ActiveLink" aria-label="Pagina de Inicio" class="HeaderNavLink">
+          <mat-icon matPrefix>home</mat-icon>
+          Inicio
+        </a>
+        <a routerLink="/eventos" routerLinkActive="ActiveLink" aria-label="Pagina de Eventos" class="HeaderNavLink">
+          <mat-icon matPrefix>event</mat-icon>
+          Eventos
+        </a>
+        @if ( usuarioLogueado && ( rolEnum[usuarioLogueadoRolId] === 'FACULTAD' || rolEnum[usuarioLogueadoRolId] === 'ADMINISTRADOR' ) ) {
+          <a routerLink="/crud-eventos-facultades" routerLinkActive="ActiveLink" aria-label="Pagina de Gestion Eventos de Facultad" class="HeaderNavLink">
+            <mat-icon matPrefix>event_upcoming</mat-icon>
+            Gestion de Eventos(Facultad)
+          </a>
+        }
+        @if ( usuarioLogueado && ( rolEnum[usuarioLogueadoRolId] === 'CLUB' || rolEnum[usuarioLogueadoRolId] === 'ADMINISTRADOR' ) ) {
+          <a routerLink="/crud-eventos-clubes" routerLinkActive="ActiveLink" aria-label="Pagina de Gestion Eventos de Club" class="HeaderNavLink">
+            <mat-icon matPrefix>event_upcoming</mat-icon>
+            Gestion de Eventos(Club)
+          </a>
+        }
+      </nav>
+      <span class="spacer"></span>
+      @if ( usuarioLogueado && ( rolEnum[usuarioLogueadoRolId] === 'ADMINISTRADOR' ) ) {
+        <a mat-button routerLink="/crud-admin-panel" aria-label="Panel de Administrador" class="signin-button">
+          <mat-icon matPrefix>admin_panel_settings</mat-icon>
+          <span class="HeaderLinkButtonText">Panel Admin</span>
+        </a>
+      }
+      <div class="SessionOptions">
+        @if ( usuarioLogueado ){
+          <button class="Avatar" [matMenuTriggerFor]="profileAvatarMenu">
+            @if ( usuarioLogueado.fotoPerfilUrl ) {
+              <img class="AccountProfileImageFallbackIcon" [src]="usuarioLogueado.fotoPerfilUrl" alt="Imagen de Perfil">
+            }
+            @else {
+              <mat-icon class="AccountProfileImageFallbackIcon">account_circle</mat-icon>
+            }
+            <span class="HeaderText">{{getUserName()}}</span>
+          </button>
+          <mat-menu #profileAvatarMenu="matMenu">
+            <button mat-menu-item routerLink="/perfil">
+              <mat-icon>id_card</mat-icon>
+              <span>Perfil</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>Cerrar Sesión</span>
+            </button>
+          </mat-menu>
+        }
+        @else {
+          <a mat-button routerLink="/signup" routerLinkActive="ActiveLink" aria-label="Registrarse" class="signin-button">
+            <mat-icon matPrefix>signature</mat-icon>
+            <span class="HeaderLinkButtonText" routerLinkActive="ActiveLink">Registrarse</span>
+          </a>
+          <a mat-button routerLink="/login" routerLinkActive="ActiveLink" aria-label="Iniciar Sesión" class="login-button">
+            <mat-icon matPrefix>login</mat-icon>
+            <span class="HeaderLinkButtonText" routerLinkActive="ActiveLink">Iniciar Sesión</span>
+          </a>
+        }
+      </div>
+    </div>
   </mat-toolbar>
 </header>
 

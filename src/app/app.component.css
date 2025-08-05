@@ -1,70 +1,302 @@
-/* Espaciador para empujar los botones al extremo derecho */
-.example-spacer {
-  flex: 1 1 auto;
+.AccountProfileFallbackMenuImage {
+  width: 24px;
+  height: 24px;
+  border-radius: var( --border-radius-full );
+  padding-bottom: 1px;
+}
+
+.ProfileMenuMatIcon {
+  padding-right: 1px;
+  padding-bottom: 1px;
 }
 
 header {
   z-index: 2;
-}
-
-mat-toolbar {
-  background: linear-gradient( 90deg, var( --primary ), #3a7ff5 );
-  color: white;
-  padding: 0 3.7rem;
   display: flex;
-  align-items: center;
-  height: 64px;
-  box-shadow: 0 4px 7px rgba( 0, 0, 0, .45 );
-  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  position: fixed;
+  width: 100%;
 
-  a {
-    height: fit-content;
+  mat-toolbar {
+    background: linear-gradient( 90deg, var( --primary ), #3a7ff5 );
+    color: white;
+    padding: 0 3.7rem;
     display: flex;
     align-items: center;
-    cursor: pointer;
-    text-decoration: none;
+    height: 64px;
+    box-shadow: 0 4px 7px rgba( 0, 0, 0, .45 );
+    font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+    --hover-activeLink-color: rgb( 241 227 125 );
 
-    img {
-      opacity: .95;
-      transition: filter 3s ease .05s, opacity 3s ease .05s;
+    a {
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
 
-      &:hover{
+      img { /* Imagen del Logo */
+        opacity: .95;
+        transition: filter 3s ease .05s, opacity 3s ease .05s;
+
+        &:hover{
+          opacity: 1;
+          filter: drop-shadow( 1px 1px 7px rgb( 241 227 125 / 80% ) ) drop-shadow( 1px 2px 5px rgb(255 165 0 / 70%) );
+          transition: filter .2s ease, opacity .2s ease;
+        }
+      }
+    }
+
+    a[mat-button] { /* Estilo general de los botones */
+      margin: 0 8px;
+      padding: 8px 16px;
+      font-family: 'Poppins';
+      background-color: transparent;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      opacity: .85;
+      transition-property: background-color, transform, opacity;
+      transition: .15s ease;
+      cursor: pointer;
+
+      &:hover { /* Efecto hover */
         opacity: 1;
-		    filter: drop-shadow( 1px 1px 7px rgb( 241 227 125 / 80% ) ) drop-shadow( 1px 2px 5px rgb(255 165 0 / 70%) );
-        transition: filter .2s ease, opacity .2s ease;
+        background-color: var( --tertiary );
+        color: var( --hover-activeLink-color );
+        transform: scale( 1.1 );
+        transition-property: background-color, color, transform, opacity;
+        transition: .2s ease;
+      }
+
+      &.ActiveLink {
+        opacity: 1;
+        background-color: var( --tertiary );
+        transform: scale( 1.1 );
+        transition-property: background-color, color, transform, opacity;
+        transition: .1s ease;
+        color: var( --hover-activeLink-color );
+        font-weight: bold;
+
+        mat-icon {
+          opacity: 1;
+          transition: opacity .1s ease, color .1s ease;
+          color: var( --hover-activeLink-color );
+          font-weight: bold;
+        }
+      }
+
+      mat-icon {
+        width: fit-content;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 16pt;
+      }
+    }
+
+    .HeaderNavLink, .HeaderLinkButtonText, .HeaderText, .ShortContainerPageTitle {
+      font-size: 13.5pt;
+    }
+
+    .HeaderLinkButtonText {
+      letter-spacing: .3pt;
+    }
+
+    .HeaderNavLink, .ShortContainerPageTitle {
+      letter-spacing: .5pt;
+    }
+
+    .HeaderNavLink mat-icon {
+      margin-top: -4px;
+    }
+
+    .HeaderNavigationResponsiveMenuBtn mat-icon,
+    .HeaderNavigationWideContainer nav .HeaderNavLink,
+    .HeaderNavigationWideContainer nav .HeaderNavLink mat-icon {
+      color: white;
+      text-decoration: none;
+      opacity: .7;
+      transition: opacity .15s ease;
+      font-weight: bold;
+    }
+
+    .HeaderNavigationWideContainer nav .HeaderNavLink mat-icon,
+    .HeaderNavigationShortContainer .ShortContainerPageTitle mat-icon {
+      margin-right: 10px;
+    }
+
+    .HeaderNavigationShortContainer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @media( min-width: 1450px ) {
+        display: none;
+      }
+
+      .ShortContainerPageTitle {
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        color: var( --hover-activeLink-color );
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-inline: 2rem;
+
+        mat-icon {
+          color: var( --hover-activeLink-color );
+          font-weight: bold;
+        }
+      }
+
+      .HeaderNavigationResponsiveMenuBtn {
+        transition: opacity .15s ease, color .15s ease;
+        flex-grow: 0;
+
+        mat-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+          margin-top: .4px;
+        }
+
+        &:hover {
+          opacity: 1;
+          transition: opacity .2s ease, color .2s ease;
+          color: var( --hover-activeLink-color );
+
+          mat-icon {
+            transition: opacity .2s ease, color .2s ease;
+            color: var( --hover-activeLink-color );
+          }
+        }
+
+        &:active {
+          opacity: .9;
+          color: rgb(255 165 0 / 70%);
+        }
+      }
+    }
+
+    .HeaderNavigationWideContainer {
+      width: 100%;
+      display: flex;
+
+      @media( max-width: 1449px ) {
+        display: none;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+
+        a {
+          transition: opacity .15s ease, color .15s ease;
+
+          mat-icon {
+            transition: opacity .15s ease, color .15s ease;
+          }
+
+          &:hover {
+            opacity: 1;
+            transition: opacity .2s ease, color .2s ease;
+            color: var( --hover-activeLink-color );
+
+            mat-icon {
+              transition: opacity .2s ease, color .2s ease;
+              color: var( --hover-activeLink-color );
+            }
+          }
+
+          &:active {
+            opacity: .9;
+            color: rgb(255 165 0 / 70%);
+          }
+
+          &.ActiveLink {
+            opacity: 1;
+            transition: opacity .1s ease, color .1s ease;
+            color: var( --hover-activeLink-color );
+            font-weight: bold;
+
+            mat-icon {
+              opacity: 1;
+              transition: opacity .1s ease, color .1s ease;
+              color: var( --hover-activeLink-color );
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      .SessionOptions {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: fit-content;
+
+        .Avatar {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: .5rem;
+          height: 100%;
+          width: fit-content;
+          padding-inline: .5rem;
+          font-weight: bold;
+          background-color: transparent;
+          border: none;
+          color: white;
+          opacity: .7;
+          transition: opacity .15s ease, color .15s ease;
+
+          &:hover {
+            opacity: 1;
+            transition: opacity .2s ease, color .2s ease;
+            color: var( --hover-activeLink-color );
+            cursor: pointer;
+          }
+
+          &:active {
+            opacity: .9;
+            color: rgb(255 165 0 / 70%);
+            cursor: pointer;
+
+            mat-icon {
+              opacity: .85;
+            }
+          }
+
+          .AccountProfileImageFallbackIcon {
+            --image-icon-size: 44px;
+            width: var( --image-icon-size );
+            height: var( --image-icon-size );
+            font-size: var( --image-icon-size );
+            border-radius: var( --border-radius-full );
+            filter: drop-shadow( 1px 1px 12px var( --black-80 ) );
+            opacity: 1;
+            color: whitesmoke;
+          }
+
+          mat-icon {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: fit-content;
+          }
+        }
       }
     }
   }
 }
-
-/* Estilo general de los botones */
-a[mat-button] {
-  margin: 0 8px;
-  padding: 8px 16px;
-  font-family: 'Poppins';
-  background-color: transparent;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  opacity: .85;
-  transition-property: background-color, transform, opacity;
-  transition: .15s ease;
-  cursor: pointer;
-
-  .HeaderLinkButtonText{
-    font-size: 13.5pt;
-    letter-spacing: .3pt;
-  }
-}
-
-/* Efecto hover */
-a[mat-button]:hover {
-  background-color: var( --tertiary );
-  transform: scale( 1.1 );
-  opacity: 1;
-  transition-property: background-color, transform, opacity;
-  transition: .2s ease;
-}
+/* Fin del Header */
 
 :root{
   --footer-animation-height-from: 180px;
@@ -380,3 +612,4 @@ footer {
     }
   }
 }
+/* Fin del Footer */
