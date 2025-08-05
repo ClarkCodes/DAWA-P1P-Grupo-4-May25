@@ -1,0 +1,92 @@
+
+.ComentarioContainer {
+  display: flex;
+  gap: 20px;
+  padding: .5rem 0;
+  width: 100%;
+
+  .AccountProfileImageFallbackIcon {
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    border-radius: var( --border-radius-full );
+    filter: drop-shadow( 1px 1px 3px var( --black-30 ) );
+    opacity: 1;
+    color: whitesmoke;
+  }
+
+  mat-icon {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: fit-content;
+  }
+
+  .ComentarioContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .ComentarioHeader {
+      display: flex;
+      gap: 15px;
+      padding-top: 10px;
+
+      @media( max-width: 1300px ) {
+        margin-bottom: 1rem;
+      }
+
+      .HeaderDataContainer {
+        display: flex;
+        gap: 15px;
+
+        @media( max-width: 1300px ) {
+          flex-direction: column;
+        }
+
+        .AccountNameComentarioDateContainer {
+          display: flex;
+          gap: 15px;
+
+          .AccountName {
+            font-weight: bold;
+          }
+        }
+      }
+
+      button{
+        margin-top: -5px;
+
+        mat-icon {
+          color: var( --tertiary );
+          font-size: 23px;
+          display: flex;
+          justify-content: end;
+          align-items: start;
+          width: fit-content;
+          height: 100%;
+          margin-top: -2px;
+          margin-left: 1px;
+        }
+      }
+    }
+
+    .ComentarioMessage {
+      margin-top: 0;
+    }
+
+    .ComentarioRateParagraph {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+
+      strong{
+        color: var( --secondary );
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

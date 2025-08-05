@@ -1,0 +1,40 @@
+<div class="IngresoComentarioContainer">
+  @if ( usuarioLogueadoComentarioAccountData?.fotoPerfilUrl ) {
+    <img class="AccountProfileImageFallbackIcon" [src]="usuarioLogueadoComentarioAccountData?.fotoPerfilUrl" alt="Imagen de Perfil">
+  }
+  @else {
+    <mat-icon class="AccountProfileImageFallbackIcon">account_circle</mat-icon>
+  }
+  <form [formGroup]="newOrEditingCommentForm" (submit)="onSubmitComment()">
+    <mat-form-field>
+      <mat-label>Nuevo comentario</mat-label>
+      <textarea matInput
+        formControlName="mensaje"
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="3"
+        maxlength="410"
+        type="text"
+        placeholder="Escribe un comentario..."
+        (focus)="onCommentFormFieldFocus()"
+        (blur)="onCommentFormFieldBlur()"
+        >
+      </textarea>
+    </mat-form-field>
+    @if( isCommentFormFieldFocused || newOrEditingCommentForm.get( 'mensaje' )?.touched ) {
+      <div class="CalificacionContainer">
+        <mat-form-field>
+          <mat-label>Calificación</mat-label>
+          <app-cc-star-rating
+            [setMode]="true"
+            formControlName="calificacion" />
+        </mat-form-field>
+      </div>
+      <div class="CommentActions">
+        <button mat-button type="button" (click)="onCancelResetComment()">Cancelar</button>
+        <button mat-raised-button type="submit" [disabled]="!newOrEditingCommentForm.get( 'mensaje' )?.value || newOrEditingCommentForm.invalid || newOrEditingCommentForm.untouched || !newOrEditingCommentForm.dirty">{{comentarioOnEdit ? 'Actualizar' : 'Comentar'}}</button>
+      </div>
+    }
+  </form>
+</div>
