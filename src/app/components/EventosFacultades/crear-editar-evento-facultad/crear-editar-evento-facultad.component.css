@@ -2,10 +2,17 @@
   line-height: 13pt;
 }
 
+:host ::ng-deep .mat-datepicker-toggle button svg,
+:host ::ng-deep .mat-timepicker-toggle button svg {
+  color: var( --secondary );
+}
+
 mat-stepper {
-  border-radius: 16px;
+  border-radius: var( --border-radius-large );
   margin-bottom: 2.3rem;
   filter: drop-shadow( 1px 3px 5px var( --neutral-variant ) );
+  width: 98.5%;
+  padding: .5rem;
 }
 
 .CreateEditEventContainer {
@@ -25,8 +32,32 @@ mat-stepper {
     display: flex;
     flex-direction: column;
 
+    .FormFieldIcon {
+      color: var( --secondary );
+    }
+
     .NavigationDiv, .OrganizadorRadioGroupClass, #fechaHoraContentDivId {
       padding-top: 1rem;
+    }
+
+    .NavigationDiv {
+      button {
+        padding: 1.5rem;
+        letter-spacing: .04lh;
+
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          letter-spacing: .02lh;
+
+          mat-icon {
+            width: fit-content;
+            height: 100%;
+          }
+        }
+      }
     }
 
     textarea {
@@ -66,13 +97,22 @@ mat-stepper {
           width: 20rem;
         }
 
+        #fechaDesdeHastaId {
+          margin-bottom: 1rem;
+        }
+
         #fechaId {
           padding-right: 2rem;
+        }
+
+        .DatePickerErrorsDiv {
+          margin-top: 1rem;
         }
       }
 
       #horaId {
         width: 20rem;
+        margin-top: -1.5rem;
         margin-bottom: -3rem;
       }
     }

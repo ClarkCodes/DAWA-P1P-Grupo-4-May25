@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, Inject, signal, ViewChild } from '@angular/core';
-import { EventoFacultad, EventosFacultadCategoria, Facultad } from '../../../models/eventoFacultad';
+import { EventoFacultad, EventosFacultadCategoria } from '../../../models/eventoFacultad';
+import { Facultad } from "../../../models/facultad";
 import { ServEventosFacultadesService } from '../../../services/EventosFacultades/serv-eventos-facultades.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormsModule, FormGroup, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
@@ -18,18 +19,19 @@ import { MatButton } from '@angular/material/button';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatStep, MatStepper } from '@angular/material/stepper';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { DatePipe } from '@angular/common';
-import { Utils } from '../../shared/utils/utils';
+import { DatePipe, NgClass } from '@angular/common';
+import { onImageError } from '../../../utils/utils';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { SnackbarNotificationService } from '../../shared/snackbar-notification/snackbar-notification.service';
 
 @Component({
   selector: 'app-crear-editar-evento-facultad-reutilizable',
   standalone: true,
   providers: [provideNativeDateAdapter(), DatePipe],
   imports: [
+    FormsModule,
     ReactiveFormsModule,
     FormFieldErrorComponent,
-    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -45,23 +47,24 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatRadioButton,
     MatChipsModule,
     MatChipRow,
-    MatTooltipModule
+    MatTooltipModule,
+    NgClass
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './crear-editar-evento-facultad-reutilizable.component.html',
-  styleUrl: './crear-editar-evento-facultad-reutilizable.component.css'
+  templateUrl: './crear-editar-evento-facultad.component.html',
+  styleUrl: './crear-editar-evento-facultad.component.css'
 })
 
-export class CrearEditarEventoFacultadReutilizableComponent {
-  @ViewChild('stepper') eventosFacultadStepper!: MatStepper;
+export class CrearEditarEventoFacultadComponent {
+  private snackBarNotification = inject( SnackbarNotificationService );
+  public announcer = inject( LiveAnnouncer );
   readonly reactiveTags = signal( [''] );
-  announcer = inject( LiveAnnouncer );
-  utils = new Utils();
   eventoFacultad: EventoFacultad | null = null;
   categorias: EventosFacultadCategoria[] | null = null;
   facultades: Facultad[] | null = null;
   selectedCategoriaId: string = '';
   selectedFacultadId: string = '';
+  isOrganizadorExternoDisabled: boolean = true;
   date: Date | undefined;
   dateTo: Date | undefined;
   finalStepReached: boolean = false;
@@ -70,8 +73,10 @@ export class CrearEditarEventoFacultadReutilizableComponent {
   previousStepLabel: string = 'Atras';
   etiquetasToolTipMsj: string = 'Puedes agregar varias etiquetas de una vez separandolas por un espacio en blanco';
 
+  @ViewChild('stepper') eventosFacultadStepper!: MatStepper;
+
   constructor(
-    public dialogRef: MatDialogRef<CrearEditarEventoFacultadReutilizableComponent>,
+    public dialogRef: MatDialogRef<CrearEditarEventoFacultadComponent>,
     @Inject( MAT_DIALOG_DATA ) public data: { eventoFacultad: EventoFacultad | null },
     private eventosFacultadesService: ServEventosFacultadesService,
     private fb: FormBuilder
@@ -95,14 +100,20 @@ export class CrearEditarEventoFacultadReutilizableComponent {
   }
 
   loadCategorias() {
-    this.eventosFacultadesService.getCategorias().subscribe( ( data: EventosFacultadCategoria[] ) => {
-      this.categorias = data;
+    this.eventosFacultadesService.getCategorias().subscribe({
+      next: ( data: EventosFacultadCategoria[] ) => {
+        this.categorias = data;
+      },
+      error: ( err ) => this.snackBarNotification.openCustomNotification( 'Oopss', `Hubo un error al obtener las categorias. ${err}`, 'error' )
     });
   }
 
   loadFacultades() {
-    this.eventosFacultadesService.getFacultades().subscribe( ( data: Facultad[] ) => {
-      this.facultades = data;
+    this.eventosFacultadesService.getFacultades().subscribe({
+      next: ( facultades: Facultad[] ) => {
+        this.facultades = facultades;
+      },
+      error: ( err ) => this.snackBarNotification.openCustomNotification( 'Oopss', `Hubo un error al obtener las facultades. ${err}`, 'error' )
     });
   }
 
@@ -114,9 +125,11 @@ export class CrearEditarEventoFacultadReutilizableComponent {
       if ( optionValue === 'facultad' ) {
         organizadorControl?.disable();
         organizadorControl?.reset();
+        this.isOrganizadorExternoDisabled = true;
       } else {
         organizadorControl?.enable();
         organizadorControl?.setValidators( [Validators.required, Validators.minLength( 3 )] );
+        this.isOrganizadorExternoDisabled = false;
       }
 
       organizadorControl?.updateValueAndValidity();
@@ -239,7 +252,7 @@ export class CrearEditarEventoFacultadReutilizableComponent {
 
   noTagsVerifier() {
     const tags = this.reactiveTags(); // El arreglo signal de las tags no puede estar completamente vacio en su declaracion porque da error, debe tener al menos un elemento vacio
-    if ( tags.length === 1 && !tags[0] ) { // En la creacion de un evento nuevo Se verifica si el arreglo de tags tiene solo un elemento vacio y se lo remueve
+    if ( tags.length === 1 && !tags[0] ) { // Luego de su declaracion el arreglo signal de tags si se puede quedar vacio actualizandolo por lo que para no tener un elemento vacio, en la creacion de un evento nuevo Se verifica si el arreglo de tags tiene solo un elemento vacio y se lo remueve
       this.reactiveTags.update( tags => {
         tags.pop();
         return tags;
@@ -311,7 +324,8 @@ export class CrearEditarEventoFacultadReutilizableComponent {
     this.dateTo = this.eventoFacultadForm.get( 'step4.fechaHasta' )?.value;
 
     return {
-      id: '',
+      id: 0,
+      idTipoEvento: 1, // Tipo de Evento: 1 para Eventos de Facultades
       nombre: this.eventoFacultadForm.get( 'step1.nombre' )?.value,
       descripcion: {
         descripcionCorta: this.eventoFacultadForm.get( 'step1.descripcionCorta' )?.value,
@@ -336,20 +350,12 @@ export class CrearEditarEventoFacultadReutilizableComponent {
   }
 
   onImagePreviewError( event: Event ) {
-    this.utils.onImageError( event.target as HTMLImageElement );
+    onImageError( event.target as HTMLImageElement );
   }
 
   onStepChange( stepIndex: number ) {
     if ( stepIndex === 8 && !this.finalStepReached )
       this.finalStepReached = true;
-  }
-
-  onPrevious() {
-    this.eventosFacultadStepper.previous();
-  }
-
-  onNext() {
-    this.eventosFacultadStepper.next();
   }
 
   cancel() {

@@ -1,36 +1,34 @@
-import { Component } from '@angular/core';
-import { EventoFacultad } from '../../models/eventoFacultad';
-import { ServEventosFacultadesService } from '../../services/EventosFacultades/serv-eventos-facultades.service';
-import { CardReutilizableComponent } from '../EventosFacultades/card-reutilizable/card-reutilizable.component';
-import { ConfirmDialogReutilizableComponent } from '../shared/confirm-dialog-reutilizable/confirm-dialog-reutilizable.component';
-import { CrearEditarEventoFacultadReutilizableComponent } from '../EventosFacultades/crear-editar-evento-facultad-reutilizable/crear-editar-evento-facultad-reutilizable.component';
-import { SnackBarNotification } from '../shared/snackbar-notification/snackbar-notification';
+import { Component, inject } from '@angular/core';
+import { EventoFacultad } from '../../../models/eventoFacultad';
+import { ServEventosFacultadesService } from '../../../services/EventosFacultades/serv-eventos-facultades.service';
+import { CardEventoFacultadComponent } from '../../EventosFacultades/card-evento-facultad/card-evento-facultad.component';
+import { CrearEditarEventoFacultadComponent } from '../../EventosFacultades/crear-editar-evento-facultad/crear-editar-evento-facultad.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { ConfirmationDialogService } from '../../shared/confirmation-dialog/confirmation-dialog.service';
+import { SnackbarNotificationService } from '../../shared/snackbar-notification/snackbar-notification.service';
 
 @Component({
   selector: 'app-crud-eventos-facultades',
   standalone: true,
-  imports: [MatInputModule, MatIcon, MatTooltipModule, CardReutilizableComponent],
+  imports: [MatInputModule, MatIcon, MatTooltipModule, CardEventoFacultadComponent],
   templateUrl: './crud-eventos-facultades.component.html',
   styleUrl: './crud-eventos-facultades.component.css'
 })
 
 export class CrudEventosFacultadesComponent {
-  private snackBar: SnackBarNotification = new SnackBarNotification();
+  private eventosFacultadesService = inject( ServEventosFacultadesService );
+  private createOrEditEventDialog = inject( MatDialog );
+  private confirmDialog = inject( ConfirmationDialogService );
+  private snackBarNotification = inject( SnackbarNotificationService ); // Shared SnackBar para notificaciones consistentes en todo el sitio
   private searchingSubject = new Subject<string>();
   eventosFacultades: EventoFacultad[] | null = null;
-  searchToolTipMsj: string = "Puedes buscar por: Nombre del evento, Organizador externo, Área, Dirección, Lugar, Sitio web, Telefono de Contacto y Etiquetas";
 
-  constructor(
-    private eventosFacultadesService: ServEventosFacultadesService,
-    private confirmDialog: MatDialog,
-    private createOrEditEventDialog: MatDialog
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.loadEventosFacultades();
@@ -42,8 +40,8 @@ export class CrudEventosFacultadesComponent {
   }
 
   loadEventosFacultades(): void {
-    this.eventosFacultadesService.getEventosFacultades().subscribe( ( data: EventoFacultad[] ) => {
-      this.eventosFacultades = data;
+    this.eventosFacultadesService.getEventosFacultades().subscribe( ( eventos: EventoFacultad[] ) => {
+      this.eventosFacultades = eventos;
     });
   }
 
@@ -68,62 +66,53 @@ export class CrudEventosFacultadesComponent {
     let topId: number = 0;
 
     this.eventosFacultades?.forEach( evento => {
-      const eventoId = Number( evento.id );
-      if( eventoId > topId )
-        topId = eventoId;
+      if( evento.id > topId )
+        topId = evento.id;
     } );
 
     return topId;
   }
 
   addEvento(): void {
-    const createEventDialogRef = this.createOrEditEventDialog.open( CrearEditarEventoFacultadReutilizableComponent, {
+    const createEventDialogRef = this.createOrEditEventDialog.open( CrearEditarEventoFacultadComponent, {
       data: { eventoFacultad: null },
-      panelClass: 'CreateOrEditEventDialogClass'
+      panelClass: 'GlassmorphicFullDialog'
     });
 
     createEventDialogRef.afterClosed().subscribe( ( createdEvent: EventoFacultad | undefined ) => {
       if ( createdEvent ) {
-        createdEvent.id = String( ( this.getTopId() + 1 ) );
+        createdEvent.id = this.getTopId() + 1;
 
         this.eventosFacultadesService.addEventoFacultad( createdEvent ).subscribe( () => {
           this.loadEventosFacultades();
-          this.snackBar.openSnackBar( "✅ Evento " + createdEvent.nombre + " creado exitosamente 😊✨", 'success' );
+          this.snackBarNotification.openCustomNotification( "Evento creado", createdEvent.nombre + " creado exitosamente 😊✨", 'success' );
         });
       }
     });
   }
 
   updateEvento( eventoFacultadToUpdate: EventoFacultad ) {
-    const updateEventDialogRef = this.createOrEditEventDialog.open( CrearEditarEventoFacultadReutilizableComponent, {
+    const updateEventDialogRef = this.createOrEditEventDialog.open( CrearEditarEventoFacultadComponent, {
       data: { eventoFacultad: eventoFacultadToUpdate },
-      panelClass: 'CreateOrEditEventDialogClass'
+      panelClass: 'GlassmorphicFullDialog'
     });
 
     updateEventDialogRef.afterClosed().subscribe( ( updatedEvent: EventoFacultad | undefined ) => {
       if ( updatedEvent ) {
         this.eventosFacultadesService.editEventoFacultad( updatedEvent ).subscribe( () => {
           this.loadEventosFacultades();
-          this.snackBar.openSnackBar( "✅ Evento " + updatedEvent.nombre + " actualizado exitosamente 💫", 'success' );
+          this.snackBarNotification.openCustomNotification( "Evento actualizado", "Evento " + updatedEvent.nombre + " actualizado exitosamente 💫", 'success' );
         } );
       }
     });
   }
 
   deleteEvento( eventoFacultad: EventoFacultad ) {
-    const deleteConfirmationDialogRef = this.confirmDialog.open( ConfirmDialogReutilizableComponent, {
-      data: {
-        title: 'Eliminar Evento',
-        message: `¿Esta seguro de eliminar el evento ${ eventoFacultad.nombre }?`
-      },
-      panelClass: 'DeleteConfirmationDialogClass'
-    });
-
-    deleteConfirmationDialogRef.afterClosed().subscribe( ( result: boolean | undefined ) => {
+    this.confirmDialog.openConfirmation( 'Eliminar evento', `¿Esta seguro de eliminar el evento ${ eventoFacultad.nombre }?` ).subscribe( ( result: boolean | undefined ) => {
       if ( result ) {
         this.eventosFacultadesService.deleteEventoFacultad( eventoFacultad ).subscribe( () => {
           this.loadEventosFacultades();
-          this.snackBar.openSnackBar( "👌 Evento '" + eventoFacultad.nombre + "' eliminado exitosamente", 'success' );
+          this.snackBarNotification.openCustomNotification( "Evento eliminado", "Evento '" + eventoFacultad.nombre + "' eliminado exitosamente 👌🏼", 'success' );
         } );
       }
     });

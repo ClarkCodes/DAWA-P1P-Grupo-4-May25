@@ -12,18 +12,27 @@
 
     button {
       width: fit-content;
-      padding:10px 20px;
+      padding:1rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 7px;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: var( --border-radius-small );
       color: var( --on-tertiary );
       background-color: var( --tertiary );
       border: 2px solid var( --tertiary-fixed );
       transition-property: color, background-color;
       transition: .15s ease;
+
+      span {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13pt;
+        letter-spacing: .02lh;
+      }
 
       &:hover{
         color: var( --on-tertiary-fixed );
@@ -116,7 +125,7 @@
     padding-left: 1rem;
   }
 
-  app-card-reutilizable {
+  app-card-evento-facultad {
     width: 25dvw;
     min-width: 430px;
   }
