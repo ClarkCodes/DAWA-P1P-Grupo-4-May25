@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CrudSigninLoginComponent } from './crud-signin-login.component';
+import { CrudAdminPanelComponent } from './crud-admin-panel.component';
 
 describe('CrudSigninLoginComponent', () => {
-  let component: CrudSigninLoginComponent;
-  let fixture: ComponentFixture<CrudSigninLoginComponent>;
+  let component: CrudAdminPanelComponent;
+  let fixture: ComponentFixture<CrudAdminPanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CrudSigninLoginComponent]
+      imports: [CrudAdminPanelComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CrudSigninLoginComponent);
+    fixture = TestBed.createComponent(CrudAdminPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

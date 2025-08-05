@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TablaReutilizableComponent } from './tabla-reutilizable.component';
+import { TablaUsuariosComponent } from './tabla-usuarios.component';
 
 describe('TablaReutilizableComponent', () => {
-  let component: TablaReutilizableComponent;
-  let fixture: ComponentFixture<TablaReutilizableComponent>;
+  let component: TablaUsuariosComponent;
+  let fixture: ComponentFixture<TablaUsuariosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TablaReutilizableComponent]
+      imports: [TablaUsuariosComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TablaReutilizableComponent);
+    fixture = TestBed.createComponent(TablaUsuariosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
