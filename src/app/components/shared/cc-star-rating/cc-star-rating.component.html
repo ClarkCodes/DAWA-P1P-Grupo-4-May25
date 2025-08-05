@@ -1,0 +1,55 @@
+@if( setMode ) {
+  <div class="star-rating-set-mode-container" [attr.aria-labelledby]="id" (focusout)="onFocusOut( $event )" >
+    <span class="rating-number-label" [class.set-mode]="setMode">{{setModeRating}}</span>
+    <div class="slider-and-star-rating-set-mode">
+      <div class="star-rating-set-mode">
+        @if( setModeRating !== undefined ) {
+          @for( star of [].constructor( maxStars ); track $index ) {
+            <mat-icon
+              #starIcon
+              class="empty-star"
+              (click)="setRating( $index + 1 )"
+              (mouseenter)="highlightStars( $index + 1 )"
+              (mouseleave)="resetStarsHighlight()"
+              (focusin)="onStarItemFocusIn()"
+              (focusout)="onStarItemFocusOut()" >
+              star
+            </mat-icon>
+          }
+        }
+      </div>
+      <mat-slider min="0" [max]="maxStars" step="0.1" [disabled]="disabled" #ratingSlider>
+        <input matSliderThumb
+          title="Calificación"
+          [value]="setModeRating"
+          (input)="onSliderInputValueChange( $event )"
+          (focusin)="onSliderInputFocusIn()"
+          (focusout)="onSliderInputFocusOut()" >
+      </mat-slider>
+    </div>
+  </div>
+}
+@else {
+  <div class="star-rating-container">
+    <span class="rating-number-label">{{rating}}</span>
+    <div class="star-rating" [matTooltip]="rating + ' ⭐ ' + ( ( rating / maxStars ) | percent )" matTooltipPosition="right" matTooltipClass="tooltip-rating" >
+      @if( rating !== undefined ) {
+        @for( star of [].constructor( maxStars ); track $index ) {
+          @switch( true ){
+            @case ( rating >= $index + 1 ) {
+              <mat-icon class="full-half-star">star</mat-icon>
+            }
+            @case ( rating <= $index ) {
+              <mat-icon class="empty-star">star</mat-icon>
+            }
+            @case ( rating > $index && rating < $index + 1 ) {
+              <mat-icon class="full-half-star">star_half</mat-icon>
+            }
+            @default {
+            }
+          }
+        }
+      }
+    </div>
+  </div>
+}
