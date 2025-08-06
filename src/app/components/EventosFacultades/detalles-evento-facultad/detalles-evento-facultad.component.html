@@ -1,0 +1,158 @@
+<div class="DetallesContainer">
+  @if( data.eventoFacultad.aficheUrl ){
+    <img mat-card-lg-image [src]="data.eventoFacultad.aficheUrl" alt="Afiche del Evento" >
+  }
+  @else {
+    <img mat-card-lg-image src="/images/no-image-found-design.webp" alt="Imagen del Producto">
+  }
+  <div class="BodyClass">
+    <div class="HeaderDivClass">
+      <h4 class="title">
+        {{ data.eventoFacultad.nombre }}
+      </h4>
+      <h6 class="subtitle">
+        {{ data.eventoFacultad.area }}
+      </h6>
+      <mat-chip-set role="list">
+        <mat-chip role="listitem" class="chip-categoria">{{ data.categoriaName| uppercase }}</mat-chip>
+        <mat-chip role="listitem" class="chip-facultad">{{ data.facultadName }}</mat-chip>
+      </mat-chip-set>
+    </div>
+
+    <div class="ContentClass">
+      <p>
+        {{ data.eventoFacultad.descripcion.descripcionCorta }}
+      </p>
+      <p>
+        {{ data.eventoFacultad.descripcion.descripcionDetalles }}
+      </p>
+      <p>
+        @if( data.eventoFacultad.organizadorExterno ) {
+          <b>Organizador:</b> {{ data.eventoFacultad.organizadorExterno }}<br>
+        }
+        @if( data.eventoFacultad.direccion ){
+          <b>Dirección:</b> {{ data.eventoFacultad.direccion }}<br>
+        }
+        <b>Lugar:</b> {{ data.eventoFacultad.lugar }}
+      </p>
+      <p>
+        @if( data.eventoFacultad.variosDias ){
+          <b>Desde:</b> {{ data.eventoFacultad.fechaHora | date: 'longDate': undefined : 'es' }}<br>
+          <b>Hasta:</b> {{ data.eventoFacultad.fechaHasta | date: 'longDate': undefined : 'es' }}<br>
+        }
+        @else {
+          <b>Fecha:</b> {{ data.eventoFacultad.fechaHora | date: 'longDate': undefined : 'es' }}<br>
+        }
+        <b>Hora:</b> {{ data.eventoFacultad.fechaHora | date: 'h:mm a' }}<br>
+      </p>
+      <div class="ValorDiv">
+        <div><b>Valor:</b></div>
+        <div>
+          @if( data.eventoFacultad.esGratuito ) {
+            <mat-chip-set>
+              <mat-chip class="chip-gratuito">GRATUITO</mat-chip>
+            </mat-chip-set>
+          }
+          @else {
+            {{ data.eventoFacultad.costo | currency: 'USD' : 'symbol-narrow' : undefined : 'en-US' }}
+          }
+        </div>
+      </div>
+      @if( data.eventoFacultad.sitioWeb || data.eventoFacultad.telefonoContacto ) {
+        <p>
+          @if( data.eventoFacultad.sitioWeb ) {
+            <b>Sitio Web: </b><a [href]="data.eventoFacultad.sitioWeb" target="_blank" aria-label="Abrir sitio web del evento" noopener noreferer> {{ data.eventoFacultad.sitioWeb }}</a> <br>
+          }
+          @if( data.eventoFacultad.telefonoContacto ) {
+            <b>Teléfono de Contacto:</b> {{ data.eventoFacultad.telefonoContacto }}<br>
+          }
+        </p>
+      }
+      @if( data.eventoFacultad.etiquetas ) {
+        <p>
+          <mat-chip-set role="list">
+            @for( etiqueta of data.eventoFacultad.etiquetas; track $index ) {
+              <mat-chip role="listitem" class="chip-etiqueta">{{ etiqueta }}</mat-chip>
+            }
+          </mat-chip-set>
+        </p>
+      }
+    </div>
+    @if( data.modoGestion ) {
+      <div class="ActionsDivClass">
+        <button mat-flat-button (click)="editar()">
+          <mat-icon matPrefix class="DetallesEditButtonIcon">edit</mat-icon>
+          <span class="EditButtonTextSpan">Editar</span>
+        </button>
+        <button mat-stroked-button (click)="onCancel()">
+          <span class="CancelButtonTextSpan">Cancelar</span>
+        </button>
+      </div>
+    }
+    @else {
+      <div class="NotManagerActions">
+        <div class="AsistenciaMarcadaChipContainer" *ngIf="data.asistenciaMarcada">
+          @if( data.asistenciaMarcada ) {
+            <mat-chip class="chip-asistencia-marcada">
+              MARCADO PARA ASISTIR
+            </mat-chip>
+          }
+        </div>
+
+        <button mat-raised-button
+          (click)="inscribirRemoverAsistencia()"
+          (mouseenter)="onAttendBtnMouseEnter()"
+          (mouseleave)="onAttendBtnMouseLeave()"
+          [ngClass]="{
+            'AsistireState': !data.asistenciaMarcada,
+            'AsistenciaMarcadaState': data.asistenciaMarcada && !isAttendButtonHovering,
+            'HoverEliminarAsistenciaState': data.asistenciaMarcada && isAttendButtonHovering
+          }" >
+
+          <span *ngIf="!data.asistenciaMarcada" class="AsistenciaButtonContent">
+            <mat-icon class="StarIcon">star</mat-icon>
+            <span>Asistiré</span>
+          </span>
+
+          <span *ngIf="data.asistenciaMarcada && !isAttendButtonHovering" class="AsistenciaButtonContent">
+            <mat-icon class="CheckIcon">check_circle</mat-icon>
+          </span>
+
+          <span *ngIf="data.asistenciaMarcada && isAttendButtonHovering" class="AsistenciaButtonContent">
+            <mat-icon class="CancelIcon">cancel</mat-icon>
+            <span>Eliminar Asistencia</span>
+          </span>
+
+        </button>
+      </div>
+      <div class="ComentariosSection">
+        <h4>Comentarios</h4>
+        <div class="ComentariosCantidadOrdenar">
+          <span class="CantidadComentarios">{{comentarios.length}} {{comentarios.length === 1 ? "comentario" : "comentarios"}}</span>
+          <button mat-icon-button (click)="toggleCommentsOrder()" [matTooltip]="comentariosDescMode() ? 'Más reciente primero' : 'Más antiguo primero'" matTooltipPosition="right" matTooltipClass="tooltip-action-info">
+            <mat-icon>sort</mat-icon>
+          </button>
+          <mat-icon [matTooltip]="comentariosDescMode() ? 'Orden Descendente' : 'Orden Ascendente'" matTooltipPosition="right" matTooltipClass="tooltip-action-info">
+            {{comentariosDescMode() ? 'arrow_downward' : 'arrow_upward'}}
+          </mat-icon>
+        </div>
+        <app-agregar-editar-comentario
+          [idTipoEvento]="data.eventoFacultad.idTipoEvento"
+          [idEvento]="data.eventoFacultad.id"
+          (commentAddedUpdated)="onCommentAddedUpdated()"
+          (commentEditCanceled)="onCancel()"
+        />
+        @if( comentarios ) {
+          <div class="ComentariosExistentesContainer">
+            @for( comentario of comentarios; track comentario.id ) {
+              <app-comentario
+                [comentario]="comentario"
+                (commentAddedUpdated)="onCommentAddedUpdated()"
+              />
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

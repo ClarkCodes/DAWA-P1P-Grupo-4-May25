@@ -51,18 +51,23 @@ mat-card{
     }
 
     mat-card-actions{
-      flex-direction: row;
-      justify-content: space-evenly;
-      padding: 1.5rem 0;
-      margin: 1rem 0;
-      top: auto;
-      bottom: 0;
+      .NotManagerActions button mat-icon {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 32px;
+        height: 32px;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
 
-      button{
-        align-items: center;
-        width: 40%;
-        font-size: 16pt;
-        padding-inline: .5rem;
+      .GoToManageDiv {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
       }
     }
   }

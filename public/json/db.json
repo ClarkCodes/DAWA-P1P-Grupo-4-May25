@@ -1,7 +1,8 @@
 {
-  "eventosFacultad": [
+  "eventosFacultades": [
     {
       "id": "1",
+      "idTipoEvento": "1",
       "nombre": "NASA SpaceApps Challenge - Hackaton de Programación",
       "descripcion": {
         "descripcionCorta": "Participa en una sana competencia organizadas por profesores de Programación de todos los semestres y carreras que incorporan esta materia.",
@@ -31,6 +32,7 @@
     },
     {
       "id": "3",
+      "idTipoEvento": "1",
       "nombre": "Jornada Deportiva TI",
       "descripcion": {
         "descripcionCorta": "No cuentes los dias, haz que los dias cuenten!",
@@ -60,23 +62,24 @@
     },
     {
       "id": "4",
+      "idTipoEvento": "1",
       "nombre": "Women in Data Science Worldwide Guayaquil",
       "descripcion": {
         "descripcionCorta": "🎉 ¡Llega WiDS Guayaquil 2025! 🚀",
         "descripcionDetalles": "Este 30 de mayo acompáñanos en un evento único donde mujeres líderes en ciencia de datos compartirán su experiencia transformando organizaciones con el poder de los datos. 💡📊 🌟 Ven y conoce a mujeres que analizan, lideran y transforman con datos."
       },
-      "area": "🎯 Transformación digital y ciencia de datos",
       "categoriaId": "8",
       "facultadId": "104a",
+      "area": "🎯 Transformación digital y ciencia de datos",
       "organizadorExterno": "Sociedad Ecuatoriana de Estadística",
       "variosDias": true,
       "fechaHora": "2025-05-30T13:30:00.000Z",
       "fechaHasta": "2025-06-01T05:00:00.000Z",
       "esGratuito": false,
-      "costo": 10.5,
+      "costo": 15.5,
       "direccion": "Km2 Av. Carlos Julio Arosemena Plaza Guayarte, frente a la UCSG.",
       "lugar": "📍 Épico, Guayarte",
-      "aficheUrl": "https://scontent.fgye7-1.fna.fbcdn.net/v/t39.30808-6/499217466_722698930329752_1340027343150158388_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dYDUx-p_WHoQ7kNvwGFyU_4&_nc_oc=AdmC42q2T-bBMTW48c_mkGljUPO1U9aT4euBxCBlxpFpk70H87yonIxiDQq8DbrzFt4&_nc_zt=23&_nc_ht=scontent.fgye7-1.fna&_nc_gid=-qYwqGkIKhSLGkrvhOG-7Q&oh=00_AfPuyGKrFvPu-y7lJBiRTtvfA7M8Ty9SlvbdXHO3tCjv0w&oe=684AEBBF",
+      "aficheUrl": "https://sitios.udla.edu.ec/proyectos/wp-content/uploads/2025/04/Datathon-2024-1024x1024-1.jpg",
       "sitioWeb": "https://www.facebook.com/100077689531978/posts/713177501281895/?_rdr",
       "telefonoContacto": "0997894562",
       "etiquetas": [
@@ -90,14 +93,15 @@
     },
     {
       "id": "5",
+      "idTipoEvento": "1",
       "nombre": "Media Jornada",
       "descripcion": {
         "descripcionCorta": "¡Participa y actualízate con los avances que están transformando el mundo",
         "descripcionDetalles": "En el marco del 92.º aniversario de la Facultad de Ciencias Matemáticas y Físicas, la carrera de Ingeniería en Tecnologías de la Información organiza una Media Jornada Tecnológica enfocada en Telecomunicaciones, Analítica y Cloud, dirigida a estudiantes, docentes y comunidad en general. \n\nDurante la jornada, se desarrollarán charlas y presentaciones enfocadas en el impacto de la nube, el análisis de datos y la evolución de las telecomunicaciones, con el objetivo de fortalecer el conocimiento técnico y profesional de los asistentes.\n\n🔗 Preinscripción: El evento cuenta con registro previo a través del código QR disponible en el afiche."
       },
-      "area": "Telecomunicaciones, Analítica y Cloud",
       "categoriaId": "3",
       "facultadId": "abf8",
+      "area": "Telecomunicaciones, Analítica y Cloud",
       "organizadorExterno": "",
       "variosDias": false,
       "fechaHora": "2025-06-20T14:00:00.000Z",
@@ -106,7 +110,7 @@
       "costo": 0,
       "direccion": "Edif. Centro - Victor Manuel Rendón #429 y Córdova",
       "lugar": "Auditorio de la Carrera de Ingeniería en Tecnologias de la Información",
-      "aficheUrl": "https://scontent.fgye7-1.fna.fbcdn.net/v/t39.30808-6/504385427_1281806633402554_5015768754704894026_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=_dO_kmlxHqwQ7kNvwH0BMlw&_nc_oc=AdlBpg8YA2yin9xfnJNqIGW-Lp1wdPo-RbCBhw_T2B5DsZiORn8E2CSLbdpIawaY2Bs&_nc_zt=23&_nc_ht=scontent.fgye7-1.fna&_nc_gid=Q0GBGwLr7Bb0QuPO6zMSBA&oh=00_AfNyPuQFACET18oy1F4Qg1gwBYlVrQdTdxz8xjcdzl5RXA&oe=684AEF01",
+      "aficheUrl": "https://scontent.fgye7-1.fna.fbcdn.net/v/t39.30808-6/504385427_1281806633402554_5015768754704894026_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=oiRqCPh80kcQ7kNvwFsewXX&_nc_oc=AdmIlK5S4uDmW3x9EO2mAaXZq-qkRR2RPWidhmQHDp9x-xQut84GqeHfCxBLBZObJoU&_nc_zt=23&_nc_ht=scontent.fgye7-1.fna&_nc_gid=DyXuIsCjEGGm_tDxJLaIpw&oh=00_AfOfOmsNlRIjL93ayvEZYYm1UQcZIXCXpLBav1OSxBV3qg&oe=6865BD81",
       "sitioWeb": "https://www.facebook.com/photo/?fbid=1281806630069221&set=a.807868647463024",
       "telefonoContacto": "",
       "etiquetas": [
@@ -192,54 +196,51 @@
       "nombre": "Casa abierta"
     }
   ],
-  "clubCuentas": [
+  "clubes": [
     {
       "id": "1",
       "nombre": "Club de IA",
-      "facultadDatos": "CIENCIAS MATEMATICAS Y FISICAS",
-      "email": "roboticaia@ug.edu.ec",
-      "contrasena": "Rob0tic@2025",
+      "idFacultad": "abf8",
       "categoria": "Tecnología e Innovación",
-      "clubActivo": "Activo"
+      "clubActivo": true
     },
     {
       "id": "2",
       "nombre": "Círculo Literario",
-      "facultadDatos": "FILOSOFIA, LETRAS Y CIENCIAS DE LA EDUCACION",
-      "email": "literatura@ug.edu.ec",
-      "contrasena": "Letras#123",
+      "idFacultad": "0ee6",
       "categoria": "Arte y Cultura",
-      "clubActivo": "Activo"
+      "clubActivo": true
     },
     {
       "id": "3",
       "nombre": "EcoUG",
-      "facultadDatos": "CIENCIAS NATURALES",
-      "email": "ecoug@ug.edu.ec",
-      "contrasena": "Natur@l2025",
+      "idFacultad": "ccf8",
       "categoria": "Medio Ambiente",
-      "clubActivo": "No Activo"
+      "clubActivo": false
     },
     {
       "id": "4",
       "nombre": "UG Emprende",
-      "facultadDatos": "CIENCIAS ADMINISTRATIVAS",
-      "email": "emprendedores@ug.edu.ec",
-      "contrasena": "Emprend3#UG",
+      "idFacultad": "104a",
       "categoria": "Emprendimiento",
-      "clubActivo": "Activo"
+      "clubActivo": true
     },
     {
       "id": "5",
       "nombre": "Club de Debate",
-      "facultadDatos": "JURISPRUDENCIA CIENCIAS SOCIALES Y POLITICAS",
-      "email": "debateug@ug.edu.ec",
-      "contrasena": "Deb@t3UG2025",
+      "idFacultad": "33a7",
       "categoria": "Formación Ciudadana",
-      "clubActivo": "No Activo"
+      "clubActivo": false
+    },
+    {
+      "id": "6",
+      "nombre": "Club de Ajedrez",
+      "idFacultad": "abf8",
+      "categoria": "Razonamiento y Estrategia",
+      "clubActivo": true
     }
   ],
-  "clubes": [
+  "eventosClubes": [
     {
       "id": "1",
       "titulo": "Torneo de Ajedrez Universitario",
@@ -249,7 +250,7 @@
       "esGratuito": true,
       "costo": null,
       "lugar": "Sala de Conferencias - Edificio B",
-      "nombreClub": "UG Emprende",
+      "idClub": "4",
       "aficheUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1z3LU_9GQohYvs30-XkEvmC5P-syte3ga-A&s",
       "etiquetas": [
         "ajedrez",
@@ -266,7 +267,7 @@
       "esGratuito": false,
       "costo": 15,
       "lugar": "Laboratorio de Electrónica - Edificio D",
-      "nombreClub": "Club de IA",
+      "idClub": "1",
       "aficheUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph5wfpSSqUbSiiuTyWsh1OjunrBwSAkheKA&s",
       "etiquetas": [
         "robotica",
@@ -283,7 +284,7 @@
       "esGratuito": true,
       "costo": null,
       "lugar": "Auditorio Central",
-      "nombreClub": "Club de Debate",
+      "idClub": "5",
       "aficheUrl": "https://www.dejateinnovar.es/wp-content/uploads/2023/11/Collage-Dejate-innovar_page-0001-copia-768x733.jpg",
       "etiquetas": [
         "medio ambiente",
@@ -292,6 +293,7 @@
       ]
     },
     {
+      "id": "4",
       "titulo": "Feria de Proyectos Tecnológico",
       "descripcion": "Exposición de proyectos realizados por estudiantes de ingeniería y tecnología.",
       "categoria": "Exposición",
@@ -299,14 +301,13 @@
       "esGratuito": true,
       "costo": null,
       "lugar": "Plaza Tech - Campus Principal",
-      "nombreClub": "Club de IA",
+      "idClub": "1",
       "aficheUrl": "https://i.pinimg.com/736x/9a/6e/bf/9a6ebf70573218da5b2c70e3f536b3f5.jpg",
       "etiquetas": [
         "tecnología",
         "innovación",
         "proyectos"
-      ],
-      "id": "4"
+      ]
     },
     {
       "id": "c4b7",
@@ -317,7 +318,7 @@
       "esGratuito": false,
       "costo": 10,
       "lugar": "Patio de la facultad de Administración ",
-      "nombreClub": "Círculo Literario",
+      "idClub": "2",
       "aficheUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgJUrV9kQ6X-UAX-ReWu5j6djQZ5CsAHjDhA&s",
       "etiquetas": [
         "concurso",
@@ -326,86 +327,211 @@
       ]
     }
   ],
-  "Cuentas": [
+  "Roles": [
+    {
+      "id": "1",
+      "nombre": "ADMINISTRADOR",
+      "descripcion": "Rol con acceso completo a todas las funcionalidades del sistema.",
+      "permisos": [
+        "*"
+      ]
+    },
     {
       "id": "2",
-      "nombre": "LEMA YAGUARI NICOLE ODALYS",
-      "email": "nicolelemay@ug.edu.ec",
-      "password": "nicole456",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "ESTUDIANTE"
+      "nombre": "ESTUDIANTE",
+      "descripcion": "Rol para estudiantes con acceso a eventos, clubes y recursos académicos.",
+      "permisos": [
+        "eventos:registrar_asistencia",
+        "comentarios:crear_editar_eliminar"
+      ]
     },
     {
       "id": "3",
-      "nombre": "ORTIZ AGUIRRE WILSON FABRICIO",
-      "email": "wilsonortiza@ug.edu.ec",
-      "password": "wilson789",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "ESTUDIANTE"
+      "nombre": "FACULTAD",
+      "descripcion": "Rol para facultades con acceso a gestión de eventos de facultad.",
+      "permisos": [
+        "eventos:gestionar_eventos_facultad"
+      ]
     },
     {
       "id": "4",
-      "nombre": "SARMIENTO AMAYA JOSELYNE BELEN",
+      "nombre": "CLUB",
+      "descripcion": "Rol para clubes con acceso a gestión de eventos de clubes.",
+      "permisos": [
+        "eventos:gestionar_eventos_clubes"
+      ]
+    }
+  ],
+  "Cuentas": [
+    {
+      "id": "2",
+      "nombre": "NICOLE ODALYS",
+      "email": "nicolelemay@ug.edu.ec",
+      "password": "nicole456",
+      "idRol": "2",
+      "datosEstudiante": {
+        "apellidos": "LEMA YAGUARI",
+        "cedula": "0987654321",
+        "telefono": "0987654321",
+        "fechaNacimiento": "1997-02-14T05:00:00.000Z"
+      },
+      "idFacultad": "abf8",
+      "idClub": "",
+      "fotoPerfilUrl": "",
+      "estadoActivo": true
+    },
+    {
+      "id": "3",
+      "nombre": "WILSON FABRICIO",
+      "email": "wilsonortiza@ug.edu.ec",
+      "password": "wilson789",
+      "idRol": "2",
+      "datosEstudiante": {
+        "apellidos": "ORTIZ AGUIRRE",
+        "cedula": "1234567890",
+        "telefono": "0987654321",
+        "fechaNacimiento": "2000-01-01"
+      },
+      "idFacultad": "abf8",
+      "idClub": "",
+      "fotoPerfilUrl": "",
+      "estadoActivo": true
+    },
+    {
+      "id": "4",
+      "nombre": "JOSELYNE BELEN",
       "email": "joselynesarmientoa@ug.edu.ec",
       "password": "joselyne012",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "ESTUDIANTE"
+      "idRol": "2",
+      "datosEstudiante": {
+        "apellidos": "SARMIENTO AMAYA",
+        "cedula": "1234567890",
+        "telefono": "0987654321",
+        "fechaNacimiento": "2002-03-07T05:00:00.000Z"
+      },
+      "idFacultad": "abf8",
+      "idClub": "",
+      "fotoPerfilUrl": "",
+      "estadoActivo": true
     },
     {
       "id": "5",
-      "nombre": "VELASQUEZ MENDOZA FIDEL ERNESTO",
+      "nombre": "FIDEL ERNESTO",
       "email": "fidelvelasquezm@ug.edu.ec",
       "password": "fidel345",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "ESTUDIANTE"
+      "idRol": "2",
+      "datosEstudiante": {
+        "apellidos": "VELASQUEZ MENDOZA",
+        "cedula": "1234567890",
+        "telefono": "0987654321",
+        "fechaNacimiento": "2000-01-01"
+      },
+      "idFacultad": "abf8",
+      "idClub": "",
+      "fotoPerfilUrl": "",
+      "estadoActivo": true
     },
     {
       "id": "7",
-      "nombre": "Ajedrez",
+      "nombre": "Golden Chess",
       "email": "ajedrez@ug.edu.ec",
       "password": "Ajedrez001",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "CLUB"
+      "idRol": "4",
+      "datosEstudiante": {
+        "apellidos": "",
+        "cedula": "",
+        "telefono": "",
+        "fechaNacimiento": ""
+      },
+      "idFacultad": "abf8",
+      "idClub": "6",
+      "fotoPerfilUrl": "/images/goldenChessClubImage.jpeg",
+      "estadoActivo": true
     },
     {
       "id": "8ddf",
       "nombre": "FCMF",
       "email": "fcmf@ug.edu.ec",
       "password": "FCMF321",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "FACULTAD"
+      "idRol": "3",
+      "datosEstudiante": {
+        "apellidos": "",
+        "cedula": "",
+        "telefono": "",
+        "fechaNacimiento": ""
+      },
+      "idFacultad": "abf8",
+      "idClub": "",
+      "fotoPerfilUrl": "",
+      "estadoActivo": true
     },
     {
       "id": "86d9",
-      "nombre": "Juan",
+      "nombre": "Juan Jose",
       "email": "juanp@hotmail.com",
       "password": "juan",
-      "facultad": "CIENCIAS MEDICAS",
-      "rol": "ESTUDIANTE"
+      "idRol": "2",
+      "datosEstudiante": {
+        "apellidos": "Pérez",
+        "cedula": "1234567890",
+        "telefono": "0987654321",
+        "fechaNacimiento": "2000-01-01"
+      },
+      "idFacultad": "a7c0",
+      "idClub": "",
+      "fotoPerfilUrl": "",
+      "estadoActivo": true
     },
     {
-      "id": "8fc9",
-      "nombre": "joselyne",
-      "email": "joseline-33@hotmail.com",
-      "password": "Joselyne",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "ESTUDIANTE"
+      "id": "8",
+      "nombre": "Clark",
+      "email": "clark@ug.edu.ec",
+      "password": "admin12345",
+      "idRol": "1",
+      "datosEstudiante": {
+        "apellidos": "Kent",
+        "cedula": "",
+        "telefono": "",
+        "fechaNacimiento": ""
+      },
+      "idFacultad": "6d91",
+      "idClub": "",
+      "fotoPerfilUrl": "",
+      "estadoActivo": true
     },
     {
-      "id": "ee48",
-      "nombre": "joselyne",
-      "email": "joselyne-33@hotmail.com",
-      "password": "Joselyne95",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "CLUB"
+      "id": "49af",
+      "nombre": "Medicina",
+      "email": "med@ug.edu.ec",
+      "password": "med123",
+      "idRol": "3",
+      "datosEstudiante": {
+        "apellidos": "",
+        "cedula": "",
+        "telefono": "",
+        "fechaNacimiento": ""
+      },
+      "idFacultad": "a7c0",
+      "idClub": "",
+      "fotoPerfilUrl": "",
+      "estadoActivo": true
     },
     {
-      "id": "6fe7",
-      "nombre": "katty",
-      "email": "katty@hotmail.com",
-      "password": "0921938601",
-      "facultad": "CIENCIAS MATEMATICAS Y FISICAS",
-      "rol": "CLUB"
+      "id": "645f",
+      "nombre": "RoboticGeneration",
+      "email": "robogen@ug.edu.ec",
+      "password": "robotic789",
+      "idRol": "4",
+      "datosEstudiante": {
+        "apellidos": "",
+        "cedula": "",
+        "telefono": "",
+        "fechaNacimiento": ""
+      },
+      "idFacultad": "abf8",
+      "idClub": "1",
+      "fotoPerfilUrl": "",
+      "estadoActivo": true
     }
   ],
   "facultadDatos": [
@@ -481,70 +607,142 @@
   "comentarios": [
     {
       "id": "0f6a",
-      "estudianteNombre": "Susana Gonzalez",
-      "nombreEvento": "evento3",
-      "experiencia": "4",
-      "mensaje": "Excelente ambiente y atención por parte del equipo, me sentí muy bien recibido y cómodo durante toda la jornada.",
-      "fecha": "2025-05-21T21:19:03.512Z",
-      "aceptoTerminos": true
+      "idCuenta": "86d9",
+      "idTipoEvento": "1",
+      "idEvento": "3",
+      "calificacion": 3.4,
+      "mensaje": "Excelente ambiente y atención por parte del equipo, me sentí muy bien recibido y cómodo durante toda la jornada, y ahora este comentario ha sido actualizado.",
+      "fechaComentado": "2025-05-21T21:19:03.512Z"
     },
     {
       "id": "fdd6",
-      "estudianteNombre": "Minerva Lopez",
-      "nombreEvento": "evento4",
-      "experiencia": "2",
+      "idCuenta": "3",
+      "idTipoEvento": "2",
+      "idEvento": "1",
+      "calificacion": 2,
       "mensaje": "El evento comenzó con retraso y la información proporcionada fue confusa, lo que generó desorientación entre los participantes.",
-      "fecha": "2025-05-20T03:49:13.466Z",
-      "aceptoTerminos": true
+      "fechaComentado": "2025-05-20T03:49:13.466Z"
     },
     {
       "id": "0862",
-      "estudianteNombre": "sully Vera",
-      "nombreEvento": "evento1",
-      "experiencia": "3",
+      "idCuenta": "7",
+      "idTipoEvento": "1",
+      "idEvento": "1",
+      "calificacion": 3,
       "mensaje": "El espacio estaba demasiado saturado y el sonido no fue adecuado, dificultando la experiencia general.",
-      "fecha": "2025-05-20T03:52:01.291Z",
-      "aceptoTerminos": true
+      "fechaComentado": "2025-05-20T03:52:01.291Z"
     },
     {
       "id": "e94a",
-      "estudianteNombre": "Juan Carlos Mendez",
-      "nombreEvento": "evento2",
-      "experiencia": "4",
+      "idCuenta": "1",
+      "idTipoEvento": "2",
+      "idEvento": "2",
+      "calificacion": 4,
       "mensaje": "Me encantó la oportunidad de conocer a otros profesionales de mi industria. Los talleres fueron muy útiles",
-      "fecha": "2025-05-20T04:24:36.796Z",
-      "aceptoTerminos": true
+      "fechaComentado": "2025-05-20T04:24:36.796Z"
+    },
+    {
+      "id": "da8c",
+      "idCuenta": "5",
+      "idTipoEvento": 1,
+      "idEvento": "3",
+      "calificacion": 5,
+      "mensaje": "Espectacular, la seccion de comentarios esta funcionando bastante bien, genial che!",
+      "fechaComentado": "2025-07-18T04:07:17.800Z"
+    },
+    {
+      "id": "d5ba",
+      "idCuenta": "7",
+      "idTipoEvento": "1",
+      "idEvento": "3",
+      "calificacion": 3,
+      "mensaje": "Ok, estoy escribiendo un nuevo comentario a ver que tal funciona che, con la nueva libreria dependencia date-fns para calcular lapsos temporales, esta muy cool la verdad, tambien ya se pueden ordenar los comentarios por mas reciente o mas antiguo primero",
+      "fechaComentado": "2025-07-19T02:40:15.140Z"
+    },
+    {
+      "id": "6610",
+      "idCuenta": "5",
+      "idTipoEvento": "1",
+      "idEvento": "3",
+      "calificacion": 4,
+      "mensaje": "Nuevo Comentario prueba che",
+      "fechaComentado": "2025-07-27T08:10:58.612Z"
+    },
+    {
+      "id": "70af",
+      "idCuenta": "5",
+      "idTipoEvento": "1",
+      "idEvento": "3",
+      "calificacion": 2.3,
+      "mensaje": "Comentario 55 para probar",
+      "fechaComentado": "2025-07-27T08:25:06.366Z"
+    },
+    {
+      "id": "a3eb",
+      "idCuenta": "5",
+      "idTipoEvento": "1",
+      "idEvento": "3",
+      "calificacion": 1.1,
+      "mensaje": "Este es un comentario de prueba a ver que tal funciona el renovado RatingStars component, ahora tiene modo de solo lectura y tambien de seteo, con soporte y compatible totalmente con Formularios Reactivos como un componente personalizado, se puede usar dentro un mat-form-field  como cualquier otro matInput de formulario y funciona genial, a ver que onda che!, en el 02/08/2025",
+      "fechaComentado": "2025-08-02T09:19:56.626Z"
+    },
+    {
+      "id": "a7c1",
+      "idCuenta": "5",
+      "idTipoEvento": "1",
+      "idEvento": "3",
+      "calificacion": 1.3,
+      "mensaje": "Y probando nuevamente yeeeehhhh...",
+      "fechaComentado": "2025-08-02T11:16:42.655Z"
+    },
+    {
+      "id": "74f8",
+      "idCuenta": "5",
+      "idTipoEvento": "1",
+      "idEvento": "3",
+      "calificacion": 3.2,
+      "mensaje": "Listo, nuevo comentario para probar definitivamente, esta es la mejor forma para que el ratingStars funcione bien, se ve bien y no falla visualmente y en comportamiento asi, asi que ahora esta genial.",
+      "fechaComentado": "2025-08-03T06:56:39.232Z"
     }
   ],
-  "estudiantes": [
+  "asistenciaEventos": [
     {
       "id": "ada6",
-      "estudianteNombre": "Lorena Poveda",
-      "nombreEvento": "Feria de Proyectos Tecnológico",
-      "telefono": "1234567890",
-      "email": "Lorena@gmail.com",
-      "edad": "22",
-      "fecha": "2025-07-03T02:49:03.682Z",
-      "aceptoTerminos": true
+      "idCuenta": "3",
+      "idTipoEvento": "1",
+      "idEvento": "4",
+      "fechaInscripcion": "2025-07-03T02:49:03.682Z"
     },
     {
       "id": "59c2",
-      "estudianteNombre": "Juan Jose",
-      "nombreEvento": "Concurso de Deletreo",
-      "telefono": "0956869555",
-      "email": "Juan@gmail.com",
-      "edad": "27",
-      "fecha": "2025-07-03T02:48:04.864Z",
-      "aceptoTerminos": true
+      "idCuenta": "86d9",
+      "idTipoEvento": "2",
+      "idEvento": "c4b7",
+      "fechaInscripcion": "2025-07-03T02:48:04.864Z"
     },
     {
       "id": "c243",
-      "estudianteNombre": "katty",
-      "nombreEvento": "Feria de Proyectos Tecnológico",
-      "telefono": "0943850967",
-      "email": "katty@hotmail.com",
-      "fecha": "2025-07-03T02:47:40.179Z",
-      "aceptoTerminos": true
+      "idCuenta": "4",
+      "idTipoEvento": "2",
+      "idEvento": "4",
+      "fechaInscripcion": "2025-07-03T02:47:40.179Z"
+    },
+    {
+      "id": "52fe",
+      "idCuenta": "86d9",
+      "idTipoEvento": 1,
+      "idEvento": "4",
+      "fechaInscripcion": "2025-07-16T05:30:43.440Z"
+    }
+  ],
+  "tipoEventos": [
+    {
+      "id": "1",
+      "tipoEvento": "FACULTAD"
+    },
+    {
+      "id": "2",
+      "tipoEvento": "CLUB"
     }
   ]
 }

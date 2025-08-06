@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CardReutilizableComponent } from './card-reutilizable.component';
+import { CardEventoFacultadComponent } from './card-evento-facultad.component';
 
 describe('CardReutilizableComponent', () => {
-  let component: CardReutilizableComponent;
-  let fixture: ComponentFixture<CardReutilizableComponent>;
+  let component: CardEventoFacultadComponent;
+  let fixture: ComponentFixture<CardEventoFacultadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardReutilizableComponent]
+      imports: [CardEventoFacultadComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CardReutilizableComponent);
+    fixture = TestBed.createComponent(CardEventoFacultadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

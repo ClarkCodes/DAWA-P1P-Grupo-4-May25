@@ -1,0 +1,107 @@
+<mat-card class="EventoFacultadClass" appearance="outlined">
+  <img mat-card-lg-image [src]="eventoFacultad?.aficheUrl" alt="Afiche del Evento" (error)="onAficheImageError( $event )" >
+  <div class="CardBodyClass">
+    <mat-card-header>
+      <mat-card-title class="title">{{ eventoFacultad?.nombre }}</mat-card-title>
+      <mat-card-subtitle class="subtitle">{{ eventoFacultad?.area }}</mat-card-subtitle>
+      <mat-chip-set role="list">
+        <mat-chip role="listitem" class="chip-categoria">{{ categoria | uppercase }}</mat-chip>
+        <mat-chip role="listitem" class="chip-facultad">{{ facultad }}</mat-chip>
+      </mat-chip-set>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>
+        {{ eventoFacultad?.descripcion?.descripcionCorta }}
+      </p>
+      <p>
+        @if( eventoFacultad?.organizadorExterno ) {
+          <b>Organizador:</b> {{ eventoFacultad?.organizadorExterno }}<br>
+        }
+        <b>Lugar:</b> {{ eventoFacultad?.lugar }}<br>
+        @if( eventoFacultad?.variosDias ){
+          <b>Desde:</b> {{ eventoFacultad?.fechaHora | date: 'longDate': undefined : 'es' }}
+        }
+        @else {
+          <b>Fecha:</b> {{ eventoFacultad?.fechaHora | date: 'longDate': undefined : 'es' }}
+        }
+      </p>
+        <div class="ValorDiv">
+          <div><b>Valor:</b></div>
+          <div>
+            @if( eventoFacultad?.esGratuito ) {
+              <mat-chip-set>
+                <mat-chip class="chip-gratuito">GRATUITO</mat-chip>
+              </mat-chip-set>
+            }
+            @else {
+              {{ eventoFacultad?.costo | currency: 'USD' : 'symbol-narrow' : undefined : 'en-US' }}
+            }
+          </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+      @if ( modoGestion && isOnManagementUrl ) {
+        <div class="ManagerActions">
+          <button mat-fab extended (click)="verDetalles()">
+            <mat-icon>article</mat-icon>
+            Ver Detalles
+          </button>
+          <button mat-fab extended (click)="eliminar()">
+            <mat-icon>delete</mat-icon>
+            Eliminar
+          </button>
+        </div>
+      }
+      @else if ( modoGestion && !isOnManagementUrl ) {
+        <div class="NotManagerActions" >
+          <button mat-raised-button class="NotManagerDetailsButton" (click)="goToManage()" aria-label="Gestionar Eventos de Facultades">
+            <mat-icon>build_circle</mat-icon>
+            <span>Gestionar</span>
+          </button>
+        </div>
+      }
+      @else {
+        <div class="NotManagerActions">
+          <div class="AsistenciaMarcadaChipContainer" *ngIf="asistenciaUsuario">
+            @if( asistenciaUsuario ) {
+              <mat-chip class="chip-asistencia-marcada">
+                MARCADO PARA ASISTIR
+              </mat-chip>
+            }
+          </div>
+          <button mat-raised-button class="NotManagerDetailsButton" (click)="verDetallesEventoVistaEstudiante()">
+            <mat-icon>article</mat-icon>
+            <span>Ver Detalles</span>
+          </button>
+
+          <button mat-raised-button
+            (click)="inscribirRemoverAsistenciaEvento()"
+            (mouseenter)="onMouseEnter()"
+            (mouseleave)="onMouseLeave()"
+            [ngClass]="{
+              'AsistireState': !asistenciaUsuario,
+              'AsistenciaMarcadaState': asistenciaUsuario && !isAssistButtonHovering,
+              'HoverEliminarAsistenciaState': asistenciaUsuario && isAssistButtonHovering
+            }" >
+
+            <span *ngIf="!asistenciaUsuario" class="AsistenciaButtonContent">
+              <mat-icon class="StarIcon">star</mat-icon>
+              <span>Asistiré</span>
+            </span>
+
+            <span *ngIf="asistenciaUsuario && !isAssistButtonHovering" class="AsistenciaButtonContent">
+              <mat-icon class="CheckIcon">check_circle</mat-icon>
+            </span>
+
+            <span *ngIf="asistenciaUsuario && isAssistButtonHovering" class="AsistenciaButtonContent">
+              <mat-icon class="CancelIcon">cancel</mat-icon>
+              <span>Eliminar Asistencia</span>
+            </span>
+
+          </button>
+        </div>
+      }
+    </mat-card-actions>
+  </div>
+</mat-card>

@@ -11,8 +11,12 @@ img {
   align-self: top;
 }
 
-.BodyClass{
-  padding-inline: 2.5rem;
+.BodyClass {
+  padding-inline: 3.5rem;
+
+  @media( max-width: 1300px ) {
+    padding-inline: 2rem;
+  }
 
   .HeaderDivClass{
     display: flex;
@@ -75,6 +79,55 @@ img {
       .EditButtonTextSpan, .CancelButtonTextSpan {
         font-size: 14pt;
       }
+    }
+  }
+
+  .ComentariosSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+
+    h4 {
+      width: 100%;
+      text-align: center;
+    }
+
+    .ComentariosCantidadOrdenar {
+      padding-left: .5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+
+      .CantidadComentarios {
+        font-size: 13pt;
+        font-weight: bold;
+      }
+
+      button {
+        margin-left: .5rem;
+        display: flex;
+      }
+
+      button mat-icon, mat-icon {
+        font-size: 23px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: fit-content;
+        padding-top: 2px;
+      }
+    }
+
+    .ComentariosExistentesContainer {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 1rem 0;
     }
   }
 }
