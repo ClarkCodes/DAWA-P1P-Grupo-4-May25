@@ -1,8 +1,6 @@
 import { Component , inject, OnInit, signal, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { ServAsistenciaEventosService } from '../../services/AsistenciaEventos/serv-asistencia-eventos.service';
 import { AsistenciaEvento } from '../../models/asistenciaEvento';
-import { ComentariosComponent } from '../Comentarios/crud-comentarios/comentarios.component';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,11 +11,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
-import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatTable } from '@angular/material/table';
 import { MatHeaderCell } from '@angular/material/table';
 import { MatCellDef } from '@angular/material/table';
@@ -48,8 +44,7 @@ import { SnackbarNotificationService } from '../shared/snackbar-notification/sna
     MatHeaderCell,
     MatCellDef,
     MatTableModule,
-    MatPaginator,
-    ComentariosComponent
+    MatPaginator
   ],
   templateUrl: './asistencia-eventos.component.html',
   styleUrl: './asistencia-eventos.component.css'

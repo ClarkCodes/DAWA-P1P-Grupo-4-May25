@@ -1,12 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscription, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { Cuenta, Rol } from '../../models/cuenta';
 import { Facultad } from '../../models/facultad';
 import { SnackbarNotificationService } from '../../components/shared/snackbar-notification/snackbar-notification.service';
 import { Club } from '../../models/eventoClub';
 import { Router } from '@angular/router';
+import { AVAILABLE_ROUTES } from '../../utils/constants';
 
 // Decorador que marca la clase como un servicio inyectable, disponible en el ámbito raíz
 @Injectable({ providedIn: 'root' })
@@ -155,16 +155,16 @@ export class CuentasService {
     // Redirigir según el rol del usuario
     switch ( rolName ) {
       case 'ESTUDIANTE':
-        this.router.navigate(['/eventos']);
+        this.router.navigate([AVAILABLE_ROUTES.get( 'eventos' )]);
         break;
       case 'FACULTAD':
-        this.router.navigate(['/crud-eventos-facultades']);
+        this.router.navigate([AVAILABLE_ROUTES.get( 'crudEventosFacultades' )]);
         break;
       case 'CLUB':
-        this.router.navigate(['/crud-eventos-clubes']);
+        this.router.navigate([AVAILABLE_ROUTES.get( 'crudEventosClubes' )]);
         break;
       case 'ADMINISTRADOR':
-        this.router.navigate(['/crud-admin-panel']);
+        this.router.navigate([AVAILABLE_ROUTES.get( 'adminPanel' )]);
         break;
       default:
         this.snackBarNotification.openCustomNotification( 'Rol desconocido', `Desconocido: ${rolName}`, 'error' );

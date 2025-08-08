@@ -85,6 +85,11 @@
 
     .matDatePicker-fechaNacimiento {
       margin-bottom: 1rem;
+
+      mat-hint {
+        font-size: 9pt;
+        padding-left: 2.5rem;
+      }
     }
 
     .SubmitDiv {

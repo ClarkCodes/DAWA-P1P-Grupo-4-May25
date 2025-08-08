@@ -2,7 +2,7 @@
   margin-bottom: 5rem;
 }
 
-mat-form-field, td input[matInput] {
+td input[matInput] {
   width: 15rem;
   border-radius: 25px;
   padding-inline: 1rem;
@@ -64,9 +64,27 @@ table.mat-table td {
   padding: 8px;
 }
 
-.full-width {
-  width: 300px;
+.SearchContainerDivClass {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
   margin-bottom: 16px;
+
+  mat-form-field{
+    width: 15rem;
+    transition: width .35s ease-in-out;
+
+    &:focus-within{
+      width: 70%;
+      transition: width .27s ease-out;
+    }
+
+    input{
+      width: 100%;
+      text-align: center;
+    }
+  }
 }
 
 .mat-cell {

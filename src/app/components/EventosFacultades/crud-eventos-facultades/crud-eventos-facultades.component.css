@@ -64,7 +64,6 @@
 
       mat-form-field{
         width: 15rem;
-        border-radius: 25px;
         transition: width .35s ease-in-out;
 
         &:focus-within{
@@ -76,13 +75,6 @@
           width: 100%;
           text-align: center;
         }
-      }
-
-      #infoIconId {
-        width: fit-content;
-        padding-top: 15px;
-        padding-left: 10px;
-        color: var( --secondary );
       }
     }
   }

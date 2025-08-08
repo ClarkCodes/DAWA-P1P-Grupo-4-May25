@@ -36,7 +36,6 @@ import { ActualizarPerfilInfoDialogComponent } from '../../Perfil/actualizar-per
   templateUrl: './tabla-usuarios.component.html',
   styleUrls: ['./tabla-usuarios.component.css']
 })
-
 export class TablaUsuariosComponent implements OnInit, AfterViewInit {
   private confirmDialog: ConfirmationDialogService = new ConfirmationDialogService();
   private updateProfileDialog = inject( MatDialog );
@@ -77,7 +76,7 @@ export class TablaUsuariosComponent implements OnInit, AfterViewInit {
     estadoActivo: FormControl<boolean>;
   }>;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild( MatPaginator ) paginator!: MatPaginator;
 
   constructor(
     private cuentasService: CuentasService,
@@ -85,8 +84,7 @@ export class TablaUsuariosComponent implements OnInit, AfterViewInit {
   ) {
     this.editForm = this.fb.group({
       id: new FormControl<number>(0, { nonNullable: true }),
-      nombre: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s'-]*$")
-] }),
+      nombre: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s'-]*$")] }),
       email: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
       password: new FormControl<string>('', { nonNullable: true }),
       idRol: new FormControl<string>('', { nonNullable: true }),
@@ -128,10 +126,6 @@ export class TablaUsuariosComponent implements OnInit, AfterViewInit {
           this.facultades.find( facultad => facultad.id === searchingData.idFacultad )?.nombre.toLowerCase().includes( filterValue ) ||
           this.roles.find( rol => rol.id === searchingData.idRol )?.nombre.toLowerCase().includes( filterValue ) as boolean );
       };
-
-      this.searchControl.valueChanges.subscribe( value => {
-        this.dataSource.filter = value || '';
-      });
     });
   }
 

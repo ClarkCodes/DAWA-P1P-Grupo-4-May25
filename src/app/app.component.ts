@@ -9,6 +9,7 @@ import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { getUserName, RolEnum } from './utils/utils';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AVAILABLE_ROUTES } from './utils/constants';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +34,7 @@ export class AppComponent {
   public rolEnum = RolEnum;
   public usuarioLogueadoRolId: number = 0;
   usuarioLogueado: Cuenta | null = null;
+  ROUTES = AVAILABLE_ROUTES;
 
   @ViewChildren( MatMenuTrigger ) menuTriggers!: QueryList<MatMenuTrigger>;
 
@@ -43,7 +45,7 @@ export class AppComponent {
     });
   }
 
-  @HostListener( 'window:resize' ) //, ['$event']
+  @HostListener( 'window:resize' )
   onWindowResize() {
     this.menuTriggers.forEach( trigger => { // Iterate over all the triggers and close any that are open
       if ( trigger.menuOpen )
@@ -57,21 +59,21 @@ export class AppComponent {
 
   getPageTitleIcon(): string {
     switch( this.getCurrentUrl() ){
-      case '/home':
+      case this.ROUTES.get( 'home' ):
       case '/':
         return 'home';
-      case '/eventos':
+      case this.ROUTES.get( 'eventos' ):
         return 'event';
-      case '/crud-eventos-facultades':
-      case '/crud-eventos-clubes':
+      case this.ROUTES.get( 'crudEventosFacultades' ):
+      case this.ROUTES.get( 'crudEventosClubes' ):
         return 'event_upcoming';
-      case '/crud-signin-login':
+      case this.ROUTES.get( 'adminPanel' ):
         return 'admin_panel_settings';
-      case '/perfil':
+      case this.ROUTES.get( 'perfil' ):
         return 'person';
-      case '/login':
+      case this.ROUTES.get( 'login' ):
         return 'login';
-      case '/signin':
+      case this.ROUTES.get( 'signup' ):
         return 'signature';
       default:
         return 'help';
@@ -80,22 +82,22 @@ export class AppComponent {
 
   getPageTitleName() {
     switch( this.getCurrentUrl() ){
-      case '/home':
+      case this.ROUTES.get( 'home' ):
       case '/':
         return 'Inicio';
-      case '/eventos':
+      case this.ROUTES.get( 'eventos' ):
         return 'Eventos';
-      case '/crud-eventos-facultades':
+      case this.ROUTES.get( 'crudEventosFacultades' ):
         return 'Gestion de Eventos(Facultad)';
-      case '/crud-eventos-clubes':
+      case this.ROUTES.get( 'crudEventosClubes' ):
         return 'Gestion de Eventos(Club)';
-      case '/crud-signin-login':
-        return 'Visualización';
-      case '/perfil':
+      case this.ROUTES.get( 'adminPanel' ):
+        return 'Panel de Admin';
+      case this.ROUTES.get( 'perfil' ):
         return 'Perfil';
-      case '/login':
+      case this.ROUTES.get( 'login' ):
         return 'Iniciar Sesión';
-      case '/signin':
+      case this.ROUTES.get( 'signup' ):
         return 'Registrarse';
       default:
         return 'help';
@@ -109,6 +111,6 @@ export class AppComponent {
   logout() {
     this.cuentasService.logout();
     this.usuarioLogueadoRolId = 0;
-    this.router.navigate(['/home']);
+    this.router.navigate([this.ROUTES.get( 'home' )]);
   }
 }

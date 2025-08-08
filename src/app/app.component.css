@@ -75,13 +75,11 @@ header {
         transition-property: background-color, color, transform, opacity;
         transition: .1s ease;
         color: var( --hover-activeLink-color );
-        font-weight: bold;
 
         mat-icon {
           opacity: 1;
           transition: opacity .1s ease, color .1s ease;
           color: var( --hover-activeLink-color );
-          font-weight: bold;
         }
       }
 
@@ -140,16 +138,35 @@ header {
         justify-content: center;
         align-items: center;
         flex-grow: 1;
-        color: var( --hover-activeLink-color );
-        font-weight: bold;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-inline: 2rem;
 
-        mat-icon {
+        .ShortContainerPageTitleContent {
+          display: flex;
+          align-items: center;
           color: var( --hover-activeLink-color );
+          font-size: 14pt;
           font-weight: bold;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin-inline: 2rem;
+
+          @media( max-width: 620px ) {
+            display: inline-block;
+            max-width: 240px;
+            text-align: center;
+            margin-top: -.3rem;
+
+            mat-icon {
+              transform: translate( 10px, 15% ) !important;
+            }
+          }
+
+          mat-icon {
+            width: fit-content;
+            font-weight: bold;
+            color: var( --hover-activeLink-color );
+            transform: translate( 4px, -7% );
+          }
         }
       }
 
