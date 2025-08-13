@@ -1,4 +1,3 @@
-// sign-in.component.ts
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -15,7 +14,7 @@ import { Club } from '../../models/eventoClub';
 import { Facultad } from '../../models/facultad';
 import { SnackbarNotificationService } from '../shared/snackbar-notification/snackbar-notification.service';
 import { Cuenta } from '../../models/cuenta';
-import { generateNewId, RolEnum } from '../../utils/utils';
+import { generateNewId, getRolEnumByStrId, getRolEnumKeyNameByStrId, RolEnum } from '../../utils/utils';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
@@ -107,23 +106,22 @@ export class SignUpComponent implements OnInit {
     this.updateEstudianteFieldsValidations( this.userForm.get( 'idRol' )?.value );
 
     const rolFormControl = this.userForm.get( 'idRol' );
-    rolFormControl?.valueChanges.subscribe( value => {
-      this.updateEstudianteFieldsValidations( value );
+    rolFormControl?.valueChanges.subscribe( rolIdValue => {
+      this.updateEstudianteFieldsValidations( rolIdValue );
     });
   }
 
-  updateEstudianteFieldsValidations( value: string ) {
-    const rolValue = Number( value );
+  updateEstudianteFieldsValidations( rolIdValue: string ) {
     const apellidosEstudianteControl = this.userForm.get( 'apellidos' );
     const cedulaEstudianteControl = this.userForm.get( 'cedula' );
     const telefonoEstudianteControl = this.userForm.get( 'telefono' );
     const fechaNacimientoEstudianteControl = this.userForm.get( 'fechaNacimiento' );
     const clubControl = this.userForm.get( 'idClub' );
 
-    if ( RolEnum[rolValue] === 'ESTUDIANTE' ) {
-      apellidosEstudianteControl?.setValidators( [Validators.maxLength(50)] );
+    if ( getRolEnumByStrId( rolIdValue ) === RolEnum.ESTUDIANTE ) {
+      apellidosEstudianteControl?.setValidators( [Validators.maxLength( 50 )] );
       cedulaEstudianteControl?.setValidators( [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.minLength( 10 ), Validators.maxLength( 10 )] );
-      telefonoEstudianteControl?.setValidators( [Validators.pattern(/^[0-9]+$/), Validators.maxLength(15)] );
+      telefonoEstudianteControl?.setValidators( [Validators.pattern(/^[0-9]+$/), Validators.maxLength( 15 )] );
       fechaNacimientoEstudianteControl?.setValidators( [Validators.required] );
     }
     else {
@@ -133,7 +131,7 @@ export class SignUpComponent implements OnInit {
       fechaNacimientoEstudianteControl?.clearValidators();
     }
 
-    if ( RolEnum[rolValue] === 'CLUB' ) {
+    if ( getRolEnumByStrId( rolIdValue ) === RolEnum.CLUB ) {
       clubControl?.setValidators( [Validators.required] );
     }
     else {
@@ -152,18 +150,18 @@ export class SignUpComponent implements OnInit {
 
     return {
       id: generateNewId<Cuenta>( this.cuentasService.getCuentas() ) as number,
-      nombre: userData['nombre'],
-      email: userData['email'],
+      nombre: ( userData['nombre'] as string ).trim(),
+      email: ( userData['email'] as string ).trim(),
       password: userData['password'],
       idRol: userData['idRol'],
       datosEstudiante: {
-        apellidos: userData['idRol'] === '2' ? userData['apellidos'] : '',
-        cedula: userData['idRol'] === '2' ? userData['cedula'] : '',
-        telefono: userData['idRol'] === '2' ? userData['telefono'] : '',
-        fechaNacimiento: userData['idRol'] === '2' ? userData['fechaNacimiento'] : ''
+        apellidos: getRolEnumByStrId( userData['idRol'] ) === RolEnum.ESTUDIANTE ? ( userData['apellidos'] as string ).trim() : '',
+        cedula: getRolEnumByStrId( userData['idRol'] ) === RolEnum.ESTUDIANTE ? userData['cedula'] : '',
+        telefono: getRolEnumByStrId( userData['idRol'] ) === RolEnum.ESTUDIANTE ? ( userData['telefono'] as string ).trim() : '',
+        fechaNacimiento: getRolEnumByStrId( userData['idRol'] ) === RolEnum.ESTUDIANTE ? userData['fechaNacimiento'] : ''
       },
       idFacultad: userData['idFacultad'],
-      idClub: userData['idRol'] === '4' ? userData['idClub'] : '',
+      idClub: getRolEnumByStrId( userData['idRol'] ) === RolEnum.CLUB ? userData['idClub'] : '',
       fotoPerfilUrl: '',
       estadoActivo: true
     }
@@ -177,7 +175,7 @@ export class SignUpComponent implements OnInit {
       this.cuentasService.addCuentas( userData ).subscribe({
         next: () => {
           this.cuentasService.login( userData.email, userData.password );
-          this.cuentasService.loginRouter( RolEnum[Number( userData.idRol )] );
+          this.cuentasService.loginRouter( getRolEnumKeyNameByStrId( userData.idRol ) as string );
           this.snackBarNotification.openCustomNotification( 'Nueva Cuenta', 'Cuenta creada exitosamente ✨👌🏼', 'success' )
         },
         error: ( err ) => this.snackBarNotification.openCustomNotification( 'Oopss', `Hubo un error al crear la cuenta. ${err}`, 'error' )
