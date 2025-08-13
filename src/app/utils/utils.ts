@@ -17,14 +17,12 @@ export function onImageError( imgElement: HTMLImageElement ) {
 }
 
 export function getUserName( name: string ): string {
-  const fullName = name.split( ' ' ) ?? 'Usuario';
-  const firstName = Array.isArray( fullName ) ? fullName[0] : fullName;
-  const secondName = fullName[1] ?? '';
-  return secondName ? ( `${firstName} ${secondName}` ) : firstName;
+  const distName: string | string[] = name.includes( ' ' ) ? name?.split( ' ' ) : name; // Distributed Name
+  return Array.isArray( distName ) ? ( `${distName[0]} ${distName[1]}` ) : distName as string;
 }
 
 export function getRolEnumKeyNameByStrId( strId: string ): string | undefined {
-  return RolEnum[Number(strId)];
+  return RolEnum[Number( strId )];
 }
 
 export function getRolEnumByStrId( strId: string ): RolEnum | undefined {
