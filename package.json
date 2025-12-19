@@ -1,6 +1,6 @@
 {
-  "name": "grupo-4-proyecto1p",
-  "version": "0.1.0",
+  "name": "ug-eventos_fullstack_website_angular_dotnet",
+  "version": "0.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

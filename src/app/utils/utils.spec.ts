@@ -1,5 +1,6 @@
+import { of } from 'rxjs';
 import { TimeAgoPipe } from './time-ago.pipe';
-import { getRolEnumByStrId, getRolEnumKeyNameByStrId, getUserName, onImageError, RolEnum } from './utils';
+import { generateNewId, getRolEnumByStrId, getRolEnumKeyNameByStrId, getUserName, onImageError, RolEnum } from './utils';
 
 describe( 'TimeAgoPipe', () => {
   const timeAgoPipe = new TimeAgoPipe();
@@ -40,14 +41,14 @@ describe( 'UtilsFunctions', () => {
     expect( getRolEnumKeyNameByStrId( '2' ) ).toBe( 'ESTUDIANTE' );
     expect( getRolEnumKeyNameByStrId( '3' ) ).toBe( 'FACULTAD' );
     expect( getRolEnumKeyNameByStrId( '4' ) ).toBe( 'CLUB' );
-    expect( getRolEnumByStrId( '5' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '7' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '0' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '-1' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '-3' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '-7' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( 'hola' ) ).toBe( undefined );
+    expect( getRolEnumByStrId( '5' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '7' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '0' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '-1' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '-3' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '-7' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( 'hola' ) ).toBeUndefined();
   });
 
   it( 'should return the corresponding enum constant or undefined by an string index', () => {
@@ -55,13 +56,35 @@ describe( 'UtilsFunctions', () => {
     expect( getRolEnumByStrId( '2' ) ).toBe( RolEnum.ESTUDIANTE );
     expect( getRolEnumByStrId( '3' ) ).toBe( RolEnum.FACULTAD );
     expect( getRolEnumByStrId( '4' ) ).toBe( RolEnum.CLUB );
-    expect( getRolEnumByStrId( '5' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '7' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '0' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '-1' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '-3' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '-7' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( '' ) ).toBe( undefined );
-    expect( getRolEnumByStrId( 'hola' ) ).toBe( undefined );
+    expect( getRolEnumByStrId( '5' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '7' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '0' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '-1' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '-3' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '-7' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( '' ) ).toBeUndefined();
+    expect( getRolEnumByStrId( 'hola' ) ).toBeUndefined();
+  });
+
+  it( 'should return top id in the observable array + 1 as a new id', () => {
+    const mockData1 = [{ id: 1 }, { id: 4 }, { id: 6 }];
+    const mockData2 = [{ id: 5 }, { id: 3 }, { id: 7 }, { id: 10 }, { id: 12 }, { id: 11 }, { id: 13 }, { id: 15 }];
+    const mockData3 = [{ id: 1 }, { id: 4 }, { id: 7 }, { id: 2 }, { id: 5 }, { id: 3 }];
+    const mockData4: object[] = [];
+
+    const source1$ = of( mockData1 ); // Se crea un observable que emite el mockData
+    const source2$ = of( mockData2 );
+    const source3$ = of( mockData3 );
+    const source4$ = of( mockData4 );
+
+    const result1 = generateNewId( source1$ );
+    const result2 = generateNewId( source2$ );
+    const result3 = generateNewId( source3$ );
+    const result4 = generateNewId( source4$ );
+
+    expect( result1 ).toBe( 7 );
+    expect( result2 ).toBe( 16 );
+    expect( result3 ).toBe( 8 );
+    expect( result4 ).toBe( 1 );
   });
 });

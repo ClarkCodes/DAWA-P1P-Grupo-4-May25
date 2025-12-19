@@ -48,24 +48,31 @@ interface Identifiable {
 /**
  * Generates a new ID based on the maximum ID found in the provided source.
  * @param idSource Source of IDs, typically an Observable that emits an array of items with an `id` property,
- * in this case it would be commonly the result of a service function that returns an Observable of an array of a certain type of items
+ * it would be commonly the result of a service function that returns an Observable of an array of a certain type of items
  * @returns The top id + 1, or undefined if the source is empty or not provided
  */
-export function generateNewId<T extends Identifiable>( idSource: Observable<T[]> ): number | undefined {
-  idSource.subscribe( ( items: T[] ) => {
-    if( items ){
-      let topId = 0;
+export function generateNewId<T extends Identifiable>( idSource: Observable<T[]> | Observable<object[]> ): number {
+  if ( idSource ) {
+    let newId: number = 0;
 
-      items.forEach( item => {
-        if( item.id > topId )
-          topId = item.id;
-      });
+    ( idSource as Observable<T[]> ).subscribe( ( items: T[] ) => {
+      if( items ){
+        let topId = 0;
 
-      return topId + 1;
-    }
+        items.forEach( item => {
+          if( item.id > topId )
+            topId = item.id;
+        });
 
-    return;
-  });
+        newId = topId + 1;
+        return;
+      }
 
-  return;
+      return;
+    });
+
+    return newId;
+  }
+
+  return 0;
 }
