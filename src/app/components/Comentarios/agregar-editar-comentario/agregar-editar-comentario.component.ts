@@ -12,6 +12,7 @@ import { Comentario, ComentarioAccountData } from '../../../models/comentario';
 import { generateNewId } from '../../../utils/utils';
 import { Cuenta } from '../../../models/cuenta';
 import { Router } from '@angular/router';
+import { AVAILABLE_ROUTES } from '../../../utils/constants';
 
 @Component({
   selector: 'app-agregar-editar-comentario',
@@ -130,7 +131,7 @@ export class AgregarEditarComentarioComponent {
 
   onCommentFormFieldFocus() {
     if( !this.isSessionLoggedIn ) {
-      this.router.navigate( [ '/login' ] );
+      this.router.navigate( [AVAILABLE_ROUTES.get( 'login' )] );
       this.commentEditCanceled.emit(); // Emit the cancel event
       this.snackBarNotification.openCustomNotification( 'Sesión Requerida', 'Debe iniciar sesión para agregar un comentario a un evento', 'warning' );
       return;

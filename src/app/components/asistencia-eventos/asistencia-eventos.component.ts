@@ -2,7 +2,7 @@ import { Component , inject, OnInit, signal, ViewChild } from '@angular/core';
 import { ServAsistenciaEventosService } from '../../services/AsistenciaEventos/serv-asistencia-eventos.service';
 import { AsistenciaEvento } from '../../models/asistenciaEvento';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,7 +31,6 @@ import { SnackbarNotificationService } from '../shared/snackbar-notification/sna
   providers: [provideNativeDateAdapter()],
   standalone: true,
   imports: [
-    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -45,7 +44,7 @@ import { SnackbarNotificationService } from '../shared/snackbar-notification/sna
     MatCellDef,
     MatTableModule,
     MatPaginator
-  ],
+],
   templateUrl: './asistencia-eventos.component.html',
   styleUrl: './asistencia-eventos.component.css'
 })

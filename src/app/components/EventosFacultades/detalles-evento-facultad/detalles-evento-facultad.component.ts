@@ -1,7 +1,7 @@
 import { Component, inject, Inject, signal } from '@angular/core';
 import { EventoFacultad } from '../../../models/eventoFacultad';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { CurrencyPipe, DatePipe, NgClass, NgIf, UpperCasePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgClass, UpperCasePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
@@ -29,9 +29,8 @@ import { SnackbarNotificationService } from '../../shared/snackbar-notification/
     CurrencyPipe,
     UpperCasePipe,
     DatePipe,
-    NgClass,
-    NgIf
-  ],
+    NgClass
+],
   templateUrl: './detalles-evento-facultad.component.html',
   styleUrl: './detalles-evento-facultad.component.css'
 })

@@ -9,17 +9,19 @@
         <mat-label>Tu nombre</mat-label>
         <input matInput formControlName="cuenta" placeholder="Nombre del Estudiante" />
       </mat-form-field>
-      <mat-error *ngIf="comentarioForm.get('cuenta')?.touched && comentarioForm.get('cuenta')?.invalid">
-        <ng-container *ngIf="comentarioForm.get('cuenta')?.errors?.['required']">
-        El nombre es obligatorio
-        </ng-container>
-        <ng-container *ngIf="comentarioForm.get('cuenta')?.errors?.['maxlength']">
-        El nombre no puede exceder 50 caracteres
-        </ng-container>
-        <ng-container *ngIf="comentarioForm.get('cuenta')?.errors?.['nombreInvalido']">
-        El nombre solo puede contener letras y espacios
-        </ng-container>
-      </mat-error>
+      @if (comentarioForm.get('cuenta')?.touched && comentarioForm.get('cuenta')?.invalid) {
+        <mat-error>
+          @if (comentarioForm.get('cuenta')?.errors?.['required']) {
+            El nombre es obligatorio
+          }
+          @if (comentarioForm.get('cuenta')?.errors?.['maxlength']) {
+            El nombre no puede exceder 50 caracteres
+          }
+          @if (comentarioForm.get('cuenta')?.errors?.['nombreInvalido']) {
+            El nombre solo puede contener letras y espacios
+          }
+        </mat-error>
+      }
 
       <mat-form-field>
         <mat-label>Evento</mat-label>
@@ -45,18 +47,22 @@
         <mat-label>Comentario</mat-label>
         <textarea matInput formControlName="mensaje" rows="3" placeholder="Escriba su comentario"></textarea>
       </mat-form-field>
-      <mat-error *ngIf="comentarioForm.get('mensaje')?.touched && comentarioForm.get('mensaje')?.invalid">
-        El comentario es obligatorio
-      </mat-error>
+      @if (comentarioForm.get('mensaje')?.touched && comentarioForm.get('mensaje')?.invalid) {
+        <mat-error>
+          El comentario es obligatorio
+        </mat-error>
+      }
 
       <div>
         <button mat-raised-button class="Registro" type="submit" [disabled]="comentarioForm.invalid">
           {{ editandoComentario ? 'Actualizar Comentario' : 'Enviar Comentario' }}
         </button>
 
-        <button *ngIf="editandoComentario" class="Cancelar" mat-button type="button" (click)="cancelarEdicion()">
-          Cancelar Edición
-        </button>
+        @if (editandoComentario) {
+          <button class="Cancelar" mat-button type="button" (click)="cancelarEdicion()">
+            Cancelar Edición
+          </button>
+        }
       </div>
     </form>
   </mat-dialog-content>
@@ -73,17 +79,19 @@
 
 <!-- LISTA DE COMENTARIOS -->
 <section class="Comentario">
-  <div class="ComentariosDivContainer" *ngFor="let c of comentariosFiltrados">
-    <div>
-      <strong>{{ c.idCuenta }}</strong>
-      <small>({{ c.fechaComentado | date: 'short' }})</small>
+  @for (c of comentariosFiltrados; track c) {
+    <div class="ComentariosDivContainer">
+      <div>
+        <strong>{{ c.idCuenta }}</strong>
+        <small>({{ c.fechaComentado | date: 'short' }})</small>
+      </div>
+      <div><em><strong>Evento: </strong></em> {{ c.idEvento }}</div>
+      <div><em><strong>Experiencia: </strong></em> {{ c.calificacion }}</div>
+      <div><em><strong>Comentario: </strong></em> {{ c.mensaje }}</div>
+      <div class="ActionsDivClass">
+        <button mat-button class="EditarComentario" (click)="editarComentario(c)">Editar</button>
+        <button mat-button class="EliminarComentario" (click)="eliminarComentario(c)">Eliminar</button>
+      </div>
     </div>
-    <div><em><strong>Evento: </strong></em> {{ c.idEvento }}</div>
-    <div><em><strong>Experiencia: </strong></em> {{ c.calificacion }}</div>
-    <div><em><strong>Comentario: </strong></em> {{ c.mensaje }}</div>
-    <div class="ActionsDivClass">
-      <button mat-button class="EditarComentario" (click)="editarComentario(c)">Editar</button>
-      <button mat-button class="EliminarComentario" (click)="eliminarComentario(c)">Eliminar</button>
-    </div>
-  </div>
+  }
 </section>

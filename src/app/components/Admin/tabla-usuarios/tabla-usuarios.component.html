@@ -1,23 +1,22 @@
 <h2>Usuarios</h2>
 <div class="mat-elevation-z8">
   <!-- FILTRO DE BUSQUEDA -->
-   <div class="SearchContainerDivClass">
-     <mat-form-field appearance="outline" >
-       <mat-label>Buscar</mat-label>
-       <input matInput [formControl]="searchControl" placeholder="Busca por... Nombre / Correo / Facultad / Rol">
-     </mat-form-field>
-   </div>
+  <div class="SearchContainerDivClass">
+    <mat-form-field appearance="outline" >
+      <mat-label>Buscar</mat-label>
+      <input matInput [formControl]="searchControl" placeholder="Busca por... Nombre / Correo / Facultad / Rol">
+    </mat-form-field>
+  </div>
   <table mat-table [dataSource]="dataSource">
     <!-- Columna Nombre -->
     <ng-container matColumnDef="nombre">
       <th mat-header-cell *matHeaderCellDef>NOMBRE</th>
       <td mat-cell *matCellDef="let element">
-        <ng-container *ngIf="editingRowId !== element.id; else editNombre">
+        @if (editingRowId !== element.id) {
           {{ element.nombre }}
-        </ng-container>
-        <ng-template #editNombre>
+        } @else {
           <input matInput [formControl]="editForm.controls['nombre']" placeholder="Nombre..." />
-        </ng-template>
+        }
       </td>
     </ng-container>
 
@@ -25,12 +24,11 @@
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef>CORREO</th>
       <td mat-cell *matCellDef="let element">
-        <ng-container *ngIf="editingRowId !== element.id; else editEmail">
+        @if (editingRowId !== element.id) {
           {{ element.email }}
-        </ng-container>
-        <ng-template #editEmail>
+        } @else {
           <input matInput [formControl]="editForm.controls['email']" placeholder="Email..."/>
-        </ng-template>
+        }
       </td>
     </ng-container>
 
@@ -38,12 +36,10 @@
     <ng-container matColumnDef="password">
       <th mat-header-cell *matHeaderCellDef>CONTRASEÑA</th>
       <td mat-cell *matCellDef="let element">
-        <ng-container *ngIf="editingRowId !== element.id; else editPassword">
+        @if (editingRowId !== element.id) {
           {{ "********" }}
-        </ng-container>
-        <ng-template #editPassword>
-
-        </ng-template>
+        } @else {
+        }
       </td>
     </ng-container>
 
@@ -51,17 +47,16 @@
     <ng-container matColumnDef="facultad">
       <th mat-header-cell *matHeaderCellDef>FACULTAD</th>
       <td mat-cell *matCellDef="let element">
-        <ng-container *ngIf="editingRowId !== element.id; else editFacultad">
+        @if (editingRowId !== element.id) {
           {{ getFacultadNameById( element.idFacultad ) }}
-        </ng-container>
-        <ng-template #editFacultad>
+        } @else {
           <mat-label> Facultad </mat-label>
           <mat-select [formControl]="editForm.controls['idFacultad']" aria-label="Seleccionar Facultad a asignar a la cuenta">
             @for( facultad of facultades; track facultad.id ){
               <mat-option [value]="facultad.id"> {{facultad.nombre}} </mat-option>
             }
           </mat-select>
-        </ng-template>
+        }
       </td>
     </ng-container>
 
@@ -69,17 +64,16 @@
     <ng-container matColumnDef="rol">
       <th mat-header-cell *matHeaderCellDef>ROL</th>
       <td mat-cell *matCellDef="let element">
-        <ng-container *ngIf="editingRowId !== element.id; else editRol">
+        @if (editingRowId !== element.id) {
           {{ getRolNameById( element.idRol ) }}
-        </ng-container>
-        <ng-template #editRol>
+        } @else {
           <mat-label> Rol </mat-label>
           <mat-select [formControl]="editForm.controls['idRol']" aria-label="Seleccionar el Rol a asignar a la cuenta">
             @for( rol of roles; track rol.id ){
               <mat-option [value]="rol.id"> {{rol.nombre}} </mat-option>
             }
           </mat-select>
-        </ng-template>
+        }
       </td>
     </ng-container>
 
@@ -87,7 +81,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef class="ActionsHeader">ACCIONES</th>
       <td mat-cell *matCellDef="let element" class="ActionsCellClass">
-        <ng-container *ngIf="editingRowId !== element.id; else saveCancelButtons">
+        @if (editingRowId !== element.id) {
           <button mat-icon-button (click)="startEdit( element )" aria-label="Editar" class="EditSaveButtonClass" matTooltip="Editar" matTooltipPosition='left' matTooltipClass="tooltip-help-info">
             <mat-icon>edit</mat-icon>
           </button>
@@ -97,15 +91,14 @@
           <button mat-icon-button (click)="delete(element)" aria-label="Eliminar" matTooltip="Eliminar" matTooltipPosition='right' matTooltipClass="tooltip-help-info">
             <mat-icon>delete</mat-icon>
           </button>
-        </ng-container>
-        <ng-template #saveCancelButtons>
+        } @else {
           <button mat-icon-button (click)="saveEdit()" aria-label="Guardar" class="EditSaveButtonClass" matTooltip="Guardar" matTooltipPosition='left' matTooltipClass="tooltip-help-info">
             <mat-icon>save</mat-icon>
           </button>
           <button mat-icon-button (click)="cancelEdit()" aria-label="Cancelar" matTooltip="Cancelar" matTooltipPosition='right' matTooltipClass="tooltip-help-info">
             <mat-icon>cancel</mat-icon>
           </button>
-        </ng-template>
+        }
       </td>
     </ng-container>
 

@@ -18,15 +18,19 @@
           matInput
           formControlName="email"
           placeholder="Ej.: usuario@correo.com"
-        />
+          />
       </mat-form-field>
       <!-- Mensajes de error para el campo email -->
-      <mat-error class="formError" *ngIf="loginForm.get( 'email' )?.touched && loginForm.get( 'email' )?.hasError( 'required' )">
-        Email requerido
-      </mat-error>
-      <mat-error class="formError" *ngIf="loginForm.get( 'email' )?.touched && loginForm.get( 'email' )?.hasError( 'email' )">
-        Email no válido
-      </mat-error>
+      @if (loginForm.get( 'email' )?.touched && loginForm.get( 'email' )?.hasError( 'required' )) {
+        <mat-error class="formError">
+          Email requerido
+        </mat-error>
+      }
+      @if (loginForm.get( 'email' )?.touched && loginForm.get( 'email' )?.hasError( 'email' )) {
+        <mat-error class="formError">
+          Email no válido
+        </mat-error>
+      }
 
       <!-- Campo para la contraseña -->
       <mat-form-field class="login-mat-form-field">
@@ -38,7 +42,7 @@
           formControlName="password"
           placeholder="contraseña123"
           (keyup.enter)="onEnterKeyUp()"
-        />
+          />
         <!-- Botón para mostrar/ocultar contraseña -->
         <button
           mat-icon-button
@@ -47,14 +51,16 @@
           [attr.aria-label]="'Mostrar/ocultar contraseña'"
           [attr.aria-pressed]="isPasswordHidden()"
           type="button"
-        >
+          >
           <mat-icon>{{ isPasswordHidden() ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
       </mat-form-field>
       <!-- Mensaje de error para el campo contraseña -->
-      <mat-error class="formError" *ngIf="loginForm.get( 'password' )?.touched && loginForm.get( 'password' )?.hasError( 'required' )">
-        Contraseña requerida
-      </mat-error>
+      @if (loginForm.get( 'password' )?.touched && loginForm.get( 'password' )?.hasError( 'required' )) {
+        <mat-error class="formError">
+          Contraseña requerida
+        </mat-error>
+      }
     </div>
 
     <!-- Botón de envío del formulario -->
@@ -65,7 +71,7 @@
       type="submit"
       [disabled]="loginForm.invalid"
       aria-label="Iniciar sesión"
-    >
+      >
       <span>
         Acceder
       </span>

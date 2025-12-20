@@ -23,85 +23,93 @@
           <b>Desde:</b> {{ eventoFacultad?.fechaHora | date: 'longDate': undefined : 'es' }}
         }
         @else {
-          <b>Fecha:</b> {{ eventoFacultad?.fechaHora | date: 'longDate': undefined : 'es' }}
+        <b>Fecha:</b> {{ eventoFacultad?.fechaHora | date: 'longDate': undefined : 'es' }}
+      }
+    </p>
+    <div class="ValorDiv">
+      <div><b>Valor:</b></div>
+      <div>
+        @if( eventoFacultad?.esGratuito ) {
+          <mat-chip-set>
+            <mat-chip class="chip-gratuito">GRATUITO</mat-chip>
+          </mat-chip-set>
         }
-      </p>
-        <div class="ValorDiv">
-          <div><b>Valor:</b></div>
-          <div>
-            @if( eventoFacultad?.esGratuito ) {
-              <mat-chip-set>
-                <mat-chip class="chip-gratuito">GRATUITO</mat-chip>
-              </mat-chip-set>
-            }
-            @else {
-              {{ eventoFacultad?.costo | currency: 'USD' : 'symbol-narrow' : undefined : 'en-US' }}
-            }
-          </div>
-        </div>
-    </mat-card-content>
-    <mat-card-actions>
-      @if ( modoGestion && isOnManagementUrl ) {
-        <div class="ManagerActions">
-          <button mat-fab extended (click)="verDetalles()">
-            <mat-icon>article</mat-icon>
-            Ver Detalles
-          </button>
-          <button mat-fab extended (click)="eliminar()">
-            <mat-icon>delete</mat-icon>
-            Eliminar
-          </button>
-        </div>
+        @else {
+        {{ eventoFacultad?.costo | currency: 'USD' : 'symbol-narrow' : undefined : 'en-US' }}
       }
-      @else if ( modoGestion && !isOnManagementUrl ) {
-        <div class="NotManagerActions" >
-          <button mat-raised-button class="NotManagerDetailsButton" (click)="goToManage()" aria-label="Gestionar Eventos de Facultades">
-            <mat-icon>build_circle</mat-icon>
-            <span>Gestionar</span>
-          </button>
-        </div>
+    </div>
+  </div>
+</mat-card-content>
+<mat-card-actions>
+  @if ( modoGestion && isOnManagementUrl ) {
+    <div class="ManagerActions">
+      <button mat-fab extended (click)="verDetalles()">
+        <mat-icon>article</mat-icon>
+        Ver Detalles
+      </button>
+      <button mat-fab extended (click)="eliminar()">
+        <mat-icon>delete</mat-icon>
+        Eliminar
+      </button>
+    </div>
+  }
+  @else if ( modoGestion && !isOnManagementUrl ) {
+  <div class="NotManagerActions" >
+    <button mat-raised-button class="NotManagerDetailsButton" (click)="goToManage()" aria-label="Gestionar Eventos de Facultades">
+      <mat-icon>build_circle</mat-icon>
+      <span>Gestionar</span>
+    </button>
+  </div>
+}
+@else {
+<div class="NotManagerActions">
+  @if (asistenciaUsuario) {
+    <div class="AsistenciaMarcadaChipContainer">
+      @if( asistenciaUsuario ) {
+        <mat-chip class="chip-asistencia-marcada">
+          MARCADO PARA ASISTIR
+        </mat-chip>
       }
-      @else {
-        <div class="NotManagerActions">
-          <div class="AsistenciaMarcadaChipContainer" *ngIf="asistenciaUsuario">
-            @if( asistenciaUsuario ) {
-              <mat-chip class="chip-asistencia-marcada">
-                MARCADO PARA ASISTIR
-              </mat-chip>
-            }
-          </div>
-          <button mat-raised-button class="NotManagerDetailsButton" (click)="verDetallesEventoVistaEstudiante()">
-            <mat-icon>article</mat-icon>
-            <span>Ver Detalles</span>
-          </button>
+    </div>
+  }
+  <button mat-raised-button class="NotManagerDetailsButton" (click)="verDetallesEventoVistaEstudiante()">
+    <mat-icon>article</mat-icon>
+    <span>Ver Detalles</span>
+  </button>
 
-          <button mat-raised-button
-            (click)="inscribirRemoverAsistenciaEvento()"
-            (mouseenter)="onMouseEnter()"
-            (mouseleave)="onMouseLeave()"
+  <button mat-raised-button
+    (click)="inscribirRemoverAsistenciaEvento()"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
             [ngClass]="{
               'AsistireState': !asistenciaUsuario,
               'AsistenciaMarcadaState': asistenciaUsuario && !isAssistButtonHovering,
               'HoverEliminarAsistenciaState': asistenciaUsuario && isAssistButtonHovering
             }" >
 
-            <span *ngIf="!asistenciaUsuario" class="AsistenciaButtonContent">
-              <mat-icon class="StarIcon">star</mat-icon>
-              <span>Asistiré</span>
-            </span>
+    @if (!asistenciaUsuario) {
+      <span class="AsistenciaButtonContent">
+        <mat-icon class="StarIcon">star</mat-icon>
+        <span>Asistiré</span>
+      </span>
+    }
 
-            <span *ngIf="asistenciaUsuario && !isAssistButtonHovering" class="AsistenciaButtonContent">
-              <mat-icon class="CheckIcon">check_circle</mat-icon>
-            </span>
+    @if (asistenciaUsuario && !isAssistButtonHovering) {
+      <span class="AsistenciaButtonContent">
+        <mat-icon class="CheckIcon">check_circle</mat-icon>
+      </span>
+    }
 
-            <span *ngIf="asistenciaUsuario && isAssistButtonHovering" class="AsistenciaButtonContent">
-              <mat-icon class="CancelIcon">cancel</mat-icon>
-              <span>Eliminar Asistencia</span>
-            </span>
+    @if (asistenciaUsuario && isAssistButtonHovering) {
+      <span class="AsistenciaButtonContent">
+        <mat-icon class="CancelIcon">cancel</mat-icon>
+        <span>Eliminar Asistencia</span>
+      </span>
+    }
 
-          </button>
-        </div>
-      }
-    </mat-card-actions>
-  </div>
+  </button>
+</div>
+}
+</mat-card-actions>
+</div>
 </mat-card>

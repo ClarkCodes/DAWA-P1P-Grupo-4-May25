@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActualizarPerfilInfoDialogComponent } from '../actualizar-perfil-info-dialog/actualizar-perfil-info-dialog.component';
 import { ConfirmationDialogService } from '../../shared/confirmation-dialog/confirmation-dialog.service';
 import { Router } from '@angular/router';
+import { AVAILABLE_ROUTES } from '../../../utils/constants';
 import { DatePipe } from '@angular/common';
 import { CambiarContraseniaDialogComponent } from '../cambiar-contrasenia-dialog/cambiar-contrasenia-dialog.component';
 
@@ -126,7 +127,7 @@ export class PerfilUsuarioComponent {
       if ( result ) {
         this.cuentasService.deleteCuentas( this.usuarioLogueado as Cuenta ).subscribe( () => {
           this.cuentasService.logout();
-          this.router.navigate(['/home']);
+          this.router.navigate( [AVAILABLE_ROUTES.get( 'home' )] );
           this.snackBarNotification.openCustomNotification( "Cuenta eliminada", "Cuenta de usuario eliminada exitosamente", 'success' );
         } );
       }

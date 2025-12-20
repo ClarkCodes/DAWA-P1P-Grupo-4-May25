@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cuenta, Rol } from '../../../models/cuenta';
 import { CuentasService } from '../../../services/SignupLogin/cuentas.service';
-import { CommonModule } from '@angular/common';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
@@ -23,7 +23,6 @@ import { ActualizarPerfilInfoDialogComponent } from '../../Perfil/actualizar-per
   selector: 'app-tabla-usuarios',
   standalone: true,
   imports: [
-    CommonModule,
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
@@ -32,7 +31,7 @@ import { ActualizarPerfilInfoDialogComponent } from '../../Perfil/actualizar-per
     MatButtonModule,
     MatTooltipModule,
     ReactiveFormsModule
-  ],
+],
   templateUrl: './tabla-usuarios.component.html',
   styleUrls: ['./tabla-usuarios.component.css']
 })

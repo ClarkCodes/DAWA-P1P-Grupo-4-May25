@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { CommonModule } from '@angular/common';
+
 import { CuentasService } from '../../services/SignupLogin/cuentas.service';
 import { SnackbarNotificationService } from '../shared/snackbar-notification/snackbar-notification.service';
 import { RouterLink } from '@angular/router';
@@ -13,7 +13,6 @@ import { RouterLink } from '@angular/router';
   selector: 'app-log-in',
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -21,7 +20,7 @@ import { RouterLink } from '@angular/router';
     MatInputModule,
     MatIconModule,
     RouterLink
-  ],
+],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, inject } from '@angular/core';
-import { UpperCasePipe, CurrencyPipe, DatePipe, NgClass, NgIf } from '@angular/common';
+import { UpperCasePipe, CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,13 +14,14 @@ import { ServAsistenciaEventosService } from '../../../services/AsistenciaEvento
 import { AsistenciaEvento } from '../../../models/asistenciaEvento';
 import { ConfirmationDialogService } from '../../shared/confirmation-dialog/confirmation-dialog.service';
 import { Router } from '@angular/router';
+import { AVAILABLE_ROUTES } from '../../../utils/constants';
 import { CuentasService } from '../../../services/SignupLogin/cuentas.service';
 import { SnackbarNotificationService } from '../../shared/snackbar-notification/snackbar-notification.service';
 import { Cuenta } from '../../../models/cuenta';
 
 @Component({
   selector: 'app-card-evento-facultad',
-  imports: [MatButtonModule, MatCardModule, MatIconModule, MatChipsModule, CurrencyPipe, UpperCasePipe, DatePipe, NgClass, NgIf],
+  imports: [MatButtonModule, MatCardModule, MatIconModule, MatChipsModule, CurrencyPipe, UpperCasePipe, DatePipe, NgClass],
   templateUrl: './card-evento-facultad.component.html',
   styleUrl: './card-evento-facultad.component.css'
 })
@@ -79,7 +80,7 @@ export class CardEventoFacultadComponent implements OnInit {
   }
 
   goToManage() {
-    this.router.navigate(['/crud-eventos-facultades']);
+    this.router.navigate( [AVAILABLE_ROUTES.get( 'crudEventosFacultades' )] );
   }
 
   onAficheImageError( event: Event ){
@@ -129,7 +130,7 @@ export class CardEventoFacultadComponent implements OnInit {
 
   inscribirRemoverAsistenciaEvento() {
     if( !this.isSessionLoggedIn ) {
-      this.router.navigate( [ '/login' ] );
+      this.router.navigate( [AVAILABLE_ROUTES.get( 'login' )] );
       this.snackBarNotification.openCustomNotification( 'Sesión Requerida', 'Debe iniciar sesión para inscribirse a un evento', 'warning' );
       return;
     }

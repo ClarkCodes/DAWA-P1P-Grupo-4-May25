@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormFieldErrorComponent } from '../shared/form-field-error/form-field-error.component';
-import { NgIf } from '@angular/common';
+
 import { CuentasService } from '../../services/SignupLogin/cuentas.service';
 import { Club } from '../../models/eventoClub';
 import { Facultad } from '../../models/facultad';
@@ -31,9 +31,8 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     MatRadioModule,
     MatButtonModule,
     MatSelectModule,
-    MatDatepickerModule,
-    NgIf
-  ],
+    MatDatepickerModule
+],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })

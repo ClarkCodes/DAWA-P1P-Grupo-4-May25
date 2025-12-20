@@ -21,13 +21,17 @@
     <div class="ErrorDiv">
       <app-form-field-error [control]="userForm.get( 'nombre' )" />
       <!-- Mensaje de error para campo obligatorio -->
-      <mat-error *ngIf="userForm.get( 'nombre' )?.hasError('required') && userForm.get( 'nombre' )?.touched">
-        Campo <strong>OBLIGATORIO</strong>
-      </mat-error>
+      @if (userForm.get( 'nombre' )?.hasError('required') && userForm.get( 'nombre' )?.touched) {
+        <mat-error>
+          Campo <strong>OBLIGATORIO</strong>
+        </mat-error>
+      }
       <!-- Mensaje de error para formato inválido -->
-      <mat-error *ngIf="userForm.get( 'nombre' )?.hasError('pattern') && userForm.get( 'nombre' )?.touched">
-        Solo se permiten <strong>letras</strong>
-      </mat-error>
+      @if (userForm.get( 'nombre' )?.hasError('pattern') && userForm.get( 'nombre' )?.touched) {
+        <mat-error>
+          Solo se permiten <strong>letras</strong>
+        </mat-error>
+      }
     </div>
 
     @if( rolEnum[userForm.get( 'idRol' )?.value] === 'ESTUDIANTE' ) { <!-- Si es una cuenta de ESTUDIANTE -->
@@ -39,13 +43,17 @@
       <div class="ErrorDiv">
         <app-form-field-error [control]="userForm.get( 'apellidos' )" />
         <!-- Mensaje de error para campo obligatorio -->
-        <mat-error *ngIf="userForm.get( 'apellidos' )?.hasError('required') && userForm.get( 'apellidos' )?.touched">
-          Campo <strong>OBLIGATORIO</strong>
-        </mat-error>
+        @if (userForm.get( 'apellidos' )?.hasError('required') && userForm.get( 'apellidos' )?.touched) {
+          <mat-error>
+            Campo <strong>OBLIGATORIO</strong>
+          </mat-error>
+        }
         <!-- Mensaje de error para formato inválido -->
-        <mat-error *ngIf="userForm.get( 'apellidos' )?.hasError('pattern') && userForm.get( 'apellidos' )?.touched">
-          Solo se permiten <strong>letras</strong>
-        </mat-error>
+        @if (userForm.get( 'apellidos' )?.hasError('pattern') && userForm.get( 'apellidos' )?.touched) {
+          <mat-error>
+            Solo se permiten <strong>letras</strong>
+          </mat-error>
+        }
       </div>
     }
 
@@ -58,9 +66,11 @@
     <div class="ErrorDiv">
       <app-form-field-error [control]="userForm.get( 'email' )" />
       <!-- Mensaje de error para campo obligatorio -->
-      <mat-error *ngIf="userForm.get( 'email' )?.hasError('required')  && userForm.get( 'email' )?.touched">
-        Campo <strong>OBLIGATORIO</strong>
-      </mat-error>
+      @if (userForm.get( 'email' )?.hasError('required')  && userForm.get( 'email' )?.touched) {
+        <mat-error>
+          Campo <strong>OBLIGATORIO</strong>
+        </mat-error>
+      }
     </div>
 
     <!-- Campo para la contraseña con opción de mostrar/ocultar -->
@@ -76,16 +86,18 @@
         (click)="showHidePassword($event)"
         [attr.aria-label]="'Ocultar contraseña'"
         [attr.aria-pressed]="hidePassword()"
-      >
+        >
         <mat-icon class="form-field-icon">{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
     </mat-form-field>
     <div class="ErrorDiv">
       <app-form-field-error [control]="userForm.get( 'password' )" />
       <!-- Mensaje de error para campo obligatorio -->
-      <mat-error *ngIf="userForm.get( 'password' )?.hasError('required') && userForm.get( 'password' )?.touched">
-        Campo <strong>OBLIGATORIO</strong>
-      </mat-error>
+      @if (userForm.get( 'password' )?.hasError('required') && userForm.get( 'password' )?.touched) {
+        <mat-error>
+          Campo <strong>OBLIGATORIO</strong>
+        </mat-error>
+      }
     </div>
 
     @if( rolEnum[userForm.get( 'idRol' )?.value] === 'ESTUDIANTE' ) { <!-- Si es una cuenta de ESTUDIANTE -->
@@ -131,9 +143,11 @@
       </mat-select>
     </mat-form-field>
     <!-- Mensaje de error para campo obligatorio -->
-    <mat-error *ngIf="userForm.get( 'idFacultad' )?.hasError('required') && userForm.get( 'idFacultad' )?.touched">
-      Campo <strong>OBLIGATORIO</strong>
-    </mat-error>
+    @if (userForm.get( 'idFacultad' )?.hasError('required') && userForm.get( 'idFacultad' )?.touched) {
+      <mat-error>
+        Campo <strong>OBLIGATORIO</strong>
+      </mat-error>
+    }
 
     @if( userForm.get( 'idRol' )?.value === '4' ) { <!-- Si es una cuenta de CLUB -->
       <mat-form-field>
@@ -154,7 +168,7 @@
         mat-flat-button
         type="submit"
         [disabled]="userForm.invalid || userForm.untouched || !userForm.dirty"
-      >
+        >
         <mat-icon matPrefix>signature</mat-icon>
         <span>
           Registrarse
