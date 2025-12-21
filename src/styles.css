@@ -13,10 +13,11 @@ body {
 app-root {
   display: grid;
   min-height: 100dvh;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
 }
 
-main{
+main {
+  margin-top: 64px;
   padding-inline: 4rem;
   box-sizing: border-box;
 
@@ -28,6 +29,8 @@ main{
 *{
   font-size: 11.5pt;
   font-family: Poppins;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.8) rgba(31, 41, 55, 0.4);
 }
 
 router-outlet{
@@ -36,10 +39,11 @@ router-outlet{
 
 h1 {
   font-size: 32pt;
+  padding-top: 1.5rem;
 }
 
 h2 {
-  font-size: 24pt;
+  font-size: 22pt;
 }
 
 h3 {
@@ -64,6 +68,124 @@ h6 {
 
 mat-icon {
   font-family: 'Material Symbols Rounded';
-  font-size: var(--font-size-line-height);
-  line-height: var(--font-size-line-height);
+  font-size: var( --font-size-line-height );
+  line-height: var( --font-size-line-height );
+}
+
+/* Espaciador para empujar los botones al extremo derecho */
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-datepicker, mat-datepicker-toggle, mat-timepicker, mat-timepicker-toggle, mat-hint {
+  color: var( --secondary );
+}
+
+
+/* Estilos Comunes para la parte de usuario que no son gestores ni administradores en dialogos de detalles de eventos */
+mat-card-actions, .DetallesContainer .BodyClass {
+  .ManagerActions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1.5rem 0;
+    margin: 1rem 0;
+    top: auto;
+    bottom: 0;
+
+    button{
+      align-items: center;
+      width: 40%;
+      font-size: 16pt;
+      padding-inline: .5rem;
+    }
+  }
+
+  .NotManagerActions {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+    margin: 1rem 0;
+    top: auto;
+    bottom: 0;
+
+    button {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      font-size: 16pt;
+      padding: 1.7rem .5rem;
+      margin-top: 1rem;
+      transition: background-color .2s ease-in-out, color .2s ease-in-out;
+
+      mat-icon {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 32px;
+        height: 32px;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+
+      span {
+        font-size: 16pt;
+      }
+    }
+
+    .AsistenciaMarcadaChipContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+    }
+
+    .NotManagerDetailsButton {
+      margin-bottom: 1.5rem;
+    }
+
+    .AsistireState {
+      background-color: var( --success-accent-color );
+      color: var( --green-700 );
+      font-weight: bold;
+    }
+
+    .AsistenciaMarcadaState {
+      background-color: var( --tertiary );
+      color: var( --success-accent-color );
+    }
+
+    .HoverEliminarAsistenciaState {
+      background-color: var( --error-container-color );
+      color: var( --error-text-color );
+    }
+
+    .AsistenciaButtonContent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      .StarIcon {
+        color: yellow;
+        filter: drop-shadow( 2px 2px 3px var( --black-40 ) );
+      }
+
+      .CheckIcon {
+        color: var( --success-accent-color );
+      }
+
+      .CancelIcon {
+        color: var( --error-text-color );
+      }
+    }
+  }
 }

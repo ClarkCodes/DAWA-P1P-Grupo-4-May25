@@ -1,0 +1,121 @@
+.signin-container {
+  max-width: 600px;
+  height: fit-content;
+  margin: 3.5rem auto;
+  padding: 32px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  border-radius: var( --border-radius-large );
+  transition: box-shadow 0.3s ease;
+
+  h2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .form-field-icon {
+    color: var( --secondary );
+  }
+
+  form {
+    mat-label {
+      font-weight: 500;
+      color: #555;
+    }
+
+    mat-error {
+      font-size: 12pt;
+      color: #e53935;
+      margin-top: -.57rem;
+    }
+
+    #rol-radio-group-label {
+      font-weight: bold;
+      margin: 1.5rem 1rem;
+    }
+
+    mat-radio-group {
+      display: flex;
+      flex-direction: column;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      margin-left: 1rem;
+
+      mat-radio-button {
+        font-size: 14px;
+        color: #444;
+      }
+    }
+
+    mat-form-field {
+      width: 100%;
+
+      button {
+        width: fit-content;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        mat-icon {
+          width: fit-content;
+        }
+      }
+    }
+
+    .ErrorDiv {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .CedulaTelefonoDiv {
+      display: flex;
+      justify-content: space-between;
+
+      mat-form-field {
+        width: 48%;
+      }
+
+      #telefonoId {
+        margin-right: -.7rem;
+      }
+    }
+
+    .matDatePicker-fechaNacimiento {
+      margin-bottom: 1rem;
+
+      mat-hint {
+        font-size: 9pt;
+        padding-left: 2.5rem;
+      }
+    }
+
+    .SubmitDiv {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+
+      button {
+        width: 70%;
+
+        mat-icon {
+          font-size: 20px;
+          width: fit-content;
+          height: 100%;
+          display: flex;
+          align-items: center;
+        }
+
+        span {
+          font-size: 13pt;
+          letter-spacing: .04lh;
+        }
+      }
+    }
+  }
+}
+

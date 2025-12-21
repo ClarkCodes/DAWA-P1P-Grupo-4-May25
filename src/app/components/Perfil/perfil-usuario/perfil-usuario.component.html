@@ -1,0 +1,130 @@
+<h1>Perfil</h1>
+
+<div id="perfilComponentContainerId">
+  <div class="PerfilContainer">
+    <section class="ImagenPerfilSection">
+      <div class="ImagenPerfilContainer">
+        @if ( usuarioLogueado?.fotoPerfilUrl ) {
+          <img class="AccountProfileImageFallbackIcon" [src]="usuarioLogueado?.fotoPerfilUrl" alt="Imagen de Perfil">
+        }
+        @else {
+          <mat-icon class="AccountProfileImageFallbackIcon">account_circle</mat-icon>
+        }
+        <button id="editImagenPerfilId" type="button" aria-label="Editar Imagen de Perfil" (click)="editarImagenPerfil()">
+          <mat-icon>edit</mat-icon>
+          Cambiar
+        </button>
+      </div>
+    </section>
+    <div class="NombreUsuarioDiv">
+      <h2>{{usuarioLogueado?.nombre + ( usuarioLogueado?.datosEstudiante?.apellidos ? ( ' ' + usuarioLogueado?.datosEstudiante?.apellidos ) : '' )}}</h2>
+      <button mat-icon-button id="editarPerfilInfoButtonId" type="button" (click)="actualizarInfoPerfil()" aria-label="Editar Informacion de Perfil" matTooltip="Editar Información de Perfil" matTooltipPosition='left' matTooltipClass="tooltip-help-info">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+    <section class="ContenidoSection">
+      <div class="Spacer"></div>
+
+      <div class="ContentRow">
+        <div class="LabelDiv">
+          <p><strong>Correo electrónico:</strong></p>
+        </div>
+        <div class="DataDiv">
+          <p>{{usuarioLogueado?.email}}</p>
+        </div>
+      </div>
+
+      <div class="ContentRow">
+        <div class="LabelDiv">
+          <p>
+            <strong>Rol:</strong>
+          </p>
+        </div>
+        <div class="DataDiv">
+          <p>
+            {{rolUsuarioLogueado?.nombre}}
+          </p>
+        </div>
+      </div>
+
+      @if ( rolUsuarioLogueado?.nombre === 'ESTUDIANTE' ) {
+        <div class="ContentRow">
+          <div class="LabelDiv">
+            <p>
+              <strong>Cédula de Identidad:</strong>
+            </p>
+          </div>
+          <div class="DataDiv">
+            <p>
+              {{usuarioLogueado?.datosEstudiante?.cedula}}
+            </p>
+          </div>
+        </div>
+
+        <div class="ContentRow">
+          <div class="LabelDiv">
+            <p>
+              <strong>Teléfono:</strong>
+            </p>
+          </div>
+          <div class="DataDiv">
+            <p>
+              {{usuarioLogueado?.datosEstudiante?.telefono}}
+            </p>
+          </div>
+        </div>
+
+        <div class="ContentRow">
+          <div class="LabelDiv">
+            <p>
+              <strong>Fecha de Nacimiento:</strong>
+            </p>
+          </div>
+          <div class="DataDiv">
+            <p>
+              {{usuarioLogueado?.datosEstudiante?.fechaNacimiento | date: 'longDate': undefined : 'es'}}
+            </p>
+          </div>
+        </div>
+      }
+      <div class="ContentRow">
+        <div class="LabelDiv">
+          <p>
+            <strong>Facultad:</strong>
+          </p>
+        </div>
+        <div class="DataDiv">
+          <p>
+            {{nombreFacultad}}
+          </p>
+        </div>
+      </div>
+
+      @if ( rolUsuarioLogueado?.nombre === 'CLUB' ) {
+        <div class="ContentRow">
+          <div class="LabelDiv">
+            <p>
+              <strong>Club:</strong>
+            </p>
+          </div>
+          <div class="DataDiv">
+            <p>
+              {{nombreClub}}
+            </p>
+          </div>
+        </div>
+      }
+
+      <div class="Spacer"></div>
+    </section>
+    <section class="PasswordSection">
+      <h3 class="SectionTitle">Contraseña</h3>
+      <button mat-stroked-button id="cambiarContraseniaButtonId" (click)="cambiarContrasenia()" ><span>Cambiar Contraseña</span></button>
+    </section>
+    <section class="DangerSection">
+      <h3 class="SectionTitle">Sección de Peligro</h3>
+      <button mat-stroked-button id="eliminarCuentaButtonId" (click)="eliminarCuenta()" ><span>Eliminar Cuenta</span></button>
+    </section>
+  </div>
+</div>

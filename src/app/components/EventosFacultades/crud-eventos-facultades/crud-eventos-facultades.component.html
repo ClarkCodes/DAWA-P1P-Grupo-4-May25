@@ -1,0 +1,43 @@
+<h1>Gestión de Eventos de Facultad</h1>
+
+<div id="visualizationDiv">
+  <div class="MainActionsContainer">
+    <div class="NewEventoContainerDivClass" >
+      <button mat-fab extended class="NewEventButtonClass" (click)="addEvento()">
+        <mat-icon>calendar_add_on</mat-icon>
+        <span>Nuevo Evento</span>
+      </button>
+    </div>
+    <div class="SearchContainerDivClass">
+      <form class="FacultadesSearchForm">
+        <mat-form-field appearance="outline" class="FormElement">
+          <mat-label> Buscar </mat-label>
+          <mat-icon matPrefix>search</mat-icon>
+          <input matInput
+            type="search"
+            placeholder="Nombre del evento / Organizador externo / Área / Dirección / Lugar / Sitio web / Telefono de contacto / Etiquetas"
+            #searchInput
+            (input)="search( searchInput )" >
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <!-- <button matRaisedButton (click)="probarNotiticacion()">Probar Notificacion</button> -->
+  @if( eventosFacultades && eventosFacultades!.length > 0 ) {
+    <div class="EventosCardsContainer">
+      @for( evento of eventosFacultades; track $index ){
+        <app-card-evento-facultad
+          [eventoFacultad]="evento"
+          [modoGestion]="true"
+          [asistenciaUsuario]="undefined"
+          (deleted)="deleteEvento( $event )"
+          (updated)="updateEvento( $event )" />
+      }
+    </div>
+  }
+  @else {
+    <div class="AvisoDivClass">
+      <p class="AvisoClass">No existen Eventos para mostrar por el momento.</p>
+    </div>
+  }
+</div>

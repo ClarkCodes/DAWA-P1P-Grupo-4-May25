@@ -1,0 +1,86 @@
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.MainActionsContainer{
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .SearchContainerDivClass {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .FacultadesSearchForm{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+
+      mat-form-field{
+        width: 15rem;
+        border-radius: 25px;
+        transition: width .35s ease-in-out;
+
+        &:focus-within{
+          width: 70%;
+          transition: width .27s ease-out;
+        }
+
+        input{
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.AvisoDivClass {
+  width: 100%;
+  height: 500px;
+  background: url( '/images/no-image-found-design.webp' ) no-repeat center center;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .AvisoClass {
+    width: fit-content;
+    font-size: 24pt;
+    padding: 16px;
+    border-radius: 12px;
+    color: var( --tertiary );
+    text-shadow: 3px 3px 7px white;
+    background-color: rgba( 50, 50, 50, .1 );
+    -webkit-backdrop-filter: blur( 4.3px );
+    backdrop-filter: blur( 4.3px );
+  }
+}
+
+.EventosCardsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  gap: 3rem;
+
+  @media( max-width: 700px ) {
+    justify-content: left;
+    padding-left: 1rem;
+  }
+
+  app-card-evento-facultad, app-card-evento-club {
+    width: 25dvw;
+    min-width: 430px;
+  }
+}

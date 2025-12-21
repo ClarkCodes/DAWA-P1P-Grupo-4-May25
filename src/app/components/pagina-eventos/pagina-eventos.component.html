@@ -1,0 +1,36 @@
+<h1>Eventos</h1>
+
+<div class="EventosPageContainer">
+  <div class="MainActionsContainer"></div>
+
+  @if( eventosFacultades || eventosClubes ) {
+    @if( eventosFacultades ) {
+      <h2>Eventos de Facultades</h2>
+      <section class="EventosCardsContainer">
+        @for( eventoF of eventosFacultades; track $index ) {
+          <app-card-evento-facultad
+            [eventoFacultad]="eventoF"
+            [modoGestion]="rolUsuarioLogueado?.nombre === 'ADMINISTRADOR' || rolUsuarioLogueado?.nombre === 'FACULTAD'"
+            [asistenciaUsuario]="getAsistenciaUsuarioByEventoId( eventoF.id )"
+            (asistirEvento)="registrarAsistenciaEvento( $event )"
+            (eliminarAsistencia)="eliminarAsistenciaEvento( $event )"
+            />
+        }
+      </section>
+    }
+
+    @if( eventosClubes ) {
+      <h2>Eventos de Clubes</h2>
+      <section class="EventosCardsContainer">
+        @for( eventoC of eventosClubes; track $index ){
+          <!-- <app-card-evento-facultad [eventoFacultad]="eventoC" (deleted)="deleteEvento( $event )" (updated)="updateEvento( $event )" /> -->
+        }
+      </section>
+    }
+  }
+  @else {
+    <div class="AvisoDivClass">
+      <p class="AvisoClass">No existen Eventos para mostrar por el momento.</p>
+    </div>
+  }
+</div>

@@ -5,10 +5,15 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": [
-      "jasmine"
+      "jest",
+      "node"
     ],
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "allowJs": true,
+    "esModuleInterop": true
   },
+  "files": ["setup-jest.ts"],
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"

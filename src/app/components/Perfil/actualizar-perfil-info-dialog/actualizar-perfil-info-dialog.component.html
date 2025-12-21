@@ -1,0 +1,123 @@
+<div class="ActualizarPerfilContainer">
+  @if(enumRoles[rolUsuarioLogueadoId] === 'ADMINISTRADOR') {
+    @if( data.cuentaUsuario ) {
+      <h2>Actualizar Cuenta</h2>
+    }
+    @else {
+      <h2>Nueva Cuenta</h2>
+    }
+  }
+  @else {
+    <h2>Actualizar Perfil</h2>
+  }
+
+  <form [formGroup]="actualizarCrearPerfilForm" (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label> Nombre </mat-label>
+      <input matInput formControlName="nombre" type="text" placeholder="Ingrese su nombre..." #nombreControl/>
+    </mat-form-field>
+    <app-form-field-error [control]="actualizarCrearPerfilForm.get( 'nombre' )" />
+
+    @if ( rolUsuario === enumRoles.ESTUDIANTE ) { <!-- Se verifica si es una cuenta de Estudiante -->
+      <mat-form-field>
+        <mat-label> Apellidos </mat-label>
+        <input matInput formControlName="apellidos" type="text" placeholder="Ingrese sus apellidos..."/>
+      </mat-form-field>
+      <app-form-field-error [control]="actualizarCrearPerfilForm.get( 'apellidos' )" />
+    }
+
+    <mat-form-field>
+      <mat-label> E-Mail </mat-label>
+      <input matInput formControlName="email" type="email" placeholder="Ingrese su e-mail..." />
+    </mat-form-field>
+    <app-form-field-error [control]="actualizarCrearPerfilForm.get( 'email' )" />
+
+    @if( !data.cuentaUsuario ) {
+      <mat-form-field class="pwd-form-field">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hidePassword() ? 'password' : 'text'" placeholder="Contraseña..." formControlName="password">
+        <!-- Botón para alternar visibilidad de la contraseña -->
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="showHidePassword( $event )"
+          [attr.aria-label]="'Ocultar contraseña'"
+          [attr.aria-pressed]="hidePassword()"
+        >
+          <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+    }
+
+    <mat-form-field>
+      <mat-label> Rol </mat-label>
+      <mat-select formControlName="idRol" [(value)]="rolUsuarioLogueadoId" aria-label="Seleccionar Rol de la cuenta de usuario">
+        @for( rol of roles; track rol.id ){
+          <mat-option [value]="rol.id"> {{rol.nombre}} </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label> Facultad </mat-label>
+      <mat-select formControlName="idFacultad" aria-label="Seleccionar Facultad a la que pertenece la cuenta de usuario">
+        @for( facultad of facultades; track facultad.id ){
+          <mat-option [value]="facultad.id"> {{facultad.nombre}} </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <app-form-field-error [control]="actualizarCrearPerfilForm.get( 'idFacultad' )" />
+
+    @if ( rolUsuario === enumRoles.ESTUDIANTE ) { <!-- Se verifica si es una cuenta de Estudiante -->
+      <mat-form-field>
+        <mat-label> Cédula </mat-label>
+        <input matInput formControlName="cedula" type="text" placeholder="Cedula de Identidad..." />
+      </mat-form-field>
+      <app-form-field-error [control]="actualizarCrearPerfilForm.get( 'cedula' )" />
+
+      <mat-form-field>
+        <mat-label> Teléfono </mat-label>
+        <input matInput formControlName="telefono" type="tel" placeholder="Teléfono..." />
+      </mat-form-field>
+      <app-form-field-error [control]="actualizarCrearPerfilForm.get( 'telefono' )" />
+
+      <mat-form-field id="fechaNacimientoId">
+        <mat-label> Fecha de Nacimiento </mat-label>
+        <input matInput
+          formControlName="fechaNacimiento"
+          [matDatepicker]="datePicker"
+          placeholder="Fecha de Nacimiento..." >
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </mat-form-field>
+      <app-form-field-error [control]="actualizarCrearPerfilForm.get( 'fechaNacimiento' )" />
+    }
+
+    @if ( rolUsuario === enumRoles.CLUB ) { <!-- Se verifica si es una cuenta de Club -->
+      <mat-form-field>
+        <mat-label> Club </mat-label>
+        <mat-select formControlName="idClub" aria-label="Seleccionar Club al que pertenece el cuenta de usuario">
+          @for( club of clubes; track club.id ){
+            <mat-option [value]="club.id"> {{club.nombre}} </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    }
+
+    @if( rolUsuario === enumRoles.ADMINISTRADOR ) {
+      <mat-form-field>
+        <mat-label> Afiche URL </mat-label>
+        <input matInput formControlName="fotoPerfilUrl" type="text" placeholder="Ej.: https://static.platzi.com/media/user_upload/CONF-2021-std-twitter-tiendita-b59050ee-9359-41f7-9ccb-f243a8d9515d.jpg" />
+      </mat-form-field>
+      @if ( actualizarCrearPerfilForm.get( 'fotoPerfilUrl' )?.value ) {
+        <div id="eventImgPreviewDivId">
+          <img [src]="actualizarCrearPerfilForm.get( 'fotoPerfilUrl' )?.value" alt="Imagen de Perfil" (error)="onImagePreviewError( $event )">
+        </div>
+      }
+    }
+
+    <button mat-flat-button type="submit" [disabled]="actualizarCrearPerfilForm.invalid || actualizarCrearPerfilForm.untouched || !actualizarCrearPerfilForm.dirty"> {{data.cuentaUsuario ? 'Actualizar' : 'Crear cuenta'}} </button>
+  </form>
+</div>

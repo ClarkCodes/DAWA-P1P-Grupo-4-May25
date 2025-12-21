@@ -1,0 +1,48 @@
+@if ( isCommentOnEditMode ) {
+  <app-agregar-editar-comentario
+    [comentarioOnEdit]="comentario"
+    (commentAddedUpdated)="onCommentAddedUpdated()"
+    (commentEditCanceled)="editCanceled()"
+  />
+}
+@else {
+  <div class="ComentarioContainer">
+    @if ( comentarioAccountData?.fotoPerfilUrl ) {
+      <img class="AccountProfileImageFallbackIcon" [src]="comentarioAccountData?.fotoPerfilUrl" alt="Imagen de Perfil">
+    }
+    @else {
+      <mat-icon class="AccountProfileImageFallbackIcon">account_circle</mat-icon>
+    }
+    <div class="ComentarioContent">
+      <div class="ComentarioHeader">
+        <div class="HeaderDataContainer">
+          <div class="AccountNameComentarioDateContainer">
+            <span class="AccountName">{{ comentarioAccountData?.nombre }}</span>
+            <span class="ComentarioDate">{{ comentario?.fechaComentado | date: 'short' }}</span>
+          </div>
+          <span class="ComentarioTimeAgo">{{ comentario!.fechaComentado | timeAgo }}</span>
+        </div>
+        @if ( isLoggedInUserPropietary ) {
+          <span class="spacer"></span>
+          <button mat-icon-button [matMenuTriggerFor]="propietaryCommentMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #propietaryCommentMenu="matMenu">
+            <button mat-menu-item (click)="editComment()">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button mat-menu-item (click)="deleteComment()">
+              <mat-icon>delete</mat-icon>
+              <span>Eliminar</span>
+            </button>
+          </mat-menu>
+        }
+      </div>
+      <p class="ComentarioMessage">{{ comentario?.mensaje }}</p>
+      <p class="ComentarioRateParagraph">
+        <strong>Calificación: </strong><app-cc-star-rating [rating]="comentario?.calificacion ?? 0" />
+      </p>
+    </div>
+  </div>
+}

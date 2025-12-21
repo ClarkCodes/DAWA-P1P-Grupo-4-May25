@@ -28,6 +28,11 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
+# Visual Studio
+**/.vs/
+**/obj/
+**/bin/
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/
@@ -40,3 +45,16 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# .NET ignore rules for projects inside BACKEND folder
+/BACKEND/**/bin/
+/BACKEND/**/obj/
+/BACKEND/**/*.user
+/BACKEND/**/*.suo
+/BACKEND/.vs/
+/BACKEND/packages/
+/BACKEND/publish/
+/BACKEND/out/
+/BACKEND/**/*.pdb
+/BACKEND/**/*.exe
+/BACKEND/**/*.dll

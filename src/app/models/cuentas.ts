@@ -3,6 +3,9 @@ export interface Cuentas {
   nombre: string;
   email: string;
   password: string;
-  facultad: string;
-  rol: 'ESTUDIANTE' | 'FACULTAD' | 'CLUB';
+  facultadId: string;
+  facultadNombre: string;
+  rolId: string;
+  rolNombre: string;
+  token: string;
 }
