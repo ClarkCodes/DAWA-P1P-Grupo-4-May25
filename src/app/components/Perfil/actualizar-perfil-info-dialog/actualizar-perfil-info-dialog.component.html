@@ -21,7 +21,7 @@
     @if ( rolUsuario === enumRoles.ESTUDIANTE ) { <!-- Se verifica si es una cuenta de Estudiante -->
       <mat-form-field>
         <mat-label> Apellidos </mat-label>
-        <input matInput formControlName="apellidos" type="text" placeholder="Ingrese sus apellidos..." #nombreControl/>
+        <input matInput formControlName="apellidos" type="text" placeholder="Ingrese sus apellidos..."/>
       </mat-form-field>
       <app-form-field-error [control]="actualizarCrearPerfilForm.get( 'apellidos' )" />
     }
